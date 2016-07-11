@@ -22,23 +22,27 @@
 # include <fcntl.h>
 # include <time.h>
 # include <dirent.h>
-
-typedef struct			s_node
-{
-	char				*str;
-	struct s_node		*prev;
-	struct s_node		*next;
-}						t_node;
+# include <sys/ioctl.h>
+# include <stdlib.h>
+# include <termios.h>
+# include <curses.h>
+# include <term.h>
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <signal.h>
 
 typedef struct			s_liste
 {
-	struct s_node		*head;
-	struct s_node		*tail;
+	int					end;
+	char				*data;
+	struct	s_liste		*next;
+	struct	s_liste		*prev;
 }						t_liste;
 
-typedef struct 			s_env
+typedef struct			s_env
 {
-	struct s_liste		*list;
+	t_liste				*list;
 }						t_env;
 
 #endif
