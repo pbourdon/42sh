@@ -30,6 +30,20 @@ t_token	*add_end_list(t_token *token, t_token **base)
 	return (*base);
 }
 
+int		add_token(char *str)
+{
+	int	ret;
+
+	ret = 0;
+
+	if (!(ft_strncmp(str, ">", 1)) || !(ft_strncmp(str, "<", 1)) || !(ft_strcmp(str, "|")))
+	{
+		ret = REDDIR;
+		ft_putendl("hello_world");
+	}
+	return (ret);
+}
+
 t_token	*split_for_the_norm(char **ptr, char **cmd, t_token **base, t_token *cur)
 {
 //	ft_putstr("\n\n3llllllll");
@@ -39,6 +53,7 @@ t_token	*split_for_the_norm(char **ptr, char **cmd, t_token **base, t_token *cur
 		cur->arg[1] = cur->arg[0];
 		*cmd += 1;
 	}
+	cur->token = add_token(cur->arg);
 //	ft_putstr("\n\n2llllllll");
 	*base = add_end_list(cur, base);
 //	ft_putstr("\n\n1llllllll");
@@ -47,6 +62,7 @@ t_token	*split_for_the_norm(char **ptr, char **cmd, t_token **base, t_token *cur
 	*ptr = *cmd;
 	return (*base);
 }
+
 
 t_token	*split_on_spec(char **ptr, char **cmd, t_token **base)
 {
@@ -57,19 +73,18 @@ t_token	*split_on_spec(char **ptr, char **cmd, t_token **base)
 	if (!(cur = (t_token *)malloc(sizeof(t_token))))
 		return (0);
 	cur->next = NULL;
-	cur->s_inib = 0;
-	cur->w_inib = 0;
-	cur->a_inib = 0;
-	if (*ptr != *cmd)
+	cur->inib = 0;
+	if (*ptr != *cmd)									// other !
 	{
 		**cmd = 0;
 		cur->arg = ft_strdup(*ptr);
 		*base = add_end_list(cur, base);
 		**cmd = c;
 		ptr = cmd;
+		cur->token = OTHER;
 		return (split_on_spec(ptr, cmd, base));
 	}
-	if (!(cur->arg = (char *)malloc(sizeof(char) * 3)))
+	if (!(cur->arg = (char *)malloc(sizeof(char) * 3))) // special !
 		return (0);
 	cur->arg = ft_memset(cur->arg, 0, 3);
 	cur->arg[0] = c;

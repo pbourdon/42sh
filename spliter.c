@@ -25,14 +25,13 @@ t_token		*analyse_and_stock(char **ptr, char **cmd, t_token **base)
 	if (!(maillon = (t_token *)malloc(sizeof(t_token))))
 		return (0);
 	maillon->arg = ft_strdup(*ptr);
-	maillon->s_inib = 0;
-	maillon->w_inib = 0;
-	maillon->a_inib = 0;
+	maillon->inib = 0;
 //	ft_printf("\nAND THE NEW STR IS [%s]\n", *ptr);
 	if ((*ptr = *(cmd)))
 		*ptr = *cmd + 1;
 //	ft_printf("\nAND THE NEW STR IS [%s]\n", *ptr);
 	**cmd = ' ';
+	maillon->token = OTHER;
 	maillon->next = NULL;
 	if (!base || !*base)
 		return (maillon);

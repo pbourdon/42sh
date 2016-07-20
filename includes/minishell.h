@@ -24,6 +24,20 @@
 # include <sys/stat.h>
 # include <unistd.h>
 
+# define OTHER 0
+# define AGGR 1
+# define REDDIR 2
+# define SEPP 3
+# define OPBI 4
+# define BACK 5
+
+# define NONE 0
+# define WEAK 1
+# define STRONG 2
+# define ALONE 3
+
+
+
 typedef struct		s_data
 {
 	char			*line;
@@ -46,10 +60,8 @@ typedef struct		s_data
 
 typedef struct		s_token
 {
-	int				s_inib;
-	int				w_inib;
-	int				a_inib;
-	char			*token;
+	int				inib; // non: 0; weak: 1; strong: 2; unique: 3
+	int				token;
 	char			*arg;
 	struct s_token	*next;
 }					t_token;
