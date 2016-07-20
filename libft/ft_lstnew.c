@@ -3,34 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/12 13:43:14 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/01/12 13:43:17 by bde-maze         ###   ########.fr       */
+/*   Created: 2015/12/08 15:55:03 by hlouar            #+#    #+#             */
+/*   Updated: 2015/12/09 21:46:10 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-t_list		*ft_lstnew(void const *content, size_t content_size)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	t_list	*lst;
-	void	*ccpy;
+	t_list *tmp;
 
-	lst = (t_list *)malloc(sizeof(t_list));
-	ccpy = (void *)malloc(content_size);
-	if (!lst || !ccpy)
-		return (NULL);
-	if (!content || !content_size)
+	tmp = (t_list *)malloc(sizeof(*tmp));
+	if (tmp != NULL)
 	{
-		lst->content = NULL;
-		lst->content_size = 0;
+		if (content == NULL)
+		{
+			tmp->content = NULL;
+			tmp->content_size = 0;
+		}
+		else
+		{
+			tmp->content = (void *)malloc(content_size * (sizeof(*content)));
+			ft_memcpy((tmp->content), content, content_size);
+			tmp->content_size = content_size;
+		}
+		tmp->next = NULL;
+		return (tmp);
 	}
-	else
-	{
-		lst->content = ft_memcpy(ccpy, content, content_size);
-		lst->content_size = content_size;
-	}
-	lst->next = NULL;
-	return (lst);
+	return (NULL);
 }

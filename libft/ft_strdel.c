@@ -3,16 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/12 13:52:19 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/01/12 13:52:20 by bde-maze         ###   ########.fr       */
+/*   Created: 2015/12/01 16:51:05 by hlouar            #+#    #+#             */
+/*   Updated: 2015/12/06 19:40:20 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
+#include "stdlib.h"
 
 void	ft_strdel(char **as)
 {
-	ft_memdel((void *)as);
+	if (as != NULL)
+	{
+		free(*as);
+		*as = NULL;
+	}
 }

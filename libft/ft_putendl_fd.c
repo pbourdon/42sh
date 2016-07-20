@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/12 13:48:35 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/01/12 13:48:36 by bde-maze         ###   ########.fr       */
+/*   Created: 2015/11/24 22:31:29 by hlouar            #+#    #+#             */
+/*   Updated: 2015/12/02 18:33:17 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_putendl_fd(char const *s, int fd)
+void	ft_putendl_fd(char const *s, int fd)
 {
 	ft_putstr_fd(s, fd);
 	ft_putchar_fd('\n', fd);

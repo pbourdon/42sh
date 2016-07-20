@@ -3,47 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/12 13:36:35 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/01/12 13:36:43 by bde-maze         ###   ########.fr       */
+/*   Created: 2015/12/01 15:43:46 by hlouar            #+#    #+#             */
+/*   Updated: 2015/12/04 18:16:44 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		is_char_to_escape(char c)
+int	ft_atoi(const char *str)
 {
-	if (c == ' ' || c == '\n' || c == '\t' || c == '\v' || c == '\r' ||
-			c == '\f')
-		return (1);
-	return (0);
-}
+	int	e;
+	int	i;
+	int	n;
 
-int				ft_atoi(const char *str)
-{
-	int			i;
-	int			is_negative;
-	int			value;
-
-	is_negative = 0;
-	value = 0;
+	e = 0;
 	i = 0;
-	while (is_char_to_escape(str[i]))
-		i++;
-	if (str[i] == '+')
-		i++;
-	else if (str[i] == '-')
+	n = 0;
+	while (str[e] == ' ' || str[e] == '\t' || str[e] == '\n' || str[e] == '\v'
+			|| str[e] == '\r' || str[e] == '\f')
+		e++;
+	if (str[e] == '-')
+		i = 1;
+	if (str[e] == '-' || str[e] == '+')
+		e++;
+	while ((str[e] && (str[e] >= '0' && str[e] <= '9')))
 	{
-		is_negative = 1;
-		i++;
+		n = n * 10;
+		n = n + ((int)str[e] - '0');
+		e++;
 	}
-	while (ft_isdigit(str[i]))
-	{
-		value = (value * 10) - (str[i] - '0');
-		i++;
-	}
-	if (!is_negative)
-		value *= -1;
-	return (value);
+	if (i == 1)
+		return (-n);
+	else
+		return (n);
 }

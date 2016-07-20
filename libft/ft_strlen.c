@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   strlen.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/12 13:53:50 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/01/12 13:53:52 by bde-maze         ###   ########.fr       */
+/*   Created: 2015/11/23 17:34:07 by hlouar            #+#    #+#             */
+/*   Updated: 2016/05/16 17:05:26 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_strlen(const char *str)
+size_t	ft_strlen(char const *str)
 {
-	size_t	i;
+	int count;
 
-	if (str == NULL)
-		return (0);
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
+	count = 0;
+	while (str && str[count] != '\0')
+	{
+		count++;
+	}
+	return (count);
 }

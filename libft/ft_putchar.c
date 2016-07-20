@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/12 13:47:55 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/01/12 13:47:57 by bde-maze         ###   ########.fr       */
+/*   Created: 2015/11/24 17:36:12 by hlouar            #+#    #+#             */
+/*   Updated: 2015/12/02 18:32:32 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 
-void			ft_putchar(char c)
+void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }

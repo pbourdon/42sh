@@ -6,13 +6,13 @@
 /*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 17:22:47 by hlouar            #+#    #+#             */
-/*   Updated: 2016/04/09 16:08:06 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/02/15 17:24:32 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_joinfree(char *str, char *dst, int fre)
+char	*ft_joinfree(char *str, char *dst, int fre)
 {
 	char	*host;
 	int		o;

@@ -3,28 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/12 13:53:42 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/01/12 13:53:43 by bde-maze         ###   ########.fr       */
+/*   Created: 2015/12/01 17:24:16 by hlouar            #+#    #+#             */
+/*   Updated: 2015/12/09 16:51:30 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-size_t		ft_strlcat(char *dst, const char *src, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t	len_dst;
-	size_t	i;
+	size_t o;
+	size_t i;
+	size_t e;
+	size_t k;
 
-	len_dst = ft_strlen(dst);
 	i = 0;
-	if (size >= len_dst)
+	e = ft_strlen(src);
+	o = ft_strlen(dst);
+	k = e + o;
+	if (size < o)
+		return (e + size);
+	if ((size_t)ft_strlen(dst) < size)
 	{
-		while (len_dst < size - 1)
-			dst[len_dst++] = src[i++];
-		dst[len_dst] = '\0';
-		return (len_dst + ft_strlen(src) - i);
+		while (o < (size - 1))
+		{
+			dst[o++] = src[i++];
+		}
 	}
-	return (size + ft_strlen(src));
+	if (size > o)
+		dst[o] = 0;
+	return (k);
 }

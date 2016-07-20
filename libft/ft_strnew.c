@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/12 13:55:29 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/01/12 13:55:30 by bde-maze         ###   ########.fr       */
+/*   Created: 2015/12/01 17:01:58 by hlouar            #+#    #+#             */
+/*   Updated: 2015/12/03 19:06:12 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 char	*ft_strnew(size_t size)
 {
-	return (ft_memalloc(sizeof(char) * size + 1));
+	return ((char *)ft_memalloc(size + 1));
 }

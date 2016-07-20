@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/12 13:57:10 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/01/12 13:57:11 by bde-maze         ###   ########.fr       */
+/*   Created: 2015/11/30 16:30:02 by hlouar            #+#    #+#             */
+/*   Updated: 2015/12/04 18:23:50 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-char	ft_tolower(char c)
+int	ft_tolower(int c)
 {
-	if (ft_isupper(c))
-		return (c + 32);
+	if (c >= 'A' && c <= 'Z')
+		c = c + 32;
 	return (c);
 }

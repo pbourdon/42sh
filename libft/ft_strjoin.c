@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   strjoin.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/12 13:53:31 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/01/12 13:53:32 by bde-maze         ###   ########.fr       */
+/*   Created: 2015/11/27 16:28:36 by hlouar            #+#    #+#             */
+/*   Updated: 2015/12/09 19:23:58 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-char		*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*str;
-	size_t	len;
-	size_t	i;
+	int		i;
+	char	*tmp;
 
-	if (s1 != NULL && s2 != NULL)
-	{
-		len = ft_strlen(s1) + ft_strlen(s2);
-		str = ft_strnew(len);
-		i = 0;
-		while (s1[i] != '\0')
-		{
-			str[i] = s1[i];
-			i++;
-		}
-		str = ft_strcat(str, s2);
-		return (str);
-	}
-	return (NULL);
+	i = ft_strlen(s1) + ft_strlen(s2);
+	tmp = (char *)malloc(sizeof(tmp) * (i + 1));
+	if (tmp == NULL)
+		return (NULL);
+	ft_strcpy(tmp, s1);
+	ft_strcat(tmp, s2);
+	return (tmp);
 }

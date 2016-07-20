@@ -3,83 +3,64 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/12 19:19:42 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/01/12 19:19:54 by bde-maze         ###   ########.fr       */
+/*   Created: 2016/02/08 17:30:18 by hlouar            #+#    #+#             */
+/*   Updated: 2016/05/23 14:03:23 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int	check_save(char *buf, char **tmp, char *save)
+int	ft_fill_line(int const fd, char **line, char **r)
 {
-	int i;
-	int j;
+	int		ret;
+	char	*del;
 
-	i = ft_strlen(*tmp);
-	j = 0;
-	*tmp = ft_realloc(*tmp, (ft_strlen(*tmp) + ft_strlen(buf) + 1));
-	while (buf[j] != '\0')
+	ret = 1;
+	if (ft_strchr(r[fd], '\n'))
 	{
-		if (buf[j] == '\n')
-		{
-			*((*tmp) + i) = '\0';
-			save = ft_strcpy(save, &buf[++j]);
-			return (1);
-		}
-		tmp[0][i++] = buf[j++];
+		del = r[fd];
+		*line = ft_strsub(r[fd], 0, ft_strchr(r[fd], '\n') - r[fd]);
+		if (!line)
+			ret = -1;
+		r[fd] = ft_strsub(r[fd], ft_strchr(r[fd], '\n') - r[fd] + 1,
+				ft_strlen(r[fd]));
+		if (!r[fd])
+			ret = -1;
+		ft_strdel(&del);
 	}
-	ft_bzero(save, ft_strlen(save));
-	*((*tmp) + i) = '\0';
-	return (0);
+	else
+	{
+		if (!(*line = ft_strdup(r[fd])))
+			ret = -1;
+		ft_strdel(&r[fd]);
+	}
+	return (ret);
 }
 
-static int	free_and_return(char **buf, char **tmp, char **line)
-{
-	*line = ft_strdup(*tmp);
-	free(*buf);
-	*buf = NULL;
-	free(*tmp);
-	*tmp = NULL;
-	if (line[0] == '\0')
-		return (0);
-	return (1);
-}
-
-static void	free_and_free(char **buf, char **tmp)
-{
-	free(*buf);
-	*buf = NULL;
-	free(*tmp);
-	*tmp = NULL;
-}
-
-int			get_next_line(int const fd, char **line)
+int	get_next_line(int const fd, char **line)
 {
 	int			ret;
-	char		*buf;
-	char		*tmp;
-	static char save[BUFF_SIZE];
+	char		*del;
+	char		buf[BUFF_SIZE + 1];
+	static char	*r[255];
 
-	if (fd == -1)
+	if (!line || fd < 0 || fd > 255 || BUFF_SIZE < 1)
 		return (-1);
-	buf = ft_memalloc(BUFF_SIZE + 1);
-	tmp = ft_memalloc(BUFF_SIZE + 1);
-	if (!tmp || !buf)
+	if (!(r[fd] = (r[fd] == NULL ? ft_strnew(1) : r[fd])))
 		return (-1);
-	if (check_save(save, &tmp, save) == 1)
-		return (free_and_return(&buf, &tmp, line));
-	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
+	while (!ft_strchr(r[fd], '\n') && (ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
-		buf[ret] = '\0';
-		if (check_save(buf, &tmp, save) == 1)
-			return (free_and_return(&buf, &tmp, line));
+		buf[ret] = 0;
+		del = r[fd];
+		if (!(r[fd] = ft_strjoin(r[fd], buf)))
+			return (-1);
+		ft_strdel(&del);
 	}
 	if (ret == -1)
 		return (-1);
-	if (ret == 0 && tmp[0] != '\0')
-		return (free_and_return(&buf, &tmp, line));
-	free_and_free(&buf, &tmp);
-	return (0);
+	if (ft_fill_line(fd, line, r) == -1)
+		return (-1);
+	return (!r[fd] && !ft_strlen(*line) ? 0 : 1);
 }

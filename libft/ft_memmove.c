@@ -3,24 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/12 13:45:16 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/01/12 13:45:18 by bde-maze         ###   ########.fr       */
+/*   Created: 2015/11/30 11:55:27 by hlouar            #+#    #+#             */
+/*   Updated: 2015/12/03 17:04:46 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-void				*ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char	*str;
+	size_t		i;
+	char		*tmp_dst;
+	char		*tmp_src;
+	char		*tmp;
 
-	str = (unsigned char *)malloc(sizeof(unsigned char) * len);
-	if (str == NULL)
-		return (NULL);
-	ft_memcpy(str, src, len);
-	ft_memcpy(dst, str, len);
-	free(str);
-	return (dst);
+	i = 0;
+	tmp_dst = (char*)dst;
+	tmp_src = (char*)src;
+	tmp = (char *)malloc(sizeof(tmp) * (int)len);
+	while (i < len)
+	{
+		tmp[i] = tmp_src[i];
+		i++;
+	}
+	i = 0;
+	while (i < len)
+	{
+		tmp_dst[i] = tmp[i];
+		i++;
+	}
+	return ((void*)dst);
 }

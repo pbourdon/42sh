@@ -3,54 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/12 13:40:43 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/01/12 13:40:45 by bde-maze         ###   ########.fr       */
+/*   Created: 2015/11/25 11:01:27 by hlouar            #+#    #+#             */
+/*   Updated: 2015/12/09 17:05:23 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-static char			*ft_convert_int(char *str, int n, int i, int size)
+static int		enflure(long int s)
 {
-	int				tmp;
+	long int		i;
 
-	tmp = n;
-	size = 1;
-	while (tmp / 10 > 0)
+	i = 0;
+	while (s)
 	{
-		size *= 10;
-		tmp /= 10;
+		i++;
+		s = (s / 10);
 	}
-	while (size > 0)
-	{
-		tmp = n / size;
-		n %= size;
-		size /= 10;
-		str[i++] = tmp + '0';
-	}
-	str[i] = '\0';
-	return (str);
+	return (i);
 }
 
-char				*ft_itoa(int n)
+char			*ft_itoa(long int n)
 {
-	int				i;
-	int				size;
+	long int		i;
 	char			*str;
 
-	size = 1;
-	str = (char *)malloc(13);
-	i = 0;
+	i = enflure(n);
+	if (n == 0)
+		return ("0\0");
+	str = (char*)malloc(sizeof(str) * i + 1);
+	if (str == NULL)
+		return (NULL);
+	str[i] = '\0';
+	if (n == 0)
+		str[0] = '0';
 	if (n < 0)
 	{
-		str[i] = '-';
-		n *= -1;
 		i++;
+		str[0] = 45;
+		n = -n;
 	}
-	str = ft_convert_int(str, n, i, size);
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
+	while (n)
+	{
+		i--;
+		str[i] = (n % 10) + 48;
+		n = n / 10;
+	}
 	return (str);
 }

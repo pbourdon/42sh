@@ -3,19 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/12 13:56:36 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/01/12 13:56:38 by bde-maze         ###   ########.fr       */
+/*   Created: 2015/11/28 16:24:25 by hlouar            #+#    #+#             */
+/*   Updated: 2015/12/04 17:48:45 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-char		*ft_strstr(const char *s1, const char *s2)
+char	*ft_strstr(const char *src, const char *aig)
 {
-	char	*str;
+	int	i;
+	int	j;
+	int	e;
 
-	str = ft_strnstr(s1, s2, ft_strlen(s1));
-	return (str);
+	e = 0;
+	i = 0;
+	j = 0;
+	if (aig[0] == '\0')
+		return ((char *)src);
+	while (src[i] != '\0')
+	{
+		j = i;
+		e = 0;
+		while (src[j] == aig[e])
+		{
+			j++;
+			e++;
+			if (aig[e] == '\0')
+				return (char *)(&src[i]);
+		}
+		i++;
+	}
+	return (NULL);
 }

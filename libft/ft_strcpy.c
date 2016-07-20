@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   strcpy.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/12 13:52:10 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/01/12 13:52:11 by bde-maze         ###   ########.fr       */
+/*   Created: 2015/11/23 16:21:55 by hlouar            #+#    #+#             */
+/*   Updated: 2015/12/02 18:36:47 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strcpy(char *dst, const char *src)
+char	*ft_strcpy(char *dest, const char *source)
 {
 	int i;
 
 	i = 0;
-	while (src[i] != '\0')
+	while (source[i] != '\0')
 	{
-		dst[i] = src[i];
-		++i;
+		dest[i] = source[i];
+		i++;
 	}
-	dst[i] = '\0';
-	return (dst);
+	dest[i] = '\0';
+	return (dest);
 }

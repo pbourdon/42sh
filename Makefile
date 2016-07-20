@@ -5,18 +5,38 @@
 #                                                     +:+ +:+         +:+      #
 #    By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/07/10 13:13:05 by bde-maze          #+#    #+#              #
-#    Updated: 2016/07/10 13:13:08 by bde-maze         ###   ########.fr        #
+#    Created: 2016/05/02 13:52:37 by bde-maze          #+#    #+#              #
+#    Updated: 2016/05/02 13:52:58 by bde-maze         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = 21sh
 
-HEADER = includes/sh.h
+HEADER = includes/minishell.h
 
 FLAGS = -Wall -Werror -Wextra -g3 -O3
 
+LIBFLAGS = -lncurses
+
 SRC = 	main.c \
+		cd.c \
+		cd2.c \
+		cd3.c \
+		env.c \
+		env2.c \
+		env3.c \
+		parseandexc.c \
+		parseandexc2.c \
+		setenv.c \
+		setenv2.c \
+		tools.c \
+		tools2.c \
+		unsetenv.c \
+		allwrites.c \
+		spliter.c \
+		split_on_spec.c \
+
+
 
 OBJDIR = obj/
 
@@ -27,8 +47,8 @@ all: $(NAME)
 norm:
 	@norminette $(SRC) $(HEADER)
 
-$(NAME): compile_lib compile_p $(OBJ)
-		@clang $(FLAGS) -o $(NAME) $(OBJ) -L libft -lft
+$(NAME): compile_lib compile_print compile_p $(OBJ)
+		@clang $(FLAGS) $(LIBFLAGS) -o $(NAME) $(OBJ) -L libft -lft -L ft_printf -lftprintf 
 		@echo ""
 		@echo "\033[32mCompilation Succeeded\033[39m"
 		@echo ""
@@ -39,6 +59,9 @@ compile_p:
 
 compile_lib:
 		@make -C libft/
+
+compile_print:
+		@make -C ft_printf 
 
 $(OBJDIR)%.o: %.c
 		@mkdir -p $(OBJDIR)
