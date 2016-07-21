@@ -14,10 +14,6 @@
 
 int			edit_error_message(t_token *ptr, char *prev)
 {
-	ft_putstr("prev: ");
-	ft_putendl(prev);
-	ft_putstr("ptr->arg: ");
-	ft_putendl(ptr->arg);
 	if (!ft_strncmp(ptr->arg, "<", 1) || !ft_strncmp(prev, "<", 1) ||
 		!ft_strncmp(ptr->arg, ">", 1) || !ft_strncmp(prev, ">", 1))
 		ft_putendl("Missing name for redirect.");

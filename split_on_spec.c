@@ -42,6 +42,8 @@ int		add_token(char *str)
 		ret = OPBI;
 	else if (!(ft_strcmp(str, ";")))
 		ret = SEPP;
+	else if (!(ft_strcmp(str, "&")))
+		ret = AGGR;
 	else if (!(ft_strcmp(str, "`")))
 		ret = BACK;
 	return (ret);
