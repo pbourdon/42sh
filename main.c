@@ -50,23 +50,29 @@ int		readgnl(t_data *data)
 {
 	t_token		*ptr;
 	int			fd;
+	int			ret;
 	char		*str;
 
 	fd = 1;
+	ret = 0;
 	while (42)
 	{
 		writeonwhile();
 		if (get_next_line(fd, &str) == 1)
 		{
 			ptr = to_list(str);
-			readgnl2(data, str);
-			if (data->dspam == 0)
-				freetab(data->args);
-			free(data->line);
-			if (data->home)
-				free(data->home);
-			if (data->oldpwd)
-				free(data->oldpwd);
+			ret = check_list(ptr);
+			if (ret == 0)
+			{
+				readgnl2(data, str);
+				if (data->dspam == 0)
+					freetab(data->args);
+				free(data->line);
+				if (data->home)
+					free(data->home);
+				if (data->oldpwd)
+					free(data->oldpwd);
+			}
 		}
 		else if (EOF)
 		{

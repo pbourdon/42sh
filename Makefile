@@ -35,6 +35,7 @@ SRC = 	main.c \
 		allwrites.c \
 		spliter.c \
 		split_on_spec.c \
+		error.c
 
 
 

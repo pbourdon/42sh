@@ -37,10 +37,13 @@ int		add_token(char *str)
 	ret = 0;
 
 	if (!(ft_strncmp(str, ">", 1)) || !(ft_strncmp(str, "<", 1)) || !(ft_strcmp(str, "|")))
-	{
 		ret = REDDIR;
-		ft_putendl("hello_world");
-	}
+	else if (!(ft_strcmp(str, "&&")) || !(ft_strcmp(str, "||")))
+		ret = OPBI;
+	else if (!(ft_strcmp(str, ";")))
+		ret = SEPP;
+	else if (!(ft_strcmp(str, "`")))
+		ret = BACK;
 	return (ret);
 }
 
@@ -54,9 +57,9 @@ t_token	*split_for_the_norm(char **ptr, char **cmd, t_token **base, t_token *cur
 		*cmd += 1;
 	}
 	cur->token = add_token(cur->arg);
-//	ft_putstr("\n\n2llllllll");
+	// ft_putstr("\n\n1llllllll");
 	*base = add_end_list(cur, base);
-//	ft_putstr("\n\n1llllllll");
+	// ft_putstr("\n\n2llllllll");
 	while (*cmd && *(*cmd + 1) && *(*cmd + 1) == ' ')
 		*cmd += 1;
 	*ptr = *cmd;

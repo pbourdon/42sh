@@ -36,6 +36,9 @@
 # define STRONG 2
 # define ALONE 3
 
+# define INPUT 0
+# define OUTPUT 1
+
 
 
 typedef struct		s_data
@@ -61,7 +64,8 @@ typedef struct		s_data
 typedef struct		s_token
 {
 	int				inib; // non: 0; weak: 1; strong: 2; unique: 3
-	int				token;
+	int				tube; // input or output
+	int				token; // ohter: 0; aggr: 1; reddir: 2; sepp: 3; opbi:4; back:5;
 	char			*arg;
 	struct s_token	*next;
 }					t_token;
@@ -70,6 +74,7 @@ typedef struct		s_token
 int					is_a_spec(char c);
 t_token				*to_list(char *cmd);
 t_token				*split_on_spec(char **ptr, char **cmd, t_token **base);
+int					check_list(t_token *liste);
 
 
 
