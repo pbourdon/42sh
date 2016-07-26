@@ -1,0 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   arg_to_list.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/07/26 14:47:18 by cmichaud          #+#    #+#             */
+/*   Updated: 2016/07/26 14:50:53 by cmichaud         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "includes/minishell.h"
+
+int			calc_len(t_tree *tree)
+{
+	
+}
+
+t_token		*arg_to_list(t_token *list, t_tree *tree, int len)
+{
+	while (tree)
+	{
+		len = calc_len(tree);
+	}
+	return (list);
+}

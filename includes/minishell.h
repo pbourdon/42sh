@@ -6,7 +6,7 @@
 /*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/24 16:58:19 by hlouar            #+#    #+#             */
-/*   Updated: 2016/05/23 10:22:18 by hlouar           ###   ########.fr       */
+/*   Updated: 2016/07/26 14:51:01 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@
 
 # define OTHER 0
 # define AGGR 1
-# define REDDIR 2
-# define SEPP 3
+# define BACK 2
+# define REDDIR 3
 # define OPBI 4
-# define BACK 5
+# define SEPP 5
 
 # define NONE 0
 # define WEAK 1
@@ -61,6 +61,15 @@ typedef struct		s_data
 	int				turn;
 }					t_data;
 
+typedef struct		s_tree
+{
+	char			*arg;
+	int				token;	
+	struct s_tree	*left;
+	struct s_tree	*right;
+
+}					t_tree;
+
 typedef struct		s_token
 {
 	int				inib; // non: 0; weak: 1; strong: 2; unique: 3
@@ -70,9 +79,16 @@ typedef struct		s_token
 	struct s_token	*next;
 }					t_token;
 
+t_token				*arg_to_list(t_token *token, t_tree *tree, int len);
 
+t_tree				*recur(t_tree *tree, t_token *token, int prio, const char *str);
+void	aff(t_tree *tree);
+
+t_token				*good_order(t_token *ptr, t_token *prev, t_token *base);
+
+char				*replace_rest_of_space(char *ptr, int len);
 int					is_a_spec(char c);
-t_token				*to_list(char *cmd);
+t_token				*to_list(char *cmd, int i);
 t_token				*split_on_spec(char **ptr, char **cmd, t_token **base);
 int					check_list(t_token *liste);
 

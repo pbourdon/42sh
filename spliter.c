@@ -6,11 +6,55 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/20 13:24:40 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/07/20 13:24:41 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/07/23 18:27:33 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
+
+char		*erase_first_space(char *line)
+{
+	int			i;
+
+	i = 0;
+	while ((line[i] == ' ') || (line[i] == 9))
+		line++;
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] == 9)
+			line[i] = ' ';
+		i++;
+	}
+	return (line);
+}
+
+char		*replace_rest_of_space(char *str, int len)
+{
+	int i;
+
+	i = len;
+	while (str[len - 1] && str[len - 1] == ' ')
+		--len;
+	if (i != len)
+	{
+		if (str[len - 1] == '\\')
+		{
+			if (str[len - 2] && str[len - 2] == '\\')
+				str[len] = 0;
+			else if (str[len + 1])
+				str[len + 1] = 0;
+			return (str);
+		}
+		else
+			str[len] = 0;
+//			ft_putstr("\n\n\n\n\n\n\n\n\n\nHERE REPLACE SPAXCE");
+//			ft_printf("[%s]", str);
+		return (str);
+//			ft_printf("[%s]", str);
+	}
+	return (str);
+}
 
 t_token		*analyse_and_stock(char **ptr, char **cmd, t_token **base)
 {
@@ -24,7 +68,8 @@ t_token		*analyse_and_stock(char **ptr, char **cmd, t_token **base)
 	**cmd = 0;
 	if (!(maillon = (t_token *)malloc(sizeof(t_token))))
 		return (0);
-	maillon->arg = ft_strdup(*ptr);
+	maillon->arg = replace_rest_of_space(ft_strdup(*ptr), ft_strlen(*ptr));
+	ft_printf("dubadub [%s]\n", maillon->arg);
 	maillon->inib = 0;
 //	ft_printf("\nAND THE NEW STR IS [%s]\n", *ptr);
 	if ((*ptr = *(cmd)))
@@ -55,7 +100,7 @@ t_token		*ft_find_space(char *cmd, t_token *token)
 	tmp = cmd;
 	while (cmd && *cmd)
 	{
-		if ((!(quote + inib) || (!(inib) && quote == '\'')) && (*cmd == ' ' || is_a_spec(*cmd)))
+		if ((!(quote + inib) || (!(inib) && quote == '\'')) && is_a_spec(*cmd))
 		{
 			//ft_printf("\n\n[%s] tmp, [%s] cmd, [%s] ptr, [%d] cmd - tmp\n", tmp, cmd, ptr, cmd - tmp);
 			token = analyse_and_stock(&ptr, &cmd, &token);
@@ -82,24 +127,6 @@ t_token		*ft_find_space(char *cmd, t_token *token)
 		token = analyse_and_stock(&ptr, &cmd, &token);
 	}
 	return (token);
-}
-
-char		*replace_rest_of_space(char *str, int len)
-{
-	int i;
-
-	i = len;
-	while (str[--len] && str[len] == ' ')
-		;
-	if (i != len && str[len] && str[len] == '\\')
-		if ((str[len - 1] && str[len - 1] != '\\') || !str[len - 1])
-		{
-//			ft_putstr("HERE REPLACE SPAXCE");
-//			ft_printf("[%s]", str);
-			str[len + 2] = 0;
-//			ft_printf("[%s]", str);
-		}
-	return (str);
 }
 
 char		*free_space(char *str, int quote, int d, int i)
@@ -130,13 +157,17 @@ char		*free_space(char *str, int quote, int d, int i)
 	return (replace_rest_of_space(str, ft_strlen(str)));
 }
 
-t_token		*to_list(char *cmd)
+t_token		*to_list(char *cmd, int i)
 {
 	t_token	*tmp; //
 	t_token	*token;
 
 	token = NULL;
 	if (!cmd || !*cmd)
+		return (0);
+	while (cmd[++i] && cmd[i] == ' ')
+		;
+	if (!cmd[i])
 		return (0);
 	cmd = free_space(cmd, 0, 0, -1);
 	token = ft_find_space(cmd, token);

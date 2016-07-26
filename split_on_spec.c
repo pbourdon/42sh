@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/20 13:24:32 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/07/20 13:24:33 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/07/23 13:53:26 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ t_token	*split_on_spec(char **ptr, char **cmd, t_token **base)
 	if (*ptr != *cmd)									// other !
 	{
 		**cmd = 0;
-		cur->arg = ft_strdup(*ptr);
+		cur->arg = replace_rest_of_space(ft_strdup(*ptr), ft_strlen(*ptr));
 		*base = add_end_list(cur, base);
 		**cmd = c;
 		ptr = cmd;

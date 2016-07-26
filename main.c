@@ -6,7 +6,7 @@
 /*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/16 17:45:20 by hlouar            #+#    #+#             */
-/*   Updated: 2016/05/23 10:09:22 by hlouar           ###   ########.fr       */
+/*   Updated: 2016/07/26 14:51:08 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	readgnl2(t_data *data, char *str)
 int		readgnl(t_data *data)
 {
 	t_token		*ptr;
+	t_tree		*tree;
 	int			fd;
 	int			ret;
 	char		*str;
@@ -60,18 +61,24 @@ int		readgnl(t_data *data)
 		writeonwhile();
 		if (get_next_line(fd, &str) == 1)
 		{
-			ptr = to_list(str);
-			ret = check_list(ptr);
-			if (ret == 0)
+			if ((ptr = to_list(str, -1)))
 			{
-				readgnl2(data, str);
-				if (data->dspam == 0)
-					freetab(data->args);
-				free(data->line);
-				if (data->home)
-					free(data->home);
-				if (data->oldpwd)
-					free(data->oldpwd);
+				ptr = good_order(ptr, ptr, ptr);
+				tree = recur(NULL, ptr, 5, NULL); //
+				arg_to_list(NULL, tree, 0);
+				ptr = to_list(str, -1);
+				ret = check_list(ptr);
+				if (ret == 0)
+				{
+					readgnl2(data, str);
+					if (data->dspam == 0)
+						freetab(data->args);
+					free(data->line);
+					if (data->home)
+						free(data->home);
+					if (data->oldpwd)
+						free(data->oldpwd);
+				}
 			}
 		}
 		else if (EOF)
