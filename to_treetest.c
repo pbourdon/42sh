@@ -77,7 +77,7 @@ int		is_base(t_token **token, t_token **base, t_token **save)
 	return (1);
 }
 
-t_tree	*recur(t_tree *tree, t_token *token, int prio, const char *str)
+t_tree	*to_tree(t_tree *tree, t_token *token, int prio, const char *str)
 {
 	t_token *save;
 	t_token *base;
@@ -136,9 +136,9 @@ t_tree	*recur(t_tree *tree, t_token *token, int prio, const char *str)
 *///				ft_putstr("1");
 //				token = token->next;
 				if (base && ft_printf("\nTO THE LEFT!!!!!!!!!!!!"))
-					recur(tree, base, (prio - 1), "left");
+					to_tree(tree, base, (prio - 1), "left");
 				if (token && ft_printf("\nTO THE RIGHT!!!!!!!!!!!!"))
-					recur(tree, token, prio, "right");
+					to_tree(tree, token, prio, "right");
 				return (tree);
 			}
 			ft_putstr("2test\n");
@@ -146,6 +146,6 @@ t_tree	*recur(t_tree *tree, t_token *token, int prio, const char *str)
 		}
 		prio--;
 	}
-	ft_printf("END loop of recur\n");
+	ft_printf("END loop of to_tree\n");
 	return (tree);
 }

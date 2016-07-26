@@ -38,6 +38,7 @@ SRC = 	main.c \
 		error.c \
 		to_treetest.c \
 		good_order.c \
+		arg_to_list.c
 
 OBJDIR = obj/
 

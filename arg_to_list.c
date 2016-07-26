@@ -3,46 +3,76 @@
 /*                                                        :::      ::::::::   */
 /*   arg_to_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/26 14:47:18 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/07/26 15:33:23 by cmichaud         ###   ########.fr       */
+/*   Created: 2016/07/26 15:57:39 by bde-maze          #+#    #+#             */
+/*   Updated: 2016/07/26 15:57:41 by bde-maze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 
-int			calc_len(t_tree *tree, int len)
+t_liste		*create_list()
 {
-	if (tree->token > 3)
-		if (!tree->left)
-		{
-			if (!tree->right)
-				return (0);
-			tree = tree->right;
-		}
-	len += ft_strlen(tree->arg);
-	if (len != (len += calc_len(tree->left, len)))
-		len += 1;
-	if ((len += calc_len(tree->right, len)))
-	len += calc_len(tree->right, len);
-	
+	t_liste *liste;
+
+	if (!(liste = ft_memalloc(sizeof(t_liste))))
+		return (NULL);
+	liste->next = NULL;
+	liste->arg = NULL;
+	return (liste);
 }
 
-t_token		*arg_to_list(t_token *list, t_tree *tree, int len)
+t_liste		*fill_to_list(t_liste *liste, t_tree *tree)
 {
-	t_tree *base;
+	char	buff[ft_strlen(tree->arg) + 1];
+	char	*tmp;
 
-	base = tree;
-	while (tree)
+	buff[0] = ' ';
+	while (liste->next)
+		liste = liste->next;
+	if (tree->left)
+		liste = fill_to_list(liste, tree->left);
+	if (!liste->arg)
+		liste->arg = ft_strdup(tree->arg);
+	else
 	{
-		if (tree->left && tree->left->token > 3)
-			tree = tree->left;
-		if (tree->left)
-			calc_len(tree->left, 0);
-		if (tree->right && tree->right->token > 3)
-			tree = tree->right;
-		if (len = calc_len(tree, 0)) // APPLIQUER LA MEME FORMULE POUR BIEN CE DEPLACER
+		ft_strcpy(buff + 1, tree->arg);
+		tmp = ft_strjoin(liste->arg, buff);
+		free(liste->arg);
+		liste->arg = tmp;
 	}
-	return (list);
+	if (tree->right)
+		liste = fill_to_list(liste, tree->right);
+	return (liste);
+}
+
+void		arg_to_list(t_liste *liste, t_tree *tree)
+{
+	t_liste *ptr;
+	int		i;
+
+	i = 0;
+	if (liste == NULL)
+		return;
+	ptr = liste;
+	if (tree->token > 3)
+	{
+		if (tree->left != NULL)
+			arg_to_list(ptr, tree->left);
+		if (tree->right != NULL)
+			arg_to_list(ptr, tree->right);
+	}
+	if (tree->token < 4)
+	{
+		i++;
+		ptr = fill_to_list(ptr, tree);
+	}
+	if (i != 0)
+	{
+		ptr->next = ft_memalloc(sizeof(t_liste));
+		ptr = ptr->next;
+		ptr->arg = NULL;
+		ptr->next = NULL;
+	}
 }

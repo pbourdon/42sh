@@ -79,10 +79,17 @@ typedef struct		s_token
 	struct s_token	*next;
 }					t_token;
 
-t_token				*arg_to_list(t_token *token, t_tree *tree, int len);
+typedef struct		s_liste
+{
+	char			*arg;
+	struct s_liste	*next;
+}					t_liste;
 
-t_tree				*recur(t_tree *tree, t_token *token, int prio, const char *str);
-void	aff(t_tree *tree);
+void				arg_to_list(t_liste *liste, t_tree *tree);
+t_liste				*create_list();
+
+t_tree				*to_tree(t_tree *tree, t_token *token, int prio, const char *str);
+void				aff(t_tree *tree);
 
 t_token				*good_order(t_token *ptr, t_token *prev, t_token *base);
 
