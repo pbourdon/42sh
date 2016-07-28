@@ -65,10 +65,9 @@ int		readgnl(t_data *data)
 		{
 			if ((ptr = to_list(str, -1)))
 			{
-				ret = check_list(ptr);
+				ret = check_list(ptr, NULL, 0);
 				ptr = good_order(ptr, ptr, ptr);
 				tree = to_tree(NULL, ptr, 5, NULL); 
-				// ptr = to_list(str, -1);
 				if (ret == 0)
 				{
 					liste = create_list();

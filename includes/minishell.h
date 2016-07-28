@@ -96,7 +96,7 @@ char				*replace_rest_of_space(char *ptr, int len);
 int					is_a_spec(char c);
 t_token				*to_list(char *cmd, int i);
 t_token				*split_on_spec(char **ptr, char **cmd, t_token **base);
-int					check_list(t_token *liste);
+int					check_list(t_token *liste, t_token *ptr, int tworeddir);
 
 
 
