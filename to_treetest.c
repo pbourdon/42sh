@@ -45,7 +45,7 @@ int		is_base(t_token **token, t_token **base, t_token **save)
 {
 	if (*token == *base)
 	{
-		ft_putstr("    the token == base        ");
+		// ft_putstr("    the token == base        ");
 		*save = (*token)->next;
 		free(*token);
 		*base = NULL;
@@ -88,14 +88,15 @@ t_tree	*to_tree(t_tree *tree, t_token *token, int prio, const char *str)
 	{
 		token = base;
 		while (token)
-		{				ft_putstr("1test");
+		{				
+			// ft_putstr("1test");
 
-			ft_printf("LOOP = token : str = [%s] token = [%d] for prio [%d]\n", token->arg, token->token, prio);
+			// ft_printf("LOOP = token : str = [%s] token = [%d] for prio [%d]\n", token->arg, token->token, prio);
 			if (token->token == prio)
 			{
 				if (!str)
 				{
-					ft_printf("On rentre dans la merde\n");
+					// ft_printf("On rentre dans la merde\n");
 					tree = new_node(token);
 				}
 				else if (!ft_strcmp(str, "left"))
@@ -135,17 +136,17 @@ t_tree	*to_tree(t_tree *tree, t_token *token, int prio, const char *str)
 				}
 *///				ft_putstr("1");
 //				token = token->next;
-				if (base && ft_printf("\nTO THE LEFT!!!!!!!!!!!!"))
+				if (base)
 					to_tree(tree, base, (prio - 1), "left");
-				if (token && ft_printf("\nTO THE RIGHT!!!!!!!!!!!!"))
+				if (token)
 					to_tree(tree, token, prio, "right");
 				return (tree);
 			}
-			ft_putstr("2test\n");
+			// ft_putstr("2test\n");
 			token = token->next;
 		}
 		prio--;
 	}
-	ft_printf("END loop of to_tree\n");
+	// ft_printf("END loop of to_tree\n");
 	return (tree);
 }

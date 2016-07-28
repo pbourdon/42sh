@@ -50,6 +50,7 @@ int		readgnl(t_data *data)
 {
 	t_token		*ptr;
 	t_liste		*liste;
+	t_liste		*tmp;
 	t_tree		*tree;
 	int			fd;
 	int			ret;
@@ -64,20 +65,26 @@ int		readgnl(t_data *data)
 		{
 			if ((ptr = to_list(str, -1)))
 			{
+				ret = check_list(ptr);
 				ptr = good_order(ptr, ptr, ptr);
-				tree = to_tree(NULL, ptr, 5, NULL); //
-				// ret = check_list(ptr);
+				tree = to_tree(NULL, ptr, 5, NULL); 
 				// ptr = to_list(str, -1);
 				if (ret == 0)
 				{
 					liste = create_list();
 					arg_to_list(liste, tree);
-					while (liste->next)
+					tmp = liste;
+					while (tmp->next)
 					{
-						printf("arg: %s\n", liste->arg);
-						liste = liste->next;
+						printf("arg: %s\n", tmp->arg);
+						tmp = tmp->next;
 					}
-					readgnl2(data, str);
+					tmp = liste;
+					while (tmp->next)
+					{
+						readgnl2(data, tmp->arg);
+						tmp = tmp->next;
+					}
 					if (data->dspam == 0)
 						freetab(data->args);
 					free(data->line);

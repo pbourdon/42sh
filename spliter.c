@@ -69,7 +69,7 @@ t_token		*analyse_and_stock(char **ptr, char **cmd, t_token **base)
 	if (!(maillon = (t_token *)malloc(sizeof(t_token))))
 		return (0);
 	maillon->arg = replace_rest_of_space(ft_strdup(*ptr), ft_strlen(*ptr));
-	ft_printf("dubadub [%s]\n", maillon->arg);
+	// ft_printf("dubadub [%s]\n", maillon->arg);
 	maillon->inib = 0;
 //	ft_printf("\nAND THE NEW STR IS [%s]\n", *ptr);
 	if ((*ptr = *(cmd)))
@@ -174,7 +174,7 @@ t_token		*to_list(char *cmd, int i)
 	tmp = token; //
 	while (token) //
 	{ //
-		ft_printf("\n[%s] This is the final cut\n", token->arg); //
+		// ft_printf("\n[%s] This is the final cut\n", token->arg); //
 		token = token->next; //
 	} //
 	token = tmp; //
