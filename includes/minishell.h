@@ -18,7 +18,6 @@
 # include <sys/wait.h>
 # include "../libft/libft.h"
 # include "../libft/get_next_line.h"
-# include "../ft_printf/includes/ft_printf.h"
 # include <dirent.h>
 # include <sys/types.h>
 # include <sys/stat.h>

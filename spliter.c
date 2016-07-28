@@ -48,10 +48,7 @@ char		*replace_rest_of_space(char *str, int len)
 		}
 		else
 			str[len] = 0;
-//			ft_putstr("\n\n\n\n\n\n\n\n\n\nHERE REPLACE SPAXCE");
-//			ft_printf("[%s]", str);
 		return (str);
-//			ft_printf("[%s]", str);
 	}
 	return (str);
 }
@@ -69,12 +66,9 @@ t_token		*analyse_and_stock(char **ptr, char **cmd, t_token **base)
 	if (!(maillon = (t_token *)malloc(sizeof(t_token))))
 		return (0);
 	maillon->arg = replace_rest_of_space(ft_strdup(*ptr), ft_strlen(*ptr));
-	// ft_printf("dubadub [%s]\n", maillon->arg);
 	maillon->inib = 0;
-//	ft_printf("\nAND THE NEW STR IS [%s]\n", *ptr);
 	if ((*ptr = *(cmd)))
 		*ptr = *cmd + 1;
-//	ft_printf("\nAND THE NEW STR IS [%s]\n", *ptr);
 	**cmd = ' ';
 	maillon->token = OTHER;
 	maillon->next = NULL;
@@ -102,9 +96,7 @@ t_token		*ft_find_space(char *cmd, t_token *token)
 	{
 		if ((!(quote + inib) || (!(inib) && quote == '\'')) && is_a_spec(*cmd))
 		{
-			//ft_printf("\n\n[%s] tmp, [%s] cmd, [%s] ptr, [%d] cmd - tmp\n", tmp, cmd, ptr, cmd - tmp);
 			token = analyse_and_stock(&ptr, &cmd, &token);
-			//ft_printf("[%s] tmp, [%s] cmd, [%s] ptr, [%d] cmd - tmp\n", tmp, cmd, ptr, cmd - tmp);
 			ptr = cmd;
 			if ((*cmd && cmd && is_a_spec(*cmd)) || (*cmd == ' '))
 			{
@@ -122,10 +114,7 @@ t_token		*ft_find_space(char *cmd, t_token *token)
 		cmd++;
 	}
 	if (ptr != cmd)
-	{
-//		ft_printf("[%s] tmp, [%s] cmd, [%d] cmd - tmp\n", tmp, cmd, cmd - tmp);
 		token = analyse_and_stock(&ptr, &cmd, &token);
-	}
 	return (token);
 }
 
@@ -173,10 +162,7 @@ t_token		*to_list(char *cmd, int i)
 	token = ft_find_space(cmd, token);
 	tmp = token; //
 	while (token) //
-	{ //
-		// ft_printf("\n[%s] This is the final cut\n", token->arg); //
 		token = token->next; //
-	} //
 	token = tmp; //
 	return (token);
 }

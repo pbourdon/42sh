@@ -49,8 +49,8 @@ all: $(NAME)
 norm:
 	@norminette $(SRC) $(HEADER)
 
-$(NAME): compile_lib compile_print compile_p $(OBJ)
-		@clang $(FLAGS) $(LIBFLAGS) -o $(NAME) $(OBJ) -L libft -lft -L ft_printf -lftprintf 
+$(NAME): compile_lib compile_p $(OBJ)
+		@clang $(FLAGS) $(LIBFLAGS) -o $(NAME) $(OBJ) -L libft -lft
 		@echo ""
 		@echo "\033[32mCompilation Succeeded\033[39m"
 		@echo ""
@@ -61,9 +61,6 @@ compile_p:
 
 compile_lib:
 		@make -C libft/
-
-compile_print:
-		@make -C ft_printf 
 
 $(OBJDIR)%.o: %.c
 		@mkdir -p $(OBJDIR)
