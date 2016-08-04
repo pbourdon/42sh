@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/20 13:24:40 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/04 16:47:48 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/04 17:20:28 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char		*erase_first_space(char *line)
 char		*replace_rest_of_space(char *str, int len)
 {
 	int i;
-
+	ft_putstr_fd("replace_rest_of_space starts\n", 2);
 	i = len;
 	while (str[len - 1] && str[len - 1] == ' ')
 		--len;
@@ -52,6 +52,7 @@ char		*replace_rest_of_space(char *str, int len)
 	}
 	ft_putstr_fd(str, 2);
 	ft_putstr_fd("<after replace>\n", 2);
+	ft_putstr_fd("replace_rest_of_space ends\n", 2);
 	return (str);
 }
 
@@ -59,11 +60,14 @@ t_token		*analyse_and_stock(char **ptr, char **cmd, t_token **base)
 {
 	t_token *token;
 	t_token *maillon;
-
+	ft_putstr_fd("analyse_and_stock starts\n", 2);
 	if (!ptr || !*ptr || !**ptr)
 		return (*base);
 	if (is_a_spec(**cmd))
+	{
+		ft_putstr_fd("analyse_and_stock ends\n", 2);
 		return (split_on_spec(ptr, cmd, base));
+	}
 	**cmd = 0;
 	if (!(maillon = (t_token *)malloc(sizeof(t_token))))
 		return (0);
@@ -80,6 +84,7 @@ t_token		*analyse_and_stock(char **ptr, char **cmd, t_token **base)
 	while (token->next)
 		token = token->next;
 	token->next = maillon;
+	ft_putstr_fd("analyse_and_stock ends\n", 2);
 	return (*base);
 }
 
@@ -90,6 +95,7 @@ t_token		*ft_find_space(char *cmd, t_token *token)
 	char	quote;
 	int		inib;
 
+	ft_putstr_fd("ft_find_space starts\n", 2);
 	ptr = cmd;
 	quote = 0;
 	inib = 0;
@@ -117,6 +123,7 @@ t_token		*ft_find_space(char *cmd, t_token *token)
 	}
 	if (ptr != cmd)
 		token = analyse_and_stock(&ptr, &cmd, &token);
+	ft_putstr_fd("ft_find_space starts\n", 2);
 	return (token);
 }
 
@@ -124,7 +131,7 @@ char		*free_space(char *str, int quote, int d, int i)
 {
 	int inib;
 
-	ft_putstr_fd("free_space\n", 2);
+	ft_putstr_fd("free_space starts\n", 2);
 	inib = 0;
 	while (str[++i])
 	{
