@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/20 13:24:40 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/07/23 18:27:33 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/04 16:47:48 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ char		*replace_rest_of_space(char *str, int len)
 			str[len] = 0;
 		return (str);
 	}
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd("<after replace>\n", 2);
 	return (str);
 }
 
@@ -122,6 +124,7 @@ char		*free_space(char *str, int quote, int d, int i)
 {
 	int inib;
 
+	ft_putstr_fd("free_space\n", 2);
 	inib = 0;
 	while (str[++i])
 	{
@@ -143,6 +146,9 @@ char		*free_space(char *str, int quote, int d, int i)
 		str[d++] = str[i];
 	}
 	str[d] = '\0';
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd("                  <after free_space>\n", 2);
+	ft_putstr_fd("free_space ends\n", 2);
 	return (replace_rest_of_space(str, ft_strlen(str)));
 }
 
@@ -151,18 +157,26 @@ t_token		*to_list(char *cmd, int i)
 	t_token	*tmp; //
 	t_token	*token;
 
+	ft_putstr_fd("to_list starts\n", 2);
 	token = NULL;
 	if (!cmd || !*cmd)
+	{
+		ft_putstr_fd("to_list ends\n", 2);
 		return (0);
+	}
 	while (cmd[++i] && cmd[i] == ' ')
 		;
 	if (!cmd[i])
+	{
+		ft_putstr_fd("to_list ends\n", 2);
 		return (0);
+	}
 	cmd = free_space(cmd, 0, 0, -1);
 	token = ft_find_space(cmd, token);
 	tmp = token; //
 	while (token) //
 		token = token->next; //
 	token = tmp; //
+	ft_putstr_fd("to_list ends\n", 2);
 	return (token);
 }

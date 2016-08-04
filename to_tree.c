@@ -15,7 +15,7 @@
 t_tree		*fcnt(t_tree *tree, t_token *token, int prio, t_token **base)
 {
 	t_token *tmp;
-	
+
 	tmp = *base;
 	while (tmp != token)
 	{

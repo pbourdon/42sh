@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   to_treetest.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cmichaud <cmichaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/21 19:36:50 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/07/23 15:16:10 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/04 15:52:47 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,13 @@ void		aff(t_tree *tree)
 
 t_tree		*new_node(t_token *token)
 {
+	ft_putstr_fd("new_node\n", 2);
 	t_tree *tree;
 
 	if (!(tree = (t_tree *)malloc(sizeof(t_tree))))
 		return (NULL);
+	ft_putstr_fd(token->arg, 2);
+	ft_putstr_fd("\n", 2);
 	tree->arg = token->arg;
 	tree->token = token->token;
 	tree->right = NULL;
@@ -50,14 +53,15 @@ int		is_base(t_token **token, t_token **base, t_token **save)
 	{
 //		*save = *base;
 		while ((*save)->next != *token)
-		{ft_putstr("l");				*save = (*save)->next;};
+		{
+							*save = (*save)->next;};
 		*token = (*token)->next;
 		if (*base == *save)
 		{
 //			free((*base)->next);
 //			(*base)->next = NULL;
 			ft_memdel((void *)(&(*base)->next));
-			
+
 		}
 		else
 		{
@@ -71,6 +75,7 @@ int		is_base(t_token **token, t_token **base, t_token **save)
 
 t_tree	*to_tree(t_tree *tree, t_token *token, int prio, const char *str)
 {
+	ft_putstr_fd("to_tree\n", 2);
 	t_token *save;
 	t_token *base;
 
@@ -79,9 +84,7 @@ t_tree	*to_tree(t_tree *tree, t_token *token, int prio, const char *str)
 	{
 		token = base;
 		while (token)
-		{				
-			// ft_putstr("1test");
-
+		{
 			if (token->token == prio)
 			{
 				if (!str)
@@ -93,8 +96,11 @@ t_tree	*to_tree(t_tree *tree, t_token *token, int prio, const char *str)
 				else if (!ft_strcmp(str, "right"))
 					tree = ((tree->right = new_node(token)));
 				if (!is_base(&token, &base, &save))
-					return (tree);//}				if (token == base)
-					
+				{
+					ft_putstr_fd("to_tree ends\n", 2);
+					return (tree);
+				}//}				if (token == base)
+
 /*				{
 					ft_putstr("    the token == base        ");
 					save = token->next;
@@ -114,7 +120,7 @@ t_tree	*to_tree(t_tree *tree, t_token *token, int prio, const char *str)
 					{
 						free(base->next);
 						base->next = NULL;
-						
+
 					}
 					else
 					{
@@ -128,6 +134,7 @@ t_tree	*to_tree(t_tree *tree, t_token *token, int prio, const char *str)
 					to_tree(tree, base, (prio - 1), "left");
 				if (token)
 					to_tree(tree, token, prio, "right");
+				ft_putstr_fd("to_tree ends\n", 2);
 				return (tree);
 			}
 			// ft_putstr("2test\n");

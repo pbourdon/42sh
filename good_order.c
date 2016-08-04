@@ -74,12 +74,13 @@ void		concat_out(t_token **prev, char *str)
 
 t_token		*good_order(t_token *ptr, t_token *prev, t_token *base)
 {
+	ft_putstr_fd("good_order\n", 2);
 	char *tmp;
 
 	while (ptr)
 	{
 		if (ptr->token == REDDIR && ft_strcmp(ptr->arg, "|")
-			&& ptr->next && ptr->next->token == 0 
+			&& ptr->next && ptr->next->token == 0
 			&& (tmp = in_out(ptr->next->arg)))
 		{
 			if (prev == ptr || prev->token != 0) // pas de arg avant

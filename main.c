@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hlouar <hlouar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/16 17:45:20 by hlouar            #+#    #+#             */
-/*   Updated: 2016/07/26 14:51:08 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/04 16:02:32 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ void	parsecommand(t_data *data)
 
 void	readgnl2(t_data *data, char *str)
 {
+	ft_putstr_fd("readgnl2 arg : ", 2);
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd("\n", 2);
 	data->fona = 0;
 	data->dspam = 0;
 	data->oldpwd = getpwd();
@@ -43,7 +46,18 @@ void	readgnl2(t_data *data, char *str)
 	str = (transformtab(withoutspace(str)));
 	data->line = ft_strdup(str);
 	free(str);
+	ft_putstr_fd("parsecommand arg : ", 2);
+	ft_putstr_fd(data->line, 2);
+	ft_putstr_fd("\n", 2);
 	parsecommand(data);
+}
+
+void print_list(t_token *ptr) {
+	while(ptr)
+	{
+		printf("ptr->arg: %s\n", ptr->arg);
+		ptr = ptr->next;
+	}
 }
 
 int		readgnl(t_data *data)
@@ -67,7 +81,8 @@ int		readgnl(t_data *data)
 			{
 				ret = check_list(ptr, NULL, 0);
 				ptr = good_order(ptr, ptr, ptr);
-				tree = to_tree(NULL, ptr, 5, NULL); 
+				print_list(ptr);
+				tree = to_tree(NULL, ptr, 5, NULL);
 				if (ret == 0)
 				{
 					liste = create_list();
