@@ -6,7 +6,7 @@
 #    By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/02 13:52:37 by bde-maze          #+#    #+#              #
-#    Updated: 2016/08/04 16:58:38 by pguzman          ###   ########.fr        #
+#    Updated: 2016/08/04 17:26:50 by bde-maze         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ SRC = 	main.c \
 		error.c \
 		good_order.c \
 		arg_to_list.c \
-		to_treetest.c
+		to_tree.c
 
 OBJDIR = obj/
 
