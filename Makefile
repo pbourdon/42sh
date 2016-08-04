@@ -36,9 +36,9 @@ SRC = 	main.c \
 		spliter.c \
 		split_on_spec.c \
 		error.c \
-		to_treetest.c \
 		good_order.c \
-		arg_to_list.c
+		arg_to_list.c \
+		to_tree.c
 
 OBJDIR = obj/
 

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "includes/minishell.h"
 
 t_tree		*fcnt(t_tree *tree, t_token *token, int prio, t_token **base)
 {
@@ -60,6 +60,7 @@ t_tree		*to_tree(t_token *token, t_token **base, int prio, t_tree *tree)
 	prio = 5;
 	while (token)
 	{
+		ft_putendl("TITITITITI\n");
 		if (token->token == prio)
 		{
 			tmp = token;

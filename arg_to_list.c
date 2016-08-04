@@ -29,6 +29,7 @@ t_liste		*fill_to_list(t_liste *liste, t_tree *tree)
 	char	*tmp;
 
 	buff[0] = ' ';
+	printf("YOYOYOYOYOYOYOYO\n");
 	while (liste->next)
 		liste = liste->next;
 	if (tree->left)
