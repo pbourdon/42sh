@@ -32,7 +32,6 @@ char		*erase_first_space(char *line)
 char		*replace_rest_of_space(char *str, int len)
 {
 	int i;
-	ft_putstr_fd("replace_rest_of_space starts\n", 2);
 	i = len;
 	while (str[len - 1] && str[len - 1] == ' ')
 		--len;
@@ -50,9 +49,6 @@ char		*replace_rest_of_space(char *str, int len)
 			str[len] = 0;
 		return (str);
 	}
-	ft_putstr_fd(str, 2);
-	ft_putstr_fd("<after replace>\n", 2);
-	ft_putstr_fd("replace_rest_of_space ends\n", 2);
 	return (str);
 }
 
@@ -60,14 +56,10 @@ t_token		*analyse_and_stock(char **ptr, char **cmd, t_token **base)
 {
 	t_token *token;
 	t_token *maillon;
-	ft_putstr_fd("analyse_and_stock starts\n", 2);
 	if (!ptr || !*ptr || !**ptr)
 		return (*base);
 	if (is_a_spec(**cmd))
-	{
-		ft_putstr_fd("analyse_and_stock ends\n", 2);
 		return (split_on_spec(ptr, cmd, base));
-	}
 	**cmd = 0;
 	if (!(maillon = (t_token *)malloc(sizeof(t_token))))
 		return (0);
@@ -84,18 +76,16 @@ t_token		*analyse_and_stock(char **ptr, char **cmd, t_token **base)
 	while (token->next)
 		token = token->next;
 	token->next = maillon;
-	ft_putstr_fd("analyse_and_stock ends\n", 2);
 	return (*base);
 }
 
 t_token		*ft_find_space(char *cmd, t_token *token)
 {
 	char	*ptr;
-	char	*tmp; //
+	char	*tmp;
 	char	quote;
 	int		inib;
 
-	ft_putstr_fd("ft_find_space starts\n", 2);
 	ptr = cmd;
 	quote = 0;
 	inib = 0;
@@ -123,7 +113,6 @@ t_token		*ft_find_space(char *cmd, t_token *token)
 	}
 	if (ptr != cmd)
 		token = analyse_and_stock(&ptr, &cmd, &token);
-	ft_putstr_fd("ft_find_space starts\n", 2);
 	return (token);
 }
 
@@ -131,7 +120,6 @@ char		*free_space(char *str, int quote, int d, int i)
 {
 	int inib;
 
-	ft_putstr_fd("free_space starts\n", 2);
 	inib = 0;
 	while (str[++i])
 	{
@@ -153,37 +141,26 @@ char		*free_space(char *str, int quote, int d, int i)
 		str[d++] = str[i];
 	}
 	str[d] = '\0';
-	ft_putstr_fd(str, 2);
-	ft_putstr_fd("                  <after free_space>\n", 2);
-	ft_putstr_fd("free_space ends\n", 2);
 	return (replace_rest_of_space(str, ft_strlen(str)));
 }
 
 t_token		*to_list(char *cmd, int i)
 {
-	t_token	*tmp; //
+	t_token	*tmp;
 	t_token	*token;
 
-	ft_putstr_fd("to_list starts\n", 2);
 	token = NULL;
 	if (!cmd || !*cmd)
-	{
-		ft_putstr_fd("to_list ends\n", 2);
 		return (0);
-	}
 	while (cmd[++i] && cmd[i] == ' ')
 		;
 	if (!cmd[i])
-	{
-		ft_putstr_fd("to_list ends\n", 2);
 		return (0);
-	}
 	cmd = free_space(cmd, 0, 0, -1);
 	token = ft_find_space(cmd, token);
-	tmp = token; //
-	while (token) //
-		token = token->next; //
-	token = tmp; //
-	ft_putstr_fd("to_list ends\n", 2);
+	tmp = token;
+	while (token)
+		token = token->next;
+	token = tmp;
 	return (token);
 }

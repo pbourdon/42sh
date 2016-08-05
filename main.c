@@ -36,9 +36,6 @@ void	parsecommand(t_data *data)
 
 void	readgnl2(t_data *data, char *str)
 {
-	ft_putstr_fd("readgnl2 arg : ", 2);
-	ft_putstr_fd(str, 2);
-	ft_putstr_fd("\n", 2);
 	data->fona = 0;
 	data->dspam = 0;
 	data->oldpwd = getpwd();
@@ -46,9 +43,6 @@ void	readgnl2(t_data *data, char *str)
 	str = (transformtab(withoutspace(str)));
 	data->line = ft_strdup(str);
 	free(str);
-	ft_putstr_fd("parsecommand arg : ", 2);
-	ft_putstr_fd(data->line, 2);
-	ft_putstr_fd("\n", 2);
 	parsecommand(data);
 }
 
@@ -81,18 +75,15 @@ int		readgnl(t_data *data)
 			{
 				ret = check_list(ptr, NULL, 0);
 				ptr = good_order(ptr, ptr, ptr);
-				print_list(ptr);
+				// print_list(ptr);
 				tree = to_tree(NULL, ptr, 5, NULL);
 				if (ret == 0)
 				{
 					liste = create_list();
-					arg_to_list(liste, tree);
+					arg_to_list(liste, tree, 0);
 					tmp = liste;
 					while (tmp->next)
-					{
-						printf("arg: %s\n", tmp->arg);
 						tmp = tmp->next;
-					}
 					tmp = liste;
 					while (tmp->next)
 					{

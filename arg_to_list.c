@@ -29,7 +29,6 @@ t_liste		*fill_to_list(t_liste *liste, t_tree *tree)
 	char	*tmp;
 
 	buff[0] = ' ';
-	printf("YOYOYOYOYOYOYOYO\n");
 	while (liste->next)
 		liste = liste->next;
 	if (tree->left)
@@ -48,21 +47,19 @@ t_liste		*fill_to_list(t_liste *liste, t_tree *tree)
 	return (liste);
 }
 
-void		arg_to_list(t_liste *liste, t_tree *tree)
+void		arg_to_list(t_liste *liste, t_tree *tree, int i)
 {
 	t_liste *ptr;
-	int		i;
 
-	i = 0;
 	if (liste == NULL)
 		return;
 	ptr = liste;
 	if (tree->token > 3)
 	{
 		if (tree->left != NULL)
-			arg_to_list(ptr, tree->left);
+			arg_to_list(ptr, tree->left, 0);
 		if (tree->right != NULL)
-			arg_to_list(ptr, tree->right);
+			arg_to_list(ptr, tree->right, 0);
 	}
 	if (tree->token < 4)
 	{

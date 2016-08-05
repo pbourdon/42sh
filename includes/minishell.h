@@ -84,7 +84,7 @@ typedef struct		s_liste
 	struct s_liste	*next;
 }					t_liste;
 
-void				arg_to_list(t_liste *liste, t_tree *tree);
+void				arg_to_list(t_liste *liste, t_tree *tree, int i);
 t_liste				*create_list();
 
 t_tree				*to_tree(t_tree *tree, t_token *token, int prio, const char *str);

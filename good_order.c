@@ -74,7 +74,6 @@ void		concat_out(t_token **prev, char *str)
 
 t_token		*good_order(t_token *ptr, t_token *prev, t_token *base)
 {
-	ft_putstr_fd("good_order\n", 2);
 	char *tmp;
 
 	while (ptr)

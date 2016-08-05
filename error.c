@@ -46,16 +46,10 @@ int			multi_reddir(t_token *ptr, int tworeddir)
 		tworeddir = 0;
 	else if ((ft_strcmp(ptr->arg, "<") == 0 || ft_strcmp(ptr->arg, ">") == 0) &&
 		tworeddir == 1)
-	{
 		return (-1);
-	}
 	else if ((ft_strcmp(ptr->arg, "<") == 0 || ft_strcmp(ptr->arg, ">") == 0) &&
 		tworeddir == 0)
-	{
-		printf("arg multi: %s\n", ptr->arg);
-		printf("je passe par ici\n");
 		tworeddir = 1;
-	}
 	return (tworeddir);
 }
 
@@ -64,20 +58,19 @@ int			check_list(t_token *liste, t_token *ptr, int tworeddir)
 	char		*prev_arg;
 	int			ret;
 
-// (void)tworeddir;
 	ret = 0;
 	ptr = liste;
 	prev_arg = NULL;
 	while (ptr != NULL)
 	{
 		if ((tworeddir = multi_reddir(ptr, tworeddir)) == -1)
-		{
 			return (edit_error_message(ptr, prev_arg, tworeddir));
-		}
 		ret = check_loop(ptr, prev_arg);
 		prev_arg = ft_strdup(ptr->arg);
 		ptr = ptr->next;
 	}
+	if (!ptr)
+		return (0);
 	if (ret == -1)
 		return (-1);
 	if (ptr->token != 0)
