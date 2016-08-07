@@ -38,7 +38,9 @@ SRC = 	main.c \
 		error.c \
 		good_order.c \
 		arg_to_list.c \
-		to_tree.c
+		to_tree.c \
+		space_treatment.c \
+		free.c
 
 OBJDIR = obj/
 

@@ -12,7 +12,7 @@
 
 #include "includes/minishell.h"
 
-void	parsecommand(t_data *data)
+void			parsecommand(t_data *data)
 {
 	if (data->line[0] == '\0')
 	{
@@ -34,7 +34,7 @@ void	parsecommand(t_data *data)
 		forkall(data);
 }
 
-void	readgnl2(t_data *data, char *str)
+void			readgnl2(t_data *data, char *str)
 {
 	data->fona = 0;
 	data->dspam = 0;
@@ -46,15 +46,16 @@ void	readgnl2(t_data *data, char *str)
 	parsecommand(data);
 }
 
-void print_list(t_token *ptr) {
-	while(ptr)
+void			print_list(t_token *ptr)
+{
+	while (ptr)
 	{
 		printf("ptr->arg: %s\n", ptr->arg);
 		ptr = ptr->next;
 	}
 }
 
-int		readgnl(t_data *data)
+int				readgnl(t_data *data)
 {
 	t_token		*ptr;
 	t_liste		*liste;
@@ -75,8 +76,9 @@ int		readgnl(t_data *data)
 			{
 				ret = check_list(ptr, NULL, 0);
 				ptr = good_order(ptr, ptr, ptr);
-				// print_list(ptr);
+				print_list(ptr);
 				tree = to_tree(NULL, ptr, 5, NULL);
+				free_first_list(ptr);
 				if (ret == 0)
 				{
 					liste = create_list();
@@ -109,10 +111,10 @@ int		readgnl(t_data *data)
 	return (0);
 }
 
-int		main(int ac, char **av, char **env)
+int				main(int ac, char **av, char **env)
 {
-	t_data	data;
-	int		fd;
+	t_data		data;
+	int			fd;
 
 	fd = 0;
 	data.path = NULL;

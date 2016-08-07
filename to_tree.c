@@ -21,10 +21,9 @@ void		aff(t_tree *tree)
 	return ;
 }
 
-
 t_tree		*new_node(t_token *token)
 {
-	t_tree *tree;
+	t_tree	*tree;
 
 	if (!(tree = (t_tree *)malloc(sizeof(t_tree))))
 		return (NULL);
@@ -35,7 +34,7 @@ t_tree		*new_node(t_token *token)
 	return (tree);
 }
 
-int		is_base(t_token **token, t_token **base, t_token **save)
+int			is_base(t_token **token, t_token **base, t_token **save)
 {
 	if (*token == *base)
 	{
@@ -64,16 +63,22 @@ t_tree		*sub_to_tree(t_token *token, t_tree *tree, const char *str)
 	if (!str)
 		tree = new_node(token);
 	else if (!ft_strcmp(str, "left"))
-		tree = ((tree->left = new_node(token)));
+	{
+		tree->left = new_node(token);
+		tree = tree->left;
+	}
 	else if (!ft_strcmp(str, "right"))
-		tree = ((tree->right = new_node(token)));
+	{
+		tree->right = new_node(token);
+		tree = tree->right;
+	}
 	return (tree);
 }
 
 t_tree		*to_tree(t_tree *tree, t_token *token, int prio, const char *str)
 {
-	t_token *save;
-	t_token *base;
+	t_token	*save;
+	t_token	*base;
 
 	base = token;
 	while (prio != -1)

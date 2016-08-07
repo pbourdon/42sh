@@ -12,7 +12,7 @@
 
 #include "includes/minishell.h"
 
-t_liste		*create_list()
+t_liste		*create_list(void)
 {
 	t_liste *liste;
 
@@ -52,7 +52,7 @@ void		arg_to_list(t_liste *liste, t_tree *tree, int i)
 	t_liste *ptr;
 
 	if (liste == NULL)
-		return;
+		return ;
 	ptr = liste;
 	if (tree->token > 3)
 	{

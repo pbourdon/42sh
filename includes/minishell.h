@@ -84,6 +84,8 @@ typedef struct		s_liste
 	struct s_liste	*next;
 }					t_liste;
 
+void				free_first_list(t_token *ptr);
+
 void				arg_to_list(t_liste *liste, t_tree *tree, int i);
 t_liste				*create_list();
 
@@ -92,11 +94,15 @@ void				aff(t_tree *tree);
 
 t_token				*good_order(t_token *ptr, t_token *prev, t_token *base);
 
+char				*free_space(char *str, int quote, int d, int i);
 char				*replace_rest_of_space(char *ptr, int len);
+char				*erase_first_space(char *line);
 int					is_a_spec(char c);
-t_token				*to_list(char *cmd, int i);
-t_token				*split_on_spec(char **ptr, char **cmd, t_token **base);
 int					check_list(t_token *liste, t_token *ptr, int tworeddir);
+t_token				*analyse_and_stock(char **ptr, char **cmd, t_token **base);
+t_token				*to_list(char *cmd, int i);
+t_token				*ft_find_space(char *cmd, t_token *token, int inib, char quote);
+t_token				*split_on_spec(char **ptr, char **cmd, t_token **base);
 
 
 

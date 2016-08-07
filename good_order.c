@@ -12,11 +12,11 @@
 
 #include "includes/minishell.h"
 
-char	*in_out(char *str)
+char		*in_out(char *str)
 {
-	int i;
-	int quote;
-	int inib;
+	int		i;
+	int		quote;
+	int		inib;
 
 	inib = 0;
 	quote = 0;
@@ -29,20 +29,20 @@ char	*in_out(char *str)
 				return (str + i + 1);
 		}
 		if (quote && str[i] == quote && inib == 0)
-            quote = 0;
-        else if (!quote && (str[i] == '"' || str[i] == '\''))
-            quote = str[i];
-        else if (str[i] == '\\' && quote + inib == 0)
-            inib = 1;
-        else
-            inib = 0;
+			quote = 0;
+		else if (!quote && (str[i] == '"' || str[i] == '\''))
+			quote = str[i];
+		else if (str[i] == '\\' && quote + inib == 0)
+			inib = 1;
+		else
+			inib = 0;
 	}
 	return (0);
 }
 
-void	new_out(t_token **ptr, t_token **prev, t_token **base, char *tmp)
+void		new_out(t_token **ptr, t_token **prev, t_token **base, char *tmp)
 {
-	t_token *new;
+	t_token	*new;
 
 	if (!(new = (t_token *)malloc(sizeof(t_token))))
 		return ;
@@ -62,7 +62,7 @@ void	new_out(t_token **ptr, t_token **prev, t_token **base, char *tmp)
 
 void		concat_out(t_token **prev, char *str)
 {
-	char *tmp;
+	char	*tmp;
 
 	tmp = (*prev)->arg;
 	(*prev)->arg = ft_strjoin((*prev)->arg, " ");
@@ -74,7 +74,7 @@ void		concat_out(t_token **prev, char *str)
 
 t_token		*good_order(t_token *ptr, t_token *prev, t_token *base)
 {
-	char *tmp;
+	char	*tmp;
 
 	while (ptr)
 	{
@@ -82,9 +82,9 @@ t_token		*good_order(t_token *ptr, t_token *prev, t_token *base)
 			&& ptr->next && ptr->next->token == 0
 			&& (tmp = in_out(ptr->next->arg)))
 		{
-			if (prev == ptr || prev->token != 0) // pas de arg avant
+			if (prev == ptr || prev->token != 0)
 				new_out(&ptr, &prev, &base, tmp);
-			else // arg avant
+			else
 				concat_out(&prev, tmp);
 		}
 		prev = ptr;

@@ -25,13 +25,13 @@ t_token		*add_end_list(t_token *token, t_token **base)
 	return (*base);
 }
 
-int		add_token(char *str)
+int			add_token(char *str)
 {
-	int	ret;
+	int		ret;
 
 	ret = 0;
-
-	if (!(ft_strncmp(str, ">", 1)) || !(ft_strncmp(str, "<", 1)) || !(ft_strcmp(str, "|")))
+	if (!(ft_strncmp(str, ">", 1)) || !(ft_strncmp(str, "<", 1)) ||
+	!(ft_strcmp(str, "|")))
 		ret = REDDIR;
 	else if (!(ft_strcmp(str, "&&")) || !(ft_strcmp(str, "||")))
 		ret = OPBI;
@@ -44,7 +44,7 @@ int		add_token(char *str)
 	return (ret);
 }
 
-t_token	*split_for_the_norm(char **ptr, char **cmd, t_token **base, t_token *cur)
+t_token		*split_norm(char **ptr, char **cmd, t_token **base, t_token *cur)
 {
 	if ((**cmd == '&' || **cmd == '|' || **cmd == '>' || **cmd == '<')
 		&& *(*cmd + 1) == cur->arg[0])
@@ -60,11 +60,10 @@ t_token	*split_for_the_norm(char **ptr, char **cmd, t_token **base, t_token *cur
 	return (*base);
 }
 
-
-t_token	*split_on_spec(char **ptr, char **cmd, t_token **base)
+t_token		*split_on_spec(char **ptr, char **cmd, t_token **base)
 {
 	char	c;
-	t_token *cur;
+	t_token	*cur;
 
 	c = **cmd;
 	if (!(cur = (t_token *)malloc(sizeof(t_token))))
@@ -85,14 +84,14 @@ t_token	*split_on_spec(char **ptr, char **cmd, t_token **base)
 		return (0);
 	cur->arg = ft_memset(cur->arg, 0, 3);
 	cur->arg[0] = c;
-	return (split_for_the_norm(ptr, cmd, base, cur));
+	return (split_norm(ptr, cmd, base, cur));
 }
 
-int		is_a_spec(char c)
+int			is_a_spec(char c)
 {
 	if ((c == '>' || c == '<' || c == '|' ||
-		 c == ';' || c == '&' || c == '|' ||
-		 c == '`'))
+		c == ';' || c == '&' || c == '|' ||
+		c == '`'))
 		return (1);
 	return (0);
 }
