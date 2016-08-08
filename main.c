@@ -76,13 +76,14 @@ int				readgnl(t_data *data)
 			{
 				ret = check_list(ptr, NULL, 0);
 				ptr = good_order(ptr, ptr, ptr);
-				print_list(ptr);
+				// print_list(ptr);
 				tree = to_tree(NULL, ptr, 5, NULL);
 				free_first_list(ptr);
 				if (ret == 0)
 				{
 					liste = create_list();
 					arg_to_list(liste, tree, 0);
+					free_tree(tree);
 					tmp = liste;
 					while (tmp->next)
 						tmp = tmp->next;
@@ -99,6 +100,7 @@ int				readgnl(t_data *data)
 						free(data->home);
 					if (data->oldpwd)
 						free(data->oldpwd);
+					free_list(liste);
 				}
 			}
 		}

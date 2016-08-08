@@ -84,7 +84,9 @@ typedef struct		s_liste
 	struct s_liste	*next;
 }					t_liste;
 
+void				free_tree(t_tree *tree);
 void				free_first_list(t_token *ptr);
+void				free_list(t_liste *ptr);
 
 void				arg_to_list(t_liste *liste, t_tree *tree, int i);
 t_liste				*create_list();

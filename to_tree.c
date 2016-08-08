@@ -39,7 +39,6 @@ int			is_base(t_token **token, t_token **base, t_token **save)
 	if (*token == *base)
 	{
 		*save = (*token)->next;
-		free(*token);
 		*base = NULL;
 		*token = *save;
 		if (*token == NULL)

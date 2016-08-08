@@ -18,8 +18,32 @@ void			free_first_list(t_token *ptr)
 
 	while (ptr != NULL)
 	{
-		tmp = ptr;
-		free(tmp);
-		ptr = ptr->next;
+		tmp = ptr->next;
+		free(ptr);
+		ptr = tmp;
 	}
+	free(ptr);
+}
+
+void			free_list(t_liste *ptr)
+{
+	t_liste		*tmp;
+
+	while (ptr != NULL)
+	{
+		tmp = ptr->next;
+		free(ptr);
+		ptr = tmp;
+	}
+	free(ptr);
+}
+
+void			free_tree(t_tree *tree)
+{
+	if (tree->left)
+		free_tree(tree->left);
+	if (tree->right)
+		free_tree(tree->right);
+	if (tree)
+		free(tree);
 }

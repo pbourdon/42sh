@@ -34,6 +34,7 @@ void	freetab(char **tab)
 		ft_strdel(&tab[i]);
 		i++;
 	}
+	free(tab[i]);
 	free(tab);
 	tab = NULL;
 }
