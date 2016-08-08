@@ -46,7 +46,7 @@ void			readgnl2(t_data *data, char *str)
 	parsecommand(data);
 }
 
-void			print_list(t_token *ptr)
+void			print_list(t_liste *ptr)
 {
 	while (ptr)
 	{
@@ -76,13 +76,13 @@ int				readgnl(t_data *data)
 			{
 				ret = check_list(ptr, NULL, 0);
 				ptr = good_order(ptr, ptr, ptr);
-				// print_list(ptr);
 				tree = to_tree(NULL, ptr, 5, NULL);
 				free_first_list(ptr);
 				if (ret == 0)
 				{
 					liste = create_list();
 					arg_to_list(liste, tree, 0);
+					print_list(liste);
 					free_tree(tree);
 					tmp = liste;
 					while (tmp->next)

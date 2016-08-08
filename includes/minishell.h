@@ -96,6 +96,8 @@ void				aff(t_tree *tree);
 
 t_token				*good_order(t_token *ptr, t_token *prev, t_token *base);
 
+int					sub_split_on_spec(char **cmd);
+int					is_a_spec(char c);
 char				*free_space(char *str, int quote, int d, int i);
 char				*replace_rest_of_space(char *ptr, int len);
 char				*erase_first_space(char *line);
@@ -104,7 +106,7 @@ int					check_list(t_token *liste, t_token *ptr, int tworeddir);
 t_token				*analyse_and_stock(char **ptr, char **cmd, t_token **base);
 t_token				*to_list(char *cmd, int i);
 t_token				*ft_find_space(char *cmd, t_token *token, int inib, char quote);
-t_token				*split_on_spec(char **ptr, char **cmd, t_token **base);
+t_token				*split_on_sp(char **ptr, char **cmd, t_token **base, t_token *cur);
 
 
 

@@ -12,6 +12,24 @@
 
 #include "includes/minishell.h"
 
+int				is_a_spec(char c)
+{
+	if ((c == '>' || c == '<' || c == '|' ||
+		c == ';' || c == '&' || c == '|' ||
+		c == '`'))
+		return (1);
+	return (0);
+}
+
+int				sub_split_on_spec(char **cmd)
+{
+	if ((**cmd == '>' || **cmd == '<') && (*cmd - 1) &&
+		ft_isdigit(*(*cmd - 1)) && (!*(*cmd - 2) ||
+		(*cmd - 2 && *(*cmd - 2) == ' ')))
+		return (1);
+	return (0);
+}
+
 t_token			*analyse_and_stock(char **ptr, char **cmd, t_token **base)
 {
 	t_token		*token;
@@ -20,7 +38,7 @@ t_token			*analyse_and_stock(char **ptr, char **cmd, t_token **base)
 	if (!ptr || !*ptr || !**ptr)
 		return (*base);
 	if (is_a_spec(**cmd))
-		return (split_on_spec(ptr, cmd, base));
+		return (split_on_sp(ptr, cmd, base, NULL));
 	**cmd = 0;
 	if (!(maillon = (t_token *)malloc(sizeof(t_token))))
 		return (0);

@@ -44,12 +44,50 @@ int			add_token(char *str)
 	return (ret);
 }
 
+int			sub_split_norm(char **cmd, t_token *cur, int i)
+{
+	cur->arg[++i] = *(*cmd + 1);
+	*cmd += 1;
+	if (cur->arg[i] == '>' && *(*cmd + 1) == '>')
+	{
+		cur->arg[++i] = '>';
+		*cmd += 1;
+	}
+	else if (*(*cmd + 1) == '&')
+	{
+		cur->arg[++i] = '&';
+		*cmd += 1;
+		if (*(*cmd + 1) && ft_isdigit(*(*cmd + 1)))
+		{
+			cur->arg[++i] = *(*cmd + 1);
+			*cmd += 1;
+		}
+		if (*(*cmd + 1) && (*(*cmd + 1)) == '-')
+		{
+			cur->arg[++i] = *(*cmd + 1);
+			*cmd += 1;
+		}
+		*cmd += 1;
+	}
+	return (i);
+}
+
 t_token		*split_norm(char **ptr, char **cmd, t_token **base, t_token *cur)
 {
-	if ((**cmd == '&' || **cmd == '|' || **cmd == '>' || **cmd == '<')
-		&& *(*cmd + 1) == cur->arg[0])
+	int		i;
+
+	i = 0;
+	if ((ft_isdigit(**cmd)))
+		i = sub_split_norm(cmd, cur, i);
+	else if (**cmd == '&' && *(*cmd + 1) == '>')
 	{
-		cur->arg[1] = cur->arg[0];
+		cur->arg[++i] = '>';
+		*cmd += 1;
+	}
+	else if ((**cmd == '&' || **cmd == '|' || **cmd == '>' || **cmd == '<')
+		&& *(*cmd + 1) == cur->arg[i])
+	{
+		cur->arg[++i] = *(*cmd + 1);
 		*cmd += 1;
 	}
 	cur->token = add_token(cur->arg);
@@ -60,11 +98,12 @@ t_token		*split_norm(char **ptr, char **cmd, t_token **base, t_token *cur)
 	return (*base);
 }
 
-t_token		*split_on_spec(char **ptr, char **cmd, t_token **base)
+t_token		*split_on_sp(char **ptr, char **cmd, t_token **base, t_token *cur)
 {
 	char	c;
-	t_token	*cur;
 
+	if (sub_split_on_spec(cmd))
+		*cmd -= 1;
 	c = **cmd;
 	if (!(cur = (t_token *)malloc(sizeof(t_token))))
 		return (0);
@@ -78,20 +117,11 @@ t_token		*split_on_spec(char **ptr, char **cmd, t_token **base)
 		**cmd = c;
 		ptr = cmd;
 		cur->token = OTHER;
-		return (split_on_spec(ptr, cmd, base));
+		return (split_on_sp(ptr, cmd, base, NULL));
 	}
-	if (!(cur->arg = (char *)malloc(sizeof(char) * 3)))
+	if (!(cur->arg = (char *)malloc(sizeof(char) * 4)))
 		return (0);
-	cur->arg = ft_memset(cur->arg, 0, 3);
+	cur->arg = ft_memset(cur->arg, 0, 4);
 	cur->arg[0] = c;
 	return (split_norm(ptr, cmd, base, cur));
-}
-
-int			is_a_spec(char c)
-{
-	if ((c == '>' || c == '<' || c == '|' ||
-		c == ';' || c == '&' || c == '|' ||
-		c == '`'))
-		return (1);
-	return (0);
 }
