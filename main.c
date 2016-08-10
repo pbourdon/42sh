@@ -74,7 +74,7 @@ int				readgnl(t_data *data)
 		{
 			if ((ptr = to_list(str, -1)))
 			{
-				ret = check_list(ptr, NULL, 0);
+				ret = check_list(ptr, NULL);
 				ptr = good_order(ptr, ptr, ptr);
 				tree = to_tree(NULL, ptr, 5, NULL);
 				free_first_list(ptr);
@@ -82,7 +82,7 @@ int				readgnl(t_data *data)
 				{
 					liste = create_list();
 					arg_to_list(liste, tree, 0);
-					print_list(liste);
+					// print_list(liste);
 					free_tree(tree);
 					tmp = liste;
 					while (tmp->next)
