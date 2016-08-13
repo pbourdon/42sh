@@ -34,13 +34,27 @@ int				switch_case(t_token *ptr, int nb_redir)
 
 int				set_redir_var(char *str, int token, int nb_redir)
 {
-	if (ft_strncmp(str, "<", 1) == 0 || ft_strncmp(str, ">", 1) == 0)
+	if (ft_strncmp(str, "<", 1) == 0 || ft_strncmp(str, ">", 1) == 0 || token == 1)
 		nb_redir++;
 	else if (ft_strncmp(str, "|", 1) == 0 && nb_redir > 0)
 		nb_redir++;
 	else if (token > 3 || (ft_strncmp(str, "|", 1) == 0 && nb_redir == 0))
 		nb_redir = 0;
 	return (nb_redir);
+}
+
+int				check_aggr(char *str, int token)
+{
+	printf("teest: %d\n", ft_isdigit(str[2]));
+	if (token == 1)
+	{
+		if (ft_strlen(str) < 3 || (ft_strlen(str) == 3 && ft_isdigit(str[2]) == 0))
+		{
+			ft_putendl("syntax error near unexpected token `newline'");
+			return (-1);
+		}
+	}
+	return (0);
 }
 
 int				check_list(t_token *liste, t_token *ptr)
@@ -56,6 +70,8 @@ int				check_list(t_token *liste, t_token *ptr)
 	while (ptr != NULL)
 	{
 		nb_redir = set_redir_var(ptr->arg, ptr->token, nb_redir);
+		if ((ret = check_aggr(ptr->arg, ptr->token)) == -1)
+			return (-1);
 		if ((ret = switch_case(ptr, nb_redir)) == -1)
 			return (-1);
 		ptr = ptr->next;

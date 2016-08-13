@@ -85,7 +85,7 @@ int				readgnl(t_data *data)
 			{
 				ret = check_list(ptr, NULL);
 				ptr = good_order(ptr, ptr, ptr);
-				print_liste(ptr);
+				// print_liste(ptr);
 				tree = to_tree(NULL, ptr, 5, NULL);
 				free_first_list(ptr);
 				if (ret == 0)

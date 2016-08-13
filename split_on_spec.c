@@ -68,8 +68,8 @@ void			sub_split_norm(char **cmd, t_token *cur, int i)
 */	
 	if (!ft_strncmp(*cmd, ">&", 2) || !ft_strncmp(*cmd, "<&", 2))
 	{
-		i++;
-		**cmd == '>' ? (cur->arg[i] = '>') : (cur->arg[i] = '<');
+		if (ft_isdigit(*(*cmd - 1)))
+			**cmd == '>' ? (cur->arg[++i] = '>') : (cur->arg[++i] = '<');
 		cur->arg[++i] = '&';
 		*cmd += 1;
 	}
@@ -141,5 +141,6 @@ t_token		*split_on_sp(char **ptr, char **cmd, t_token **base, t_token *cur)
 		return (0);
 	cur->arg = ft_memset(cur->arg, 0, 4);
 	cur->arg[0] = c;
+	printf("split_on_sp(char c): %c\n", c);
 	return (split_norm(ptr, cmd, base, cur));
 }
