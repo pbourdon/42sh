@@ -55,6 +55,15 @@ void			print_list(t_liste *ptr)
 	}
 }
 
+void			print_liste(t_token *ptr)
+{
+	while (ptr)
+	{
+		printf("ptr->arg: %s, token: %d\n", ptr->arg, ptr->token);
+		ptr = ptr->next;
+	}
+}
+
 int				readgnl(t_data *data)
 {
 	t_token		*ptr;
@@ -76,6 +85,7 @@ int				readgnl(t_data *data)
 			{
 				ret = check_list(ptr, NULL);
 				ptr = good_order(ptr, ptr, ptr);
+				print_liste(ptr);
 				tree = to_tree(NULL, ptr, 5, NULL);
 				free_first_list(ptr);
 				if (ret == 0)

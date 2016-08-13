@@ -23,10 +23,21 @@ int				is_a_spec(char c)
 
 int				sub_split_on_spec(char **cmd)
 {
-	if ((**cmd == '>' || **cmd == '<') && (*cmd - 1) &&
-		ft_isdigit(*(*cmd - 1)) && (!*(*cmd - 2) ||
-		(*cmd - 2 && *(*cmd - 2) == ' ')))
-		return (1);
+	// if ((**cmd == '>' || **cmd == '<') && (*cmd - 1) &&
+		// ft_isdigit(*(*cmd - 1)) && (!*(*cmd - 2) ||
+		// (*cmd - 2 && *(*cmd - 2) == ' ')))
+		// return (1);
+	char *tmp;
+
+	tmp = *cmd;
+	if ((**cmd == '>' || **cmd == '<') && (*cmd + 1) && *(*cmd + 1) == '&')
+	{
+		while (*cmd - 1 && ft_isdigit(*(*cmd - 1)))
+			*cmd -= 1;
+		if (*(*cmd - 1) && *(*cmd - 1) != ' ' && !(is_a_spec(**cmd - 1)))
+			*cmd = tmp;
+	}
+	printf("Hello: %s\n", *cmd);
 	return (0);
 }
 
@@ -38,7 +49,11 @@ t_token			*analyse_and_stock(char **ptr, char **cmd, t_token **base)
 	if (!ptr || !*ptr || !**ptr)
 		return (*base);
 	if (is_a_spec(**cmd))
+	{
+		printf("analyse_and_stock(cmd): %s\n", *cmd);
+		printf("analyse_and_stock(ptr): %s\n", *ptr);
 		return (split_on_sp(ptr, cmd, base, NULL));
+	}
 	**cmd = 0;
 	if (!(maillon = (t_token *)malloc(sizeof(t_token))))
 		return (0);
