@@ -48,9 +48,15 @@ int				check_aggr(char *str, int token)
 	printf("teest: %d\n", ft_isdigit(str[2]));
 	if (token == 1)
 	{
-		if (ft_strlen(str) < 3 || (ft_strlen(str) == 3 && ft_isdigit(str[2]) == 0))
+		if (ft_strlen(str) < 3 || (ft_strlen(str) == 3 && (ft_isdigit(str[2]) == 0 && str[2] != '-')))
 		{
 			ft_putendl("syntax error near unexpected token `newline'");
+			return (-1);
+		}
+		else if (ft_strlen(str) == 4 && (ft_isdigit(str[3]) == 0 && str[3] != '-'))
+		{
+			ft_putchar(str[3]);
+			ft_putendl(": ambigous redirect");
 			return (-1);
 		}
 	}

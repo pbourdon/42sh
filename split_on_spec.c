@@ -58,22 +58,17 @@ void			sub_split_norm(char **cmd, t_token *cur, int i)
 			*cmd += 1;
 		}
 		*cmd += 1;
-	printf("Hello()cmd: %s\n", *cmd);
+		printf("Hello()cmd: %s\n", *cmd);
 	}
-/*	if (cur->arg[i] == '>' && *(*cmd + 1) == '>')
-	{
-		cur->arg[++i] = '>';
-		*cmd += 1;
-	}
-*/	
 	if (!ft_strncmp(*cmd, ">&", 2) || !ft_strncmp(*cmd, "<&", 2))
 	{
 		if (ft_isdigit(*(*cmd - 1)))
 			**cmd == '>' ? (cur->arg[++i] = '>') : (cur->arg[++i] = '<');
 		cur->arg[++i] = '&';
 		*cmd += 1;
+		printf("cmd: %c, cur->Arg: %s\n", *(*cmd + 1), cur->arg);
 	}
-	while (*cmd + 1 && *(*cmd + 1) && ft_isdigit(*(*cmd + 1)))
+	while (*cmd + 1 && *(*cmd + 1))
 	{
 		cur->arg[++i] = *(*cmd + 1);
 		*cmd += 1;
@@ -94,11 +89,6 @@ t_token		*split_norm(char **ptr, char **cmd, t_token **base, t_token *cur)
 	i = 0;
 	if ((ft_isdigit(**cmd)) || (((**cmd == '<' || **cmd == '>') && ((*cmd + 1) && (*(*cmd + 1)) == '&'))))
 		sub_split_norm(cmd, cur, i);
-/*	else if (**cmd == '&' && *(*cmd + 1) == '>')
-	{
-		cur->arg[++i] = '>';
-		*cmd += 1;
-	}*/
 	else if ((**cmd == '&' || **cmd == '|' || **cmd == '>' || **cmd == '<')
 		&& *(*cmd + 1) == cur->arg[i])
 	{
