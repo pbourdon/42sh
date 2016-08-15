@@ -55,14 +55,14 @@ void			print_list(t_liste *ptr)
 	}
 }
 
-void			print_liste(t_token *ptr)
-{
-	while (ptr)
-	{
-		printf("ptr->arg: %s, token: %d\n", ptr->arg, ptr->token);
-		ptr = ptr->next;
-	}
-}
+// void			print_liste(t_token *ptr)
+// {
+	// while (ptr)
+	// {
+		// printf("ptr->arg: %s, token: %d\n", ptr->arg, ptr->token);
+		// ptr = ptr->next;
+	// }
+// }
 
 int				readgnl(t_data *data)
 {
