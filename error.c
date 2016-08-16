@@ -85,7 +85,12 @@ int				check_list(t_token *liste, t_token *ptr)
 	ptr = liste;
 	while (ptr != NULL)
 	{
+<<<<<<< HEAD
 		// print_liste(ptr);
+=======
+		print_liste(ptr);
+		printf("i::::::::: %d\n", i);
+>>>>>>> 116a6130239c58f11bed00e65bd5aa8649c48f4a
 		i++;
 		if (ptr->token == 1)
 			nb_agg++;
