@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/20 18:14:12 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/07/20 18:14:13 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/08/16 16:46:55 by bde-maze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,8 @@ int				check_list(t_token *liste, t_token *ptr)
 	ptr = liste;
 	while (ptr != NULL)
 	{
-<<<<<<< HEAD
 		// print_liste(ptr);
-=======
 		print_liste(ptr);
-		printf("i::::::::: %d\n", i);
->>>>>>> 116a6130239c58f11bed00e65bd5aa8649c48f4a
 		i++;
 		if (ptr->token == 1)
 			nb_agg++;
