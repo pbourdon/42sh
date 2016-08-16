@@ -98,28 +98,28 @@ int		errcd(t_data *data)
 	return (1);
 }
 
-char	**changeargs(char **tab, t_data *data)
+char	**changeargs(char **tabb, t_data *data)
 {
 	int		i;
 	char	**dst;
 	int		o;
 
 	o = 0;
-	dst = (char **)malloc(sizeof(char *) * (ft_strlentab(tab) + 1));
+	dst = (char **)malloc(sizeof(char *) * (ft_strlentab(tabb) + 1));
 	i = 0;
-	while (tab[i])
+	while (tabb[i])
 	{
-		if (ft_strcmp(tab[i], data->args[1]) == 0)
+		if (ft_strcmp(tabb[i], data->args[1]) == 0)
 		{
 			dst[o] = ft_strdup(data->args[2]);
 			o++;
 			i++;
 		}
-		dst[o] = ft_strdup(tab[i]);
+		dst[o] = ft_strdup(tabb[i]);
 		i++;
 		o++;
 	}
 	dst[o] = NULL;
-	freetab(tab);
+	freetab(tabb);
 	return (dst);
 }

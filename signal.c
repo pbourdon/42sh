@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setenv2.c                                          :+:      :+:    :+:   */
+/*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: pguzman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/23 09:55:32 by hlouar            #+#    #+#             */
-/*   Updated: 2016/05/23 09:55:37 by hlouar           ###   ########.fr       */
+/*   Created: 2016/08/04 10:16:05 by pguzman           #+#    #+#             */
+/*   Updated: 2016/08/04 10:22:40 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minishell.h"
+#include "includes/minishell.h" 
 
-int		alreadyexist(char **tabb, char *str)
+void	sig_handler(int a)
 {
-	int	i;
+	struct winsize	w;
 
-	i = 0;
-	while (tabb[i])
-	{
-		if (rognagestring(str, tabb[i]) == 1)
-			return (1);
-		i++;
-	}
-	return (0);
+	a = 0;
+	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+	shell.shell_win_size = w.ws_col;
+	update_cursor();
 }

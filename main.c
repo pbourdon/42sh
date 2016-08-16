@@ -55,16 +55,22 @@ void			print_list(t_liste *ptr)
 	}
 }
 
-void			print_liste(t_token *ptr)
+// void			print_liste(t_token *ptr)
+// {
+	// while (ptr)
+	// {
+		// printf("ptr->arg: %s, token: %d\n", ptr->arg, ptr->token);
+		// ptr = ptr->next;
+	// }
+// }
+
+void	main_init(t_term *term)
 {
-	while (ptr)
-	{
-		printf("ptr->arg: %s, token: %d\n", ptr->arg, ptr->token);
-		ptr = ptr->next;
-	}
+	term_init(term);
+	shell_init();
 }
 
-int				readgnl(t_data *data)
+int				readgnl(t_data *data, char *str)
 {
 	t_token		*ptr;
 	t_liste		*liste;
@@ -72,52 +78,39 @@ int				readgnl(t_data *data)
 	t_tree		*tree;
 	int			fd;
 	int			ret;
-	char		*str;
 
 	fd = 1;
 	ret = 0;
-	while (42)
+	if ((ptr = to_list(str, -1)))
 	{
-		writeonwhile();
-		if (get_next_line(fd, &str) == 1)
+		ret = check_list(ptr, NULL);
+		ptr = good_order(ptr, ptr, ptr);
+		// print_liste(ptr);
+		tree = to_tree(NULL, ptr, 5, NULL);
+		free_first_list(ptr);
+		if (ret == 0)
 		{
-			if ((ptr = to_list(str, -1)))
+			liste = create_list();
+			arg_to_list(liste, tree, 0);
+			// print_list(liste);
+			free_tree(tree);
+			tmp = liste;
+			while (tmp->next)
+				tmp = tmp->next;
+			tmp = liste;
+			while (tmp->next)
 			{
-				ret = check_list(ptr, NULL);
-				ptr = good_order(ptr, ptr, ptr);
-				// print_liste(ptr);
-				tree = to_tree(NULL, ptr, 5, NULL);
-				free_first_list(ptr);
-				if (ret == 0)
-				{
-					liste = create_list();
-					arg_to_list(liste, tree, 0);
-					// print_list(liste);
-					free_tree(tree);
-					tmp = liste;
-					while (tmp->next)
-						tmp = tmp->next;
-					tmp = liste;
-					while (tmp->next)
-					{
-						readgnl2(data, tmp->arg);
-						tmp = tmp->next;
-					}
-					if (data->dspam == 0)
-						freetab(data->args);
-					free(data->line);
-					if (data->home)
-						free(data->home);
-					if (data->oldpwd)
-						free(data->oldpwd);
-					free_list(liste);
-				}
+				readgnl2(data, tmp->arg);
+				tmp = tmp->next;
 			}
-		}
-		else if (EOF)
-		{
-			ft_putendl("exit");
-			return (0);
+			if (data->dspam == 0)
+				freetab(data->args);
+			free(data->line);
+			if (data->home)
+				free(data->home);
+			if (data->oldpwd)
+				free(data->oldpwd);
+			free_list(liste);
 		}
 	}
 	return (0);
@@ -126,6 +119,7 @@ int				readgnl(t_data *data)
 int				main(int ac, char **av, char **env)
 {
 	t_data		data;
+	t_term		first;
 	int			fd;
 
 	fd = 0;
@@ -142,6 +136,8 @@ int				main(int ac, char **av, char **env)
 	}
 	data.envi = 0;
 	data.turn = 0;
-	readgnl(&data);
+	main_init(&first);
+	shell_loop(&first, &data);
+	// readgnl(&data);
 	return (0);
 }

@@ -63,17 +63,17 @@ int		createthetab(t_data *data)
 	o = 0;
 	if (createbinpath(data) == 1)
 	{
-		data->tab = (char **)malloc(sizeof(char *) *
+		data->tabb = (char **)malloc(sizeof(char *) *
 				ft_strlentab(data->args) + 1);
-		data->tab[o++] = ft_strdup(data->bin);
+		data->tabb[o++] = ft_strdup(data->bin);
 		i = 1;
 		while (data->args[i] != NULL)
 		{
-			data->tab[o] = ft_strdup(data->args[i]);
+			data->tabb[o] = ft_strdup(data->args[i]);
 			o++;
 			i++;
 		}
-		data->tab[o] = NULL;
+		data->tabb[o] = NULL;
 		free(data->bin);
 		return (1);
 	}
@@ -92,17 +92,17 @@ void	forkall(t_data *data)
 			wait(0);
 		else if (father == 0)
 		{
-			if (access(data->tab[0], F_OK) == 0)
+			if (access(data->tabb[0], F_OK) == 0)
 			{
 				if (data->envi == 1)
-					execve(data->tab[0], data->tab, NULL);
+					execve(data->tabb[0], data->tabb, NULL);
 				else
 				{
-					execve(data->tab[0], data->tab, data->env);
+					execve(data->tabb[0], data->tabb, data->env);
 				}
 			}
 		}
-		freetab(data->tab);
+		freetab(data->tabb);
 		return ;
 	}
 	else

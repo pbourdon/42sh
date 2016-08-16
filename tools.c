@@ -24,19 +24,19 @@ int		ft_strlenremix(char *str)
 	return (i);
 }
 
-void	freetab(char **tab)
+void	freetab(char **tabb)
 {
 	int	i;
 
 	i = 0;
-	while (tab[i] != NULL)
+	while (tabb[i] != NULL)
 	{
-		ft_strdel(&tab[i]);
+		ft_strdel(&tabb[i]);
 		i++;
 	}
-	free(tab[i]);
-	free(tab);
-	tab = NULL;
+	free(tabb[i]);
+	free(tabb);
+	tabb = NULL;
 }
 
 void	freetab2(t_data *data)
@@ -53,28 +53,28 @@ void	freetab2(t_data *data)
 	data->env = NULL;
 }
 
-int		ft_strlentab(char **tab)
+int		ft_strlentab(char **tabb)
 {
 	int	i;
 
 	i = 0;
-	if (tab == NULL)
+	if (tabb == NULL)
 		return (-1);
-	while (tab[i] != NULL)
+	while (tabb[i] != NULL)
 		i++;
 	return (i);
 }
 
-char	**newtab(char **tab)
+char	**newtab(char **tabb)
 {
 	char	**dst;
 	int		i;
 
-	dst = (char **)malloc(sizeof(char *) * (ft_strlentab(tab) + 1));
+	dst = (char **)malloc(sizeof(char *) * (ft_strlentab(tabb) + 1));
 	i = 0;
-	while (tab[i])
+	while (tabb[i])
 	{
-		dst[i] = ft_strdup(tab[i]);
+		dst[i] = ft_strdup(tabb[i]);
 		i++;
 	}
 	dst[i] = NULL;

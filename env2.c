@@ -12,12 +12,12 @@
 
 #include "includes/minishell.h"
 
-void	callenvitools(t_data *data, char **tab, int i)
+void	callenvitools(t_data *data, char **tabb, int i)
 {
 	if (data->fona == 1)
-		freetab(tab);
+		freetab(tabb);
 	else
-		free(tab);
+		free(tabb);
 	data->envi = 1;
 	argsifenv(data, i);
 	forkall(data);
@@ -26,29 +26,29 @@ void	callenvitools(t_data *data, char **tab, int i)
 void	callenvi(t_data *data)
 {
 	int		i;
-	char	**tab;
+	char	**tabb;
 
 	i = 2;
-	tab = (char **)malloc(sizeof(char *) * ft_strlentab(data->args) + 1);
+	tabb = (char **)malloc(sizeof(char *) * ft_strlentab(data->args) + 1);
 	data->fona = 0;
 	while (data->args[i])
 	{
 		if (ft_strstr(data->args[i], "=") != NULL)
 		{
-			tab[i - 2] = ft_strdup(data->args[i]);
+			tabb[i - 2] = ft_strdup(data->args[i]);
 			data->fona = 1;
 		}
 		else
 		{
-			tab[i - 2] = NULL;
-			callenvitools(data, tab, i);
+			tabb[i - 2] = NULL;
+			callenvitools(data, tabb, i);
 			return ;
 		}
 		i++;
 	}
-	tab[i - 2] = NULL;
-	printab(tab);
-	freetab(tab);
+	tabb[i - 2] = NULL;
+	printab(tabb);
+	freetab(tabb);
 	data->envi = 0;
 }
 

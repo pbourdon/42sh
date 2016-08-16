@@ -27,7 +27,7 @@ void	freecdiftwo(char *str, char **dst)
 char	*cdiftwo(t_data *data)
 {
 	char	*str;
-	char	**tab;
+	char	**tabb;
 	char	**dst;
 	char	*ptr;
 	int		i;
@@ -36,9 +36,9 @@ char	*cdiftwo(t_data *data)
 	str = getpwd();
 	if (ft_strstr(str, data->args[1]) != NULL)
 	{
-		tab = ft_strsplit(str, '/');
-		ptr = ft_joinfree("/", ft_strjoin(tab[0], "/"), 2);
-		dst = changeargs(tab, data);
+		tabb = ft_strsplit(str, '/');
+		ptr = ft_joinfree("/", ft_strjoin(tabb[0], "/"), 2);
+		dst = changeargs(tabb, data);
 		while (dst[i])
 		{
 			ptr = ft_joinfree(ptr, dst[i], 1);

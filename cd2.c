@@ -40,7 +40,7 @@ char	*changepwd3(t_data *data, char *str, char *str2)
 	return (str);
 }
 
-char	**changepwd2(t_data *data, char **tab, char *str)
+char	**changepwd2(t_data *data, char **tabb, char *str)
 {
 	int	i;
 	int	o;
@@ -51,40 +51,40 @@ char	**changepwd2(t_data *data, char **tab, char *str)
 	{
 		if (rognagestring(data->env[i], "PWD=") == 1)
 		{
-			tab[o] = ft_strjoin("PWD=", str);
+			tabb[o] = ft_strjoin("PWD=", str);
 			o++;
 			i++;
 		}
 		else if (rognagestring(data->env[i], "OLDPWD=") == 1)
 		{
-			tab[o] = changepwd3(data, tab[o], str);
+			tabb[o] = changepwd3(data, tabb[o], str);
 			o++;
 			i++;
 		}
-		tab[o] = ft_strdup(data->env[i]);
+		tabb[o] = ft_strdup(data->env[i]);
 		o++;
 		i++;
 	}
-	tab[o] = NULL;
-	return (tab);
+	tabb[o] = NULL;
+	return (tabb);
 }
 
 void	changepwdenv(t_data *data)
 {
 	int		i;
-	char	**tab;
+	char	**tabb;
 	int		o;
 	char	*str;
 
 	str = getpwd();
 	o = 0;
-	tab = (char **)malloc(sizeof(char *) * (ft_strlentab(data->env) + 1));
+	tabb = (char **)malloc(sizeof(char *) * (ft_strlentab(data->env) + 1));
 	i = 0;
-	tab = changepwd2(data, tab, str);
+	tabb = changepwd2(data, tabb, str);
 	if (data->turn == 1)
 		freetab(data->env);
-	data->env = newtab(tab);
-	freetab(tab);
+	data->env = newtab(tabb);
+	freetab(tabb);
 	free(str);
 }
 

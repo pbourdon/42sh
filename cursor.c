@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setenv2.c                                          :+:      :+:    :+:   */
+/*   cursor.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: pguzman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/23 09:55:32 by hlouar            #+#    #+#             */
-/*   Updated: 2016/05/23 09:55:37 by hlouar           ###   ########.fr       */
+/*   Created: 2016/08/03 16:02:48 by pguzman           #+#    #+#             */
+/*   Updated: 2016/08/03 16:03:06 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 
-int		alreadyexist(char **tabb, char *str)
+void	cursor_init(void)
 {
-	int	i;
-
-	i = 0;
-	while (tabb[i])
-	{
-		if (rognagestring(str, tabb[i]) == 1)
-			return (1);
-		i++;
-	}
-	return (0);
+	cursor.position_x_abs = 1;
+	cursor.position_y_abs = tgetnum("li") - 1;
+	cursor.position_x_rel = 1;
+	cursor.position_y_rel = 0;
+	cursor.position_line = 0;
 }

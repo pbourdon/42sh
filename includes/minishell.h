@@ -13,15 +13,23 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include <unistd.h>
 # include <stdio.h>
-# include <sys/wait.h>
+
 # include "../libft/libft.h"
 # include "../libft/get_next_line.h"
-# include <dirent.h>
+# include <sys/wait.h>
+# include <sys/ioctl.h>
 # include <sys/types.h>
 # include <sys/stat.h>
+# include <sys/wait.h>
+# include <signal.h>
 # include <unistd.h>
+# include <fcntl.h>
+# include <dirent.h>
+# include <termios.h>
+# include <term.h>
+# include <unistd.h>
+
 
 # define OTHER 0
 # define AGGR 1
@@ -38,45 +46,82 @@
 # define INPUT 0
 # define OUTPUT 1
 
-
-
-typedef struct		s_data
+typedef struct			s_term
 {
-	char			*line;
-	char			*path;
-	char			**allp;
-	char			*bin;
-	char			*home;
-	char			*pwd;
-	char			*oldpwd;
-	char			*voldpwd;
-	char			**tab;
-	char			**env;
-	char			**args;
-	char			**oldenv;
-	int				dspam;
-	int				envi;
-	int				fona;
-	int				turn;
-}					t_data;
+	char				*term_name;
+	struct				termios term;
+	struct				termios term_copy;
 
-typedef struct		s_tree
+}						t_term;
+
+typedef struct			s_history
 {
-	char			*arg;
-	int				token;	
-	struct s_tree	*left;
-	struct s_tree	*right;
+	char            	*str;
+	struct s_history	*next;
+}						t_history;
 
-}					t_tree;
-
-typedef struct		s_token
+typedef struct   		s_shell
 {
-	int				inib; // non: 0; weak: 1; strong: 2; unique: 3
-	int				tube; // input or output
-	int				token; // ohter: 0; aggr: 1; reddir: 2; sepp: 3; opbi:4; back:5;
-	char			*arg;
-	struct s_token	*next;
-}					t_token;
+	int					shell_status;
+	int					backslash_index;
+	int					length_line;
+	int					shell_win_size;
+	char				*shell_line_original;
+	int					history_index;
+	int					shell_backslash_level;
+	int					last_backslash;
+	char				*shell_line;
+	struct s_history	*history;
+	int					selected_start;
+	int					selected_end;
+	char				*selected_copy;
+}						t_shell;
+
+typedef struct			s_cursor
+{
+	int					position_x_abs;
+	int					position_y_abs;
+	int					position_x_rel;
+	int					position_y_rel;                                            //line number.
+	int					position_line;
+}						t_cursor;
+
+typedef struct			s_data
+{
+	char				*line;
+	char				*path;
+	char				**allp;
+	char				*bin;
+	char				*home;
+	char				*pwd;
+	char				*oldpwd;
+	char				*voldpwd;
+	char				**tabb;
+	char				**env;
+	char				**args;
+	char				**oldenv;
+	int					dspam;
+	int					envi;
+	int					fona;
+	int					turn;
+}						t_data;
+
+typedef struct			s_tree
+{
+	char				*arg;
+	int					token;	
+	struct s_tree		*left;
+	struct s_tree		*right;
+}						t_tree;
+
+typedef struct			s_token
+{
+	int					inib; // non: 0; weak: 1; strong: 2; unique: 3
+	int					tube; // input or output
+	int					token; // ohter: 0; aggr: 1; reddir: 2; sepp: 3; opbi:4; back:5;
+	char				*arg;
+	struct s_token		*next;
+}						t_token;
 
 typedef struct		s_liste
 {
@@ -112,13 +157,13 @@ t_token				*split_on_sp(char **ptr, char **cmd, t_token **base, t_token *cur);
 
 void				writeonwhile(void);
 void				catchpath(t_data *data);
-char				**changeargs(char **tab, t_data *data);
-void				callenvtool(t_data *data, char **tab);
-char				**printifenv(char **tab, char *str);
-int					alreadyexist(char **tab, char *str);
+char				**changeargs(char **tabb, t_data *data);
+void				callenvtool(t_data *data, char **tabb);
+char				**printifenv(char **tabb, char *str);
+int					alreadyexist(char **tabb, char *str);
 int					ft_strlenremix(char *str);
 char				*getpwd(void);
-char				**newtab(char **tab);
+char				**newtab(char **tabb);
 void				freedata(char *str, t_data *data);
 int					errcd(t_data *data);
 void				freedata(char *str, t_data *data);
@@ -138,9 +183,9 @@ void				callsetenv(t_data *data);
 char				**setenvifexist(t_data *data, int a);
 char				*fillmytab(char *str);
 void				freetab2(t_data *data);
-void				printab(char **tab);
-int					alreadyexist(char **tab, char *str);
-int					ft_strlentab(char **tab);
+void				printab(char **tabb);
+int					alreadyexist(char **tabb, char *str);
+int					ft_strlentab(char **tabb);
 char				**setenvifdontexist(t_data *data, int a);
 int					createbinpath(t_data *data);
 void				errorbinary(t_data *data, char *str);
@@ -148,7 +193,121 @@ void				callallenv(t_data *data);
 void				printenv(t_data *data);
 void				callenv(t_data *data);
 void				forkall(t_data *data);
-int					readgnl(t_data *data);
-void				freetab(char **tab);
+int					readgnl(t_data *data, char *str);
+void				freetab(char **tabb);
+
+int					shell_loop(t_term *term, t_data *data);
+void				shell_init(void);
+char				**shell_env_copy(char *envp[]);
+void				shell_shlvl(char ***cp);
+int					shell_var_exists(char **cp, const char *name, int len);
+int					shell_envlen(char **envp);
+char				**shell_parsing(char *line);
+int					shell_builtins(char **s, char ***cp, char *builtin[5]);
+void				main_init(t_term *term);
+int					tputs_putchar(int c);
+int					shterm_listen(t_term *term);
+void				shell_listening_char();
+int					term_init(t_term *term);
+int					is_delete_key(char *buffer);
+
+int					is_direction_key(char *buffer);
+int					is_backspace_key(char *buffer);
+int					is_home_key(char *buffer);
+int					is_end_key(char *buffer);
+int					is_down_key(char *buffer);
+int					is_up_key(char *buffer);
+int					is_left_key(char *buffer);
+int					is_right_key(char *buffer);
+int					is_enter_key(char *buffer);
+int					is_option_c(char *buffer);
+int					is_option_v(char *buffer);
+int					is_option_right(char *buffer);
+int					is_option_left(char *buffer);
+int					is_printable_char(char *buffer);
+int					is_eot(char *buffer);
+int					is_option_key(char *buffer);
+void				press_option_key(char *buffer);
+void				press_direction_key(char *buffer);
+void				press_backspace_key();
+void				press_delete_key();
+void				press_up_key();
+void				press_down_key();
+void				press_left_key();
+void				press_right_key();
+void				press_printable_char(char *buffer);
+void				press_home_key();
+void				press_end_key();
+int					press_enter_key();
+void				press_option_c();
+void				press_option_v();
+void				press_option_left();
+void				press_option_right();
+char				*del_from_arr(char *str, int i);
+void				go_right();
+void				go_left();
+
+int					ft_exit_error(char **s);
+int					ft_isnumber(char *s);
+void				ft_tabdel(char ***tb);
+char				**ft_tab_trim(char **s);
+char				**ft_strsplit2(char const *s);
+int					ft_isblanck(char c);
+
+void				cursor_init();
+void				line_init();
+
+void				add_to_history();
+unsigned int		fsize(const char *filename);
+char				**get_history();
+char				*add_to_array(char *str, char c, int i, int len);
+int					ft_putstr_i(char *str, int i);
+
+void				move_cursor_right();
+void				move_cursor_left();
+
+void				print_cursor_fd_2();
+void				print_shell_fd_2();
+void				print_buffer(char *buffer);
+
+void				press_shift_direction_key(char *buffer);
+int					get_next_word_after(char *str, int c);
+int					is_shift_direction_key(char *buffer);
+void				press_shift_left();
+void				press_shift_right();
+void				press_shift_up();
+void				press_shift_down();
+
+int					get_next_word_before(char *str, int c);
+
+void				add_jump();
+void				delete_last_backslash();
+void				replace_shell_line(char *str);
+void				replace_shell_backslash_line();
+int					ft_strlend(char **str);
+int					listen(char  *buffer);
+
+int					is_shift_up(char buffer5);
+int					is_shift_down(char buffer5);
+int					is_shift_right(char buffer5);
+int					is_shift_left(char buffer5);
+
+
+char				*get_history_i(int i);
+int					get_history_length();
+
+void				sig_handler(int a);
+void				sig_ctrl_d();
+
+void				update_cursor();
+
+void				prepare_to_listen(char buffer[9]);
+
+int					shterm_listen(t_term *term);
+
+char				*extract_str(char *str, int a, int b);
+
+t_shell				shell;
+t_cursor			cursor;
 
 #endif

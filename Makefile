@@ -16,31 +16,42 @@ HEADER = includes/minishell.h
 
 FLAGS = -Wall -Werror -Wextra -g3 -O3
 
-LIBFLAGS = -lncurses
-
-SRC = 	main.c \
-		cd.c \
-		cd2.c \
-		cd3.c \
-		env.c \
+SRC = 	builtin_exit_error.c \
+		space_treatment.c \
+		term_functions.c \
+		split_on_spec.c \
+		old_functions.c \
+		parseandexc2.c \
+		arg_to_list.c \
+		parseandexc.c \
+		press_key1.c \
+		add_letter.c \
+		good_order.c \
+		allwrites.c \
+		term_read.c \
+		unsetenv.c \
+		go_words.c \
+		is_key1.c \
+		to_tree.c \
+		history.c \
+		setenv2.c \
+		spliter.c \
+		tools2.c \
+		setenv.c \
+		signal.c \
+		cursor.c \
+		tools.c \
+		error.c \
+		shell.c \
 		env2.c \
 		env3.c \
-		parseandexc.c \
-		parseandexc2.c \
-		setenv.c \
-		setenv2.c \
-		tools.c \
-		tools2.c \
-		unsetenv.c \
-		allwrites.c \
-		spliter.c \
-		split_on_spec.c \
-		error.c \
-		good_order.c \
-		arg_to_list.c \
-		to_tree.c \
-		space_treatment.c \
-		free.c
+		main.c \
+		free.c \
+		env.c \
+		cd2.c \
+		cd3.c \
+		bug.c \
+		cd.c
 
 OBJDIR = obj/
 
@@ -52,7 +63,7 @@ norm:
 	@norminette $(SRC) $(HEADER)
 
 $(NAME): compile_lib compile_p $(OBJ)
-		@clang $(FLAGS) $(LIBFLAGS) -o $(NAME) $(OBJ) -L libft -lft
+		@clang $(FLAGS) -lncurses -o $(NAME) $(OBJ) -L libft -lft
 		@echo ""
 		@echo "\033[32mCompilation Succeeded\033[39m"
 		@echo ""

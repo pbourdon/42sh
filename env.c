@@ -12,75 +12,75 @@
 
 #include "includes/minishell.h"
 
-int		existornah(char **tab, char *str)
+int		existornah(char **tabb, char *str)
 {
 	int	i;
 
 	i = 0;
-	while (tab[i] != NULL)
+	while (tabb[i] != NULL)
 	{
-		if (rognagestring(tab[i], str) == 1)
+		if (rognagestring(tabb[i], str) == 1)
 			return (1);
 		i++;
 	}
 	return (0);
 }
 
-char	**printifenv2(char **tab, char *str)
+char	**printifenv2(char **tabb, char *str)
 {
 	int		i;
 	int		o;
 	char	**dst;
 
-	dst = (char **)malloc(sizeof(char *) * (ft_strlentab(tab) + 2));
+	dst = (char **)malloc(sizeof(char *) * (ft_strlentab(tabb) + 2));
 	i = 0;
 	o = 0;
-	while (tab[i] != NULL)
+	while (tabb[i] != NULL)
 	{
-		dst[o] = ft_strdup(tab[i]);
+		dst[o] = ft_strdup(tabb[i]);
 		o++;
 		i++;
 	}
 	dst[o] = ft_strdup(str);
 	dst[o + 1] = NULL;
-	freetab(tab);
+	freetab(tabb);
 	return (dst);
 }
 
-char	**callenvtool2(char **tab, t_data *data, int i)
+char	**callenvtool2(char **tabb, t_data *data, int i)
 {
-	if (existornah(tab, data->args[i]) == 1)
-		tab = printifenv(tab, data->args[i]);
+	if (existornah(tabb, data->args[i]) == 1)
+		tabb = printifenv(tabb, data->args[i]);
 	else
-		tab = printifenv2(tab, data->args[i]);
-	return (tab);
+		tabb = printifenv2(tabb, data->args[i]);
+	return (tabb);
 }
 
 void	callenv(t_data *data)
 {
 	int		i;
-	char	**tab;
+	char	**tabb;
 
 	i = 1;
-	tab = newtab(data->env);
+	tabb = newtab(data->env);
 	if (ft_strcmp(data->line, "env") == 0)
 	{
-		freetab(tab);
+		freetab(tabb);
 		printab(data->env);
 		return ;
 	}
 	while (data->args[i])
 	{
 		if (ft_strstr(data->args[i], "=") != NULL)
-			tab = callenvtool2(tab, data, i);
+			tabb = callenvtool2(tabb, data, i);
 		else
 		{
-			freetab(tab);
+			freetab(tabb);
 			argsifenv(data, i);
 			forkall(data);
 			return ;
 		}
 		i++;
 	}
-	callenvtool(data, tab);
+	callenvtool(data, tabb);
 }
