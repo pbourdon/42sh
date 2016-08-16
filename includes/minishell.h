@@ -46,6 +46,13 @@
 # define INPUT 0
 # define OUTPUT 1
 
+typedef struct    	s_liste2
+{
+	char 			**tabich;
+	int				redi;
+	struct 	s_liste2	*next;
+}					t_liste2;
+
 typedef struct			s_term
 {
 	char				*term_name;
@@ -104,12 +111,16 @@ typedef struct			s_data
 	int					envi;
 	int					fona;
 	int					turn;
+	char 			**tabchev;
+	char 			**oldtbe;
+	int					posi;
+	struct	s_liste2		*liste;
 }						t_data;
 
 typedef struct			s_tree
 {
 	char				*arg;
-	int					token;	
+	int					token;
 	struct s_tree		*left;
 	struct s_tree		*right;
 }						t_tree;
@@ -306,6 +317,27 @@ void				prepare_to_listen(char buffer[9]);
 int					shterm_listen(t_term *term);
 
 char				*extract_str(char *str, int a, int b);
+
+int		ifitsredi(t_data *data);
+int		mainredi(t_data *data);
+int		doubleredichieh(t_data *data, t_liste2 *liste);
+int		execveremix(t_data *data);
+int		createthetab(t_data *data);
+char	*decoupe1(char *str);
+char	*decoupe2(char *str);
+int		helpall2(t_data *data, t_liste2 *liste);
+int		mainpipehelp2(t_data *data, t_liste2 *liste);
+void	childhelp(t_data *data, t_liste2 *liste, int pfd[2]);
+int		optchev(t_data *data);
+t_liste2	*createliste(void);
+void	argliste(t_data *data);
+void	freeliste(t_liste2 *liste);
+int	checkagred(char *str);
+char	**createtab(t_data *data, int i);
+void	printtab(char **tabb);
+void	helpdoublechieh(t_data *data, int i, t_liste2 *liste, int fd);
+int		mainpipehelp(t_data *data, t_liste2 *liste);
+void helpmainpipehelp2(t_data *data, t_liste2 *liste);
 
 t_shell				shell;
 t_cursor			cursor;

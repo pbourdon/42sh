@@ -30,12 +30,8 @@ int			add_token(char *str)
 	int		ret;
 
 	ret = 0;
-	printf("add_token(str): %s\n", str);
 	if (ft_strstr(str, ">&") != NULL || ft_strstr(str, "<&") != NULL)
-	{
-		printf("hello je suis un AGGR\n");
 		ret = AGGR;
-	}
 	else if (!(ft_strncmp(str, ">", 1)) || !(ft_strncmp(str, "<", 1)) ||
 	!(ft_strcmp(str, "|")))
 		ret = REDDIR;
@@ -58,7 +54,6 @@ void			sub_split_norm(char **cmd, t_token *cur, int i)
 			*cmd += 1;
 		}
 		*cmd += 1;
-		printf("Hello()cmd: %s\n", *cmd);
 	}
 	if (!ft_strncmp(*cmd, ">&", 2) || !ft_strncmp(*cmd, "<&", 2))
 	{
@@ -66,7 +61,6 @@ void			sub_split_norm(char **cmd, t_token *cur, int i)
 			**cmd == '>' ? (cur->arg[++i] = '>') : (cur->arg[++i] = '<');
 		cur->arg[++i] = '&';
 		*cmd += 1;
-		printf("cmd: %c, cur->Arg: %s\n", *(*cmd + 1), cur->arg);
 	}
 	while (*cmd + 1 && *(*cmd + 1))
 	{
@@ -77,8 +71,7 @@ void			sub_split_norm(char **cmd, t_token *cur, int i)
 	{
 		cur->arg[++i] = *(*cmd + 1);
 		*cmd += 1;
-	}	
-	printf("Hello()cur->arg: %s\n", cur->arg);
+	}
 	*cmd += 1;
 }
 
@@ -100,7 +93,6 @@ t_token		*split_norm(char **ptr, char **cmd, t_token **base, t_token *cur)
 	while (*cmd && *(*cmd + 1) && *(*cmd + 1) == ' ')
 		*cmd += 1;
 	*ptr = *cmd;
-	printf("split_norm(cur->Arg)1: %s\n", cur->arg);
 	return (*base);
 }
 
@@ -131,6 +123,5 @@ t_token		*split_on_sp(char **ptr, char **cmd, t_token **base, t_token *cur)
 		return (0);
 	cur->arg = ft_memset(cur->arg, 0, 4);
 	cur->arg[0] = c;
-	printf("split_on_sp(char c): %c\n", c);
 	return (split_norm(ptr, cmd, base, cur));
 }

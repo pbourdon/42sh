@@ -22,6 +22,12 @@ void			parsecommand(t_data *data)
 	data->args = ft_strsplit(data->line, ' ');
 	if (ft_strcmp(data->line, "exit") == 0)
 		exit(0);
+	else if (ifitsredi(data) != 0)
+	{
+		mainredi(data);
+		free(data->liste);
+		return ;
+	}
 	else if (ft_strcmp(data->args[0], "env") == 0)
 		callallenv(data);
 	else if (ft_strcmp(data->args[0], "setenv") == 0)

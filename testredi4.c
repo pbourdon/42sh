@@ -1,0 +1,112 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   testredi4.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/08/16 16:05:50 by hlouar            #+#    #+#             */
+/*   Updated: 2016/08/16 16:05:53 by hlouar           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "includes/minishell.h"
+
+void	printlistechiche(t_liste2 *tmp)
+{
+	while (tmp->next != NULL)
+	{
+		printtab(tmp->tabich);
+		ft_putnbr(tmp->redi);
+		ft_putchar('\n');
+		tmp = tmp->next;
+	}
+}
+
+void	childhelp(t_data *data, t_liste2 *liste, int pfd[2])
+{
+	int in;
+
+	if (liste->redi == 3)
+	{
+		in = open(liste->next->tabich[0], O_RDONLY);
+		if (in == -1)
+		{
+			ft_putstr(liste->next->tabich[0]);
+			ft_putendl(": No such file or directory.");
+			return ;
+		}
+		dup2(in, 0);
+	}
+	dup2(pfd[1], 1);
+	close(pfd[0]);
+	freetab(data->args);
+	data->args = newtab(liste->tabich);
+	execveremix(data);
+}
+
+int		doubleredichieh(t_data *data, t_liste2 *liste)
+{
+	int		father;
+	int		out;
+	char	*str;
+	int		fd;
+	int		i;
+
+	i = 0;
+	father = fork();
+	str = ft_strdup(data->args[(ft_strlentab(data->args) - 1)]);
+	fd = open(str, O_RDWR);
+	if (father == 0)
+	{
+		out = open(str, O_WRONLY | O_TRUNC |
+		O_CREAT, S_IRUSR | S_IWGRP | S_IWUSR | O_APPEND |
+		S_IRWXO);
+		dup2(out, 1);
+		close(out);
+		helpdoublechieh(data, i, liste, fd);
+		exit(0);
+	}
+	else
+		wait(0);
+	return (5);
+}
+
+int		helpall(t_data *data, t_liste2 *liste)
+{
+	int	in;
+
+	in = open(liste->next->tabich[0], O_RDONLY);
+	dup2(in, 0);
+	close(in);
+	freetab(data->args);
+	data->args = newtab(liste->tabich);
+	execveremix(data);
+	return (1);
+}
+
+int		mainpipehelp2(t_data *data, t_liste2 *liste)
+{
+	int	out;
+
+	if (liste->redi == 3 && ((liste->next->redi == 0) ||
+				((liste->next->redi == 1 || liste->next->redi == 2) &&
+				liste->next->next->redi == 0)))
+	{
+		if (liste->next->redi == 1)
+		{
+			out = open(liste->next->next->tabich[0], O_WRONLY | O_TRUNC |
+					O_CREAT, S_IRUSR | S_IWGRP | S_IWUSR | O_APPEND);
+			dup2(out, 1);
+			close(out);
+		}
+		else if (liste->next->redi == 2)
+		{
+			helpmainpipehelp2(data, liste);
+			return (10);
+		}
+		helpall(data, liste);
+		return (1);
+	}
+	return (-1);
+}

@@ -86,7 +86,7 @@ int				check_list(t_token *liste, t_token *ptr)
 	while (ptr != NULL)
 	{
 		// print_liste(ptr);
-		print_liste(ptr);
+		// print_liste(ptr);
 		i++;
 		if (ptr->token == 1)
 			nb_agg++;
