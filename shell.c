@@ -6,7 +6,7 @@
 /*   By: pguzman <pguzman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/04 09:43:51 by pguzman           #+#    #+#             */
-/*   Updated: 2016/08/17 16:52:53 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/17 17:13:16 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int		shell_loop(t_term *term, t_data *data)
 
 int		shterm_listen(t_term *term)
 {
-	term->term_name = "a";
+	if (term)
+		term->term_name = "a";
 	cursor_init();
 	shell.length_line = 0;
 	ft_bzero(shell.shell_line, 1000);
@@ -182,7 +183,7 @@ t_history *double_left(char *fin)
 		ft_putstr("heredoc>");
 		shell.shell_heredoc = 1;
 		ft_bzero(shell.shell_line, 1000);
-		shterm_listen(term);
+		shterm_listen(NULL);
 		add_to_history(hered, shell.shell_line);
 	}
 	return (hered);

@@ -6,7 +6,7 @@
 /*   By: hlouar <hlouar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/24 16:58:19 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/17 16:51:44 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/17 17:11:09 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef struct   		s_shell
 	int					selected_start;
 	int					selected_end;
 	char				*selected_copy;
+	int            		shell_heredoc;
 }						t_shell;
 
 typedef struct			s_cursor
