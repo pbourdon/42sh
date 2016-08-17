@@ -12,14 +12,14 @@
 
 #include "includes/minishell.h"
 
-int				switch_case(t_token *ptr, int nb_redir, int nb_agg)
+int				switch_case(t_token *ptr, int nb_redir, int nb_redir2)
 {
 	if (ptr->token == 3 && ft_strncmp(ptr->arg, "|", 1) != 0 && ptr->next == NULL)
 	{
 		ft_putendl("Missing name for redirect.");
 		return (-1);
 	}
-	else if ((nb_redir > 1 && ptr->next != NULL) || (nb_redir > 1 && ft_strncmp(ptr->arg, "|", 1) == 0 && ptr->next == NULL) || nb_agg > 1)
+	else if (nb_redir > 1 || nb_redir2 < -1)
 	{
 		ft_putendl("Ambigous output redirect.");
 		return (-1);
@@ -32,15 +32,18 @@ int				switch_case(t_token *ptr, int nb_redir, int nb_agg)
 	return (0);
 }
 
-int				set_redir_var(char *str, int token, int nb_redir)
+int				set_redir_var(char *str, int nb_redir)
 {
-	if (ft_strncmp(str, "<", 1) == 0 || ft_strncmp(str, ">", 1) == 0 || token == 1)
+	if (ft_strncmp(str, "<", 1) == 0 || ft_strncmp(str, "<<", 2) == 0)
 		nb_redir++;
-	else if (ft_strncmp(str, "|", 1) == 0 && nb_redir > 0)
-		nb_redir++;
-	else if (token > 3 || (ft_strncmp(str, "|", 1) == 0 && nb_redir == 0))
-		nb_redir = 0;
 	return (nb_redir);
+}
+
+int				set_redir_var2(char *str, int nb_redir2)
+{
+	if (ft_strncmp(str, ">", 1) == 0 || ft_strncmp(str, ">>", 2) == 0)
+		nb_redir2--;
+	return (nb_redir2);
 }
 
 int				check_aggr(char *str, int token)
@@ -72,28 +75,29 @@ void			print_liste(t_token *ptr)
 int				check_list(t_token *liste, t_token *ptr)
 {
 	int			nb_redir;
+	int			nb_redir2;
 	int			under_cmd;
 	int			ret;
 	int			nb_agg;
 
-	int	i = 0;
 
 	under_cmd = 0;
 	nb_redir = 0;
+	nb_redir2 = 0;
 	nb_agg = 0;
 	ret = 0;
 	ptr = liste;
 	while (ptr != NULL)
 	{
-		// print_liste(ptr);
-		// print_liste(ptr);
-		i++;
+		print_liste(ptr);
+		ft_putchar('\n');
 		if (ptr->token == 1)
 			nb_agg++;
-		nb_redir = set_redir_var(ptr->arg, ptr->token, nb_redir);
+		nb_redir = set_redir_var(ptr->arg, nb_redir);
+		nb_redir2 = set_redir_var(ptr->arg, nb_redir2);
 		if ((ret = check_aggr(ptr->arg, ptr->token)) == -1)
 			return (-1);
-		if ((ret = switch_case(ptr, nb_redir, nb_agg)) == -1)
+		if ((ret = switch_case(ptr, nb_redir, nb_redir2)) == -1)
 			return (-1);
 		ptr = ptr->next;
 	}
