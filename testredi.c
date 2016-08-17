@@ -41,7 +41,68 @@ int		agreve(t_data *data, t_liste2 *liste)
 	exit(0);
 }
 
-int		mainpipehelp(t_data *data, t_liste2 *liste)
+// void rediboucle2(t_data *data, t_liste2 *liste)
+// {
+// 	int in;
+// 	pid_t father;
+//
+// 	father = fork();
+// 	if (father == 0)
+// 	{
+// 		in = open(".file_for_ready", O_RDONLY);
+// 		dup2(in, 0);
+// 		freetab(data->args);
+// 		data->args = newtab(liste->tabich);
+// 		execveremix(data);
+// 	}
+// 	else
+// 		wait(0);
+// }
+
+void rediboucle(t_liste2 *liste, t_data *data, int pfd[2])
+{
+	t_history *hist;
+	int out;
+	int in;
+	pid_t father;
+
+	father = fork();
+	if (father > 0)
+	{
+		hist = double_left(liste->next->tabich[0]);
+		out = open(".file_for_ready", O_WRONLY | O_TRUNC |
+		O_CREAT, S_IRUSR | S_IWGRP | S_IWUSR | O_APPEND |
+		S_IRWXO);
+		dup2(out, 1);
+		while (hist->next)
+		{
+			ft_putendl(hist->str);
+			hist = hist->next;
+		}
+		close(out);
+		in = open(".file_for_ready", O_RDONLY);
+		dup2(pfd[1], 1);
+		close(pfd[0]);
+		freetab(data->args);
+		data->args = newtab(liste->tabich);
+		execveremix(data);
+	}
+	else
+		wait(0);
+	// if (liste->next->next)
+	// {
+		// ft_putendl("passe ici normalement");
+		// mainpipe(data, liste->next);
+	// }
+	// in = open()
+	// dup2(in, 0);
+	// freetab(data->args);
+	// data->args = newtab(liste->tabich);
+	// execveremix(data);
+}
+
+
+int		mainpipehelp(t_data *data, t_liste2 *liste, int pfd[2])
 {
 	if (liste->redi == 1)
 	{
@@ -57,6 +118,11 @@ int		mainpipehelp(t_data *data, t_liste2 *liste)
 	{
 		agreve(data, liste);
 		exit(0);
+	}
+	if (liste->redi == 4)
+	{
+		rediboucle(liste, data, pfd);
+		return (5);
 	}
 	else if (mainpipehelp2(data, liste) != -1)
 		return (2);
@@ -75,8 +141,9 @@ int		mainpipe(t_data *data, t_liste2 *liste)
 	pid_t	father;
 	int		pfd[2];
 
+	ft_putendl(liste->tabich[0]);
 	pipe(pfd);
-	if (mainpipehelp(data, liste) != 0)
+	if (mainpipehelp(data, liste, pfd) != 0)
 	{
 		close(pfd[0]);
 		close(pfd[1]);

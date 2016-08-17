@@ -295,17 +295,18 @@ int		backslash_at_the_end(void)
 int		press_enter_key(void)
 {
 	press_end_key();
-	// ft_putstr_fd("\nparenthesis_closed: ", 2);
-	// ft_putstr_fd("\n", 2);
 	if (backslash_at_the_end() || !parenthesis_closed())
 		return (0);
 	if (ft_strcmp(shell.shell_line, "exit") == 0)
 		exit(0);
-	if (ft_strcmp(shell.shell_line, "") != 0)
+	if (ft_strcmp(shell.shell_line, "") != 0 && shell.shell_heredoc == 0)
 		add_to_history(shell.history, shell.shell_line);
 	// ft_bzero(shell.shell_line, 1000);
 	shell.backslash_index = -1;
-	shell.history_index = get_history_length();
+	if (shell.shell_heredoc == 0)
+		shell.history_index = get_history_length();
+ 	if (ft_strcmp("<<", shell.shell_line) == 0)
+		shell.shell_heredoc = 1;
 	ft_putstr("\n");
 	return (1);
 }

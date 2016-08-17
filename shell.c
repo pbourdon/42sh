@@ -180,6 +180,8 @@ t_history *double_left(char *fin)
 	shell.history_index = get_history_length() + 1;
 	while (ft_strcmp(fin, shell.shell_line_original) != 0)
 	{
+		ft_putendl(fin);
+		ft_putendl(shell.shell_line_original);
 		ft_putstr("heredoc>");
 		shell.shell_heredoc = 1;
 		ft_bzero(shell.shell_line, 1000);
