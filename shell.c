@@ -19,7 +19,8 @@ int		shell_loop(t_term *term, t_data *data)
 		shell.shell_backslash_level = 0;
 		shell.last_backslash = 0;
 		shell.history_index = get_history_length() + 1;
-		ft_putchar('>');
+		prompt_line();
+		// ft_putchar('>');
 		if (!shterm_listen(term))
 		{
 			ft_putstr("exit\nexit\n");

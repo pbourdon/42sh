@@ -48,6 +48,7 @@ SRC = 	builtin_exit_error.c \
 		main.c \
 		free.c \
 		env.c \
+		prompt.c \
 		cd2.c \
 		cd3.c \
 		bug.c \

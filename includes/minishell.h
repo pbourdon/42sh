@@ -28,6 +28,7 @@
 # include <dirent.h>
 # include <termios.h>
 # include <term.h>
+# include <time.h>
 # include <unistd.h>
 
 
@@ -165,6 +166,7 @@ t_token				*ft_find_space(char *cmd, t_token *token, int inib, char quote);
 t_token				*split_on_sp(char **ptr, char **cmd, t_token **base, t_token *cur);
 
 
+void				prompt_line(void);
 
 void				writeonwhile(void);
 void				catchpath(t_data *data);
