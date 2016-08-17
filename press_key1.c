@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   press_key1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pguzman <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pguzman <pguzman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/03 16:13:17 by pguzman           #+#    #+#             */
-/*   Updated: 2016/08/04 10:14:29 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/17 17:18:33 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -302,7 +302,7 @@ int		press_enter_key(void)
 	if (ft_strcmp(shell.shell_line, "exit") == 0)
 		exit(0);
 	if (ft_strcmp(shell.shell_line, "") != 0)
-		add_to_history();
+		add_to_history(shell.history, shell.shell_line);
 	// ft_bzero(shell.shell_line, 1000);
 	shell.backslash_index = -1;
 	shell.history_index = get_history_length();
