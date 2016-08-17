@@ -74,7 +74,28 @@ void			go_free(char *cwd, char *prompt, char *hostname, char *curtime)
 	free(curtime);
 }
 
-void			prompt_line(void)
+char			*get_user_name(char **env)
+{
+	int i;
+	char *tmp;
+
+	i = 0;
+	while (env[i + 1])
+	{
+		if (ft_strncmp(env[i], "USER=", 5) == 0)
+		{
+			tmp = ft_strdup(env[i]);
+			tmp += 5;
+			tmp = ft_strjoin(tmp, "@");
+			return (tmp);
+			// printf("%s\n", env[i]);
+		}
+		i++;
+	}
+	return (NULL);
+}
+
+void			prompt_line(char **env)
 {
 	char		*cwd;
 	char		*prompt;
@@ -85,7 +106,7 @@ void			prompt_line(void)
 	hostname[1023] = '\0';
 	gethostname(hostname, 1000);
 	hostname = save_post(hostname);
-	hostname = ft_strjoin("bde-maze@", hostname);
+	hostname = ft_strjoin(get_user_name(env), hostname);
 	curtime = ntime();
 	curtime = ft_strjoin(" ", curtime);
 	cwd = get_pwd();

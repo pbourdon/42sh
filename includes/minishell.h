@@ -30,6 +30,7 @@
 # include <term.h>
 # include <time.h>
 # include <unistd.h>
+# include <stdlib.h>
 
 
 # define OTHER 0
@@ -166,7 +167,7 @@ t_token				*ft_find_space(char *cmd, t_token *token, int inib, char quote);
 t_token				*split_on_sp(char **ptr, char **cmd, t_token **base, t_token *cur);
 
 
-void				prompt_line(void);
+void				prompt_line(char **env);
 
 void				writeonwhile(void);
 void				catchpath(t_data *data);
@@ -209,7 +210,7 @@ void				forkall(t_data *data);
 int					readgnl(t_data *data, char *str);
 void				freetab(char **tabb);
 
-int					shell_loop(t_term *term, t_data *data);
+int					shell_loop(t_term *term, t_data *data, char **env);
 void				shell_init(void);
 char				**shell_env_copy(char *envp[]);
 void				shell_shlvl(char ***cp);

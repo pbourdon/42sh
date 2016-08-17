@@ -143,7 +143,6 @@ int				main(int ac, char **av, char **env)
 	data.envi = 0;
 	data.turn = 0;
 	main_init(&first);
-	shell_loop(&first, &data);
-	// readgnl(&data);
+	shell_loop(&first, &data, env);
 	return (0);
 }

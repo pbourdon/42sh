@@ -12,14 +12,14 @@
 
 #include "includes/minishell.h"
 
-int		shell_loop(t_term *term, t_data *data)
+int		shell_loop(t_term *term, t_data *data, char **env)
 {
 	while (shell.shell_status)
 	{
 		shell.shell_backslash_level = 0;
 		shell.last_backslash = 0;
 		shell.history_index = get_history_length() + 1;
-		prompt_line();
+		prompt_line(env);
 		// ft_putchar('>');
 		if (!shterm_listen(term))
 		{
