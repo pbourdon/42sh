@@ -6,7 +6,7 @@
 /*   By: pguzman <pguzman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/04 09:43:51 by pguzman           #+#    #+#             */
-/*   Updated: 2016/08/05 16:31:09 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/17 16:52:53 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,4 +167,23 @@ void	shell_init(void)
 	shell.selected_end = 0;
 	shell.selected_start = 0;
 	shell.selected_copy = "";
+}
+
+t_history *double_left(char *fin)
+{
+	t_history *hered;
+
+	hered = malloc(sizeof(*(hered)));
+	hered->next = NULL;
+	hered->str = NULL;
+	shell.history_index = get_history_length() + 1;
+	while (ft_strcmp(fin, shell.shell_line_original) != 0)
+	{
+		ft_putstr("heredoc>");
+		shell.shell_heredoc = 1;
+		ft_bzero(shell.shell_line, 1000);
+		shterm_listen(term);
+		add_to_history(hered, shell.shell_line);
+	}
+	return (hered);
 }

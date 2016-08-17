@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hlouar <hlouar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/24 16:58:19 by hlouar            #+#    #+#             */
-/*   Updated: 2016/07/26 14:51:01 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/17 16:51:44 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,7 +270,8 @@ int					ft_isblanck(char c);
 void				cursor_init();
 void				line_init();
 
-void				add_to_history();
+void				add_to_history(t_history *his, char *str);
+t_history			*double_left(char *fin);
 unsigned int		fsize(const char *filename);
 char				**get_history();
 char				*add_to_array(char *str, char c, int i, int len);
