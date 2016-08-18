@@ -6,7 +6,7 @@
 /*   By: pguzman <pguzman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/04 09:43:51 by pguzman           #+#    #+#             */
-/*   Updated: 2016/08/17 17:13:16 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/18 16:46:51 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int		shell_loop(t_term *term, t_data *data, char **env)
 		shell.last_backslash = 0;
 		shell.history_index = get_history_length() + 1;
 		prompt_line(env);
-		// ft_putchar('>');
 		if (!shterm_listen(term))
 		{
 			ft_putstr("exit\nexit\n");
