@@ -6,13 +6,13 @@
 /*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/14 15:22:47 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/14 15:23:12 by hlouar           ###   ########.fr       */
+/*   Updated: 2016/08/18 17:51:42 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 
-void helpmainpipehelp2(t_data *data, t_liste2 *liste, int k)
+void		helpmainpipehelp2(t_data *data, t_liste2 *liste, int k)
 {
 	int in;
 
@@ -40,7 +40,7 @@ t_liste2	*createliste(void)
 	return (liste);
 }
 
-void	helpdoublechieh(t_data *data, int i, t_liste2 *liste, int fd)
+void		helpdoublechieh(t_data *data, int i, t_liste2 *liste, int fd)
 {
 	if (fd == -1)
 	{
@@ -61,7 +61,7 @@ void	helpdoublechieh(t_data *data, int i, t_liste2 *liste, int fd)
 	}
 }
 
-int		optchev(t_data *data)
+int			optchev(t_data *data)
 {
 	int	i;
 
@@ -75,7 +75,7 @@ int		optchev(t_data *data)
 	return (0);
 }
 
-int		execveremix(t_data *data)
+int			execveremix(t_data *data)
 {
 	if (createthetab(data) == 1)
 	{

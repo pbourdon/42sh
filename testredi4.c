@@ -6,22 +6,11 @@
 /*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/16 16:05:50 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/16 16:05:53 by hlouar           ###   ########.fr       */
+/*   Updated: 2016/08/18 17:40:04 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
-
-void	printlistechiche(t_liste2 *tmp)
-{
-	while (tmp->next != NULL)
-	{
-		printtab(tmp->tabich);
-		ft_putnbr(tmp->redi);
-		ft_putchar('\n');
-		tmp = tmp->next;
-	}
-}
 
 void	childhelp(t_data *data, t_liste2 *liste, int pfd[2])
 {
@@ -29,7 +18,6 @@ void	childhelp(t_data *data, t_liste2 *liste, int pfd[2])
 
 	if (liste->redi == 3 || liste->redi == 8)
 	{
-		ft_putendl("ici");
 		if (liste->redi == 8)
 			in = open(".file_for_ready", O_RDONLY);
 		else
@@ -95,29 +83,36 @@ int		helpall(t_data *data, t_liste2 *liste, int k)
 	return (1);
 }
 
-int		mainpipehelp2(t_data *data, t_liste2 *liste)
+int		mainpipehelp3(t_data *data, t_liste2 *liste)
 {
 	int	out;
-	
+
+	if (liste->next->redi == 1)
+	{
+		out = open(liste->next->next->tabich[0], O_WRONLY | O_TRUNC |
+				O_CREAT, S_IRUSR | S_IWGRP | S_IWUSR | O_APPEND);
+		dup2(out, 1);
+		close(out);
+	}
+	else if (liste->next->redi == 2)
+	{
+		if (liste->redi == 3)
+			helpmainpipehelp2(data, liste, 1);
+		else
+			helpmainpipehelp2(data, liste, 2);
+		return (10);
+	}
+	return (-1);
+}
+
+int		mainpipehelp2(t_data *data, t_liste2 *liste)
+{
 	if ((liste->redi == 3 || liste->redi == 8) && ((liste->next->redi == 0) ||
 				((liste->next->redi == 1 || liste->next->redi == 2) &&
 				liste->next->next->redi == 0)))
 	{
-		if (liste->next->redi == 1)
-		{
-			out = open(liste->next->next->tabich[0], O_WRONLY | O_TRUNC |
-					O_CREAT, S_IRUSR | S_IWGRP | S_IWUSR | O_APPEND);
-			dup2(out, 1);
-			close(out);
-		}
-		else if (liste->next->redi == 2)
-		{
-			if (liste->redi == 3)
-				helpmainpipehelp2(data, liste, 1);
-			else
-				helpmainpipehelp2(data, liste, 2);
+		if (mainpipehelp3(data, liste) == 10)
 			return (10);
-		}
 		if (liste->redi == 3)
 			helpall(data, liste, 1);
 		else

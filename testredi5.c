@@ -6,7 +6,7 @@
 /*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/16 16:04:05 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/16 16:04:08 by hlouar           ###   ########.fr       */
+/*   Updated: 2016/08/18 17:39:28 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int		helpall2(t_data *data, t_liste2 *liste)
 	execveremix(data);
 	return (1);
 }
-
 
 void	printtab(char **tabb)
 {

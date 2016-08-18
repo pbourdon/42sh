@@ -64,3 +64,14 @@ char	*withoutspace(char *str)
 	free(str);
 	return (dst);
 }
+
+int		countstr(char *str, int i)
+{
+	while (str[i] != '&')
+	{
+		if (str[i] == '\0')
+			return (-2);
+		i++;
+	}
+	return (i);
+}

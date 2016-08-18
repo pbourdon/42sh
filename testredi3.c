@@ -6,7 +6,7 @@
 /*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/14 15:26:37 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/17 16:24:34 by hlouar           ###   ########.fr       */
+/*   Updated: 2016/08/18 17:50:51 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ int		pospipe(t_data *data, int i)
 
 void	argliste(t_data *data)
 {
-	int		i;
-	int		k;
+	int			i;
+	int			k;
 	t_liste2	*tmp;
 
 	tmp = data->liste;

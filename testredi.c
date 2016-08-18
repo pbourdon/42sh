@@ -6,118 +6,21 @@
 /*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/14 15:25:49 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/16 16:05:30 by hlouar           ###   ########.fr       */
+/*   Updated: 2016/08/18 17:51:18 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 
-int		agreve(t_data *data, t_liste2 *liste)
+int		mainpipehelp(t_data *data, t_liste2 *liste)
 {
-	char	*dst;
-	char	*str;
-	int		a;
-	int		b;
-
-	str = decoupe1(data->oldtbe[ft_strlentab(data->oldtbe) - 1]);
-	dst = decoupe2(data->oldtbe[ft_strlentab(data->oldtbe) - 1]);
-	a = ft_atoi(dst);
-	b = ft_atoi(str);
-	if (ft_strcmp(dst, "-") == 0)
-		close(b);
-	if (!(isatty(a)))
-	{
-		ft_putstr("csh: ");
-		ft_putstr(dst);
-		ft_putendl(": bad file descriptor");
-		exit(0);
-	}
-	free(str);
-	free(dst);
-	dup2(b, a);
-	freetab(data->args);
-	data->args = newtab(liste->tabich);
-	execveremix(data);
-	exit(0);
-}
-
-// void rediboucle2(t_data *data, t_liste2 *liste)
-// {
-// 	int in;
-// 	pid_t father;
-//
-// 	father = fork();
-// 	if (father == 0)
-// 	{
-// 		in = open(".file_for_ready", O_RDONLY);
-// 		dup2(in, 0);
-// 		freetab(data->args);
-// 		data->args = newtab(liste->tabich);
-// 		execveremix(data);
-// 	}
-// 	else
-// 		wait(0);
-// }
-
-void rediboucle(t_liste2 *liste, t_data *data)
-{
-	t_history *hist;
-	int out;
-	pid_t father;
-
-	(void)data;
-	father = fork();
-	if (father == 0)
-	{
-		hist = double_left(liste->next->tabich[0]);
-		out = open(".file_for_ready", O_WRONLY | O_TRUNC |
-		O_CREAT, S_IRUSR | S_IWGRP | S_IWUSR | O_APPEND |
-		S_IRWXO);
-		dup2(out, 1);
-		while (hist->next)
-		{
-			ft_putendl(hist->str);
-			hist = hist->next;
-		}
-		close(out);
-		exit(0);
-	}
-	else
-		wait(0);
-}
-
-
-int	godouble(t_data *data)
-{
-	t_liste2 *tmp = data->liste;
-	rediboucle(tmp, data);
-	return(1);
-}
-
-int		mainpipehelp(t_data *data, t_liste2 *liste, int pfd[2])
-{
-	(void)pfd;
-	if (liste->redi == 1)
-	{
-		helpall2(data, liste);
-		return (1);
-	}
-	else if (liste->redi == 2)
-	{
-		doubleredichieh(data, liste);
-		return (5);
-	}
-	else if (liste->redi == 4)
-	{
-		godouble(data);
-		liste->redi = 8;
-		mainpipe(data, liste);
-	}
-	else if (liste->redi == 6)
+	if (liste->redi == 6)
 	{
 		agreve(data, liste);
 		exit(0);
 	}
+	else if (mainpipecond(data, liste) != -1)
+		return (6);
 	else if (mainpipehelp2(data, liste) != -1)
 		return (2);
 	else if (liste->next->next == NULL)
@@ -136,7 +39,7 @@ int		mainpipe(t_data *data, t_liste2 *liste)
 	int		pfd[2];
 
 	pipe(pfd);
-	if (mainpipehelp(data, liste, pfd) != 0)
+	if (mainpipehelp(data, liste) != 0)
 	{
 		close(pfd[0]);
 		close(pfd[1]);

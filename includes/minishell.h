@@ -341,12 +341,15 @@ int	checkagred(char *str);
 char	**createtab(t_data *data, int i);
 void	printtab(char **tabb);
 void	helpdoublechieh(t_data *data, int i, t_liste2 *liste, int fd);
-int		mainpipehelp(t_data *data, t_liste2 *liste, int pfd[2]);
+int		mainpipehelp(t_data *data, t_liste2 *liste);
 int		mainpipe(t_data *data, t_liste2 *liste);
-void rediboucle(t_liste2 *liste, t_data *data);
+void rediboucle(t_liste2 *liste);
 void helpmainpipehelp2(t_data *data, t_liste2 *liste, int k);
 int		ft_reset_term(struct termios term);
 void sig_handler_ctrl_c(int a);
+int		countstr(char *str, int i);
+int		agreve(t_data *data, t_liste2 *liste);
+int	mainpipecond(t_data *data, t_liste2 *liste);
 
 t_shell				shell;
 t_cursor			cursor;

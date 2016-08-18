@@ -59,7 +59,8 @@ SRC = 	builtin_exit_error.c \
 		testredi2.c \
 		testredi3.c \
 		testredi4.c \
-		testredi5.c
+		testredi5.c \
+		testredi6.c 
 OBJDIR = obj/
 
 OBJ = $(SRC:%.c=$(OBJDIR)%.o)
