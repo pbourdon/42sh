@@ -36,10 +36,10 @@ int		secondpart(char *str)
 	i = 0;
 	o = 0;
 	dst = malloc(sizeof(char) * (ft_strlen(str) - (i + 1)));
-	i = i + 1;
 	i = countstr(str, i);
 	if (i == -2)
 		return (-2);
+	i = i + 1;
 	while (str[i])
 	{
 		dst[o] = str[i];
