@@ -64,14 +64,14 @@ int				check_aggr(char *str, int token)
 	}
 	return (0);
 }
-void			print_liste(t_token *ptr)
-{
-	while (ptr)
-	{
-		printf("ptr->arg: %s, token: %d\n", ptr->arg, ptr->token);
-		ptr = ptr->next;
-	}
-}
+// void			print_liste(t_token *ptr)
+// {
+	// while (ptr)
+	// {
+		// printf("ptr->arg: %s, token: %d\n", ptr->arg, ptr->token);
+		// ptr = ptr->next;
+	// }
+// }
 int				check_list(t_token *liste, t_token *ptr)
 {
 	int			nb_redir;
@@ -89,7 +89,7 @@ int				check_list(t_token *liste, t_token *ptr)
 	ptr = liste;
 	while (ptr != NULL)
 	{
-		print_liste(ptr);
+		// print_liste(ptr);
 		ft_putchar('\n');
 		if (ptr->token == 1)
 			nb_agg++;

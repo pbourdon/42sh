@@ -27,9 +27,13 @@ void	childhelp(t_data *data, t_liste2 *liste, int pfd[2])
 {
 	int in;
 
-	if (liste->redi == 3)
+	if (liste->redi == 3 || liste->redi == 8)
 	{
-		in = open(liste->next->tabich[0], O_RDONLY);
+		ft_putendl("ici");
+		if (liste->redi == 8)
+			in = open(".file_for_ready", O_RDONLY);
+		else
+			in = open(liste->next->tabich[0], O_RDONLY);
 		if (in == -1)
 		{
 			ft_putstr(liste->next->tabich[0]);
@@ -72,11 +76,17 @@ int		doubleredichieh(t_data *data, t_liste2 *liste)
 	return (5);
 }
 
-int		helpall(t_data *data, t_liste2 *liste)
+int		helpall(t_data *data, t_liste2 *liste, int k)
 {
 	int	in;
 
-	in = open(liste->next->tabich[0], O_RDONLY);
+	in = -1;
+	if (k == 1)
+		in = open(liste->next->tabich[0], O_RDONLY);
+	else if (k == 2)
+		in = open(".file_for_ready", O_RDONLY);
+	if (in == -1)
+		exit(1);
 	dup2(in, 0);
 	close(in);
 	freetab(data->args);
@@ -88,8 +98,8 @@ int		helpall(t_data *data, t_liste2 *liste)
 int		mainpipehelp2(t_data *data, t_liste2 *liste)
 {
 	int	out;
-
-	if (liste->redi == 3 && ((liste->next->redi == 0) ||
+	
+	if ((liste->redi == 3 || liste->redi == 8) && ((liste->next->redi == 0) ||
 				((liste->next->redi == 1 || liste->next->redi == 2) &&
 				liste->next->next->redi == 0)))
 	{
@@ -102,10 +112,16 @@ int		mainpipehelp2(t_data *data, t_liste2 *liste)
 		}
 		else if (liste->next->redi == 2)
 		{
-			helpmainpipehelp2(data, liste);
+			if (liste->redi == 3)
+				helpmainpipehelp2(data, liste, 1);
+			else
+				helpmainpipehelp2(data, liste, 2);
 			return (10);
 		}
-		helpall(data, liste);
+		if (liste->redi == 3)
+			helpall(data, liste, 1);
+		else
+			helpall(data, liste, 2);
 		return (1);
 	}
 	return (-1);

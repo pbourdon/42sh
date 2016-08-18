@@ -62,24 +62,36 @@ int		agreve(t_data *data, t_liste2 *liste)
 void rediboucle(t_liste2 *liste, t_data *data)
 {
 	t_history *hist;
-	// int out;
-	// pid_t father;m
+	int out;
+	pid_t father;
 
-	(void)liste;
 	(void)data;
-	ft_putendl("titi");
-	hist = double_left("END");
-	ft_putendl("tita");
-	// out = open(".file_for_ready", O_WRONLY | O_TRUNC |
-	// O_CREAT, S_IRUSR | S_IWGRP | S_IWUSR | O_APPEND |
-	// S_IRWXO);
-	// dup2(out, 1);
-	// while (hist->next)
-	// {
-	// 	ft_putendl(hist->str);
-	// 	hist = hist->next;
-	// }
-	// close(out);
+	father = fork();
+	if (father == 0)
+	{
+		hist = double_left(liste->next->tabich[0]);
+		out = open(".file_for_ready", O_WRONLY | O_TRUNC |
+		O_CREAT, S_IRUSR | S_IWGRP | S_IWUSR | O_APPEND |
+		S_IRWXO);
+		dup2(out, 1);
+		while (hist->next)
+		{
+			ft_putendl(hist->str);
+			hist = hist->next;
+		}
+		close(out);
+		exit(0);
+	}
+	else
+		wait(0);
+}
+
+
+int	godouble(t_data *data)
+{
+	t_liste2 *tmp = data->liste;
+	rediboucle(tmp, data);
+	return(1);
 }
 
 int		mainpipehelp(t_data *data, t_liste2 *liste, int pfd[2])
@@ -95,15 +107,16 @@ int		mainpipehelp(t_data *data, t_liste2 *liste, int pfd[2])
 		doubleredichieh(data, liste);
 		return (5);
 	}
+	else if (liste->redi == 4)
+	{
+		godouble(data);
+		liste->redi = 8;
+		mainpipe(data, liste);
+	}
 	else if (liste->redi == 6)
 	{
 		agreve(data, liste);
 		exit(0);
-	}
-	if (liste->redi == 4)
-	{
-		rediboucle(liste, data, pfd);
-		return (5);
 	}
 	else if (mainpipehelp2(data, liste) != -1)
 		return (2);
@@ -122,7 +135,6 @@ int		mainpipe(t_data *data, t_liste2 *liste)
 	pid_t	father;
 	int		pfd[2];
 
-	ft_putendl(liste->tabich[0]);
 	pipe(pfd);
 	if (mainpipehelp(data, liste, pfd) != 0)
 	{
@@ -136,7 +148,7 @@ int		mainpipe(t_data *data, t_liste2 *liste)
 	{
 		close(pfd[1]);
 		dup2(pfd[0], 0);
-		if (liste->redi == 3)
+		if (liste->redi == 3 || liste->redi == 8)
 			return (mainpipe(data, liste->next->next));
 		else
 			return (mainpipe(data, liste->next));
@@ -189,12 +201,6 @@ int		thereisadoubleleft(t_data *data)
 	return (-1);
 }
 
-int	godouble(t_data *data)
-{
-	rediboucle(data->liste, data);
-	return(1);
-}
-
 int		mainredi(t_data *data)
 {
 	int		father;
@@ -207,8 +213,6 @@ int		mainredi(t_data *data)
 	father = fork();
 	str = ft_strdup(data->args[(ft_strlentab(data->args) - 1)]);
 	optchev2(data, i, str);
-	if (thereisadoubleleft(data) == 1)
-		godouble(data);
 	free(str);
 	if (ifitsredi(data) != 0)
 	{

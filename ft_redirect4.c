@@ -12,11 +12,17 @@
 
 #include "includes/minishell.h"
 
-void helpmainpipehelp2(t_data *data, t_liste2 *liste)
+void helpmainpipehelp2(t_data *data, t_liste2 *liste, int k)
 {
 	int in;
 
-	in = open(liste->next->tabich[0], O_RDONLY);
+	in = -1;
+	if (k == 1)
+		in = open(liste->next->tabich[0], O_RDONLY);
+	else if (k == 2)
+		in = open(".file_for_ready", O_RDONLY);
+	if (in == -1)
+		exit(1);
 	dup2(in, 0);
 	close(in);
 	doubleredichieh(data, liste);
