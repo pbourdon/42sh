@@ -6,7 +6,7 @@
 /*   By: hlouar <hlouar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/24 16:58:19 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/17 17:11:09 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/18 16:58:44 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -345,6 +345,8 @@ int		mainpipehelp(t_data *data, t_liste2 *liste, int pfd[2]);
 int		mainpipe(t_data *data, t_liste2 *liste);
 void rediboucle(t_liste2 *liste, t_data *data);
 void helpmainpipehelp2(t_data *data, t_liste2 *liste, int k);
+int		ft_reset_term(struct termios term);
+void sig_handler_ctrl_c(int a);
 
 t_shell				shell;
 t_cursor			cursor;

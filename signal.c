@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pguzman <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pguzman <pguzman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/04 10:16:05 by pguzman           #+#    #+#             */
-/*   Updated: 2016/08/04 10:22:40 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/18 16:58:37 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minishell.h" 
+#include "includes/minishell.h"
 
 void	sig_handler(int a)
 {
@@ -20,4 +20,16 @@ void	sig_handler(int a)
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 	shell.shell_win_size = w.ws_col;
 	update_cursor();
+}
+
+void sig_handler_ctrl_c(int a)
+{
+	struct termios term;
+
+	a = 1;
+	tputs(tgetstr("ve", NULL), 1, tputs_putchar);
+	tcgetattr(0, &term);
+	term.c_lflag |= ICANON;
+	term.c_lflag |= ECHO;
+	tcsetattr(0, TCSANOW, &term);
 }
