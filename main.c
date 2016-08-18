@@ -61,14 +61,14 @@ void			print_list(t_liste *ptr)
 	}
 }
 
-// void			print_liste(t_token *ptr)
-// {
-	// while (ptr)
-	// {
-		// printf("ptr->arg: %s, token: %d\n", ptr->arg, ptr->token);
-		// ptr = ptr->next;
-	// }
-// }
+void			print_liste(t_token *ptr)
+{
+	while (ptr)
+	{
+		printf("ptr->arg: %s, token: %d\n", ptr->arg, ptr->token);
+		ptr = ptr->next;
+	}
+}
 
 void	main_init(t_term *term)
 {
@@ -98,7 +98,7 @@ int				readgnl(t_data *data, char *str)
 		{
 			liste = create_list();
 			arg_to_list(liste, tree, 0);
-			// print_list(liste);
+			print_list(liste);
 			free_tree(tree);
 			tmp = liste;
 			while (tmp->next)
