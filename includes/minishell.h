@@ -344,7 +344,7 @@ void	helpdoublechieh(t_data *data, int i, t_liste2 *liste, int fd);
 int		mainpipehelp(t_data *data, t_liste2 *liste, int pfd[2]);
 void helpmainpipehelp2(t_data *data, t_liste2 *liste);
 int		mainpipe(t_data *data, t_liste2 *liste);
-void rediboucle(t_liste2 *liste, t_data *data, int pfd[2]);
+void rediboucle(t_liste2 *liste, t_data *data);
 
 t_shell				shell;
 t_cursor			cursor;

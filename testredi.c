@@ -59,51 +59,33 @@ int		agreve(t_data *data, t_liste2 *liste)
 // 		wait(0);
 // }
 
-void rediboucle(t_liste2 *liste, t_data *data, int pfd[2])
+void rediboucle(t_liste2 *liste, t_data *data)
 {
 	t_history *hist;
-	int out;
-	int in;
-	pid_t father;
+	// int out;
+	// pid_t father;m
 
-	father = fork();
-	if (father > 0)
-	{
-		hist = double_left(liste->next->tabich[0]);
-		out = open(".file_for_ready", O_WRONLY | O_TRUNC |
-		O_CREAT, S_IRUSR | S_IWGRP | S_IWUSR | O_APPEND |
-		S_IRWXO);
-		dup2(out, 1);
-		while (hist->next)
-		{
-			ft_putendl(hist->str);
-			hist = hist->next;
-		}
-		close(out);
-		in = open(".file_for_ready", O_RDONLY);
-		dup2(pfd[1], 1);
-		close(pfd[0]);
-		freetab(data->args);
-		data->args = newtab(liste->tabich);
-		execveremix(data);
-	}
-	else
-		wait(0);
-	// if (liste->next->next)
+	(void)liste;
+	(void)data;
+	ft_putendl("titi");
+	hist = double_left("END");
+	ft_putendl("tita");
+	// out = open(".file_for_ready", O_WRONLY | O_TRUNC |
+	// O_CREAT, S_IRUSR | S_IWGRP | S_IWUSR | O_APPEND |
+	// S_IRWXO);
+	// dup2(out, 1);
+	// while (hist->next)
 	// {
-		// ft_putendl("passe ici normalement");
-		// mainpipe(data, liste->next);
+	// 	ft_putendl(hist->str);
+	// 	hist = hist->next;
 	// }
-	// in = open()
-	// dup2(in, 0);
-	// freetab(data->args);
-	// data->args = newtab(liste->tabich);
-	// execveremix(data);
+	// close(out);
 }
 
 
 int		mainpipehelp(t_data *data, t_liste2 *liste, int pfd[2])
 {
+	(void)pfd;
 	if (liste->redi == 1)
 	{
 		helpall2(data, liste);
@@ -118,11 +100,6 @@ int		mainpipehelp(t_data *data, t_liste2 *liste, int pfd[2])
 	{
 		agreve(data, liste);
 		exit(0);
-	}
-	if (liste->redi == 4)
-	{
-		rediboucle(liste, data, pfd);
-		return (5);
 	}
 	else if (mainpipehelp2(data, liste) != -1)
 		return (2);
@@ -141,7 +118,6 @@ int		mainpipe(t_data *data, t_liste2 *liste)
 	pid_t	father;
 	int		pfd[2];
 
-	ft_putendl(liste->tabich[0]);
 	pipe(pfd);
 	if (mainpipehelp(data, liste, pfd) != 0)
 	{
@@ -194,6 +170,26 @@ int		optchev2(t_data *data, int i, char *str)
 	return (1);
 }
 
+int		thereisadoubleleft(t_data *data)
+{
+	int i;
+
+	i = 0;
+	while (data->oldtbe[i])
+	{
+		if (ft_strcmp(data->oldtbe[i], "<<") == 0)
+			return (1);
+		i++;
+	}
+	return (-1);
+}
+
+int	godouble(t_data *data)
+{
+	rediboucle(data->liste, data);
+	return(1);
+}
+
 int		mainredi(t_data *data)
 {
 	int		father;
@@ -206,6 +202,8 @@ int		mainredi(t_data *data)
 	father = fork();
 	str = ft_strdup(data->args[(ft_strlentab(data->args) - 1)]);
 	optchev2(data, i, str);
+	if (thereisadoubleleft(data) == 1)
+		godouble(data);
 	free(str);
 	if (ifitsredi(data) != 0)
 	{
