@@ -92,6 +92,7 @@ char			*get_user_name(char **env)
 		}
 		i++;
 	}
+	return ("Unknown@");
 	return (NULL);
 }
 
