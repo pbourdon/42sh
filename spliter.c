@@ -15,8 +15,20 @@
 int				is_a_spec(char c)
 {
 	if ((c == '>' || c == '<' || c == '|' ||
-		c == ';' || c == '&' || c == '|' ||
+		c == ';' || c == '|' ||
 		c == '`'))
+		return (1);
+	return (0);
+}
+
+int				is_a_spec2(char *str, char c)
+{
+	int i;
+
+	i = is_a_spec(c);
+	if (i == 1)
+		return (1);
+	else if (ft_strncmp(str, "&&", 2) == 0)
 		return (1);
 	return (0);
 }
@@ -34,7 +46,7 @@ int				sub_split_on_spec(char **cmd)
 	{
 		while (*cmd - 1 && ft_isdigit(*(*cmd - 1)))
 			*cmd -= 1;
-		if (*(*cmd - 1) && *(*cmd - 1) != ' ' && !(is_a_spec(**cmd - 1)))
+		if (*(*cmd - 1) && *(*cmd - 1) != ' ' && !(is_a_spec2(*cmd, *(*cmd - 1))))
 			*cmd = tmp;
 	}
 	return (0);
@@ -47,7 +59,7 @@ t_token			*analyse_and_stock(char **ptr, char **cmd, t_token **base)
 
 	if (!ptr || !*ptr || !**ptr)
 		return (*base);
-	if (is_a_spec(**cmd))
+	if (is_a_spec2(*cmd, **cmd))
 		return (split_on_sp(ptr, cmd, base, NULL));
 	**cmd = 0;
 	if (!(maillon = (t_token *)malloc(sizeof(t_token))))

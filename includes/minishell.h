@@ -156,7 +156,7 @@ void				aff(t_tree *tree);
 t_token				*good_order(t_token *ptr, t_token *prev, t_token *base);
 
 int					sub_split_on_spec(char **cmd);
-int					is_a_spec(char c);
+int					is_a_spec2(char *str, char c);
 char				*free_space(char *str, int quote, int d, int i);
 char				*replace_rest_of_space(char *ptr, int len);
 char				*erase_first_space(char *line);

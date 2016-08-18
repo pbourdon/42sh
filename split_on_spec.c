@@ -46,33 +46,45 @@ int			add_token(char *str)
 
 void			sub_split_norm(char **cmd, t_token *cur, int i)
 {
+	char *tmp;
+
 	if (ft_isdigit(**cmd))
 	{
-		while (*cmd + 1 && *(*cmd + 1) && ft_isdigit(*(*cmd + 1)))
+		*cmd += 1;
+		while (*cmd && **cmd && ft_isdigit(**cmd))
 		{
-			cur->arg[++i] = *(*cmd + 1);
+			cur->arg[++i] = **cmd;
 			*cmd += 1;
 		}
-		*cmd += 1;
 	}
-	if (!ft_strncmp(*cmd, ">&", 2) || !ft_strncmp(*cmd, "<&", 2))
+	if (!ft_strncmp(*cmd, ">&", 2))
 	{
-		if (ft_isdigit(*(*cmd - 1)))
-			**cmd == '>' ? (cur->arg[++i] = '>') : (cur->arg[++i] = '<');
+		if (ft_isdigit(cur->arg[0]))
+			cur->arg[++i] = '>';
 		cur->arg[++i] = '&';
-		*cmd += 1;
+		*cmd += 2;
 	}
-	while (*cmd + 1 && *(*cmd + 1))
+	tmp = *cmd;
+	while (*cmd && ft_isdigit(**cmd))
 	{
-		cur->arg[++i] = *(*cmd + 1);
+		cur->arg[++i] = **cmd;
 		*cmd += 1;
 	}
-	if (*(*cmd + 1) && (*(*cmd + 1)) == '-')
+	if (*(*cmd) && (*(*cmd)) == '-')
 	{
-		cur->arg[++i] = *(*cmd + 1);
+		cur->arg[++i] = *(*cmd);
 		*cmd += 1;
 	}
-	*cmd += 1;
+	if (!is_a_spec2(*cmd, **cmd) && **cmd != ' ' && **cmd != 0)
+	{
+		*cmd = tmp - 1;
+		tmp = ft_strchr(cur->arg, '&');
+		*(tmp + 1) = 0;
+		ft_putstr("ici: ");
+		ft_putendl(*cmd);
+		return ;
+	}
+	*cmd -= 1;
 }
 
 t_token		*split_norm(char **ptr, char **cmd, t_token **base, t_token *cur)
@@ -108,7 +120,6 @@ t_token		*split_on_sp(char **ptr, char **cmd, t_token **base, t_token *cur)
 		return (0);
 	cur->next = NULL;
 	cur->inib = 0;
-
 	if (*ptr != *cmd)
 	{
 		**cmd = 0;

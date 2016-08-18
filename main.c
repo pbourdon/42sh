@@ -91,22 +91,24 @@ int				readgnl(t_data *data, char *str)
 	{
 		ret = check_list(ptr, NULL);
 		ptr = good_order(ptr, ptr, ptr);
-		// print_liste(ptr);
+		print_liste(ptr);
 		tree = to_tree(NULL, ptr, 5, NULL);
 		free_first_list(ptr);
 		if (ret == 0)
 		{
 			liste = create_list();
 			arg_to_list(liste, tree, 0);
-			print_list(liste);
+			// print_list(liste);
 			free_tree(tree);
 			tmp = liste;
 			while (tmp->next)
 				tmp = tmp->next;
 			tmp = liste;
+			printf("Hello: %s\n", tmp->arg);
 			while (tmp->next)
 			{
 				readgnl2(data, tmp->arg);
+				printf("Helloooo\n");
 				tmp = tmp->next;
 			}
 			if (data->dspam == 0)
