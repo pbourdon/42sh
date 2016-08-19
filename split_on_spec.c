@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/20 13:24:32 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/07/23 13:53:26 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/19 11:45:29 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,13 @@ void			sub_split_norm(char **cmd, t_token *cur, int i)
 	}
 	if (!is_a_spec2(*cmd, **cmd) && **cmd != ' ' && **cmd != 0)
 	{
-		*cmd = tmp - 1;
+		*cmd = tmp;
 		tmp = ft_strchr(cur->arg, '&');
 		*(tmp + 1) = 0;
 		ft_putstr("ici: ");
 		ft_putendl(*cmd);
-		return ;
 	}
+	cur->arg[++i] = 0;
 	*cmd -= 1;
 }
 
@@ -92,7 +92,7 @@ t_token		*split_norm(char **ptr, char **cmd, t_token **base, t_token *cur)
 	int		i;
 
 	i = 0;
-	if ((ft_isdigit(**cmd)) || (((**cmd == '<' || **cmd == '>') && ((*cmd + 1) && (*(*cmd + 1)) == '&'))))
+	if (ft_isdigit(**cmd) || !ft_strncmp(*cmd, ">&", 2))
 		sub_split_norm(cmd, cur, i);
 	else if ((**cmd == '&' || **cmd == '|' || **cmd == '>' || **cmd == '<')
 		&& *(*cmd + 1) == cur->arg[i])
@@ -114,8 +114,11 @@ t_token		*split_on_sp(char **ptr, char **cmd, t_token **base, t_token *cur)
 	int		len;
 
 	len = ft_strlen(*ptr);
-	sub_split_on_spec(cmd);
+	sub_split_on_spec(cmd, ptr);
 	c = **cmd;
+//	ft_putstr("c is ");
+//	ft_putchar(c);
+//	ft_putendl(*cmd - 1);
 	if (!(cur = (t_token *)malloc(sizeof(t_token))))
 		return (0);
 	cur->next = NULL;
@@ -126,13 +129,13 @@ t_token		*split_on_sp(char **ptr, char **cmd, t_token **base, t_token *cur)
 		cur->arg = replace_rest_of_space(ft_strdup(*ptr), ft_strlen(*ptr));
 		*base = add_end_list(cur, base);
 		**cmd = c;
-		ptr = cmd;
+		*ptr = *cmd;
 		cur->token = OTHER;
 		return (split_on_sp(ptr, cmd, base, NULL));
 	}
 	if (!(cur->arg = ft_memalloc(sizeof(char) * len)))
 		return (0);
-	cur->arg = ft_memset(cur->arg, 0, 4);
+	cur->arg = ft_memset(cur->arg, 0, len);
 	cur->arg[0] = c;
 	return (split_norm(ptr, cmd, base, cur));
 }

@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/26 15:57:39 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/07/26 15:57:41 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/08/19 12:05:36 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,34 @@ t_liste		*fill_to_list(t_liste *liste, t_tree *tree)
 	return (liste);
 }
 
+t_liste		*del_last_null_arg(t_liste *liste)
+{
+	t_liste *tmp;
+	t_liste *t;
+	t_liste *b;
+
+	tmp = liste;
+	b = liste;
+	while (liste)
+	{
+		if (liste->next && !liste->next->arg)
+		{
+			tmp = liste->next;
+			liste->next = NULL;
+			while (tmp)
+			{
+				t = tmp->next;
+				if (tmp->arg)
+					free(tmp->arg);
+				free(tmp);
+				tmp = t;
+			}
+		}
+		liste = liste->next;
+	}
+	return (b);
+}
+
 void		arg_to_list(t_liste *liste, t_tree *tree, int i)
 {
 	t_liste *ptr;
@@ -58,8 +86,14 @@ void		arg_to_list(t_liste *liste, t_tree *tree, int i)
 	{
 		if (tree->left != NULL)
 			arg_to_list(ptr, tree->left, 0);
+		if (ptr->arg != NULL)
+			ptr = (ptr->next = create_list());
+		ptr->arg = ft_strdup(tree->arg);
 		if (tree->right != NULL)
+		{
+			ptr = (ptr->next = create_list());
 			arg_to_list(ptr, tree->right, 0);
+		}
 	}
 	if (tree->token < 4)
 	{
