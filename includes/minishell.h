@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hlouar <hlouar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/24 16:58:19 by hlouar            #+#    #+#             */
-/*   Updated: 2016/07/26 14:51:01 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/17 17:11:09 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include <term.h>
 # include <time.h>
 # include <unistd.h>
+# include <stdlib.h>
 
 
 # define OTHER 0
@@ -83,6 +84,7 @@ typedef struct   		s_shell
 	int					selected_start;
 	int					selected_end;
 	char				*selected_copy;
+	int            		shell_heredoc;
 }						t_shell;
 
 typedef struct			s_cursor
@@ -154,7 +156,7 @@ void				aff(t_tree *tree);
 t_token				*good_order(t_token *ptr, t_token *prev, t_token *base);
 
 int					sub_split_on_spec(char **cmd);
-int					is_a_spec(char c);
+int					is_a_spec2(char *str, char c);
 char				*free_space(char *str, int quote, int d, int i);
 char				*replace_rest_of_space(char *ptr, int len);
 char				*erase_first_space(char *line);
@@ -166,7 +168,7 @@ t_token				*ft_find_space(char *cmd, t_token *token, int inib, char quote);
 t_token				*split_on_sp(char **ptr, char **cmd, t_token **base, t_token *cur);
 
 
-void				prompt_line(void);
+void				prompt_line(char **env);
 
 void				writeonwhile(void);
 void				catchpath(t_data *data);
@@ -209,7 +211,7 @@ void				forkall(t_data *data);
 int					readgnl(t_data *data, char *str);
 void				freetab(char **tabb);
 
-int					shell_loop(t_term *term, t_data *data);
+int					shell_loop(t_term *term, t_data *data, char **env);
 void				shell_init(void);
 char				**shell_env_copy(char *envp[]);
 void				shell_shlvl(char ***cp);
@@ -270,7 +272,8 @@ int					ft_isblanck(char c);
 void				cursor_init();
 void				line_init();
 
-void				add_to_history();
+void				add_to_history(t_history *his, char *str);
+t_history			*double_left(char *fin);
 unsigned int		fsize(const char *filename);
 char				**get_history();
 char				*add_to_array(char *str, char c, int i, int len);
@@ -338,8 +341,10 @@ int	checkagred(char *str);
 char	**createtab(t_data *data, int i);
 void	printtab(char **tabb);
 void	helpdoublechieh(t_data *data, int i, t_liste2 *liste, int fd);
-int		mainpipehelp(t_data *data, t_liste2 *liste);
+int		mainpipehelp(t_data *data, t_liste2 *liste, int pfd[2]);
 void helpmainpipehelp2(t_data *data, t_liste2 *liste);
+int		mainpipe(t_data *data, t_liste2 *liste);
+void rediboucle(t_liste2 *liste, t_data *data);
 
 t_shell				shell;
 t_cursor			cursor;

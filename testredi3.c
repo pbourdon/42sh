@@ -6,7 +6,7 @@
 /*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/14 15:26:37 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/14 15:26:43 by hlouar           ###   ########.fr       */
+/*   Updated: 2016/08/17 16:24:34 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	argliste(t_data *data)
 			tmp->redi = refredi(data->oldtbe[data->posi]);
 		else
 			tmp->redi = 0;
-		tmp->next = malloc(sizeof(t_liste));
+		tmp->next = malloc(sizeof(t_liste2));
 		tmp = tmp->next;
 		tmp->next = NULL;
 	}

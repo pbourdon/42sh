@@ -71,13 +71,19 @@ t_token			*ft_find_space(char *cmd, t_token *token, int inib, char quote)
 	tmp = cmd;
 	while (cmd && *cmd)
 	{
-		if ((!(quote + inib) || (!(inib) && quote == '\'')) && is_a_spec(*cmd))
+		if ((!(quote + inib) || (!(inib) && quote == '\'')) && is_a_spec2(cmd, *cmd))
 		{
 			token = analyse_and_stock(&ptr, &cmd, &token);
-			ptr = cmd;
-			if ((*cmd && cmd && is_a_spec(*cmd)) || (*cmd == ' '))
+			ptr = cmd + 1;
+			ft_putstr("test ptr : ");
+			ft_putendl(ptr);
+/*			if ((*cmd && cmd && is_a_spec2(cmd, *cmd)) || (*cmd == ' '))
+			{
+				ft_putendl(ptr);
 				++ptr;
-		}
+				ft_putendl(ptr);
+			}
+*/		}
 		if (quote && *cmd == quote && inib == 0)
 			quote = 0;
 		else if (!quote && (*cmd == '"' || *cmd == '\''))
@@ -87,7 +93,10 @@ t_token			*ft_find_space(char *cmd, t_token *token, int inib, char quote)
 		cmd++;
 	}
 	if (ptr != cmd)
+	{
+		ft_putstr("test");
 		token = analyse_and_stock(&ptr, &cmd, &token);
+	}
 	return (token);
 }
 

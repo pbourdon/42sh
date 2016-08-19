@@ -61,14 +61,14 @@ void			print_list(t_liste *ptr)
 	}
 }
 
-// void			print_liste(t_token *ptr)
-// {
-	// while (ptr)
-	// {
-		// printf("ptr->arg: %s, token: %d\n", ptr->arg, ptr->token);
-		// ptr = ptr->next;
-	// }
-// }
+void			print_liste(t_token *ptr)
+{
+	while (ptr)
+	{
+		printf("ptr->arg: %s, token: %d\n", ptr->arg, ptr->token);
+		ptr = ptr->next;
+	}
+}
 
 void	main_init(t_term *term)
 {
@@ -91,7 +91,7 @@ int				readgnl(t_data *data, char *str)
 	{
 		ret = check_list(ptr, NULL);
 		ptr = good_order(ptr, ptr, ptr);
-		// print_liste(ptr);
+		print_liste(ptr);
 		tree = to_tree(NULL, ptr, 5, NULL);
 		free_first_list(ptr);
 		if (ret == 0)
@@ -104,9 +104,11 @@ int				readgnl(t_data *data, char *str)
 			while (tmp->next)
 				tmp = tmp->next;
 			tmp = liste;
+			printf("Hello: %s\n", tmp->arg);
 			while (tmp->next)
 			{
 				readgnl2(data, tmp->arg);
+				printf("Helloooo\n");
 				tmp = tmp->next;
 			}
 			if (data->dspam == 0)
@@ -143,7 +145,6 @@ int				main(int ac, char **av, char **env)
 	data.envi = 0;
 	data.turn = 0;
 	main_init(&first);
-	shell_loop(&first, &data);
-	// readgnl(&data);
+	shell_loop(&first, &data, env);
 	return (0);
 }

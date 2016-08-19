@@ -62,6 +62,7 @@ int		allif(char *str)
 		(ft_strcmp(str, ">") == 0) ||
 		(ft_strcmp(str, ">>") == 0) ||
 		(ft_strcmp(str, "<") == 0) ||
+		(ft_strcmp(str, "<<") == 0) ||
 		(checkagred(str) == 1))
 		return (1);
 	return (-1);
