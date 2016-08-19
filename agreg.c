@@ -6,7 +6,7 @@
 /*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/15 13:49:02 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/15 13:49:05 by hlouar           ###   ########.fr       */
+/*   Updated: 2016/08/19 13:19:44 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	secondpart(char *str)
 	{
 		free(dst);
 		return (1);
-	}
+	} // leaks
 	return (-1);
 }
 int	checkagred(char *str)
@@ -81,7 +81,7 @@ int	checkagred(char *str)
 	{
 		free(dst);
 		return (1);
-	}
+	} // leaks
 	return (-1);
 }
 

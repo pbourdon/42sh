@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/20 13:24:40 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/04 17:20:28 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/18 17:59:11 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 int				is_a_spec(char c)
 {
-	if ((c == '>' || c == '<' || c == '|' ||
-		c == ';' || c == '|' ||
-		c == '`'))
+	if (c == '>' || c == '<' || c == '|' || c == ';')
 		return (1);
 	return (0);
 }
@@ -33,7 +31,7 @@ int				is_a_spec2(char *str, char c)
 	return (0);
 }
 
-int				sub_split_on_spec(char **cmd)
+int				sub_split_on_spec(char **cmd, char **ptr)
 {
 	// if ((**cmd == '>' || **cmd == '<') && (*cmd - 1) &&
 		// ft_isdigit(*(*cmd - 1)) && (!*(*cmd - 2) ||
@@ -42,12 +40,23 @@ int				sub_split_on_spec(char **cmd)
 	char *tmp;
 
 	tmp = *cmd;
-	if ((**cmd == '>' || **cmd == '<') && (*cmd + 1) && *(*cmd + 1) == '&')
+	if (!ft_strncmp(*cmd, ">&", 2))
 	{
 		while (*cmd - 1 && ft_isdigit(*(*cmd - 1)))
+		{
+			ft_putendl(*cmd);
 			*cmd -= 1;
-		if (*(*cmd - 1) && *(*cmd - 1) != ' ' && !(is_a_spec2(*cmd, *(*cmd - 1))))
+			ft_putendl(*cmd);
+			ft_putendl(*ptr);
+			ft_putstr("-----------------testing-----------\n");
+		}
+		if (*cmd != *ptr && *cmd - 1 && *(*cmd - 1) > 0  && *(*cmd - 1) != ' ' 
+			&& !(is_a_spec2(*cmd, *(*cmd - 1))))
+		{
 			*cmd = tmp;
+			ft_putendl(*cmd);
+			ft_putstr("-----------------TESTING-----------\n");
+		}
 	}
 	return (0);
 }
