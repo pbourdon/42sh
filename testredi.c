@@ -78,8 +78,6 @@ int		mainpipe(t_data *data, t_liste2 *liste)
 	{
 		close(pfd[0]);
 		close(pfd[1]);
-		exit(0);
-		return (5);
 	}
 	if ((father = fork()) == 0)
 	{
