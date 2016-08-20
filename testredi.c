@@ -51,6 +51,11 @@ int	checkifbinexist(t_data *data, t_liste2 *liste)
 			o = 1;
 		freetab(data->args);
 		data->args = newtab(tmp->tabich);
+		if (tmp->redi == 2 || tmp->redi == 1)
+		{
+			ft_putendl("chiche");
+			return (0);
+		}
 		if (createbinpath(data, 2) == 0 && o == 1)
 		{
 				i = 1;
@@ -91,6 +96,7 @@ int		mainpipe(t_data *data, t_liste2 *liste)
 	}
 	close(pfd[0]);
 	close(pfd[1]);
+	waitpid(father, NULL, 0);
 	return (1);
 }
 
@@ -155,8 +161,6 @@ int		mainredi(t_data *data)
 		if (father == 0)
 		{
 			argliste(data);
-			if (checkifbinexist(data, data->liste) == 1)
-				exit(0);
 			mainpipe(data, data->liste);
 			freeliste(data->liste);
 			exit(0);
