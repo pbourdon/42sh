@@ -6,7 +6,7 @@
 /*   By: hlouar <hlouar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/16 17:45:20 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/04 16:02:32 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/19 12:13:28 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,22 +91,26 @@ int				readgnl(t_data *data, char *str)
 	{
 		ret = check_list(ptr, NULL);
 		ptr = good_order(ptr, ptr, ptr);
-		// print_liste(ptr);
+//		print_liste(ptr);
 		tree = to_tree(NULL, ptr, 5, NULL);
+//		aff(tree);
 		free_first_list(ptr);
 		if (ret == 0)
 		{
 			liste = create_list();
 			arg_to_list(liste, tree, 0);
+			liste = del_last_null_arg(liste);
 			print_list(liste);
 			free_tree(tree);
 			tmp = liste;
 			while (tmp->next)
 				tmp = tmp->next;
 			tmp = liste;
-			while (tmp->next)
+			printf("Hello: %s\n", tmp->arg);
+			while (tmp)
 			{
 				readgnl2(data, tmp->arg);
+				printf("Helloooo\n");
 				tmp = tmp->next;
 			}
 			if (data->dspam == 0)

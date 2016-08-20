@@ -6,7 +6,7 @@
 /*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/14 15:26:21 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/16 16:03:55 by hlouar           ###   ########.fr       */
+/*   Updated: 2016/08/19 13:14:17 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int		ifitsredi(t_data *data)
 			return (4);
 		if (ft_strcmp(data->args[i], "|") == 0)
 			return (5);
-		if (ft_strcmp(data->args[i], "|") == 0)
-			return (5);
+//		if (ft_strcmp(data->args[i], "|") == 0)
+//			return (5);
 		if (checkagred(data->args[i]) == 1)
 			return (6);
 		i++;

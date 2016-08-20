@@ -6,7 +6,13 @@
 /*   By: hlouar <hlouar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/24 16:58:19 by hlouar            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2016/08/18 16:58:44 by pguzman          ###   ########.fr       */
+||||||| merged common ancestors
+/*   Updated: 2016/08/17 17:11:09 by pguzman          ###   ########.fr       */
+=======
+/*   Updated: 2016/08/19 12:05:50 by cmichaud         ###   ########.fr       */
+>>>>>>> res
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,14 +155,15 @@ void				free_list(t_liste *ptr);
 
 void				arg_to_list(t_liste *liste, t_tree *tree, int i);
 t_liste				*create_list();
+t_liste				*del_last_null_arg(t_liste *liste);
 
 t_tree				*to_tree(t_tree *tree, t_token *token, int prio, const char *str);
 void				aff(t_tree *tree);
 
 t_token				*good_order(t_token *ptr, t_token *prev, t_token *base);
 
-int					sub_split_on_spec(char **cmd);
-int					is_a_spec(char c);
+int					sub_split_on_spec(char **cmd, char **ptr);
+int					is_a_spec2(char *str, char c);
 char				*free_space(char *str, int quote, int d, int i);
 char				*replace_rest_of_space(char *ptr, int len);
 char				*erase_first_space(char *line);

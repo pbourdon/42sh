@@ -6,7 +6,7 @@
 /*   By: cmichaud <cmichaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/21 19:36:50 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/08/04 15:52:47 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/19 11:47:41 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,14 @@
 void		aff(t_tree *tree)
 {
 	if (tree == NULL)
+	{
+		ft_putendl("end node\n");
 		return ;
+	}
+	ft_putendl(tree->arg);
+	ft_putendl("left");
 	aff(tree->left);
+	ft_putendl("right");
 	aff(tree->right);
 	return ;
 }
