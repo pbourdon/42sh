@@ -27,7 +27,7 @@ char	*createbinpathtools(t_data *data, char *str, int i)
 	return (str);
 }
 
-int		createbinpath(t_data *data)
+int		createbinpath(t_data *data, int n)
 {
 	int		i;
 	char	*str;
@@ -51,7 +51,8 @@ int		createbinpath(t_data *data)
 			i++;
 		}
 	}
-	errorbinary(data, str);
+	if (n == 1)
+		errorbinary(data, str);
 	return (0);
 }
 
@@ -61,7 +62,7 @@ int		createthetab(t_data *data)
 	int	o;
 
 	o = 0;
-	if (createbinpath(data) == 1)
+	if (createbinpath(data, 1) == 1)
 	{
 		data->tabb = (char **)malloc(sizeof(char *) *
 				ft_strlentab(data->args) + 1);
@@ -78,7 +79,9 @@ int		createthetab(t_data *data)
 		return (1);
 	}
 	else
+	{
 		return (-1);
+	}
 }
 
 void	forkall(t_data *data)

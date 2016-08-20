@@ -202,7 +202,6 @@ void				printab(char **tabb);
 int					alreadyexist(char **tabb, char *str);
 int					ft_strlentab(char **tabb);
 char				**setenvifdontexist(t_data *data, int a);
-int					createbinpath(t_data *data);
 void				errorbinary(t_data *data, char *str);
 void				callallenv(t_data *data);
 void				printenv(t_data *data);
@@ -349,6 +348,7 @@ int		ft_reset_term(struct termios term);
 void sig_handler_ctrl_c(int a);
 int		countstr(char *str, int i);
 int		agreve(t_data *data, t_liste2 *liste);
+int		createbinpath(t_data *data, int n);
 int	mainpipecond(t_data *data, t_liste2 *liste);
 
 t_shell				shell;

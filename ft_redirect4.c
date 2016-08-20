@@ -93,7 +93,7 @@ int			execveremix(t_data *data)
 		}
 		freetab(data->tabb);
 		freetab(data->args);
-		return (0);
+		return (-2);
 	}
-	return (0);
+	return (-1);
 }

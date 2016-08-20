@@ -20,7 +20,9 @@ int		mainpipehelp(t_data *data, t_liste2 *liste)
 		exit(0);
 	}
 	else if (mainpipecond(data, liste) != -1)
+	{
 		return (6);
+	}
 	else if (mainpipehelp2(data, liste) != -1)
 		return (2);
 	else if (liste->next->next == NULL)
@@ -33,6 +35,34 @@ int		mainpipehelp(t_data *data, t_liste2 *liste)
 	return (0);
 }
 
+int	checkifbinexist(t_data *data, t_liste2 *liste)
+{
+	t_liste2 *tmp;
+
+	tmp = liste;
+	int i;
+	int o;
+
+	o = 0;
+	i = 0;
+	while (tmp->next)
+	{
+		if (tmp->redi == 5)
+			o = 1;
+		freetab(data->args);
+		data->args = newtab(tmp->tabich);
+		if (createbinpath(data, 2) == 0 && o == 1)
+		{
+				i = 1;
+				ft_putstr(tmp->tabich[0]);
+				ft_putendl(": Command not found");
+		}
+		tmp = tmp->next;
+	}
+	if (i == 1)
+		return (1);
+	return (0);
+}
 int		mainpipe(t_data *data, t_liste2 *liste)
 {
 	pid_t	father;
@@ -43,10 +73,13 @@ int		mainpipe(t_data *data, t_liste2 *liste)
 	{
 		close(pfd[0]);
 		close(pfd[1]);
+		exit(0);
 		return (5);
 	}
 	if ((father = fork()) == 0)
+	{
 		childhelp(data, liste, pfd);
+	}
 	else
 	{
 		close(pfd[1]);
@@ -122,6 +155,8 @@ int		mainredi(t_data *data)
 		if (father == 0)
 		{
 			argliste(data);
+			if (checkifbinexist(data, data->liste) == 1)
+				exit(0);
 			mainpipe(data, data->liste);
 			freeliste(data->liste);
 			exit(0);

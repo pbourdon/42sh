@@ -34,7 +34,8 @@ void	childhelp(t_data *data, t_liste2 *liste, int pfd[2])
 	close(pfd[0]);
 	freetab(data->args);
 	data->args = newtab(liste->tabich);
-	execveremix(data);
+	if (execveremix(data) == -1)
+		exit(0);
 }
 
 int		doubleredichieh(t_data *data, t_liste2 *liste)
