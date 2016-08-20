@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/20 13:24:32 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/19 11:45:29 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/20 18:18:25 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ t_token		*split_norm(char **ptr, char **cmd, t_token **base, t_token *cur)
 	i = 0;
 	if (ft_isdigit(**cmd) || !ft_strncmp(*cmd, ">&", 2))
 		sub_split_norm(cmd, cur, i);
-	else if ((**cmd == '&' || **cmd == '|' || **cmd == '>' || **cmd == '<')
+	else if ((**cmd == '&' || **cmd == '>' || **cmd == '<')
 		&& *(*cmd + 1) == cur->arg[i])
 	{
 		cur->arg[++i] = *(*cmd + 1);
