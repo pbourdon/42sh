@@ -3,10 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+<<<<<<< HEAD
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
+||||||| merged common ancestors
+/*   By: hlouar <hlouar@student.42.fr>              +#+  +:+       +#+        */
+=======
+/*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
+>>>>>>> 2f435cffb7ffd831a2fd9120e05eacb2978e1e65
 /*                                                +#+#+#+#+#+   +#+           */
+<<<<<<< HEAD
 /*   Created: 2016/08/20 17:27:59 by cmichaud          #+#    #+#             */
 /*   Updated: 2016/08/20 17:28:00 by cmichaud         ###   ########.fr       */
+||||||| merged common ancestors
+/*   Created: 2016/04/24 16:58:19 by hlouar            #+#    #+#             */
+<<<<<<< HEAD
+/*   Updated: 2016/08/18 16:58:44 by pguzman          ###   ########.fr       */
+||||||| merged common ancestors
+/*   Updated: 2016/08/17 17:11:09 by pguzman          ###   ########.fr       */
+=======
+/*   Updated: 2016/08/19 12:05:50 by cmichaud         ###   ########.fr       */
+>>>>>>> res
+=======
+/*   Created: 2016/08/20 18:20:55 by hlouar            #+#    #+#             */
+/*   Updated: 2016/08/20 18:21:00 by hlouar           ###   ########.fr       */
+>>>>>>> 2f435cffb7ffd831a2fd9120e05eacb2978e1e65
 /*                                                                            */
 /* ************************************************************************** */
 

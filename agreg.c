@@ -5,8 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
+<<<<<<< HEAD
 /*   Created: 2016/08/20 17:28:19 by cmichaud          #+#    #+#             */
 /*   Updated: 2016/08/20 17:28:20 by cmichaud         ###   ########.fr       */
+||||||| merged common ancestors
+/*   Created: 2016/08/15 13:49:02 by hlouar            #+#    #+#             */
+<<<<<<< HEAD
+/*   Updated: 2016/08/18 17:57:46 by hlouar           ###   ########.fr       */
+||||||| merged common ancestors
+/*   Updated: 2016/08/15 13:49:05 by hlouar           ###   ########.fr       */
+=======
+/*   Updated: 2016/08/19 13:19:44 by cmichaud         ###   ########.fr       */
+>>>>>>> res
+=======
+/*   Created: 2016/08/20 18:21:18 by hlouar            #+#    #+#             */
+/*   Updated: 2016/08/20 18:21:20 by hlouar           ###   ########.fr       */
+>>>>>>> 2f435cffb7ffd831a2fd9120e05eacb2978e1e65
 /*                                                                            */
 /* ************************************************************************** */
 
