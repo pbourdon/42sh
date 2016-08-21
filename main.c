@@ -56,7 +56,7 @@ void			print_list(t_liste *ptr)
 {
 	while (ptr)
 	{
-		printf("ptr->arg: %s\n", ptr->arg);
+		// printf("ptr->arg: %s\n", ptr->arg);
 		ptr = ptr->next;
 	}
 }
@@ -65,7 +65,7 @@ void			print_liste(t_token *ptr)
 {
 	while (ptr)
 	{
-		printf("ptr->arg: %s, token: %d\n", ptr->arg, ptr->token);
+		// printf("ptr->arg: %s, token: %d\n", ptr->arg, ptr->token);
 		ptr = ptr->next;
 	}
 }
@@ -106,11 +106,11 @@ int				readgnl(t_data *data, char *str)
 			while (tmp->next)
 				tmp = tmp->next;
 			tmp = liste;
-			printf("Hello: %s\n", tmp->arg);
+			// printf("Hello: %s\n", tmp->arg);
 			while (tmp)
 			{
 				readgnl2(data, tmp->arg);
-				printf("Helloooo\n");
+				// printf("Helloooo\n");
 				tmp = tmp->next;
 			}
 			if (data->dspam == 0)

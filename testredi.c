@@ -27,6 +27,12 @@ int		mainpipehelp(t_data *data, t_liste2 *liste)
 		return (2);
 	else if (liste->next->next == NULL)
 	{
+		if (createbinpath(data, 2) == 0)
+		{
+			ft_putstr(data->args[0]);
+			ft_putendl(": Command not found");
+			exit(0);
+		}
 		freetab(data->args);
 		data->args = newtab(liste->tabich);
 		execveremix(data);
@@ -52,10 +58,7 @@ int	checkifbinexist(t_data *data, t_liste2 *liste)
 		freetab(data->args);
 		data->args = newtab(tmp->tabich);
 		if (tmp->redi == 2 || tmp->redi == 1)
-		{
-			ft_putendl("chiche");
 			return (0);
-		}
 		if (createbinpath(data, 2) == 0 && o == 1)
 		{
 				i = 1;
