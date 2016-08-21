@@ -17,21 +17,23 @@ int		mainpipehelp(t_data *data, t_liste2 *liste)
 	if (liste->redi == 6)
 	{
 		agreve(data, liste);
-		exit(0);
+		return(4);
 	}
 	else if (mainpipecond(data, liste) != -1)
 	{
 		return (6);
 	}
 	else if (mainpipehelp2(data, liste) != -1)
+	{
 		return (2);
+	}
 	else if (liste->next->next == NULL)
 	{
 		if (createbinpath(data, 2) == 0)
 		{
 			ft_putstr(data->args[0]);
 			ft_putendl(": Command not found");
-			exit(0);
+			return (5);
 		}
 		freetab(data->args);
 		data->args = newtab(liste->tabich);
@@ -98,6 +100,8 @@ int		mainpipe(t_data *data, t_liste2 *liste)
 	close(pfd[0]);
 	close(pfd[1]);
 	waitpid(father, NULL, 0);
+	// ft_putendl("chiche");
+	// ft_putnbr(n);
 	return (1);
 }
 
