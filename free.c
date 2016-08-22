@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/07 16:48:13 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/07 16:48:15 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/08/22 17:26:13 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,8 @@ void			free_tree(t_tree *tree)
 	if (tree->right)
 		free_tree(tree->right);
 	if (tree)
+	{
+		free(tree->arg);
 		free(tree);
+	}
 }
