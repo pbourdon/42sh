@@ -51,7 +51,7 @@ int		secondpart(char *str)
 	{
 		free(dst);
 		return (1);
-	} // leaks
+	}
 	return (-1);
 }
 
@@ -80,7 +80,7 @@ int		checkagred(char *str)
 	{
 		free(dst);
 		return (1);
-	} // leaks
+	}
 	return (-1);
 }
 

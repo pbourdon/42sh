@@ -29,8 +29,6 @@ int		ifitsredi(t_data *data)
 			return (4);
 		if (ft_strcmp(data->args[i], "|") == 0)
 			return (5);
-//		if (ft_strcmp(data->args[i], "|") == 0)
-//			return (5);
 		if (checkagred(data->args[i]) == 1)
 			return (6);
 		i++;

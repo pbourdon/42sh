@@ -17,7 +17,7 @@ int		mainpipehelp(t_data *data, t_liste2 *liste)
 	if (liste->redi == 6)
 	{
 		agreve(data, liste);
-		return(4);
+		return (4);
 	}
 	else if (mainpipecond(data, liste) != -1)
 	{
@@ -41,36 +41,6 @@ int		mainpipehelp(t_data *data, t_liste2 *liste)
 	return (0);
 }
 
-int	checkifbinexist(t_data *data, t_liste2 *liste)
-{
-	t_liste2 *tmp;
-
-	tmp = liste;
-	int i;
-	int o;
-
-	o = 0;
-	i = 0;
-	while (tmp->next)
-	{
-		if (tmp->redi == 5)
-			o = 1;
-		freetab(data->args);
-		data->args = newtab(tmp->tabich);
-		if (tmp->redi == 2 || tmp->redi == 1)
-			return (0);
-		if (createbinpath(data, 2) == 0 && o == 1)
-		{
-				i = 1;
-				ft_putstr(tmp->tabich[0]);
-				ft_putendl(": Command not found");
-		}
-		tmp = tmp->next;
-	}
-	if (i == 1)
-		return (1);
-	return (0);
-}
 int		mainpipe(t_data *data, t_liste2 *liste)
 {
 	pid_t	father;
@@ -83,9 +53,7 @@ int		mainpipe(t_data *data, t_liste2 *liste)
 		close(pfd[1]);
 	}
 	if ((father = fork()) == 0)
-	{
 		childhelp(data, liste, pfd);
-	}
 	else
 	{
 		close(pfd[1]);
@@ -98,8 +66,6 @@ int		mainpipe(t_data *data, t_liste2 *liste)
 	close(pfd[0]);
 	close(pfd[1]);
 	waitpid(father, NULL, 0);
-	// ft_putendl("chiche");
-	// ft_putnbr(n);
 	return (1);
 }
 

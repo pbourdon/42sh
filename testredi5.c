@@ -56,3 +56,10 @@ int		hulppls(t_data *data, t_liste2 *liste, int pfd[2])
 		exit(0);
 	return (1);
 }
+
+int		printerrred(t_liste2 *tmp)
+{
+	ft_putstr(tmp->tabich[0]);
+	ft_putendl(": Command not found");
+	return (1);
+}
