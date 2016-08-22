@@ -26,6 +26,7 @@ void			parsecommand(t_data *data)
 	{
 		mainredi(data);
 		free(data->liste);
+		freetab(data->oldtbe);
 		return ;
 	}
 	else if (ft_strcmp(data->args[0], "env") == 0)

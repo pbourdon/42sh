@@ -63,6 +63,7 @@ char			*save_post(char *hostname)
 	len = len - 6;
 	tmp = ft_memalloc(sizeof(char) * len + 1);
 	tmp = ft_strncpy(tmp, hostname, len);
+	free(hostname);
 	return (tmp);
 }
 
@@ -105,9 +106,10 @@ void			prompt_line(char **env)
 	hostname[1023] = '\0';
 	gethostname(hostname, 1000);
 	hostname = save_post(hostname);
-	hostname = ft_strjoin(get_user_name(env), hostname);
+	free(hostname);
+	hostname = ft_joinfree(get_user_name(env), hostname, 3);
 	curtime = ntime();
-	curtime = ft_strjoin(" ", curtime);
+	curtime = ft_joinfree(" ", curtime, 2);
 	cwd = get_pwd();
 	if (cwd == NULL)
 		cwd = ft_strdup("#error#");
