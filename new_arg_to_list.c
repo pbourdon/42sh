@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/21 17:01:40 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/08/21 22:52:36 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/22 18:35:56 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ void		arg_to_list(t_liste *liste, t_tree *tree)
 	cur = liste;
 	while (tree && tree->tk > 3)
 	{
-		ft_putstr("while arg\n");
 		if (tree->left)
 		{
 			if (cur->arg != NULL)
@@ -103,8 +102,11 @@ void		arg_to_list(t_liste *liste, t_tree *tree)
 			}
 			cur->arg = get_arg_nodes(tree->left);
 		}
-		cur->next = create_list();
-		cur = cur->next;
+		if (cur->arg != NULL)
+		{
+			cur->next = create_list();
+			cur = cur->next;
+		}
 		cur->arg = ft_strdup(tree->arg);
 		tree = tree->right;
 	}

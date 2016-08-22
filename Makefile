@@ -6,7 +6,7 @@
 #    By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/02 13:52:37 by bde-maze          #+#    #+#              #
-#*   Updated: 2016/08/16 17:07:15 by                  ###   ########.fr       *#
+#    Updated: 2016/08/22 18:16:50 by cmichaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,9 @@ SRC = 	builtin_exit_error.c \
 		testredi3.c \
 		testredi4.c \
 		testredi5.c \
-		testredi6.c
+		testredi6.c \
+		hash.c 
+
 OBJDIR = obj/
 
 OBJ = $(SRC:%.c=$(OBJDIR)%.o)
