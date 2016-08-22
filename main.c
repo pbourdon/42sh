@@ -99,7 +99,7 @@ int				readgnl(t_data *data, char *str)
 		if (ret == 0)
 		{
 			liste = create_list();
-			arg_to_list(liste, tree, 0);
+			arg_to_list(liste, tree);
 			liste = del_last_null_arg(liste);
 			// print_list(liste);
 			free_tree(tree);

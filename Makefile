@@ -22,7 +22,7 @@ SRC = 	builtin_exit_error.c \
 		split_on_spec.c \
 		old_functions.c \
 		parseandexc2.c \
-		arg_to_list.c \
+		new_arg_to_list.c \
 		parseandexc.c \
 		press_key1.c \
 		add_letter.c \
@@ -60,7 +60,7 @@ SRC = 	builtin_exit_error.c \
 		testredi3.c \
 		testredi4.c \
 		testredi5.c \
-		testredi6.c 
+		testredi6.c
 OBJDIR = obj/
 
 OBJ = $(SRC:%.c=$(OBJDIR)%.o)

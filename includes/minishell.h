@@ -147,7 +147,7 @@ void				free_tree(t_tree *tree);
 void				free_first_list(t_token *ptr);
 void				free_list(t_liste *ptr);
 
-void				arg_to_list(t_liste *liste, t_tree *tree, int i);
+void				arg_to_list(t_liste *liste, t_tree *tree);
 t_liste				*create_list();
 t_liste				*del_last_null_arg(t_liste *liste);
 
