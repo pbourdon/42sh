@@ -64,33 +64,46 @@ int				check_aggr(char *str, int token)
 	}
 	return (0);
 }
-// void			print_liste(t_token *ptr)
-// {
-	// while (ptr)
-	// {
-		// printf("ptr->arg: %s, token: %d\n", ptr->arg, ptr->token);
-		// ptr = ptr->next;
-	// }
-// }
-int				check_list(t_token *liste, t_token *ptr)
+
+void			print_liste(t_token *ptr)
+{
+	while (ptr)
+	{
+		printf("ptr->arg: %s, token: %d\n", ptr->arg, ptr->token);
+		ptr = ptr->next;
+	}
+}
+
+void			add_digit_aggr(t_token *liste)
+{
+	char 		*tmp;
+
+	tmp = ft_strdup("1");
+	while (liste != NULL)
+	{
+		if (liste->token == 1 && ft_isdigit(liste->arg[0]) == 0)
+		{
+			tmp = ft_strjoin(tmp, liste->arg);
+			liste->arg = ft_strdup(tmp);
+		}
+		liste = liste->next;
+	}
+}
+
+int				check_list(t_token *liste, t_token *ptr, int ret, int nb_agg)
 {
 	int			nb_redir;
 	int			nb_redir2;
 	int			under_cmd;
-	int			ret;
-	int			nb_agg;
-
 
 	under_cmd = 0;
 	nb_redir = 0;
 	nb_redir2 = 0;
-	nb_agg = 0;
-	ret = 0;
 	ptr = liste;
 	while (ptr != NULL)
 	{
 		// print_liste(ptr);
-		ft_putchar('\n');
+		// ft_putchar('\n');
 		if (ptr->token == 1)
 			nb_agg++;
 		nb_redir = set_redir_var(ptr->arg, nb_redir);
@@ -101,5 +114,6 @@ int				check_list(t_token *liste, t_token *ptr)
 			return (-1);
 		ptr = ptr->next;
 	}
+	add_digit_aggr(liste);
 	return (0);
 }
