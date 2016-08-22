@@ -94,7 +94,7 @@ t_token			*ft_find_space(char *cmd, t_token *token, int inib, char quote)
 	}
 	if (ptr != cmd)
 	{
-		ft_putstr("test");
+		// ft_putstr("test");
 		token = analyse_and_stock(&ptr, &cmd, &token);
 	}
 	return (token);

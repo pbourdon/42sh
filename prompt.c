@@ -66,10 +66,10 @@ char			*save_post(char *hostname)
 	return (tmp);
 }
 
-void			go_free(char *cwd, char *prompt, char *hostname, char *curtime)
+void			go_free(char *cwd, char *hostname, char *curtime)
 {
 	free(cwd);
-	free(prompt);
+	// free(prompt);
 	free(hostname);
 	free(curtime);
 }
@@ -88,7 +88,6 @@ char			*get_user_name(char **env)
 			tmp += 5;
 			tmp = ft_strjoin(tmp, "@");
 			return (tmp);
-			// printf("%s\n", env[i]);
 		}
 		i++;
 	}
@@ -99,7 +98,6 @@ char			*get_user_name(char **env)
 void			prompt_line(char **env)
 {
 	char		*cwd;
-	char		*prompt;
 	char		*hostname;
 	char		*curtime;
 
@@ -113,8 +111,6 @@ void			prompt_line(char **env)
 	cwd = get_pwd();
 	if (cwd == NULL)
 		cwd = ft_strdup("#error#");
-	prompt = ft_strjoin(hostname, curtime);
-	prompt = ft_strjoin(prompt, cwd);
 	ft_putstr("\033[35m");
 	ft_putstr(hostname);
 	ft_putstr(" \033[36m-");
@@ -122,5 +118,5 @@ void			prompt_line(char **env)
 	ft_putstr("- \033[32m");
 	ft_putendl(cwd);
 	ft_putstr("\033[32m-> % \033[39m ");
-	go_free(cwd, prompt, hostname, curtime);
+	go_free(cwd, hostname, curtime);
 }
