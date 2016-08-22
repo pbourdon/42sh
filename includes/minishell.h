@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/20 18:33:29 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/08/20 18:33:32 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/22 19:33:55 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -324,6 +324,10 @@ int						createbinpath(t_data *data, int n);
 int						hulppls(t_data *data, t_liste2 *liste, int pfd[2]);
 void					parsecommand(t_data *data);
 int						mainpipecond(t_data *data, t_liste2 *liste);
+char					*get_bin(char *bin);
+char					**get_tabhash(char **new);
+void					free_tabhash(void);
+void					init_hashtab(char **env);
 
 t_shell					g_shell;
 t_cursor				g_cursor;
