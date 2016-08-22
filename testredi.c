@@ -21,20 +21,18 @@ int		mainpipehelp(t_data *data, t_liste2 *liste)
 	}
 	else if (mainpipecond(data, liste) != -1)
 	{
+		exit(0);
 		return (6);
 	}
 	else if (mainpipehelp2(data, liste) != -1)
 	{
+		exit(0);
 		return (2);
 	}
 	else if (liste->next->next == NULL)
 	{
 		if (createbinpath(data, 2) == 0)
-		{
-			ft_putstr(data->args[0]);
-			ft_putendl(": Command not found");
 			return (5);
-		}
 		freetab(data->args);
 		data->args = newtab(liste->tabich);
 		execveremix(data);

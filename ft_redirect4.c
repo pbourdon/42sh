@@ -77,6 +77,11 @@ int			optchev(t_data *data)
 
 int			execveremix(t_data *data)
 {
+	if (ft_strcmp(data->args[0], "env") == 0)
+	{
+		callallenv(data);
+		exit(0);
+	}
 	if (createthetab(data) == 1)
 	{
 		if (access(data->tabb[0], F_OK) == 0)
