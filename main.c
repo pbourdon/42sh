@@ -62,7 +62,7 @@ void			readgnl2(t_data *data, char *str)
 	// }
 // }
 
-// void			print_liste(t_token *ptr)
+// void			print_liste(t_tk *ptr)
 // {
 	// while (ptr)
 	// {
@@ -79,7 +79,7 @@ void	main_init(t_term *term)
 
 int				readgnl(t_data *data, char *str)
 {
-	t_token		*ptr;
+	t_tk		*ptr;
 	t_liste		*liste;
 	t_liste		*tmp;
 	t_tree		*tree;

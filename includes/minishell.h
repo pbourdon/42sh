@@ -120,19 +120,19 @@ typedef struct			s_data
 typedef struct			s_tree
 {
 	char				*arg;
-	int					token;
+	int					tk;
 	struct s_tree		*left;
 	struct s_tree		*right;
 }						t_tree;
 
-typedef struct			s_token
+typedef struct			s_tk
 {
 	int					inib;
 	int					tube;
-	int					token;
+	int					tk;
 	char				*arg;
-	struct s_token		*next;
-}						t_token;
+	struct s_tk			*next;
+}						t_tk;
 
 typedef struct			s_liste
 {
@@ -141,25 +141,25 @@ typedef struct			s_liste
 }						t_liste;
 
 void					free_tree(t_tree *tree);
-void					free_first_list(t_token *ptr);
+void					free_first_list(t_tk *ptr);
 void					free_list(t_liste *ptr);
 void					arg_to_list(t_liste *liste, t_tree *tree);
 t_liste					*create_list();
 t_liste					*del_last_null_arg(t_liste *liste);
-t_tree					*to_tree(t_tree *tree, t_token *token, int prio, const char *str);
+t_tree					*to_tree(t_tree *tree, t_tk *tk, int prio, char *str);
 void					aff(t_tree *tree);
-t_token					*good_order(t_token *ptr, t_token *prev, t_token *base);
+t_tk					*good_order(t_tk *ptr, t_tk *prev, t_tk *base);
 int						sub_split_on_spec(char **cmd, char **ptr);
 int						is_a_spec2(char *str, char c);
 char					*free_space(char *str, int quote, int d, int i);
 char					*replace_rest_of_space(char *ptr, int len);
 char					*erase_first_space(char *line);
 int						is_a_spec(char c);
-int						check_list(t_token *liste, t_token *ptr, int ret, int nb_agg);
-t_token					*analyse_and_stock(char **ptr, char **cmd, t_token **base);
-t_token					*to_list(char *cmd, int i);
-t_token					*ft_find_space(char *cmd, t_token *token, int inib, char quote);
-t_token					*split_on_sp(char **ptr, char **cmd, t_token **base, t_token *cur);
+int						check_list(t_tk *liste, t_tk *ptr, int ret, int nb_agg);
+t_tk					*analyse_and_stock(char **ptr, char **cmd, t_tk **base);
+t_tk					*to_list(char *cmd, int i);
+t_tk					*find_space(char *cmd, t_tk *tk, int inib, char quote);
+t_tk					*split_on(char **ptr, char **cmd, t_tk **bs, t_tk *cur);
 void					prompt_line(char **env);
 void					writeonwhile(void);
 void					catchpath(t_data *data);

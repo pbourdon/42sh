@@ -27,34 +27,34 @@ void		aff(t_tree *tree)
 	return ;
 }
 
-t_tree		*new_node(t_token *token)
+t_tree		*new_node(t_tk *tk)
 {
 	t_tree	*tree;
 
 	if (!(tree = (t_tree *)malloc(sizeof(t_tree))))
 		return (NULL);
-	tree->arg = token->arg;
-	tree->token = token->token;
+	tree->arg = tk->arg;
+	tree->tk = tk->tk;
 	tree->right = NULL;
 	tree->left = NULL;
 	return (tree);
 }
 
-int			is_base(t_token **token, t_token **base, t_token **save)
+int			is_base(t_tk **tk, t_tk **base, t_tk **save)
 {
-	if (*token == *base)
+	if (*tk == *base)
 	{
-		*save = (*token)->next;
+		*save = (*tk)->next;
 		*base = NULL;
-		*token = *save;
-		if (*token == NULL)
+		*tk = *save;
+		if (*tk == NULL)
 			return (0);
 	}
 	else if ((*save = *base))
 	{
-		while ((*save)->next != *token)
+		while ((*save)->next != *tk)
 			*save = (*save)->next;
-		*token = (*token)->next;
+		*tk = (*tk)->next;
 		if (*base == *save)
 			ft_memdel((void *)(&(*base)->next));
 		else
@@ -63,46 +63,46 @@ int			is_base(t_token **token, t_token **base, t_token **save)
 	return (1);
 }
 
-t_tree		*sub_to_tree(t_token *token, t_tree *tree, const char *str)
+t_tree		*sub_to_tree(t_tk *tk, t_tree *tree, const char *str)
 {
 	if (!str)
-		tree = new_node(token);
+		tree = new_node(tk);
 	else if (!ft_strcmp(str, "left"))
 	{
-		tree->left = new_node(token);
+		tree->left = new_node(tk);
 		tree = tree->left;
 	}
 	else if (!ft_strcmp(str, "right"))
 	{
-		tree->right = new_node(token);
+		tree->right = new_node(tk);
 		tree = tree->right;
 	}
 	return (tree);
 }
 
-t_tree		*to_tree(t_tree *tree, t_token *token, int prio, const char *str)
+t_tree		*to_tree(t_tree *tree, t_tk *tk, int prio, char *str)
 {
-	t_token	*save;
-	t_token	*base;
+	t_tk	*save;
+	t_tk	*base;
 
-	base = token;
+	base = tk;
 	while (prio != -1)
 	{
-		token = base;
-		while (token)
+		tk = base;
+		while (tk)
 		{
-			if (token->token == prio)
+			if (tk->tk == prio)
 			{
-				tree = sub_to_tree(token, tree, str);
-				if (!is_base(&token, &base, &save))
+				tree = sub_to_tree(tk, tree, str);
+				if (!is_base(&tk, &base, &save))
 					return (tree);
 				if (base)
 					to_tree(tree, base, (prio - 1), "left");
-				if (token)
-					to_tree(tree, token, prio, "right");
+				if (tk)
+					to_tree(tree, tk, prio, "right");
 				return (tree);
 			}
-			token = token->next;
+			tk = tk->next;
 		}
 		prio--;
 	}

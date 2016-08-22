@@ -26,7 +26,7 @@ int		ft_strlend(char **str)
 
 void	delete_last_backslash(void)
 {
-	shell.shell_line = del_from_arr(shell.shell_line, shell.length_line);
+	g_shell.shell_line = del_from_arr(g_shell.shell_line, g_shell.length_line);
 }
 
 int		get_history_length(void)
@@ -34,7 +34,7 @@ int		get_history_length(void)
 	t_history	*history;
 	int			i;
 
-	history = shell.history;
+	history = g_shell.history;
 	if (history->str)
 		i = 1;
 	else

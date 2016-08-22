@@ -40,14 +40,14 @@ char		*in_out(char *str)
 	return (0);
 }
 
-t_token		*new_out(t_token **ptr, t_token **prev, t_token **base, char *tmp)
+t_tk		*new_out(t_tk **ptr, t_tk **prev, t_tk **base, char *tmp)
 {
-	t_token	*new;
+	t_tk	*new;
 
-	if (!(new = (t_token *)malloc(sizeof(t_token))))
+	if (!(new = (t_tk *)malloc(sizeof(t_tk))))
 		return (0);
 	new->arg = ft_strdup(tmp);
-	new->token = OTHER;
+	new->tk = OTHER;
 	if (*prev == *ptr && *prev == *base)
 	{
 		new->next = (*base);
@@ -61,7 +61,7 @@ t_token		*new_out(t_token **ptr, t_token **prev, t_token **base, char *tmp)
 	return (new);
 }
 
-void		concat_out(t_token **prev, char *str)
+void		concat_out(t_tk **prev, char *str)
 {
 	char	*tmp;
 
@@ -73,34 +73,34 @@ void		concat_out(t_token **prev, char *str)
 	ft_memdel((void *)&tmp);
 }
 
-int 		is_a_next_exec(t_token *ptr)
+int 		is_a_next_exec(t_tk *ptr)
 {
-	if (ptr->token != 0 && ptr->token != 1 && ptr->token != 2 && ptr->token != 3)
+	if (ptr->tk != 0 && ptr->tk != 1 && ptr->tk != 2 && ptr->tk != 3)
 		return (1);
-	else if (ptr->token == 3 && !ft_strcmp("|", ptr->arg))
+	else if (ptr->tk == 3 && !ft_strcmp("|", ptr->arg))
 		return (1);
 	return (0);
 }
 
-t_token		*good_order(t_token *ptr, t_token *prev, t_token *base)
+t_tk		*good_order(t_tk *ptr, t_tk *prev, t_tk *base)
 {
 	char	*tmp;
-	t_token	*in;
+	t_tk	*in;
 
 	in = NULL;
 	while (ptr)
 	{
-		if (((ptr->token == REDDIR && ft_strcmp(ptr->arg, "|")) ||
-			 ptr->token == AGGR)
-			&& ptr->next && ptr->next->token == 0
+		if (((ptr->tk == REDDIR && ft_strcmp(ptr->arg, "|")) ||
+			 ptr->tk == AGGR)
+			&& ptr->next && ptr->next->tk == 0
 			&& (tmp = in_out(ptr->next->arg)))
 		{
-			if (prev == ptr || prev->token != 0)
+			if (prev == ptr || prev->tk != 0)
 				in = new_out(&ptr, &prev, &base, tmp);
 			else
 				concat_out(&in, tmp);
 		}
-		else if (!in && ptr->token == 0)
+		else if (!in && ptr->tk == 0)
 			in = ptr;
 		if (is_a_next_exec(ptr))
 			in = NULL;

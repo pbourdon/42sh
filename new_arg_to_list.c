@@ -91,7 +91,7 @@ void		arg_to_list(t_liste *liste, t_tree *tree)
 	t_liste *cur;
 
 	cur = liste;
-	while (tree && tree->token > 3)
+	while (tree && tree->tk > 3)
 	{
 		ft_putstr("while arg\n");
 		if (tree->left)

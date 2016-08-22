@@ -17,34 +17,34 @@ void	movements_delete(int a)
 	int h[2];
 
 	tputs(tgetstr("cd", NULL), 0, tputs_putchar);
-	h[0] = ft_putstr_i(shell.shell_line, cursor.position_line);
+	h[0] = ft_putstr_i(g_shell.shell_line, g_cursor.position_line);
 	h[1] = h[0];
 	while (h[0] - 1 > 0)
 	{
-		move_cursor_right(cursor, shell);
+		move_cursor_right(g_cursor, g_shell);
 		h[0]--;
 	}
-	if ((cursor.position_x_rel == shell.shell_win_size - 1) && \
-			cursor.position_line != shell.length_line)
+	if ((g_cursor.position_x_rel == g_shell.shell_win_size - 1) && \
+			g_cursor.position_line != g_shell.length_line)
 	{
 		ft_putstr(" ");
 		tputs(tgetstr("le", NULL), 0, tputs_putchar);
 	}
-	move_cursor_right(cursor, shell);
+	move_cursor_right(g_cursor, g_shell);
 	while (h[1] - a > 0)
 	{
-		go_left(cursor, shell);
-		move_cursor_left(cursor, shell);
+		go_left(g_cursor, g_shell);
+		move_cursor_left(g_cursor, g_shell);
 		h[1]--;
 	}
 }
 
 void	press_backspace_key(void)
 {
-	if (cursor.position_line > 0 && shell.backslash_index != 0)
+	if (g_cursor.position_line > 0 && g_shell.backslash_index != 0)
 	{
-		shell.shell_line = del_from_arr(shell.shell_line, cursor.position_line);
-		shell.length_line--;
+		g_shell.shell_line = del_from_arr(g_shell.shell_line, g_cursor.position_line);
+		g_shell.length_line--;
 		press_left_key();
 		movements_delete(0);
 	}
@@ -52,11 +52,11 @@ void	press_backspace_key(void)
 
 void	press_delete_key(void)
 {
-	if (cursor.position_line >= 0 && cursor.position_line != shell.length_line)
+	if (g_cursor.position_line >= 0 && g_cursor.position_line != g_shell.length_line)
 	{
-		shell.shell_line = del_from_arr(shell.shell_line, \
-				cursor.position_line + 1);
-		shell.length_line--;
+		g_shell.shell_line = del_from_arr(g_shell.shell_line, \
+				g_cursor.position_line + 1);
+		g_shell.length_line--;
 		movements_delete(0);
 	}
 }
@@ -78,25 +78,25 @@ void	press_up_key(void)
 {
 	t_history *history;
 
-	if (shell.history_index > 0)
+	if (g_shell.history_index > 0)
 	{
-		history = shell.history;
-		if (shell.backslash_index != -1)
+		history = g_shell.history;
+		if (g_shell.backslash_index != -1)
 		{
-			shell.history_index--;
-			if (shell.history_index > 0)
-				replace_shell_backslash_line(get_history_i(shell.history_index \
+			g_shell.history_index--;
+			if (g_shell.history_index > 0)
+				replace_shell_backslash_line(get_history_i(g_shell.history_index \
 							- 1));
-			if (shell.history_index == 0)
-				shell.history_index++;
+			if (g_shell.history_index == 0)
+				g_shell.history_index++;
 		}
-		else if (shell.history_index != 1)
+		else if (g_shell.history_index != 1)
 		{
-			shell.history_index--;
-			// ft_putnbr_fd(shell.history_index, 2);
+			g_shell.history_index--;
+			// ft_putnbr_fd(g_shell.history_index, 2);
 			// ft_putstr_fd("\n\n", 2);
 			print_history(history);
-			replace_shell_line(get_history_i(shell.history_index - 1));
+			replace_shell_line(get_history_i(g_shell.history_index - 1));
 		}
 	}
 }
@@ -105,44 +105,44 @@ void	press_down_key(void)
 {
 	t_history *history;
 
-	history = shell.history;
-	if (shell.history_index < get_history_length(history))
+	history = g_shell.history;
+	if (g_shell.history_index < get_history_length(history))
 	{
-		if (shell.backslash_index != -1)
-			replace_shell_backslash_line(get_history_i(shell.history_index));
+		if (g_shell.backslash_index != -1)
+			replace_shell_backslash_line(get_history_i(g_shell.history_index));
 		else
-			replace_shell_line(get_history_i(shell.history_index));
-		shell.history_index++;
+			replace_shell_line(get_history_i(g_shell.history_index));
+		g_shell.history_index++;
 	}
-	else if (shell.history_index == get_history_length(history))
+	else if (g_shell.history_index == get_history_length(history))
 	{
-		shell.history_index = get_history_length(history) + 1;
-		if (shell.backslash_index == -1)
-			replace_shell_line(shell.shell_line_original);
+		g_shell.history_index = get_history_length(history) + 1;
+		if (g_shell.backslash_index == -1)
+			replace_shell_line(g_shell.shell_line_original);
 		else
-			replace_shell_backslash_line(shell.shell_line_original);
+			replace_shell_backslash_line(g_shell.shell_line_original);
 	}
 }
 
 void	press_left_key(void)
 {
-	if (cursor.position_line > 0 && shell.backslash_index != 0)
+	if (g_cursor.position_line > 0 && g_shell.backslash_index != 0)
 	{
-		go_left(cursor, shell);
-		move_cursor_left(cursor, shell);
+		go_left(g_cursor, g_shell);
+		move_cursor_left(g_cursor, g_shell);
 	}
-	if (shell.backslash_index > 0)
-		shell.backslash_index--;
+	if (g_shell.backslash_index > 0)
+		g_shell.backslash_index--;
 }
 
 void	press_right_key(void)
 {
-	if (cursor.position_line < shell.length_line)
+	if (g_cursor.position_line < g_shell.length_line)
 	{
-		if (shell.backslash_index != -1)
-			shell.backslash_index++;
-		go_right(cursor, shell);
-		move_cursor_right(cursor, shell);
+		if (g_shell.backslash_index != -1)
+			g_shell.backslash_index++;
+		go_right(g_cursor, g_shell);
+		move_cursor_right(g_cursor, g_shell);
 	}
 }
 
@@ -150,15 +150,15 @@ void	press_home_key(void)
 {
 	int h;
 
-	h = cursor.position_line;
+	h = g_cursor.position_line;
 	while (h > 0)
 	{
-		if (shell.backslash_index == 0)
+		if (g_shell.backslash_index == 0)
 			break ;
-		go_left(cursor, shell);
-		move_cursor_left(cursor, shell);
-		if (shell.backslash_index > 0)
-			shell.backslash_index--;
+		go_left(g_cursor, g_shell);
+		move_cursor_left(g_cursor, g_shell);
+		if (g_shell.backslash_index > 0)
+			g_shell.backslash_index--;
 		h--;
 	}
 }
@@ -167,13 +167,13 @@ void	press_end_key(void)
 {
 	int h;
 
-	h = cursor.position_line;
-	while (h < shell.length_line)
+	h = g_cursor.position_line;
+	while (h < g_shell.length_line)
 	{
-		if (shell.backslash_index != -1)
-			shell.backslash_index++;
-		go_right(cursor, shell);
-		move_cursor_right(cursor, shell);
+		if (g_shell.backslash_index != -1)
+			g_shell.backslash_index++;
+		go_right(g_cursor, g_shell);
+		move_cursor_right(g_cursor, g_shell);
 		h++;
 	}
 }
@@ -182,12 +182,12 @@ void	press_printable_char(char *buffer)
 {
 	if (buffer[0] != 0 && !is_enter_key(buffer))
 	{
-		shell.shell_line = add_to_array(shell.shell_line, buffer[0], \
-				cursor.position_line, shell.length_line);
-		shell.length_line++;
+		g_shell.shell_line = add_to_array(g_shell.shell_line, buffer[0], \
+				g_cursor.position_line, g_shell.length_line);
+		g_shell.length_line++;
 		movements_delete(1);
-		if (shell.backslash_index >= 0)
-			shell.backslash_index++;
+		if (g_shell.backslash_index >= 0)
+			g_shell.backslash_index++;
 	}
 }
 
@@ -235,10 +235,10 @@ int		check_par_and_quotes(int *q, int a[])
 	int j;
 
 	i = 0;
-	while (i < shell.length_line)
+	while (i < g_shell.length_line)
 	{
 		j = 0;
-		if (!check_char(q, a, shell.shell_line[i]))
+		if (!check_char(q, a, g_shell.shell_line[i]))
 		{
 			// ft_putstr_fd("END\n", 2);
 			return (0);
@@ -270,9 +270,9 @@ int		parenthesis_closed(void)
 		return (1);
 	else
 	{
-		shell.backslash_index = 0;
-		shell.shell_backslash_level++;
-		shell.last_backslash = shell.length_line;
+		g_shell.backslash_index = 0;
+		g_shell.shell_backslash_level++;
+		g_shell.last_backslash = g_shell.length_line;
 		ft_putstr("\n? ");
 		return (0);
 	}
@@ -280,12 +280,12 @@ int		parenthesis_closed(void)
 
 int		backslash_at_the_end(void)
 {
-	if (shell.shell_line[shell.length_line - 1] == '\\')
+	if (g_shell.shell_line[g_shell.length_line - 1] == '\\')
 	{
-		shell.backslash_index = 0;
-		shell.shell_line[shell.length_line - 1] = ' ';
-		shell.shell_backslash_level++;
-		shell.last_backslash = shell.length_line;
+		g_shell.backslash_index = 0;
+		g_shell.shell_line[g_shell.length_line - 1] = ' ';
+		g_shell.shell_backslash_level++;
+		g_shell.last_backslash = g_shell.length_line;
 		ft_putstr("\n? ");
 		return (1);
 	}
@@ -297,16 +297,16 @@ int		press_enter_key(void)
 	press_end_key();
 	if (backslash_at_the_end() || !parenthesis_closed())
 		return (0);
-	if (ft_strcmp(shell.shell_line, "exit") == 0)
+	if (ft_strcmp(g_shell.shell_line, "exit") == 0)
 		exit(0);
-	if (ft_strcmp(shell.shell_line, "") != 0 && shell.shell_heredoc == 0)
-		add_to_history(shell.history, shell.shell_line);
-	// ft_bzero(shell.shell_line, 1000);
-	shell.backslash_index = -1;
-	if (shell.shell_heredoc == 0)
-		shell.history_index = get_history_length();
- 	if (ft_strcmp("<<", shell.shell_line) == 0)
-		shell.shell_heredoc = 1;
+	if (ft_strcmp(g_shell.shell_line, "") != 0 && g_shell.shell_heredoc == 0)
+		add_to_history(g_shell.history, g_shell.shell_line);
+	// ft_bzero(g_shell.shell_line, 1000);
+	g_shell.backslash_index = -1;
+	if (g_shell.shell_heredoc == 0)
+		g_shell.history_index = get_history_length();
+ 	if (ft_strcmp("<<", g_shell.shell_line) == 0)
+		g_shell.shell_heredoc = 1;
 	ft_putstr("\n");
 	return (1);
 }
@@ -315,9 +315,9 @@ void	press_shift_direction_key(char *buffer)
 {
 	// ft_putnbr_fd(buffer[5], 2);
 	if (is_shift_right(buffer[5]))
-		press_shift_right(cursor, shell);
+		press_shift_right(g_cursor, g_shell);
 	else if (is_shift_left(buffer[5]))
-		press_shift_left(cursor, shell);
+		press_shift_left(g_cursor, g_shell);
 	else if (is_shift_up(buffer[5]))
 		press_shift_up();
 	else if (is_shift_down(buffer[5]))
@@ -329,16 +329,16 @@ void	press_shift_left(void)
 	int index_nw;
 	int index_c;
 
-	index_c = cursor.position_line - 1;
-	index_nw = get_next_word_before(shell.shell_line, index_c);
-	if (index_nw < shell.last_backslash)
-		index_nw = shell.last_backslash;
+	index_c = g_cursor.position_line - 1;
+	index_nw = get_next_word_before(g_shell.shell_line, index_c);
+	if (index_nw < g_shell.last_backslash)
+		index_nw = g_shell.last_backslash;
 	while (index_c >= index_nw)
 	{
-		if (shell.backslash_index > 0)
-			shell.backslash_index--;
-		go_left(cursor, shell);
-		move_cursor_left(cursor, shell);
+		if (g_shell.backslash_index > 0)
+			g_shell.backslash_index--;
+		go_left(g_cursor, g_shell);
+		move_cursor_left(g_cursor, g_shell);
 		index_c--;
 	}
 }
@@ -348,13 +348,13 @@ void	press_shift_right(void)
 	int index_nw;
 	int index_c;
 
-	index_c = cursor.position_line;
-	index_nw = get_next_word_after(shell.shell_line, index_c);
+	index_c = g_cursor.position_line;
+	index_nw = get_next_word_after(g_shell.shell_line, index_c);
 	while (index_c <= index_nw)
 	{
-		shell.backslash_index++;
-		go_right(cursor, shell);
-		move_cursor_right(cursor, shell);
+		g_shell.backslash_index++;
+		go_right(g_cursor, g_shell);
+		move_cursor_right(g_cursor, g_shell);
 		index_c++;
 	}
 }
@@ -364,16 +364,16 @@ void	press_shift_up(void)
 	int h;
 	int k;
 
-	k = shell.shell_win_size;
-	h = cursor.position_line;
+	k = g_shell.shell_win_size;
+	h = g_cursor.position_line;
 	while (h > 0 && k > 0)
 	{
-		if (shell.backslash_index == 0)
+		if (g_shell.backslash_index == 0)
 			break ;
-		go_left(cursor, shell);
-		move_cursor_left(cursor, shell);
-		if (shell.backslash_index > 0)
-			shell.backslash_index--;
+		go_left(g_cursor, g_shell);
+		move_cursor_left(g_cursor, g_shell);
+		if (g_shell.backslash_index > 0)
+			g_shell.backslash_index--;
 		h--;
 		k--;
 	}
@@ -384,14 +384,14 @@ void	press_shift_down(void)
 	int h;
 	int k;
 
-	k = shell.shell_win_size;
-	h = cursor.position_line;
-	while (h < shell.length_line && k > 0)
+	k = g_shell.shell_win_size;
+	h = g_cursor.position_line;
+	while (h < g_shell.length_line && k > 0)
 	{
-		if (shell.backslash_index != -1)
-			shell.backslash_index++;
-		go_right(cursor, shell);
-		move_cursor_right(cursor, shell);
+		if (g_shell.backslash_index != -1)
+			g_shell.backslash_index++;
+		go_right(g_cursor, g_shell);
+		move_cursor_right(g_cursor, g_shell);
 		h++;
 		k--;
 	}
@@ -418,12 +418,12 @@ char	*extract_str(char *str, int a, int b)
 
 void	press_option_c(void)
 {
-	if (shell.selected_start != -1 && shell.selected_end != -1)
+	if (g_shell.selected_start != -1 && g_shell.selected_end != -1)
 	{
-		if (ft_strcmp(shell.selected_copy, "") != 0)
-			ft_strdel(&shell.selected_copy);
-		shell.selected_copy = extract_str(shell.shell_line, \
-				shell.selected_start, shell.selected_end);
+		if (ft_strcmp(g_shell.selected_copy, "") != 0)
+			ft_strdel(&g_shell.selected_copy);
+		g_shell.selected_copy = extract_str(g_shell.shell_line, \
+				g_shell.selected_start, g_shell.selected_end);
 	}
 }
 
@@ -434,7 +434,7 @@ void	press_option_v(void)
 	char	a[2];
 
 	i = 0;
-	str = shell.selected_copy;
+	str = g_shell.selected_copy;
 	a[1] = '\0';
 	while (i < ft_strlen(str))
 	{
@@ -463,24 +463,24 @@ void	press_option_left(void)
 
 	a[0] = ' ';
 	a[1] = '\n';
-	temp = cursor.position_line;
-	if (cursor.position_line > 0)
+	temp = g_cursor.position_line;
+	if (g_cursor.position_line > 0)
 	{
-		if (shell.selected_end == shell.selected_start)
+		if (g_shell.selected_end == g_shell.selected_start)
 		{
-			shell.selected_start = cursor.position_line;
-			shell.selected_end = cursor.position_line;
-			shell.selected_start--;
+			g_shell.selected_start = g_cursor.position_line;
+			g_shell.selected_end = g_cursor.position_line;
+			g_shell.selected_start--;
 		}
-		else if (shell.selected_end == cursor.position_line)
-			shell.selected_end--;
-		else if (shell.selected_start == cursor.position_line)
-			shell.selected_start--;
+		else if (g_shell.selected_end == g_cursor.position_line)
+			g_shell.selected_end--;
+		else if (g_shell.selected_start == g_cursor.position_line)
+			g_shell.selected_start--;
 	}
 	press_left_key();
 	press_printable_char(a);
 	press_backspace_key();
-	while (cursor.position_line < temp - 1)
+	while (g_cursor.position_line < temp - 1)
 		press_right_key();
 }
 
@@ -488,25 +488,25 @@ void	press_option_right(void)
 {
 	int		temp;
 
-	temp = cursor.position_line;
-	if (cursor.position_line < shell.length_line)
+	temp = g_cursor.position_line;
+	if (g_cursor.position_line < g_shell.length_line)
 	{
-		if (shell.selected_end == shell.selected_start)
+		if (g_shell.selected_end == g_shell.selected_start)
 		{
-			shell.selected_start = cursor.position_line;
-			shell.selected_end = cursor.position_line + 1;
+			g_shell.selected_start = g_cursor.position_line;
+			g_shell.selected_end = g_cursor.position_line + 1;
 		}
-		else if (shell.selected_end == cursor.position_line)
-			shell.selected_end++;
-		else if (shell.selected_start == cursor.position_line)
-			shell.selected_start++;
+		else if (g_shell.selected_end == g_cursor.position_line)
+			g_shell.selected_end++;
+		else if (g_shell.selected_start == g_cursor.position_line)
+			g_shell.selected_start++;
 	}
 	press_left_key();
 	press_printable_char(" ");
 	press_backspace_key();
-	while (cursor.position_line < temp + 1)
+	while (g_cursor.position_line < temp + 1)
 	{
-		if (cursor.position_line == shell.length_line)
+		if (g_cursor.position_line == g_shell.length_line)
 			break ;
 		press_right_key();
 	}

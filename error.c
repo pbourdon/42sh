@@ -12,9 +12,9 @@
 
 #include "includes/minishell.h"
 
-int				switch_case(t_token *ptr, int nb_redir, int nb_redir2)
+int				switch_case(t_tk *ptr, int nb_redir, int nb_redir2)
 {
-	if (ptr->token == 3 && ft_strncmp(ptr->arg, "|", 1) != 0 && ptr->next == NULL)
+	if (ptr->tk == 3 && ft_strncmp(ptr->arg, "|", 1) != 0 && ptr->next == NULL)
 	{
 		ft_putendl("Missing name for redirect.");
 		return (-1);
@@ -24,7 +24,7 @@ int				switch_case(t_token *ptr, int nb_redir, int nb_redir2)
 		ft_putendl("Ambigous output redirect.");
 		return (-1);
 	}
-	else if (ptr->token == 3 && ft_strncmp(ptr->arg, "|", 1) == 0 && ptr->next == NULL)
+	else if (ptr->tk == 3 && ft_strncmp(ptr->arg, "|", 1) == 0 && ptr->next == NULL)
 	{
 		ft_putendl("Invalid null command.");
 		return (-1);
@@ -46,13 +46,13 @@ int				set_redir_var2(char *str, int nb_redir2)
 	return (nb_redir2);
 }
 
-int				check_aggr(char *str, int token)
+int				check_aggr(char *str, int tk)
 {
-	if (token == 1)
+	if (tk == 1)
 	{
 		if (ft_strlen(str) < 3 || (ft_strlen(str) == 3 && (ft_isdigit(str[2]) == 0 && str[2] != '-')))
 		{
-			ft_putendl("syntax error near unexpected token `newline'");
+			ft_putendl("syntax error near unexpected tk `newline'");
 			return (-1);
 		}
 		else if (ft_strlen(str) == 4 && (ft_isdigit(str[3]) == 0 && str[3] != '-'))
@@ -65,23 +65,22 @@ int				check_aggr(char *str, int token)
 	return (0);
 }
 
-void			print_liste(t_token *ptr)
+void			print_liste(t_tk *ptr)
 {
 	while (ptr)
 	{
-		printf("ptr->arg: %s, token: %d\n", ptr->arg, ptr->token);
 		ptr = ptr->next;
 	}
 }
 
-void			add_digit_aggr(t_token *liste)
+void			add_digit_aggr(t_tk *liste)
 {
 	char 		*tmp;
 
 	tmp = ft_strdup("1");
 	while (liste != NULL)
 	{
-		if (liste->token == 1 && ft_isdigit(liste->arg[0]) == 0)
+		if (liste->tk == 1 && ft_isdigit(liste->arg[0]) == 0)
 		{
 			tmp = ft_strjoin(tmp, liste->arg);
 			liste->arg = ft_strdup(tmp);
@@ -90,7 +89,7 @@ void			add_digit_aggr(t_token *liste)
 	}
 }
 
-int				check_list(t_token *liste, t_token *ptr, int ret, int nb_agg)
+int				check_list(t_tk *liste, t_tk *ptr, int ret, int nb_agg)
 {
 	int			nb_redir;
 	int			nb_redir2;
@@ -104,11 +103,11 @@ int				check_list(t_token *liste, t_token *ptr, int ret, int nb_agg)
 	{
 		// print_liste(ptr);
 		// ft_putchar('\n');
-		if (ptr->token == 1)
+		if (ptr->tk == 1)
 			nb_agg++;
 		nb_redir = set_redir_var(ptr->arg, nb_redir);
 		nb_redir2 = set_redir_var(ptr->arg, nb_redir2);
-		if ((ret = check_aggr(ptr->arg, ptr->token)) == -1)
+		if ((ret = check_aggr(ptr->arg, ptr->tk)) == -1)
 			return (-1);
 		if ((ret = switch_case(ptr, nb_redir, nb_redir2)) == -1)
 			return (-1);

@@ -14,19 +14,19 @@
 
 int		shell_loop(t_term *term, t_data *data, char **env)
 {
-	while (shell.shell_status)
+	while (g_shell.shell_status)
 	{
-		shell.shell_backslash_level = 0;
-		shell.last_backslash = 0;
-		shell.history_index = get_history_length() + 1;
+		g_shell.shell_backslash_level = 0;
+		g_shell.last_backslash = 0;
+		g_shell.history_index = get_history_length() + 1;
 		prompt_line(env);
 		if (!shterm_listen(term))
 		{
 			ft_putstr("exit\nexit\n");
 			return (0);
 		}
-		readgnl(data, shell.shell_line);
-		if ((shell.shell_line)[0] == '\0')
+		readgnl(data, g_shell.shell_line);
+		if ((g_shell.shell_line)[0] == '\0')
 			continue ;
 	}
 	return (0);
@@ -37,29 +37,29 @@ int		shterm_listen(t_term *term)
 	if (term)
 		term->term_name = "a";
 	cursor_init();
-	shell.length_line = 0;
-	ft_bzero(shell.shell_line, 1000);
+	g_shell.length_line = 0;
+	ft_bzero(g_shell.shell_line, 1000);
 	shell_listening_char();
 	return (-1);
 }
 
 void	update_shell_line_original(void)
 {
-	if (shell.history_index == get_history_length() + 1)
+	if (g_shell.history_index == get_history_length() + 1)
 	{
-		if (shell.backslash_index == -1)
+		if (g_shell.backslash_index == -1)
 		{
-			if (ft_strcmp(shell.shell_line, shell.shell_line_original) != 0)
+			if (ft_strcmp(g_shell.shell_line, g_shell.shell_line_original) != 0)
 			{
-				ft_strdel(&shell.shell_line_original);
-				shell.shell_line_original = ft_strdup(shell.shell_line);
+				ft_strdel(&g_shell.shell_line_original);
+				g_shell.shell_line_original = ft_strdup(g_shell.shell_line);
 			}
 		}
-		else if (shell.shell_backslash_level != 0)
+		else if (g_shell.shell_backslash_level != 0)
 		{
-			ft_strdel(&shell.shell_line_original);
-			shell.shell_line_original = ft_strdup(\
-					&shell.shell_line[shell.last_backslash]);
+			ft_strdel(&g_shell.shell_line_original);
+			g_shell.shell_line_original = ft_strdup(\
+					&g_shell.shell_line[g_shell.last_backslash]);
 		}
 	}
 }
@@ -76,7 +76,7 @@ void	shell_listening_char(void)
 		buffer[8] = '\0';
 		update_shell_line_original();
 		ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
-		shell.shell_win_size = w.ws_col;
+		g_shell.shell_win_size = w.ws_col;
 		update_cursor();
 		prepare_to_listen(buffer);
 		if (listen(buffer))
@@ -103,15 +103,15 @@ void	delete_selection_if_other_than_option(char *buffer)
 
 	if (!is_option_left(buffer) && !is_option_right(buffer))
 	{
-		if (shell.selected_end != -1 && shell.selected_start != -1)
+		if (g_shell.selected_end != -1 && g_shell.selected_start != -1)
 		{
-			shell.selected_end = -1;
-			shell.selected_start = -1;
-			temp = cursor.position_line;
+			g_shell.selected_end = -1;
+			g_shell.selected_start = -1;
+			temp = g_cursor.position_line;
 			press_home_key();
 			press_printable_char(" ");
 			press_backspace_key();
-			while (cursor.position_line < temp)
+			while (g_cursor.position_line < temp)
 				press_right_key();
 		}
 	}
@@ -150,23 +150,23 @@ void	shell_init(void)
 {
 	struct winsize w;
 
-	shell.shell_status = 1;
-	shell.shell_line = (char *)malloc(sizeof(*(shell.shell_line)) * 1000);
-	shell.shell_line[999] = '\0';
+	g_shell.shell_status = 1;
+	g_shell.shell_line = (char *)malloc(sizeof(*(g_shell.shell_line)) * 1000);
+	g_shell.shell_line[999] = '\0';
 
-	shell.shell_line_original = (char *)malloc(sizeof(char) * 1000);
-	ft_bzero(shell.shell_line_original, 1000);
-	shell.history_index = -1;
-	shell.backslash_index = -1;
+	g_shell.shell_line_original = (char *)malloc(sizeof(char) * 1000);
+	ft_bzero(g_shell.shell_line_original, 1000);
+	g_shell.history_index = -1;
+	g_shell.backslash_index = -1;
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
-	shell.shell_win_size = w.ws_col;
-	shell.shell_backslash_level = 0;
-	shell.history = malloc(sizeof(*(shell.history)));
-	shell.history->next = NULL;
-	shell.history->str = NULL;
-	shell.selected_end = 0;
-	shell.selected_start = 0;
-	shell.selected_copy = "";
+	g_shell.shell_win_size = w.ws_col;
+	g_shell.shell_backslash_level = 0;
+	g_shell.history = malloc(sizeof(*(g_shell.history)));
+	g_shell.history->next = NULL;
+	g_shell.history->str = NULL;
+	g_shell.selected_end = 0;
+	g_shell.selected_start = 0;
+	g_shell.selected_copy = "";
 }
 
 t_history *double_left(char *fin)
@@ -176,16 +176,16 @@ t_history *double_left(char *fin)
 	hered = malloc(sizeof(*(hered)));
 	hered->next = NULL;
 	hered->str = NULL;
-	shell.history_index = get_history_length() + 1;
-	while (ft_strcmp(fin, shell.shell_line_original) != 0)
+	g_shell.history_index = get_history_length() + 1;
+	while (ft_strcmp(fin, g_shell.shell_line_original) != 0)
 	{
 		// ft_putendl(fin);
-		// ft_putendl(shell.shell_line_original);
+		// ft_putendl(g_shell.shell_line_original);
 		ft_putstr("heredoc>");
-		shell.shell_heredoc = 1;
-		ft_bzero(shell.shell_line, 1000);
+		g_shell.shell_heredoc = 1;
+		ft_bzero(g_shell.shell_line, 1000);
 		shterm_listen(NULL);
-		add_to_history(hered, shell.shell_line);
+		add_to_history(hered, g_shell.shell_line);
 	}
 	return (hered);
 }

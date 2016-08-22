@@ -12,9 +12,9 @@
 
 #include "includes/minishell.h"
 
-void			free_first_list(t_token *ptr)
+void			free_first_list(t_tk *ptr)
 {
-	t_token		*tmp;
+	t_tk		*tmp;
 
 	while (ptr != NULL)
 	{

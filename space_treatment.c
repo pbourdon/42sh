@@ -62,7 +62,7 @@ int				sub_find(char *cmd, char quote, int inib)
 	return (inib);
 }
 
-t_token			*ft_find_space(char *cmd, t_token *token, int inib, char quote)
+t_tk			*find_space(char *cmd, t_tk *token, int inib, char quote)
 {
 	char		*ptr;
 	char		*tmp;

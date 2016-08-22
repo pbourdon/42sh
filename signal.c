@@ -18,7 +18,7 @@ void	sig_handler(int a)
 
 	a = 0;
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
-	shell.shell_win_size = w.ws_col;
+	g_shell.shell_win_size = w.ws_col;
 	update_cursor();
 }
 

@@ -12,16 +12,16 @@
 
 #include "includes/minishell.h"
 
-t_token		*add_end_list(t_token *token, t_token **base)
+t_tk		*add_end_list(t_tk *tk, t_tk **base)
 {
-	t_token *tmp;
+	t_tk *tmp;
 
 	if (!base || !*base)
-		return (token);
+		return (tk);
 	tmp = *base;
 	while (tmp->next)
 		tmp = tmp->next;
-	tmp->next = token;
+	tmp->next = tk;
 	return (*base);
 }
 
@@ -44,7 +44,7 @@ int			add_token(char *str)
 	return (ret);
 }
 
-void			sub_split_norm(char **cmd, t_token *cur, int i)
+void			sub_split_norm(char **cmd, t_tk *cur, int i)
 {
 	char *tmp;
 
@@ -87,7 +87,7 @@ void			sub_split_norm(char **cmd, t_token *cur, int i)
 	*cmd -= 1;
 }
 
-t_token		*split_norm(char **ptr, char **cmd, t_token **base, t_token *cur)
+t_tk		*split_norm(char **ptr, char **cmd, t_tk **base, t_tk *cur)
 {
 	int		i;
 
@@ -100,7 +100,7 @@ t_token		*split_norm(char **ptr, char **cmd, t_token **base, t_token *cur)
 		cur->arg[++i] = *(*cmd + 1);
 		*cmd += 1;
 	}
-	cur->token = add_token(cur->arg);
+	cur->tk = add_token(cur->arg);
 	*base = add_end_list(cur, base);
 	while (*cmd && *(*cmd + 1) && *(*cmd + 1) == ' ')
 		*cmd += 1;
@@ -108,7 +108,7 @@ t_token		*split_norm(char **ptr, char **cmd, t_token **base, t_token *cur)
 	return (*base);
 }
 
-t_token		*split_on_sp(char **ptr, char **cmd, t_token **base, t_token *cur)
+t_tk		*split_on(char **ptr, char **cmd, t_tk **base, t_tk *cur)
 {
 	char	c;
 	int		len;
@@ -119,7 +119,7 @@ t_token		*split_on_sp(char **ptr, char **cmd, t_token **base, t_token *cur)
 //	ft_putstr("c is ");
 //	ft_putchar(c);
 //	ft_putendl(*cmd - 1);
-	if (!(cur = (t_token *)malloc(sizeof(t_token))))
+	if (!(cur = (t_tk *)malloc(sizeof(t_tk))))
 		return (0);
 	cur->next = NULL;
 	cur->inib = 0;
@@ -130,8 +130,8 @@ t_token		*split_on_sp(char **ptr, char **cmd, t_token **base, t_token *cur)
 		*base = add_end_list(cur, base);
 		**cmd = c;
 		*ptr = *cmd;
-		cur->token = OTHER;
-		return (split_on_sp(ptr, cmd, base, NULL));
+		cur->tk = OTHER;
+		return (split_on(ptr, cmd, base, NULL));
 	}
 	if (!(cur->arg = ft_memalloc(sizeof(char) * len)))
 		return (0);

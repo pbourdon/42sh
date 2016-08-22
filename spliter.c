@@ -61,40 +61,40 @@ int				sub_split_on_spec(char **cmd, char **ptr)
 	return (0);
 }
 
-t_token			*analyse_and_stock(char **ptr, char **cmd, t_token **base)
+t_tk			*analyse_and_stock(char **ptr, char **cmd, t_tk **base)
 {
-	t_token		*token;
-	t_token		*maillon;
+	t_tk		*tk;
+	t_tk		*maillon;
 
 	if (!ptr || !*ptr || !**ptr)
 		return (*base);
 	if (is_a_spec2(*cmd, **cmd))
-		return (split_on_sp(ptr, cmd, base, NULL));
+		return (split_on(ptr, cmd, base, NULL));
 	**cmd = 0;
-	if (!(maillon = (t_token *)malloc(sizeof(t_token))))
+	if (!(maillon = (t_tk *)malloc(sizeof(t_tk))))
 		return (0);
 	maillon->arg = replace_rest_of_space(ft_strdup(*ptr), ft_strlen(*ptr));
 	maillon->inib = 0;
 	if ((*ptr = *(cmd)))
 		*ptr = *cmd + 1;
 	**cmd = ' ';
-	maillon->token = OTHER;
+	maillon->tk = OTHER;
 	maillon->next = NULL;
 	if (!base || !*base)
 		return (maillon);
-	token = *base;
-	while (token->next)
-		token = token->next;
-	token->next = maillon;
+	tk = *base;
+	while (tk->next)
+		tk = tk->next;
+	tk->next = maillon;
 	return (*base);
 }
 
-t_token			*to_list(char *cmd, int i)
+t_tk			*to_list(char *cmd, int i)
 {
-	t_token		*tmp;
-	t_token		*token;
+	t_tk		*tmp;
+	t_tk		*tk;
 
-	token = NULL;
+	tk = NULL;
 	if (!cmd || !*cmd)
 		return (0);
 	while (cmd[++i] && cmd[i] == ' ')
@@ -102,10 +102,10 @@ t_token			*to_list(char *cmd, int i)
 	if (!cmd[i])
 		return (0);
 	cmd = free_space(cmd, 0, 0, -1);
-	token = ft_find_space(cmd, token, 0, 0);
-	tmp = token;
-	while (token)
-		token = token->next;
-	token = tmp;
-	return (token);
+	tk = find_space(cmd, tk, 0, 0);
+	tmp = tk;
+	while (tk)
+		tk = tk->next;
+	tk = tmp;
+	return (tk);
 }

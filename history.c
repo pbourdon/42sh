@@ -18,7 +18,7 @@ char	*get_history_i(int i)
 	int			j;
 
 	j = 0;
-	history = shell.history;
+	history = g_shell.history;
 	while (j < i)
 	{
 		history = history->next;

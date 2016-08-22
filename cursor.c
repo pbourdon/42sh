@@ -14,9 +14,9 @@
 
 void	cursor_init(void)
 {
-	cursor.position_x_abs = 1;
-	cursor.position_y_abs = tgetnum("li") - 1;
-	cursor.position_x_rel = 1;
-	cursor.position_y_rel = 0;
-	cursor.position_line = 0;
+	g_cursor.position_x_abs = 1;
+	g_cursor.position_y_abs = tgetnum("li") - 1;
+	g_cursor.position_x_rel = 1;
+	g_cursor.position_y_rel = 0;
+	g_cursor.position_line = 0;
 }
