@@ -63,7 +63,7 @@ int		doubleredichieh(t_data *data, t_liste2 *liste)
 		S_IRWXO);
 		dup2(out, 1);
 		close(out);
-		helpdoublechieh(data, i, liste, fd);
+		help_dbl(data, i, liste, fd);
 		exit(0);
 	}
 	else

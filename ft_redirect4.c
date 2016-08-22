@@ -40,7 +40,7 @@ t_liste2	*createliste(void)
 	return (liste);
 }
 
-void		helpdoublechieh(t_data *data, int i, t_liste2 *liste, int fd)
+void		help_dbl(t_data *data, int i, t_liste2 *liste, int fd)
 {
 	if (fd == -1)
 	{
