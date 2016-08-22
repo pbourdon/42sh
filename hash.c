@@ -6,25 +6,40 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/13 17:16:42 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/08/19 16:26:52 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/22 20:51:49 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 
-void	free_tabhash(void)
+char	**get_tabhash(char **new, int b)
 {
-	int		i;
-	char	**tabhash;
+	static char	**tabhash = NULL;
+	int			i;
 
-	tabhash = get_tabhash(NULL);
-	if (tabhash == NULL)
-		return ;
-	i = -1;
-	while (++i < 4096)
-		if (tabhash[i])
-			ft_memdel((void **)&tabhash[i]);
-	ft_memdel((void **)tabhash);
+	if (b != 0)
+	{
+		if (tabhash == NULL)
+			return (NULL);
+		i = -1;
+		while (++i < 4096)
+		{
+			if (tabhash[i])
+			{
+				ft_putstr(tabhash[i]);
+				ft_putstr(" is path for -> ");
+				ft_putnbr(i);
+				ft_putstr("\n");
+				free(tabhash[i]);
+				tabhash[i] = NULL;
+			}
+		}
+		free(tabhash);
+		tabhash = NULL;
+	}
+	if (tabhash == NULL && (tabhash = new))
+		return (NULL);
+	return (tabhash);
 }
 
 char	*ft_chrbin(char *path)
@@ -92,7 +107,7 @@ void	set_bin(char *path)
 	{
 		bin = ft_chrbin(path);
 		hash = hash_bin(bin);
-		tabhash = get_tabhash(NULL);
+		tabhash = get_tabhash(NULL, 0);
 		if (tabhash[hash] != NULL)
 			set_open_adressing(tabhash, hash, path);
 	}
@@ -122,8 +137,11 @@ char	**init_fill_tab(char **tabhash, char *path)
 				else
 					tabhash[res] = tmp;
 			}
+			else
+				free(tmp);
 		}
 	}
+	closedir(dir);
 	return (tabhash);
 }
 
@@ -147,7 +165,7 @@ void	init_hashtab(char **env)
 	path = NULL;
 	if (!(tabhash = (char **)malloc(sizeof(char *) * 4096)))
 		return ;
-	while (++i <= 4096)
+	while (++i < 4096)
 		tabhash[i] = NULL;
 	i = 0;
 	while (env && env[0] && ft_strncmp(env[i], "PATH=", 5))
@@ -161,20 +179,26 @@ void	init_hashtab(char **env)
 	{
 		if (!access(path[i], F_OK | X_OK) || !access(path[i], F_OK | W_OK))
 			tabhash = init_fill_tab(tabhash, path[i]);
+		free(path[i]);
 	}
-	get_tabhash(tabhash);
+	free(path);
+	get_tabhash(tabhash, 0);
 }
 
 char	*get_openaddr(char **tabhash, int hash, char *bin)
 {
 	char *tmp;
+	int i;
 
+	i = 0;
 	while (1)
 	{
 		if ((tmp = ft_chrbin(tabhash[hash])))
 			if (!ft_strcmp(tmp, bin))
 				break ;
 		hash++;
+		if (hash > 2048)
+			hash /= 7 + (++i);
 	}
 	return (tabhash[hash]);
 }
@@ -185,19 +209,10 @@ char	*get_bin(char *bin)
 	char	**tabhash;
 
 	hash = 0;
-	tabhash = get_tabhash(NULL);
+	if (!(tabhash = get_tabhash(NULL, 0)))
+		return (NULL);
 	hash = hash_bin(bin);
 	if (hash > 4096 || !tabhash[hash])
 		return (NULL);
 	return (get_openaddr(tabhash, hash, bin));
 }
-
-char	**get_tabhash(char **new)
-{
-	static char	**tabhash = NULL;
-
-	if (tabhash == NULL && (tabhash = new))
-		return (NULL);
-	return (tabhash);
-}
-
