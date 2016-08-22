@@ -70,15 +70,14 @@ char			*save_post(char *hostname)
 void			go_free(char *cwd, char *hostname, char *curtime)
 {
 	free(cwd);
-	// free(prompt);
 	free(hostname);
 	free(curtime);
 }
 
 char			*get_user_name(char **env)
 {
-	int i;
-	char *tmp;
+	int			i;
+	char		*tmp;
 
 	i = 0;
 	while (env[i + 1])

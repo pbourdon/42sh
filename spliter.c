@@ -21,7 +21,7 @@ int				is_a_spec(char c)
 
 int				is_a_spec2(char *str, char c)
 {
-	int i;
+	int			i;
 
 	i = is_a_spec(c);
 	if (i == 1)
@@ -33,11 +33,7 @@ int				is_a_spec2(char *str, char c)
 
 int				sub_split_on_spec(char **cmd, char **ptr)
 {
-	// if ((**cmd == '>' || **cmd == '<') && (*cmd - 1) &&
-		// ft_isdigit(*(*cmd - 1)) && (!*(*cmd - 2) ||
-		// (*cmd - 2 && *(*cmd - 2) == ' ')))
-		// return (1);
-	char *tmp;
+	char		*tmp;
 
 	tmp = *cmd;
 	if (!ft_strncmp(*cmd, ">&", 2))

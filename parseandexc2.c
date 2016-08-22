@@ -41,10 +41,7 @@ void	changepathintab(t_data *data)
 int		createbinpath2(t_data *data, char *str)
 {
 	str = ft_strdup(data->args[0]);
-	// ft_putstr("TEST OF BINPATH2 = ");
-	// ft_putnbr(access(str, F_OK));
-	// ft_putendl(str);
-	if (access(str, F_OK) == 0) // si le fichier existe bug de l executable
+	if (access(str, F_OK) == 0)
 	{
 		data->bin = ft_strdup(str);
 		freedata(str, data);

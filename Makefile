@@ -51,7 +51,6 @@ SRC = 	builtin_exit_error.c \
 		prompt.c \
 		cd2.c \
 		cd3.c \
-		bug.c \
 		cd.c \
 		agreg.c \
 		ft_redirect4.c \

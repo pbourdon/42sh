@@ -30,18 +30,7 @@ void	childhelp(t_data *data, t_liste2 *liste, int pfd[2])
 		}
 		dup2(in, 0);
 	}
-	freetab(data->args);
-	data->args = newtab(liste->tabich);
-	if (createbinpath(data, 2) == 0)
-	{
-		ft_putstr(data->args[0]);
-		ft_putendl(": Command not found");
-		exit(0);
-	}
-	dup2(pfd[1], 1);
-	close(pfd[0]);
-	if (execveremix(data) == -1)
-		exit(0);
+	hulppls(data, liste, pfd);
 }
 
 int		doubleredichieh(t_data *data, t_liste2 *liste)

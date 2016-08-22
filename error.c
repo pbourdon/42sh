@@ -24,7 +24,8 @@ int				switch_case(t_tk *ptr, int nb_redir, int nb_redir2)
 		ft_putendl("Ambigous output redirect.");
 		return (-1);
 	}
-	else if (ptr->tk == 3 && ft_strncmp(ptr->arg, "|", 1) == 0 && ptr->next == NULL)
+	else if (ptr->tk == 3 && ft_strncmp(ptr->arg, "|", 1) == 0
+	&& ptr->next == NULL)
 	{
 		ft_putendl("Invalid null command.");
 		return (-1);
@@ -50,12 +51,14 @@ int				check_aggr(char *str, int tk)
 {
 	if (tk == 1)
 	{
-		if (ft_strlen(str) < 3 || (ft_strlen(str) == 3 && (ft_isdigit(str[2]) == 0 && str[2] != '-')))
+		if (ft_strlen(str) < 3 || (ft_strlen(str) == 3 &&
+		(ft_isdigit(str[2]) == 0 && str[2] != '-')))
 		{
 			ft_putendl("syntax error near unexpected tk `newline'");
 			return (-1);
 		}
-		else if (ft_strlen(str) == 4 && (ft_isdigit(str[3]) == 0 && str[3] != '-'))
+		else if (ft_strlen(str) == 4 &&
+			(ft_isdigit(str[3]) == 0 && str[3] != '-'))
 		{
 			ft_putchar(str[3]);
 			ft_putendl(": ambigous redirect");
@@ -75,7 +78,7 @@ void			print_liste(t_tk *ptr)
 
 void			add_digit_aggr(t_tk *liste)
 {
-	char 		*tmp;
+	char		*tmp;
 
 	tmp = ft_strdup("1");
 	while (liste != NULL)
@@ -101,8 +104,6 @@ int				check_list(t_tk *liste, t_tk *ptr, int ret, int nb_agg)
 	ptr = liste;
 	while (ptr != NULL)
 	{
-		// print_liste(ptr);
-		// ft_putchar('\n');
 		if (ptr->tk == 1)
 			nb_agg++;
 		nb_redir = set_redir_var(ptr->arg, nb_redir);
