@@ -46,6 +46,7 @@ SRC = 	builtin_exit_error.c \
 		env2.c \
 		env3.c \
 		main.c \
+		main2.c \
 		free.c \
 		env.c \
 		prompt.c \
@@ -60,7 +61,6 @@ SRC = 	builtin_exit_error.c \
 		testredi4.c \
 		testredi5.c \
 		testredi6.c \
-		hash.c 
 
 OBJDIR = obj/
 

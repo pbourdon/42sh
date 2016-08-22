@@ -12,35 +12,6 @@
 
 #include "includes/minishell.h"
 
-void			parsecommand(t_data *data)
-{
-	if (data->line[0] == '\0')
-	{
-		data->dspam = 1;
-		return ;
-	}
-	data->args = ft_strsplit(data->line, ' ');
-	if (ft_strcmp(data->line, "exit") == 0)
-		exit(0);
-	else if (ifitsredi(data) != 0)
-	{
-		mainredi(data);
-		free(data->liste);
-		freetab(data->oldtbe);
-		return ;
-	}
-	else if (ft_strcmp(data->args[0], "env") == 0)
-		callallenv(data);
-	else if (ft_strcmp(data->args[0], "setenv") == 0)
-		callsetenv(data);
-	else if (ft_strcmp(data->args[0], "unsetenv") == 0)
-		callunsetenv(data);
-	else if (ft_strcmp(data->args[0], "cd") == 0)
-		cdcall(data);
-	else
-		forkall(data);
-}
-
 void			readgnl2(t_data *data, char *str)
 {
 	data->fona = 0;
@@ -59,11 +30,37 @@ void			main_init(t_term *term)
 	shell_init();
 }
 
+void			sub_read(t_tree *tree, t_data *data)
+{
+	t_liste		*liste;
+	t_liste		*tmp;
+
+	liste = create_list();
+	arg_to_list(liste, tree);
+	liste = del_last_null_arg(liste);
+	free_tree(tree);
+	tmp = liste;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp = liste;
+	while (tmp)
+	{
+		readgnl2(data, tmp->arg);
+		tmp = tmp->next;
+	}
+	if (data->dspam == 0)
+		freetab(data->args);
+	free(data->line);
+	if (data->home)
+		free(data->home);
+	if (data->oldpwd)
+		free(data->oldpwd);
+	free_list(liste);
+}
+
 int				readgnl(t_data *data, char *str)
 {
 	t_tk		*ptr;
-	t_liste		*liste;
-	t_liste		*tmp;
 	t_tree		*tree;
 	int			fd;
 	int			ret;
@@ -77,29 +74,7 @@ int				readgnl(t_data *data, char *str)
 		tree = to_tree(NULL, ptr, 5, NULL);
 		free_first_list(ptr);
 		if (ret == 0)
-		{
-			liste = create_list();
-			arg_to_list(liste, tree);
-			liste = del_last_null_arg(liste);
-			free_tree(tree);
-			tmp = liste;
-			while (tmp->next)
-				tmp = tmp->next;
-			tmp = liste;
-			while (tmp)
-			{
-				readgnl2(data, tmp->arg);
-				tmp = tmp->next;
-			}
-			if (data->dspam == 0)
-				freetab(data->args);
-			free(data->line);
-			if (data->home)
-				free(data->home);
-			if (data->oldpwd)
-				free(data->oldpwd);
-			free_list(liste);
-		}
+			sub_read(tree, data);
 	}
 	return (0);
 }
