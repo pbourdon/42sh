@@ -31,7 +31,7 @@
 *.i*86
 *.x86_64
 *.hex
-
+21sh
 # Debug files
 *.dSYM/
 *.su

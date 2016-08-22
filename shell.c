@@ -12,7 +12,7 @@
 
 #include "includes/minishell.h"
 
-int		shell_loop(t_term *term, t_data *data, char **env)
+int					shell_loop(t_term *term, t_data *data, char **env)
 {
 	while (g_shell.shell_status)
 	{
@@ -32,7 +32,7 @@ int		shell_loop(t_term *term, t_data *data, char **env)
 	return (0);
 }
 
-int		shterm_listen(t_term *term)
+int					shterm_listen(t_term *term)
 {
 	if (term)
 		term->term_name = "a";
@@ -43,7 +43,7 @@ int		shterm_listen(t_term *term)
 	return (-1);
 }
 
-void	update_shell_line_original(void)
+void				update_shell_line_original(void)
 {
 	if (g_shell.history_index == get_history_length() + 1)
 	{
@@ -64,11 +64,10 @@ void	update_shell_line_original(void)
 	}
 }
 
-void	shell_listening_char(void)
+void				shell_listening_char(void)
 {
 	struct winsize	w;
 	char			*buffer;
-
 
 	while (1)
 	{
@@ -86,7 +85,7 @@ void	shell_listening_char(void)
 	ft_strdel(&buffer);
 }
 
-void	prepare_to_listen(char buffer[9])
+void				prepare_to_listen(char buffer[9])
 {
 	int				ret;
 
@@ -94,12 +93,11 @@ void	prepare_to_listen(char buffer[9])
 	signal(SIGWINCH, sig_handler);
 	ret = read(0, buffer, 8);
 	buffer[ret] = '\0';
-	// print_buffer(buffer);
 }
 
-void	delete_selection_if_other_than_option(char *buffer)
+void				delete_selection_if_other_than_option(char *buffer)
 {
-	int	temp;
+	int				temp;
 
 	if (!is_option_left(buffer) && !is_option_right(buffer))
 	{
@@ -117,7 +115,7 @@ void	delete_selection_if_other_than_option(char *buffer)
 	}
 }
 
-int		listen(char *buffer)
+int					listen(char *buffer)
 {
 	if (is_backspace_key(buffer))
 		press_backspace_key();
@@ -146,14 +144,13 @@ int		listen(char *buffer)
 	return (0);
 }
 
-void	shell_init(void)
+void				shell_init(void)
 {
-	struct winsize w;
+	struct winsize	w;
 
 	g_shell.shell_status = 1;
 	g_shell.shell_line = (char *)malloc(sizeof(*(g_shell.shell_line)) * 1000);
 	g_shell.shell_line[999] = '\0';
-
 	g_shell.shell_line_original = (char *)malloc(sizeof(char) * 1000);
 	ft_bzero(g_shell.shell_line_original, 1000);
 	g_shell.history_index = -1;
@@ -169,9 +166,9 @@ void	shell_init(void)
 	g_shell.selected_copy = "";
 }
 
-t_history *double_left(char *fin)
+t_history			*double_left(char *fin)
 {
-	t_history *hered;
+	t_history		*hered;
 
 	hered = malloc(sizeof(*(hered)));
 	hered->next = NULL;
@@ -179,8 +176,8 @@ t_history *double_left(char *fin)
 	g_shell.history_index = get_history_length() + 1;
 	while (ft_strcmp(fin, g_shell.shell_line_original) != 0)
 	{
-		// ft_putendl(fin);
-		// ft_putendl(g_shell.shell_line_original);
+	// ft_putendl(fin);
+	// ft_putendl(g_shell.shell_line_original);
 		ft_putstr("heredoc>");
 		g_shell.shell_heredoc = 1;
 		ft_bzero(g_shell.shell_line, 1000);

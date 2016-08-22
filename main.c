@@ -53,25 +53,7 @@ void			readgnl2(t_data *data, char *str)
 	parsecommand(data);
 }
 
-// void			print_list(t_liste *ptr)
-// {
-	// while (ptr)
-	// {
-		// printf("ptr->arg: %s\n", ptr->arg);
-		// ptr = ptr->next;
-	// }
-// }
-
-// void			print_liste(t_tk *ptr)
-// {
-	// while (ptr)
-	// {
-		// printf("ptr->arg: %s, token: %d\n", ptr->arg, ptr->token);
-		// ptr = ptr->next;
-	// }
-// }
-
-void	main_init(t_term *term)
+void			main_init(t_term *term)
 {
 	term_init(term);
 	shell_init();
@@ -92,26 +74,21 @@ int				readgnl(t_data *data, char *str)
 	{
 		ret = check_list(ptr, NULL, 0, 0);
 		ptr = good_order(ptr, ptr, ptr);
-//		print_liste(ptr);
 		tree = to_tree(NULL, ptr, 5, NULL);
-//		aff(tree);
 		free_first_list(ptr);
 		if (ret == 0)
 		{
 			liste = create_list();
 			arg_to_list(liste, tree);
 			liste = del_last_null_arg(liste);
-			// print_list(liste);
 			free_tree(tree);
 			tmp = liste;
 			while (tmp->next)
 				tmp = tmp->next;
 			tmp = liste;
-			// printf("Hello: %s\n", tmp->arg);
 			while (tmp)
 			{
 				readgnl2(data, tmp->arg);
-				// printf("Helloooo\n");
 				tmp = tmp->next;
 			}
 			if (data->dspam == 0)
