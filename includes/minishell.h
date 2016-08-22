@@ -321,6 +321,7 @@ void					sig_handler_ctrl_c(int a);
 int						countstr(char *str, int i);
 int						agreve(t_data *data, t_liste2 *liste);
 int						createbinpath(t_data *data, int n);
+int						hulppls(t_data *data, t_liste2 *liste, int pfd[2]);
 int						mainpipecond(t_data *data, t_liste2 *liste);
 
 t_shell					g_shell;
