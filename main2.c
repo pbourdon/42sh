@@ -12,6 +12,74 @@
 
 #include "includes/minishell.h"
 
+// char			**make_the_split(char **tab, int y, int len, int i)
+// {
+	// char		**tab2;
+	// int			j;
+// 
+	// j = 0;
+	// tab2 = ft_memalloc(sizeof(char *) * ft_strlentab(tab));
+	// while (j < i)
+	// {
+		// tab2 = ft_strdup(tab[j]);
+		// j++;
+	// }
+	// 
+	// return (tab2);
+// }
+// 
+// char			**create_string_inib(char **tab, char inib, int i, int y)
+// {
+	// int			len;
+	// 
+	// len = 0;
+	// y = ft_strlentab(tab);
+	// while (y > i)
+	// {
+		// len = ft_strlen(tab[y]);
+		// while (len > 0)
+		// {
+			// if (tab[y][len] == inib)
+				// return (make_the_split(tab, y, len, i))
+			// len--;
+		// }
+		// y--;
+	// }
+	// return (tab);
+// }
+// 
+// char			which_inib(char *str)
+// {
+	// int			i;
+// 
+	// i = 0;
+	// while (i <= ft_strlen(str))
+	// {
+		// if (str[i] == "\"" || str[i] == "'" || str[i] == "\\")
+			// return (str[i]);
+		// i++;
+	// }
+	// return (c);
+// }
+// 
+// char			**check_inib(char **tab)
+// {
+	// int			i;
+// 
+	// i = 0;
+	// while (tab[i])
+	// {
+		// if (ft_strchr(tab[i], "\"") != NULL || ft_strchr(tab[i], "'") != NULL || ft_strchr(tab[i], "\\") != NULL)
+		// {
+			// tab = create_string_inib(tab, which_inib(tab[i]), i, 0);
+			// break ;
+		// }
+		// i++;
+	// }
+	// return (tab);
+// }
+// 
+
 void			parsecommand(t_data *data)
 {
 	if (data->line[0] == '\0')
@@ -20,6 +88,7 @@ void			parsecommand(t_data *data)
 		return ;
 	}
 	data->args = ft_strsplit(data->line, ' ');
+	// data->args = check_inib(data->args);
 	if (ft_strcmp(data->line, "exit") == 0)
 		exit(0);
 	else if (ifitsredi(data) != 0)

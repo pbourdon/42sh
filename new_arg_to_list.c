@@ -109,7 +109,7 @@ void		arg_to_list(t_liste *liste, t_tree *tree)
 			cur->next = create_list();
 			cur = cur->next;
 		}
-		cur->arg = ft_strdup(tree->arg);
+		// cur->arg = ft_strdup(tree->arg);
 		tree = tree->right;
 	}
 	sub_arg_to_list(cur, tree);

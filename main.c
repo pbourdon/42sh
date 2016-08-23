@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
+#include <stdio.h>
 
 void			readgnl2(t_data *data, char *str)
 {
@@ -22,12 +23,28 @@ void			readgnl2(t_data *data, char *str)
 	data->line = ft_strdup(str);
 	free(str);
 	parsecommand(data);
+	if (data->dspam == 0)
+		freetab(data->args);
+	free(data->line);
+	if (data->home)
+		free(data->home);
+	if (data->oldpwd)
+		free(data->oldpwd);
 }
 
 void			main_init(t_term *term)
 {
 	term_init(term);
 	shell_init();
+}
+
+void			print_list(t_liste *data)
+{
+	while (data)
+	{
+		printf("arg: %s\n", data->arg);
+		data = data->next;
+	}
 }
 
 void			sub_read(t_tree *tree, t_data *data)
@@ -43,18 +60,12 @@ void			sub_read(t_tree *tree, t_data *data)
 	while (tmp->next)
 		tmp = tmp->next;
 	tmp = liste;
+	// print_list(tmp);
 	while (tmp)
 	{
 		readgnl2(data, tmp->arg);
 		tmp = tmp->next;
 	}
-	if (data->dspam == 0)
-		freetab(data->args);
-	free(data->line);
-	if (data->home)
-		free(data->home);
-	if (data->oldpwd)
-		free(data->oldpwd);
 	free_list(liste);
 }
 
