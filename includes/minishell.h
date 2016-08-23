@@ -143,6 +143,7 @@ typedef struct			s_liste
 int						add_token(char *str);
 t_liste					*create_list(void);
 void					free_tree(t_tree *tree);
+int						switch_case(t_tk *ptr, int nb_redir, int nb_redir2);
 void					free_first_list(t_tk *ptr);
 void					free_list(t_liste *ptr);
 void					arg_to_list(t_liste *liste, t_tree *tree);
