@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 18:03:07 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/05/04 18:03:22 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/08/23 17:02:25 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,20 +71,21 @@ char			*get_user_name(char **env)
 {
 	int			i;
 	char		*tmp;
+	char		*str;
 
 	i = 0;
 	while (env[i + 1])
 	{
 		if (ft_strncmp(env[i], "USER=", 5) == 0)
 		{
-			tmp = ft_strdup(env[i]);
-			tmp += 5;
-			tmp = ft_strjoin(tmp, "@");
-			return (tmp);
+			tmp = ft_strdup(env[i] + 5);
+			str = ft_strjoin(tmp, "@");
+			free(tmp);
+			return (str);
 		}
 		i++;
 	}
-	return ("Unknown@");
+	return (ft_strdup("Unknown@"));
 	return (NULL);
 }
 
@@ -98,7 +99,6 @@ void			prompt_line(char **env)
 	hostname[1023] = '\0';
 	gethostname(hostname, 1000);
 	hostname = save_post(hostname);
-	free(hostname);
 	hostname = ft_joinfree(get_user_name(env), hostname, 3);
 	curtime = ntime();
 	curtime = ft_joinfree(" ", curtime, 2);
