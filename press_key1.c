@@ -6,7 +6,7 @@
 /*   By: pguzman <pguzman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/03 16:13:17 by pguzman           #+#    #+#             */
-/*   Updated: 2016/08/17 17:18:33 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/23 13:42:56 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -352,7 +352,8 @@ void	press_shift_right(void)
 	index_nw = get_next_word_after(g_shell.shell_line, index_c);
 	while (index_c <= index_nw)
 	{
-		g_shell.backslash_index++;
+		if (g_shell.backslash_index != -1)
+			g_shell.backslash_index++;
 		go_right(g_cursor, g_shell);
 		move_cursor_right(g_cursor, g_shell);
 		index_c++;

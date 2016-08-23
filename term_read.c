@@ -6,7 +6,7 @@
 /*   By: pguzman <pguzman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/04 10:23:53 by pguzman           #+#    #+#             */
-/*   Updated: 2016/08/05 11:13:22 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/23 17:05:16 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int		get_n_line(void)
 		return (-1);
 	if (g_shell.shell_backslash_level > 0)
 		return ((g_shell.backslash_index + 3) / g_shell.shell_win_size);
-	return ((g_cursor.position_line + 1) / g_shell.shell_win_size);
+	return ((g_cursor.position_line + 6) / g_shell.shell_win_size);
 }
 
 int		get_pos_l(void)
@@ -125,10 +125,10 @@ int		get_pos_l(void)
 		return (-1);
 	if (g_shell.shell_backslash_level > 0)
 		return ((g_shell.backslash_index + 2) % g_shell.shell_win_size);
-	if ((g_cursor.position_line + 1) % g_shell.shell_win_size == 0)
+	if ((g_cursor.position_line + 6) % g_shell.shell_win_size == 0)
 		return (0);
 	else
-		return (1 + (g_cursor.position_line % g_shell.shell_win_size));
+		return (6 + (g_cursor.position_line % g_shell.shell_win_size));
 }
 
 void	update_cursor(void)
@@ -152,7 +152,7 @@ void	replace_shell_line(char *str)
 	g_shell.length_line = ft_strlen(str);
 	g_cursor.position_line = g_shell.length_line;
 	ft_putstr(g_shell.shell_line);
-	if (g_shell.length_line == g_shell.shell_win_size - 1)
+	if (g_shell.length_line == g_shell.shell_win_size - 6)
 	{
 		ft_putstr(" ");
 		tputs(tgetstr("le", NULL), 0, tputs_putchar);
