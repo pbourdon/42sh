@@ -6,7 +6,7 @@
 /*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/16 18:30:52 by hlouar            #+#    #+#             */
-/*   Updated: 2016/05/23 09:30:42 by hlouar           ###   ########.fr       */
+/*   Updated: 2016/08/23 19:31:14 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,16 @@ int		createbinpath(t_data *data, int n)
 
 	i = 0;
 	str = NULL;
-	changepathintab(data);
-	if (data->allp)
+	if (data->args && data->args[0] &&
+		!ft_strncmp(data->args[0], "./", 2) &&
+		createbinpath2(data, str) == 1)
+		return (1);
+	else if ((str = get_bin(data->args[0])))
 	{
-		if (createbinpath2(data, str) == 1)
-			return (1);
-		while (data->allp[i] != NULL)
+		data->bin = ft_strdup(str);
+		return (1);
+	}
+/*		while (data->allp[i] != NULL)
 		{
 			str = createbinpathtools(data, str, i);
 			if (access(str, F_OK) == 0)
@@ -50,7 +54,7 @@ int		createbinpath(t_data *data, int n)
 			}
 			i++;
 		}
-	}
+		}*/
 	if (n == 1)
 		errorbinary(data, str);
 	return (0);

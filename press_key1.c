@@ -6,7 +6,7 @@
 /*   By: pguzman <pguzman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/03 16:13:17 by pguzman           #+#    #+#             */
-/*   Updated: 2016/08/23 13:42:56 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/23 18:39:49 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -297,8 +297,8 @@ int		press_enter_key(void)
 	press_end_key();
 	if (backslash_at_the_end() || !parenthesis_closed())
 		return (0);
-	if (ft_strcmp(g_shell.shell_line, "exit") == 0)
-		exit(0);
+//	if (ft_strcmp(g_shell.shell_line, "exit") == 0)
+//		exit(0);
 	if (ft_strcmp(g_shell.shell_line, "") != 0 && g_shell.shell_heredoc == 0)
 		add_to_history(g_shell.history, g_shell.shell_line);
 	// ft_bzero(g_shell.shell_line, 1000);

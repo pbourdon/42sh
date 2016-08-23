@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/20 18:14:12 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/16 16:46:55 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/08/23 19:17:19 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ void			add_digit_aggr(t_tk *liste)
 {
 	char		*tmp;
 
-	tmp = ft_strdup("1");
 	while (liste != NULL)
 	{
 		if (liste->tk == 1 && ft_isdigit(liste->arg[0]) == 0)
 		{
-			tmp = ft_strjoin(tmp, liste->arg);
-			liste->arg = ft_strdup(tmp);
+			tmp = ft_strjoin("1", liste->arg);
+			free(liste->arg);
+			liste->arg = tmp;
 		}
 		liste = liste->next;
 	}

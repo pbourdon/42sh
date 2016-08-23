@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 18:50:23 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/22 18:50:37 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/08/23 18:45:18 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@
 // }
 // 
 
-void			parsecommand(t_data *data)
+void			parsecommand(t_data *data, t_liste *liste)
 {
 	if (data->line[0] == '\0')
 	{
@@ -90,7 +90,12 @@ void			parsecommand(t_data *data)
 	data->args = ft_strsplit(data->line, ' ');
 	// data->args = check_inib(data->args);
 	if (ft_strcmp(data->line, "exit") == 0)
+	{
+		ft_putstr("trololo");
+		get_tabhash(NULL, 1);
+		free_list(liste);
 		exit(0);
+	}
 	else if (ifitsredi(data) != 0)
 	{
 		mainredi(data);

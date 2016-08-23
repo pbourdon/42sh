@@ -6,14 +6,14 @@
 /*   By: hlouar <hlouar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/16 17:45:20 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/19 12:13:28 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/23 18:44:35 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 #include <stdio.h>
 
-void			readgnl2(t_data *data, char *str)
+void			readgnl2(t_data *data, char *str, t_liste *liste)
 {
 	data->fona = 0;
 	data->dspam = 0;
@@ -22,7 +22,7 @@ void			readgnl2(t_data *data, char *str)
 	str = (transformtab(withoutspace(str)));
 	data->line = ft_strdup(str);
 	free(str);
-	parsecommand(data);
+	parsecommand(data, liste);
 	if (data->dspam == 0)
 		freetab(data->args);
 	free(data->line);
@@ -63,7 +63,7 @@ void			sub_read(t_tree *tree, t_data *data)
 	// print_list(tmp);
 	while (tmp)
 	{
-		readgnl2(data, tmp->arg);
+		readgnl2(data, tmp->arg, liste);
 		tmp = tmp->next;
 	}
 	free_list(liste);
@@ -103,6 +103,7 @@ int				main(int ac, char **av, char **env)
 	data.allp = NULL;
 	data.voldpwd = NULL;
 	data.env = env;
+	init_hashtab(env);
 	if (data.env[0] == NULL)
 	{
 		data.env[0] = "PATH=/bin";

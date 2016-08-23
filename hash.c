@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/13 17:16:42 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/08/23 16:57:11 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/23 19:30:30 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ char	*ft_chrbin(char *path)
 {
 	int i;
 
+	if (!path)
+		return (0);
 	i = ft_strlen(path);
 	while (path[--i])
 	{
@@ -190,8 +192,10 @@ char	*get_openaddr(char **tabhash, int hash, char *bin)
 	while (1)
 	{
 		if ((tmp = ft_chrbin(tabhash[hash])))
-			if (!ft_strcmp(tmp, bin))
+			if (tmp == NULL || !ft_strcmp(tmp, bin))
 				break ;
+		if (tmp == NULL)
+			return (NULL);
 		hash++;
 		if (hash > 2048)
 			hash /= 7 + (++i);

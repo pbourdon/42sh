@@ -6,7 +6,7 @@
 #    By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/02 13:52:37 by bde-maze          #+#    #+#              #
-#    Updated: 2016/08/22 18:16:50 by cmichaud         ###   ########.fr        #
+#    Updated: 2016/08/23 17:29:09 by cmichaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,6 +62,7 @@ SRC = 	builtin_exit_error.c \
 		testredi5.c \
 		testredi6.c \
 		tools_split.c \
+		hash.c \
 
 OBJDIR = obj/
 
