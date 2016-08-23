@@ -38,7 +38,7 @@ void			main_init(t_term *term)
 	shell_init();
 }
 
-void			print_list(t_liste *data)
+void			print_list(t_tk *data)
 {
 	while (data)
 	{
@@ -60,7 +60,6 @@ void			sub_read(t_tree *tree, t_data *data)
 	while (tmp->next)
 		tmp = tmp->next;
 	tmp = liste;
-	// print_list(tmp);
 	while (tmp)
 	{
 		readgnl2(data, tmp->arg, liste);
@@ -80,6 +79,7 @@ int				readgnl(t_data *data, char *str)
 	ret = 0;
 	if ((ptr = to_list(str, -1)))
 	{
+		print_list(ptr);
 		ret = check_list(ptr, NULL, 0, 0);
 		ptr = good_order(ptr, ptr, ptr);
 		tree = to_tree(NULL, ptr, 5, NULL);

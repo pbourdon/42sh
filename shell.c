@@ -6,12 +6,27 @@
 /*   By: pguzman <pguzman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/04 09:43:51 by pguzman           #+#    #+#             */
-/*   Updated: 2016/08/23 17:06:24 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/23 17:59:14 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
-
+//
+// void 	*realloc(void *ptr, size_t size)
+// {
+// 	char	*newptr;
+//
+// 	if (ptr)
+// 	{
+// 		newptr = (char *)malloc(size);
+// 		if (!newptr)
+// 			return (NULL);
+// 		ft_memcpy(newptr, ptr, size);
+// 		ft_memdel(&ptr);
+// 	}
+// 	return (newptr);
+// }
+//
 int					shell_loop(t_term *term, t_data *data, char **env)
 {
 	while (g_shell.shell_status)
@@ -51,13 +66,16 @@ void				update_shell_line_original(void)
 		{
 			if (ft_strcmp(g_shell.shell_line, g_shell.shell_line_original) != 0)
 			{
-				ft_strdel(&g_shell.shell_line_original);
-				g_shell.shell_line_original = ft_strdup(g_shell.shell_line);
+				//ft_strdel(&g_shell.shell_line_original);
+				ft_bzero(g_shell.shell_line_original, g_shell.size);
+				g_shell.shell_line_original = ft_strcat(g_shell.shell_line_original, g_shell.shell_line);
 			}
 		}
 		else if (g_shell.shell_backslash_level != 0)
 		{
-			ft_strdel(&g_shell.shell_line_original);
+			// ft_strdel(&g_shell.shell_line_original);
+			ft_bzero(g_shell.shell_line_original, g_shell.size);
+			g_shell.shell_line_original = ft_strcat(g_shell.shell_line_original, &g_shell.shell_line[g_shell.last_backslash]);
 			g_shell.shell_line_original = ft_strdup(\
 					&g_shell.shell_line[g_shell.last_backslash]);
 		}
@@ -149,6 +167,7 @@ void				shell_init(void)
 	struct winsize	w;
 
 	g_shell.shell_status = 1;
+	g_shell.size = 1000;
 	g_shell.shell_line = (char *)malloc(sizeof(*(g_shell.shell_line)) * 1000);
 	g_shell.shell_line[999] = '\0';
 	g_shell.shell_line_original = (char *)malloc(sizeof(char) * 1000);

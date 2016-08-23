@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cmichaud <cmichaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/20 18:33:29 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/08/23 18:43:33 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/23 19:48:06 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct			s_shell
 	int					selected_end;
 	char				*selected_copy;
 	int					shell_heredoc;
+	int					size;
 }						t_shell;
 
 typedef struct			s_cursor
@@ -114,6 +115,7 @@ typedef struct			s_data
 	char				**tabchev;
 	char				**oldtbe;
 	int					posi;
+	char				**builttab;
 	struct s_liste2		*liste;
 }						t_data;
 
@@ -332,7 +334,8 @@ char					*get_bin(char *bin);
 char					**get_tabhash(char **new, int b);
 void					free_tabhash(void);
 void					init_hashtab(char **env);
-
+int						checklineok(t_data *data, char **tabb);
+int						insertthetmp(t_data *data);
 t_shell					g_shell;
 t_cursor				g_cursor;
 
