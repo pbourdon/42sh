@@ -6,11 +6,26 @@
 /*   By: pguzman <pguzman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/04 09:43:51 by pguzman           #+#    #+#             */
-/*   Updated: 2016/08/23 17:06:24 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/23 17:47:23 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
+
+void 	*realloc(void *ptr, size_t size)
+{
+	char	*newptr;
+
+	if (ptr)
+	{
+		newptr = (char *)malloc(size);
+		if (!newptr)
+			return (NULL);
+		ft_memcpy(newptr, ptr, size);
+		ft_memdel(&ptr);
+	}
+	return (newptr);
+}
 
 int					shell_loop(t_term *term, t_data *data, char **env)
 {

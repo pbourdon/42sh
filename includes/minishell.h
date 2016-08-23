@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cmichaud <cmichaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/20 18:33:29 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/08/22 19:33:55 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/23 17:50:46 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct			s_shell
 	int					selected_end;
 	char				*selected_copy;
 	int					shell_heredoc;
+	int					size;
 }						t_shell;
 
 typedef struct			s_cursor
