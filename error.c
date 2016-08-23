@@ -49,15 +49,15 @@ int				check_aggr(char *str, int tk)
 
 void			add_digit_aggr(t_tk *liste)
 {
-	char		*tmp;
+	char		*str;
 
-	tmp = ft_strdup("1");
 	while (liste != NULL)
 	{
 		if (liste->tk == 1 && ft_isdigit(liste->arg[0]) == 0)
 		{
-			tmp = ft_strjoin(tmp, liste->arg);
-			liste->arg = ft_strdup(tmp);
+			str = ft_strjoin("1", liste->arg);
+			free(liste->arg);
+			liste->arg = str;
 		}
 		liste = liste->next;
 	}

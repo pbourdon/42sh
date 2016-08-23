@@ -47,21 +47,7 @@
 	// }
 	// return (tab);
 // }
-// 
-// char			which_inib(char *str)
-// {
-	// int			i;
-// 
-	// i = 0;
-	// while (i <= ft_strlen(str))
-	// {
-		// if (str[i] == "\"" || str[i] == "'" || str[i] == "\\")
-			// return (str[i]);
-		// i++;
-	// }
-	// return (c);
-// }
-// 
+
 // char			**check_inib(char **tab)
 // {
 	// int			i;
@@ -80,6 +66,105 @@
 // }
 // 
 
+char			*cut(char *str, int pos, int inib)
+{
+	char		*tmp;
+	int			len;
+
+	tmp = str + pos - 1;
+	len = ft_strlen(tmp);
+	while (tmp[len] != inib)
+		len--;
+	tmp = ft_strncpy(tmp, tmp, len);
+	return (tmp);
+}
+
+int				which_inib(char *str)
+{
+	int			i;
+	int			len;
+
+	i = 0;
+	len = ft_strlen(str);
+	while (i <= len)
+	{
+		if (str[i] == '"' || str[i] == '\'' || str[i] == '\\')
+			return (str[i]);
+		i++;
+	}
+	return (i);
+}
+
+char			**sub_complete(char **tb, char **tb2, int i, int j)
+{
+	int			len;
+	int			len2;
+	char		**tab3;
+
+	len = ft_strlentab(tb);
+	len2 = ft_strlentab(tb2);
+	ft_putendl("debug:split 1");
+	tab3 = ft_memalloc(sizeof(char *) * (len + len2));
+	ft_putendl("debug:split 2");
+	while (tb[i])
+	{
+		tab3[i] = ft_strdup(tb[i]); 
+		i++;
+	}
+	ft_putendl("debug:split 3");
+	while (tb2[j])
+	{
+		tab3[i] = ft_strdup(tb2[j]);
+		i++;
+		j++;
+	}
+	ft_putendl("debug:split 4");
+	return (tab3);
+}
+
+char			**complete_tab(char **tb, char *middle, char *str)
+{
+	int			i;
+	int			j;
+	char		**tb2;
+
+	j = 0;
+	i = ft_strlentab(tb);
+	tb2 = ft_memalloc(sizeof(char *) * (i + 1));
+	while (j < i)
+	{
+		tb2[j] = ft_strdup(tb[j]);
+		j++;
+	}
+	tb2[j] = ft_strdup(middle);
+	freetab(tb);
+	str = str + (ft_strlen(middle) + 1);
+	tb = ft_strsplit(str, ' ');
+	return (sub_complete(tb2, tb, 0, 0));
+}
+
+char			**split(char *str, char *begin, char *middle)
+{
+	int			i;
+	int			pos;
+	char		inib;
+	char		**tb;
+
+	i = 0;
+	pos = 0;
+	if (ft_strstr(str, "\"") == NULL && ft_strstr(str, "'") == NULL && ft_strstr(str, "\\") == NULL)
+		return (ft_strsplit(str, ' '));
+	pos = which_inib(str);
+	begin = ft_strnew(pos);
+	inib = str[pos];
+	begin = ft_strncpy(begin, str, pos - 1);
+	middle = cut(str, pos, inib);
+	tb = ft_strsplit(begin, ' ');
+	free(begin);
+	tb = complete_tab(tb, middle, str);
+	return (tb);
+}
+
 void			parsecommand(t_data *data)
 {
 	if (data->line[0] == '\0')
@@ -87,8 +172,7 @@ void			parsecommand(t_data *data)
 		data->dspam = 1;
 		return ;
 	}
-	data->args = ft_strsplit(data->line, ' ');
-	// data->args = check_inib(data->args);
+	data->args = split(data->line, NULL, NULL);
 	if (ft_strcmp(data->line, "exit") == 0)
 		exit(0);
 	else if (ifitsredi(data) != 0)
