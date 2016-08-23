@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/13 17:16:42 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/08/22 20:51:49 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/23 16:57:11 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,6 @@ char	**get_tabhash(char **new, int b)
 		{
 			if (tabhash[i])
 			{
-				ft_putstr(tabhash[i]);
-				ft_putstr(" is path for -> ");
-				ft_putnbr(i);
-				ft_putstr("\n");
 				free(tabhash[i]);
 				tabhash[i] = NULL;
 			}
