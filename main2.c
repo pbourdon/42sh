@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 18:50:23 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/23 19:51:52 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/23 19:53:18 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,7 @@ char			**split(char *str, char *begin, char *middle)
 	return (tb);
 }
 
-void			parsecommand(t_data *data, liste)
+void			parsecommand(t_data *data, t_liste *liste)
 {
 	if (data->line[0] == '\0')
 	{
