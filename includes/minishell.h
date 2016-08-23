@@ -6,7 +6,7 @@
 /*   By: cmichaud <cmichaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/20 18:33:29 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/08/23 17:50:46 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/23 19:36:12 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ typedef struct			s_data
 	char				**tabchev;
 	char				**oldtbe;
 	int					posi;
+	char				**builttab;
 	struct s_liste2		*liste;
 }						t_data;
 
@@ -333,7 +334,8 @@ char					*get_bin(char *bin);
 char					**get_tabhash(char **new);
 void					free_tabhash(void);
 void					init_hashtab(char **env);
-
+int						checklineok(t_data *data, char **tabb);
+int						insertthetmp(t_data *data);
 t_shell					g_shell;
 t_cursor				g_cursor;
 

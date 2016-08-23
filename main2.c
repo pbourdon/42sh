@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 18:50:23 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/22 18:50:37 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/08/23 19:36:25 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,10 @@ void			parsecommand(t_data *data)
 		freetab(data->oldtbe);
 		return ;
 	}
+	else if (checklineok(data, data->args) != -1)
+			return ;
+	else if (ft_strcmp(data->args[0], "export") == 0)
+		insertthetmp(data);
 	else if (ft_strcmp(data->args[0], "env") == 0)
 		callallenv(data);
 	else if (ft_strcmp(data->args[0], "setenv") == 0)
