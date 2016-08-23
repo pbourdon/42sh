@@ -12,7 +12,7 @@
 
 #include "includes/minishell.h"
 
-void	sig_handler(int a)
+void				sig_handler(int a)
 {
 	struct winsize	w;
 
@@ -22,9 +22,9 @@ void	sig_handler(int a)
 	update_cursor();
 }
 
-void sig_handler_ctrl_c(int a)
+void				sig_handler_ctrl_c(int a)
 {
-	struct termios term;
+	struct termios	term;
 
 	a = 1;
 	tputs(tgetstr("ve", NULL), 1, tputs_putchar);

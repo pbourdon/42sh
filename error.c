@@ -12,27 +12,6 @@
 
 #include "includes/minishell.h"
 
-int				switch_case(t_tk *ptr, int nb_redir, int nb_redir2)
-{
-	if (ptr->tk == 3 && ft_strncmp(ptr->arg, "|", 1) != 0 && ptr->next == NULL)
-	{
-		ft_putendl("Missing name for redirect.");
-		return (-1);
-	}
-	else if (nb_redir > 1 || nb_redir2 < -1)
-	{
-		ft_putendl("Ambigous output redirect.");
-		return (-1);
-	}
-	else if (ptr->tk == 3 && ft_strncmp(ptr->arg, "|", 1) == 0
-	&& ptr->next == NULL)
-	{
-		ft_putendl("Invalid null command.");
-		return (-1);
-	}
-	return (0);
-}
-
 int				set_redir_var(char *str, int nb_redir)
 {
 	if (ft_strncmp(str, "<", 1) == 0 || ft_strncmp(str, "<<", 2) == 0)
@@ -66,14 +45,6 @@ int				check_aggr(char *str, int tk)
 		}
 	}
 	return (0);
-}
-
-void			print_liste(t_tk *ptr)
-{
-	while (ptr)
-	{
-		ptr = ptr->next;
-	}
 }
 
 void			add_digit_aggr(t_tk *liste)

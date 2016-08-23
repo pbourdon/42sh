@@ -39,20 +39,10 @@ int				sub_split_on_spec(char **cmd, char **ptr)
 	if (!ft_strncmp(*cmd, ">&", 2))
 	{
 		while (*cmd - 1 && ft_isdigit(*(*cmd - 1)))
-		{
-			ft_putendl(*cmd);
 			*cmd -= 1;
-			ft_putendl(*cmd);
-			ft_putendl(*ptr);
-			ft_putstr("-----------------testing-----------\n");
-		}
-		if (*cmd != *ptr && *cmd - 1 && *(*cmd - 1) > 0  && *(*cmd - 1) != ' ' 
+		if (*cmd != *ptr && *cmd - 1 && *(*cmd - 1) > 0 && *(*cmd - 1) != ' '
 			&& !(is_a_spec2(*cmd, *(*cmd - 1))))
-		{
 			*cmd = tmp;
-			ft_putendl(*cmd);
-			ft_putstr("-----------------TESTING-----------\n");
-		}
 	}
 	return (0);
 }

@@ -67,13 +67,6 @@ char			*save_post(char *hostname)
 	return (tmp);
 }
 
-void			go_free(char *cwd, char *hostname, char *curtime)
-{
-	free(cwd);
-	free(hostname);
-	free(curtime);
-}
-
 char			*get_user_name(char **env)
 {
 	int			i;

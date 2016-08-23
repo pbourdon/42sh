@@ -12,17 +12,6 @@
 
 #include "includes/minishell.h"
 
-t_liste		*create_list(void)
-{
-	t_liste *liste;
-
-	if (!(liste = ft_memalloc(sizeof(t_liste))))
-		return (NULL);
-	liste->next = NULL;
-	liste->arg = NULL;
-	return (liste);
-}
-
 t_liste		*del_last_null_arg(t_liste *liste)
 {
 	t_liste *tmp;
@@ -86,6 +75,19 @@ char		*get_arg_nodes(t_tree *tree)
 	return (str);
 }
 
+void		sub_arg_to_list(t_liste *cur, t_tree *tree)
+{
+	if (tree)
+	{
+		if (cur->arg != NULL)
+		{
+			cur->next = create_list();
+			cur = cur->next;
+		}
+		cur->arg = get_arg_nodes(tree);
+	}
+}
+
 void		arg_to_list(t_liste *liste, t_tree *tree)
 {
 	t_liste *cur;
@@ -110,13 +112,5 @@ void		arg_to_list(t_liste *liste, t_tree *tree)
 		cur->arg = ft_strdup(tree->arg);
 		tree = tree->right;
 	}
-	if (tree)
-	{
-		if (cur->arg != NULL)
-		{
-			cur->next = create_list();
-			cur = cur->next;
-		}
-		cur->arg = get_arg_nodes(tree);
-	}
+	sub_arg_to_list(cur, tree);
 }

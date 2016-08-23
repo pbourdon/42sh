@@ -140,6 +140,8 @@ typedef struct			s_liste
 	struct s_liste		*next;
 }						t_liste;
 
+int						add_token(char *str);
+t_liste					*create_list(void);
 void					free_tree(t_tree *tree);
 void					free_first_list(t_tk *ptr);
 void					free_list(t_liste *ptr);
@@ -147,6 +149,7 @@ void					arg_to_list(t_liste *liste, t_tree *tree);
 t_liste					*create_list();
 t_liste					*del_last_null_arg(t_liste *liste);
 t_tree					*to_tree(t_tree *tree, t_tk *tk, int prio, char *str);
+void					go_free(char *cwd, char *hostname, char *curtime);
 void					aff(t_tree *tree);
 t_tk					*good_order(t_tk *ptr, t_tk *prev, t_tk *base);
 int						sub_split_on_spec(char **cmd, char **ptr);

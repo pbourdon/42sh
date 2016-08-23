@@ -73,7 +73,7 @@ void		concat_out(t_tk **prev, char *str)
 	ft_memdel((void *)&tmp);
 }
 
-int 		is_a_next_exec(t_tk *ptr)
+int			is_a_next_exec(t_tk *ptr)
 {
 	if (ptr->tk != 0 && ptr->tk != 1 && ptr->tk != 2 && ptr->tk != 3)
 		return (1);
@@ -91,7 +91,7 @@ t_tk		*good_order(t_tk *ptr, t_tk *prev, t_tk *base)
 	while (ptr)
 	{
 		if (((ptr->tk == REDDIR && ft_strcmp(ptr->arg, "|")) ||
-			 ptr->tk == AGGR)
+			ptr->tk == AGGR)
 			&& ptr->next && ptr->next->tk == 0
 			&& (tmp = in_out(ptr->next->arg)))
 		{

@@ -12,7 +12,7 @@
 
 #include "includes/minishell.h"
 
-int	term_init(t_term *term)
+int			term_init(t_term *term)
 {
 	if ((term->term_name = getenv("TERM")) == NULL)
 		return (-1);
@@ -27,13 +27,13 @@ int	term_init(t_term *term)
 	return (1);
 }
 
-int	tputs_putchar(int c)
+int			tputs_putchar(int c)
 {
 	write(1, &c, 1);
 	return (1);
 }
 
-int		ft_reset_term(struct termios term)
+int			ft_reset_term(struct termios term)
 {
 	if (tcsetattr(0, 0, &term) == -1)
 		return (-1);
