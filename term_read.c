@@ -6,7 +6,7 @@
 /*   By: pguzman <pguzman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/04 10:23:53 by pguzman           #+#    #+#             */
-/*   Updated: 2016/08/23 17:05:16 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/23 18:06:42 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ void	delete_shell_line(void)
 void	replace_shell_line(char *str)
 {
 	delete_shell_line();
-	ft_bzero(g_shell.shell_line, 1000);
+	ft_bzero(g_shell.shell_line, g_shell.size);
 	g_shell.shell_line = ft_strcat(g_shell.shell_line, str);
 	g_shell.length_line = ft_strlen(str);
 	g_cursor.position_line = g_shell.length_line;

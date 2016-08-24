@@ -6,7 +6,7 @@
 /*   By: pguzman <pguzman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/03 16:13:17 by pguzman           #+#    #+#             */
-/*   Updated: 2016/08/23 18:39:49 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/24 11:15:03 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ void	print_history(t_history *history)
 	his = history;
 	while (his)
 	{
-		// ft_putstr_fd(his->str, 2);
-		// ft_putstr_fd("\n", 2);
+		 ft_putstr_fd(his->str, 2);
+		 ft_putstr_fd("\n", 2);
 		his = his->next;
 	}
 }
@@ -77,7 +77,6 @@ void	print_history(t_history *history)
 void	press_up_key(void)
 {
 	t_history *history;
-
 	if (g_shell.history_index > 0)
 	{
 		history = g_shell.history;
@@ -93,9 +92,6 @@ void	press_up_key(void)
 		else if (g_shell.history_index != 1)
 		{
 			g_shell.history_index--;
-			// ft_putnbr_fd(g_shell.history_index, 2);
-			// ft_putstr_fd("\n\n", 2);
-			print_history(history);
 			replace_shell_line(get_history_i(g_shell.history_index - 1));
 		}
 	}
@@ -297,8 +293,6 @@ int		press_enter_key(void)
 	press_end_key();
 	if (backslash_at_the_end() || !parenthesis_closed())
 		return (0);
-//	if (ft_strcmp(g_shell.shell_line, "exit") == 0)
-//		exit(0);
 	if (ft_strcmp(g_shell.shell_line, "") != 0 && g_shell.shell_heredoc == 0)
 		add_to_history(g_shell.history, g_shell.shell_line);
 	// ft_bzero(g_shell.shell_line, 1000);

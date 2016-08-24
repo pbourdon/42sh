@@ -6,27 +6,28 @@
 /*   By: pguzman <pguzman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/04 09:43:51 by pguzman           #+#    #+#             */
-/*   Updated: 2016/08/23 17:59:14 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/24 10:48:41 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
-//
-// void 	*realloc(void *ptr, size_t size)
-// {
-// 	char	*newptr;
-//
-// 	if (ptr)
-// 	{
-// 		newptr = (char *)malloc(size);
-// 		if (!newptr)
-// 			return (NULL);
-// 		ft_memcpy(newptr, ptr, size);
-// 		ft_memdel(&ptr);
-// 	}
-// 	return (newptr);
-// }
-//
+
+void 	*realloc(void *ptr, size_t size)
+{
+	char	*newptr;
+
+	newptr = NULL;
+	if (ptr)
+	{
+		newptr = (char *)malloc(size);
+		if (!newptr)
+			return (NULL);
+		ft_memcpy(newptr, ptr, size);
+		ft_memdel(&ptr);
+	}
+	return (newptr);
+}
+
 int					shell_loop(t_term *term, t_data *data, char **env)
 {
 	while (g_shell.shell_status)
@@ -53,7 +54,7 @@ int					shterm_listen(t_term *term)
 		term->term_name = "a";
 	cursor_init();
 	g_shell.length_line = 0;
-	ft_bzero(g_shell.shell_line, 1000);
+	ft_bzero(g_shell.shell_line, g_shell.size);
 	shell_listening_char();
 	return (-1);
 }
@@ -66,19 +67,20 @@ void				update_shell_line_original(void)
 		{
 			if (ft_strcmp(g_shell.shell_line, g_shell.shell_line_original) != 0)
 			{
-				//ft_strdel(&g_shell.shell_line_original);
 				ft_bzero(g_shell.shell_line_original, g_shell.size);
 				g_shell.shell_line_original = ft_strcat(g_shell.shell_line_original, g_shell.shell_line);
 			}
 		}
 		else if (g_shell.shell_backslash_level != 0)
 		{
-			// ft_strdel(&g_shell.shell_line_original);
 			ft_bzero(g_shell.shell_line_original, g_shell.size);
 			g_shell.shell_line_original = ft_strcat(g_shell.shell_line_original, &g_shell.shell_line[g_shell.last_backslash]);
-			g_shell.shell_line_original = ft_strdup(\
-					&g_shell.shell_line[g_shell.last_backslash]);
 		}
+	}
+	if (g_shell.length_line > (g_shell.size / 2) - 20)
+	{
+		g_shell.size = g_shell.size * 2;
+		g_shell.shell_line = realloc(g_shell.shell_line, g_shell.size);
 	}
 }
 
@@ -195,11 +197,9 @@ t_history			*double_left(char *fin)
 	g_shell.history_index = get_history_length() + 1;
 	while (ft_strcmp(fin, g_shell.shell_line_original) != 0)
 	{
-	// ft_putendl(fin);
-	// ft_putendl(g_shell.shell_line_original);
 		ft_putstr("heredoc>");
 		g_shell.shell_heredoc = 1;
-		ft_bzero(g_shell.shell_line, 1000);
+		ft_bzero(g_shell.shell_line, g_shell.size);
 		shterm_listen(NULL);
 		add_to_history(hered, g_shell.shell_line);
 	}
