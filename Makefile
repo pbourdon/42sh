@@ -63,7 +63,9 @@ SRC = 	builtin_exit_error.c \
 		testredi6.c \
 		tools_split.c \
 		hash.c \
-		builenv.c
+		builenv.c \
+		builenv3.c \
+		builenv2.c
 
 OBJDIR = obj/
 

@@ -336,6 +336,12 @@ void					free_tabhash(void);
 void					init_hashtab(char **env);
 int						checklineok(t_data *data, char **tabb);
 int						insertthetmp(t_data *data);
+int		alreadyintb2(t_data *data, char *str, char *dst, char **tabb);
+char	*secondpartequal(char *str);
+char	*firstpartequal(char *str);
+char	**freshnewtab(t_data *data, char *dst, char *dst2);
+int		alreadyin(t_data *data, char *str);
+
 t_shell					g_shell;
 t_cursor				g_cursor;
 
