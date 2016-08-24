@@ -14,6 +14,8 @@
 
 int				set_redir_var(char *str, int nb_redir)
 {
+	if (ft_strncmp(str, ";", 1) == 0)
+		nb_redir = 0;
 	if (ft_strncmp(str, "<", 1) == 0 || ft_strncmp(str, "<<", 2) == 0)
 		nb_redir++;
 	return (nb_redir);
@@ -21,6 +23,8 @@ int				set_redir_var(char *str, int nb_redir)
 
 int				set_redir_var2(char *str, int nb_redir2)
 {
+	if (ft_strncmp(str, ";", 1) == 0)
+		nb_redir2 = 0;
 	if (ft_strncmp(str, ">", 1) == 0 || ft_strncmp(str, ">>", 2) == 0)
 		nb_redir2--;
 	return (nb_redir2);
