@@ -77,6 +77,14 @@ char	**freshnewtab(t_data *data, char *dst, char *dst2)
 			tabb[i] = ft_strdup(data->builttab[i]);
 			i++;
 		}
+		tabb[i] = ft_strdup(dst);
+		free(dst);
+		tabb[i + 1] = ft_strdup("=");
+		tabb[i + 2] = ft_strdup(dst2);
+		free(dst2);
+		tabb[i + 3] = NULL;
+		freetab(data->builttab);
+		return (tabb);
 	}
 	tabb[i] = ft_strdup(dst);
 	free(dst);
@@ -156,16 +164,12 @@ int		checklineok(t_data *data, char **tabb)
 		return (-1);
 	if (ft_strstr(tabb[0], "=") != NULL)
 	{
-		ft_putendl("ICI");
 		dst = firstpartequal(tabb[0]);
-		ft_putendl("JUSTE LA");
 		dst2 = secondpartequal(tabb[0]);
-		ft_putendl("VRAIMENT C ICI");
 		if (alreadyin(data, dst) == 1)
 			alreadyintb(data, dst, dst2);
 		else
 			data->builttab = freshnewtab(data, dst, dst2);
-		ft_putendl("OU LA EN FAITES");
 		return (1);
 	}
 	return (-1);
@@ -215,10 +219,12 @@ int		insertthetmp(t_data *data)
 			if (ft_strcmp(data->builttab[i], data->args[1]) == 0)
 			{
 				str = ft_strjoin(data->builttab[i], "=");
-				str = ft_strjoin(str, data->builttab[i + 2]);
-				str = ft_strjoin("setenv ", str);
+				str = ft_joinfree(str, data->builttab[i + 2], 1);
+				str = ft_joinfree("setenv ", str, 2);
 				data->builttab = modiftabafteruse(data);
+				freetab(data->args);
 				data->args = ft_strsplit(str, ' ');
+				free(str);
 				callsetenv(data);
 				return (1);
 			}
