@@ -68,6 +68,13 @@ void			sub_split_norm(char **cmd, t_tk *cur, int i)
 		cur->arg[++i] = '&';
 		*cmd += 2;
 	}
+	else if (!ft_strncmp(*cmd, "<&", 2))
+	{
+		if (ft_isdigit(cur->arg[0]))
+			cur->arg[++i] = '<';
+		cur->arg[++i] = '&';
+		*cmd += 2;
+	}
 	sub_sub_split_norm(cmd, cur, i);
 }
 
@@ -76,7 +83,7 @@ t_tk			*split_norm(char **ptr, char **cmd, t_tk **base, t_tk *cur)
 	int			i;
 
 	i = 0;
-	if (ft_isdigit(**cmd) || !ft_strncmp(*cmd, ">&", 2))
+	if (ft_isdigit(**cmd) || !ft_strncmp(*cmd, ">&", 2) || !ft_strncmp(*cmd, "<&", 2))
 		sub_split_norm(cmd, cur, i);
 	else if ((**cmd == '&' || **cmd == '>' || **cmd == '<')
 		&& *(*cmd + 1) == cur->arg[i])
