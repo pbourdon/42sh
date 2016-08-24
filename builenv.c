@@ -87,6 +87,25 @@ char	**freshnewtab(t_data *data, char *dst, char *dst2)
 	return (tabb);
 }
 
+int		alreadyin(t_data *data, char *str)
+{
+	int i;
+
+	i = 0;
+
+	if (data->builttab)
+	{
+		while (data->builttab[i])
+		{
+			if ((ft_strcmp(data->builttab[i], str)  == 0) && ((i % 3) == 0))
+				return (1);
+			i++;
+		}
+		return (0);
+	}
+	return (0);
+}
+
 int 	alreadyintb(t_data *data, char *str, char *dst)
 {
 	int i;
@@ -137,10 +156,16 @@ int		checklineok(t_data *data, char **tabb)
 		return (-1);
 	if (ft_strstr(tabb[0], "=") != NULL)
 	{
+		ft_putendl("ICI");
 		dst = firstpartequal(tabb[0]);
+		ft_putendl("JUSTE LA");
 		dst2 = secondpartequal(tabb[0]);
-		if (alreadyintb(data, dst, dst2) == -1)
+		ft_putendl("VRAIMENT C ICI");
+		if (alreadyin(data, dst) == 1)
+			alreadyintb(data, dst, dst2);
+		else
 			data->builttab = freshnewtab(data, dst, dst2);
+		ft_putendl("OU LA EN FAITES");
 		return (1);
 	}
 	return (-1);
