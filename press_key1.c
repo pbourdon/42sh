@@ -6,7 +6,7 @@
 /*   By: pguzman <pguzman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/03 16:13:17 by pguzman           #+#    #+#             */
-/*   Updated: 2016/08/24 11:15:03 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/24 15:23:12 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -295,19 +295,15 @@ int		press_enter_key(void)
 		return (0);
 	if (ft_strcmp(g_shell.shell_line, "") != 0 && g_shell.shell_heredoc == 0)
 		add_to_history(g_shell.history, g_shell.shell_line);
-	// ft_bzero(g_shell.shell_line, 1000);
 	g_shell.backslash_index = -1;
 	if (g_shell.shell_heredoc == 0)
 		g_shell.history_index = get_history_length();
- 	if (ft_strcmp("<<", g_shell.shell_line) == 0)
-		g_shell.shell_heredoc = 1;
 	ft_putstr("\n");
 	return (1);
 }
 
 void	press_shift_direction_key(char *buffer)
 {
-	// ft_putnbr_fd(buffer[5], 2);
 	if (is_shift_right(buffer[5]))
 		press_shift_right(g_cursor, g_shell);
 	else if (is_shift_left(buffer[5]))
