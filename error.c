@@ -37,7 +37,7 @@ int				check_aggr(char *str, int tk)
 		if (ft_strlen(str) < 3 || (ft_strlen(str) == 3 &&
 		(ft_isdigit(str[2]) == 0 && str[2] != '-')))
 		{
-			ft_putendl("syntax error near unexpected tk `newline'");
+			ft_putendl("syntax error near unexpected token `\\n'");
 			return (-1);
 		}
 		else if (ft_strlen(str) == 4 &&

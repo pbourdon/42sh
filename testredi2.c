@@ -19,6 +19,9 @@ int		ifitsredi(t_data *data)
 	i = 0;
 	while (data->args[i] != NULL)
 	{
+		// ft_putendl("________________");
+		// ft_putendl(data->args[i]);
+		// ft_putendl("________________");
 		if (ft_strcmp(data->args[i], ">") == 0)
 			return (1);
 		if (ft_strcmp(data->args[i], ">>") == 0)

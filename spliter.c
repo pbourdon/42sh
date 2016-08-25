@@ -36,7 +36,7 @@ int				sub_split_on_spec(char **cmd, char **ptr)
 	char		*tmp;
 
 	tmp = *cmd;
-	if (!ft_strncmp(*cmd, ">&", 2))
+	if (!ft_strncmp(*cmd, ">&", 2) || !ft_strncmp(*cmd, "<&", 2))
 	{
 		while (*cmd - 1 && ft_isdigit(*(*cmd - 1)))
 			*cmd -= 1;
