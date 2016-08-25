@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redirect4.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hlouar <hlouar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/14 15:22:47 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/18 17:51:42 by hlouar           ###   ########.fr       */
+/*   Updated: 2016/08/25 14:20:54 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ int			execveremix(t_data *data)
 	{
 		if (access(data->tabb[0], F_OK) == 0)
 		{
+			ft_reset_term(g_shell.term_reset.term_copy);
 			if (data->envi == 1)
 			{
 				execve(data->tabb[0], data->tabb, NULL);
@@ -93,8 +94,10 @@ int			execveremix(t_data *data)
 			else
 			{
 				execve(data->tabb[0], data->tabb, data->env);
+				ft_reset_term(g_shell.term_reset.term);
 				return (1);
 			}
+			ft_reset_term(g_shell.term_reset.term);
 		}
 		freetab(data->tabb);
 		freetab(data->args);

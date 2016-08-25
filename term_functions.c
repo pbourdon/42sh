@@ -6,7 +6,7 @@
 /*   By: pguzman <pguzman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/04 10:23:04 by pguzman           #+#    #+#             */
-/*   Updated: 2016/08/18 16:55:23 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/25 13:51:50 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int			term_init(t_term *term)
 	term->term.c_cc[VMIN] = 1;
 	term->term.c_cc[VTIME] = 0;
 	tcsetattr(0, TCSANOW, &(term->term));
+	g_shell.term_reset = *term;
 	return (1);
 }
 
@@ -37,6 +38,5 @@ int			ft_reset_term(struct termios term)
 {
 	if (tcsetattr(0, 0, &term) == -1)
 		return (-1);
-	tputs(tgetstr("ve", NULL), 1, tputs_putchar);
 	return (0);
 }

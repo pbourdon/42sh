@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parseandexc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hlouar <hlouar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/16 18:30:52 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/23 19:31:14 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/25 14:50:53 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,15 @@ void	forkall(t_data *data)
 	{
 		father = fork();
 		if (father > 0)
+		{
 			wait(0);
+			ft_reset_term(g_shell.term_reset.term);
+		}
 		else if (father == 0)
 		{
 			if (access(data->tabb[0], F_OK) == 0)
 			{
+				ft_reset_term(g_shell.term_reset.term_copy);
 				if (data->envi == 1)
 					execve(data->tabb[0], data->tabb, NULL);
 				else

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   testredi.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hlouar <hlouar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/14 15:25:49 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/18 17:51:18 by hlouar           ###   ########.fr       */
+/*   Updated: 2016/08/25 14:52:31 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,10 @@ int		mainredi(t_data *data)
 			exit(0);
 		}
 		else
+		{
 			wait(0);
+			ft_reset_term(g_shell.term_reset.term);
+		}
 	}
 	return (1);
 }

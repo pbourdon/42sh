@@ -6,7 +6,7 @@
 /*   By: pguzman <pguzman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/04 09:43:51 by pguzman           #+#    #+#             */
-/*   Updated: 2016/08/24 10:48:41 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/25 14:49:37 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,19 @@ void				update_shell_line_original(void)
 	}
 }
 
+
+void		sig_handler3(int sign)
+{
+	sign = 1;
+	g_shell.shell_fd_0 = dup(0);
+	close(0);
+}
+
+void		sig_handler2(int sign)
+{
+	sign = 1;
+}
+
 void				shell_listening_char(void)
 {
 	struct winsize	w;
@@ -91,6 +104,9 @@ void				shell_listening_char(void)
 
 	while (1)
 	{
+		signal(SIGINT, sig_handler3);
+		signal(SIGQUIT, sig_handler3);
+		signal(SIGTSTP, sig_handler3);
 		buffer = (char *)malloc(sizeof(*buffer) * 9);
 		buffer[8] = '\0';
 		update_shell_line_original();
@@ -102,6 +118,9 @@ void				shell_listening_char(void)
 			break ;
 		ft_strdel(&buffer);
 	}
+	signal(SIGINT, sig_handler2);
+	signal(SIGQUIT, sig_handler2);
+	signal(SIGTSTP, sig_handler2);
 	ft_strdel(&buffer);
 }
 
@@ -112,7 +131,18 @@ void				prepare_to_listen(char buffer[9])
 	ft_bzero(buffer, 9);
 	signal(SIGWINCH, sig_handler);
 	ret = read(0, buffer, 8);
-	buffer[ret] = '\0';
+	if (g_shell.shell_fd_0)
+	{
+		dup2(g_shell.shell_fd_0, 0);
+		if (ret == -1)
+		{
+			buffer[0] = 10;
+			buffer[1] = 0;
+		}
+		g_shell.shell_fd_0 = 0;
+	}
+	if (ret > -1)
+		buffer[ret] = '\0';
 }
 
 void				delete_selection_if_other_than_option(char *buffer)
@@ -185,6 +215,7 @@ void				shell_init(void)
 	g_shell.selected_end = 0;
 	g_shell.selected_start = 0;
 	g_shell.selected_copy = "";
+	g_shell.shell_fd_0 = 0;
 }
 
 t_history			*double_left(char *fin)

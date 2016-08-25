@@ -6,7 +6,7 @@
 /*   By: pguzman <pguzman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/04 10:23:53 by pguzman           #+#    #+#             */
-/*   Updated: 2016/08/23 18:06:42 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/24 15:46:21 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,6 @@ int		get_pos_l(void)
 
 void	update_cursor(void)
 {
-	// ft_putstr_fd("update_cursor\n", 2);
 	g_cursor.position_x_rel = get_pos_l();
 	g_cursor.position_y_rel = get_n_line();
 }

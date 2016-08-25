@@ -6,7 +6,7 @@
 /*   By: cmichaud <cmichaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/20 18:33:29 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/08/23 19:48:06 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/25 13:49:34 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ typedef struct			s_term
 	char				*term_name;
 	struct termios		term;
 	struct termios		term_copy;
-
 }						t_term;
 
 typedef struct			s_history
@@ -83,6 +82,8 @@ typedef struct			s_shell
 	char				*selected_copy;
 	int					shell_heredoc;
 	int					size;
+	int					shell_fd_0;
+	struct s_term		term_reset;
 }						t_shell;
 
 typedef struct			s_cursor

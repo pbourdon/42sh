@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   testredi4.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hlouar <hlouar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/16 16:05:50 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/18 17:40:04 by hlouar           ###   ########.fr       */
+/*   Updated: 2016/08/25 14:53:22 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,10 @@ int		doubleredichieh(t_data *data, t_liste2 *liste)
 		exit(0);
 	}
 	else
+	{
 		wait(0);
+		ft_reset_term(g_shell.term_reset.term);
+	}
 	return (5);
 }
 

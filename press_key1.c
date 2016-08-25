@@ -6,7 +6,7 @@
 /*   By: pguzman <pguzman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/03 16:13:17 by pguzman           #+#    #+#             */
-/*   Updated: 2016/08/24 15:23:12 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/24 15:31:45 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,10 +235,7 @@ int		check_par_and_quotes(int *q, int a[])
 	{
 		j = 0;
 		if (!check_char(q, a, g_shell.shell_line[i]))
-		{
-			// ft_putstr_fd("END\n", 2);
 			return (0);
-		}
 		i++;
 	}
 	return (1);
@@ -258,9 +255,6 @@ int		parenthesis_closed(void)
 		ft_putstr("\nSyntax error");
 		return (2);
 	}
-	// ft_putnbr_fd(par_paired[0], 2);
-	// ft_putnbr_fd(par_paired[1], 2);
-	// ft_putnbr_fd(par_paired[2], 2);
 	if ((quotes_paired % 2 == 0) && par_paired[0] == 0 && par_paired[1] == 0 \
 			&& par_paired[2] == 0)
 		return (1);
@@ -276,7 +270,7 @@ int		parenthesis_closed(void)
 
 int		backslash_at_the_end(void)
 {
-	if (g_shell.shell_line[g_shell.length_line - 1] == '\\')
+	if (g_shell.length_line > 0 && g_shell.shell_line[g_shell.length_line - 1] == '\\')
 	{
 		g_shell.backslash_index = 0;
 		g_shell.shell_line[g_shell.length_line - 1] = ' ';
