@@ -6,7 +6,7 @@
 /*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/16 16:04:05 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/18 17:39:28 by hlouar           ###   ########.fr       */
+/*   Updated: 2016/08/25 16:18:25 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,15 @@ int		printerrred(t_liste2 *tmp)
 	ft_putstr(tmp->tabich[0]);
 	ft_putendl(": Command not found");
 	return (1);
+}
+
+void	helpagreve(t_data *data, int a, int b, t_liste2 *liste)
+{
+	if (ft_strstr(data->oldtbe[ft_strlentab(data->oldtbe) - 1], "<") != NULL)
+		dup2(a, b);
+	else
+		dup2(b, a);
+	freetab(data->args);
+	data->args = newtab(liste->tabich);
+	execveremix(data);
 }

@@ -338,6 +338,8 @@ void					init_hashtab(char **env);
 int						checklineok(t_data *data, char **tabb);
 int						insertthetmp(t_data *data);
 int		alreadyintb2(t_data *data, char *str, char *dst, char **tabb);
+void helpagreve(t_data *data, int a, int b, t_liste2 *liste);
+void helpagreve2(t_data *data, t_liste2 *liste);
 char	*secondpartequal(char *str);
 char	*firstpartequal(char *str);
 char	**freshnewtab(t_data *data, char *dst, char *dst2);

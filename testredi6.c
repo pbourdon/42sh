@@ -35,7 +35,10 @@ int		agreve(t_data *data, t_liste2 *liste)
 	a = ft_atoi(dst);
 	b = ft_atoi(str);
 	if (ft_strcmp(dst, "-") == 0)
+	{
 		close(b);
+		helpagreve2(data, liste);
+	}
 	if (!(isatty(a)))
 	{
 		ft_putstr("csh: ");
@@ -45,10 +48,7 @@ int		agreve(t_data *data, t_liste2 *liste)
 	}
 	free(str);
 	free(dst);
-	dup2(b, a);
-	freetab(data->args);
-	data->args = newtab(liste->tabich);
-	execveremix(data);
+	helpagreve(data, a, b, liste);
 	exit(0);
 }
 

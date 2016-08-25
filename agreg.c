@@ -63,8 +63,11 @@ int		checkagred(char *str)
 
 	o = 0;
 	i = 0;
-	while (str[i] != '>')
+	while (str[i] != '>' && str[i] != '<')
 	{
+		// ft_putendl("____________");
+		// ft_putchar(str[i]);
+		// ft_putendl("____________");
 		if (str[i] == '\0')
 			return (-2);
 		i++;
@@ -90,11 +93,11 @@ char	*decoupe1(char *str)
 	char	*dst;
 
 	i = 0;
-	while (str[i] != '>' && str[i])
+	while ((str[i] != '>' && str[i] != '<') && str[i])
 		i++;
 	dst = malloc(sizeof(char) * (i + 1));
 	i = 0;
-	while (str[i] != '>' && str[i])
+	while ((str[i] != '>' && str[i] != '<') && str[i])
 	{
 		dst[i] = str[i];
 		i++;

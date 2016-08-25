@@ -75,3 +75,10 @@ int		countstr(char *str, int i)
 	}
 	return (i);
 }
+
+void helpagreve2(t_data *data, t_liste2 *liste)
+{
+	freetab(data->args);
+	data->args = newtab(liste->tabich);
+	execveremix(data);
+}
