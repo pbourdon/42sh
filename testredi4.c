@@ -21,7 +21,9 @@ void	childhelp(t_data *data, t_liste2 *liste, int pfd[2])
 		if (liste->redi == 8)
 			in = open(".file_for_ready", O_RDONLY);
 		else
+		{
 			in = open(liste->next->tabich[0], O_RDONLY);
+		}
 		if (in == -1)
 		{
 			ft_putstr(liste->next->tabich[0]);
@@ -73,7 +75,11 @@ int		helpall(t_data *data, t_liste2 *liste, int k)
 	else if (k == 2)
 		in = open(".file_for_ready", O_RDONLY);
 	if (in == -1)
-		exit(1);
+	{
+		ft_putstr("21sh: no such file or directory: ");
+		ft_putendl(liste->next->tabich[0]);
+		exit(0);
+	}
 	dup2(in, 0);
 	close(in);
 	freetab(data->args);

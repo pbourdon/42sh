@@ -18,9 +18,17 @@ void		helpmainpipehelp2(t_data *data, t_liste2 *liste, int k)
 
 	in = -1;
 	if (k == 1)
+	{
 		in = open(liste->next->tabich[0], O_RDONLY);
+	}
 	else if (k == 2)
 		in = open(".file_for_ready", O_RDONLY);
+	if (in == -1)
+	{
+		ft_putstr("21sh: no such file or directory: ");
+		ft_putendl(liste->next->tabich[0]);
+		exit(0);
+	}
 	if (in == -1)
 		exit(1);
 	dup2(in, 0);
