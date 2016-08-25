@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/21 17:01:40 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/08/22 18:35:56 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/26 00:31:21 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void		arg_to_list(t_liste *liste, t_tree *tree)
 			cur->next = create_list();
 			cur = cur->next;
 		}
-		// cur->arg = ft_strdup(tree->arg);
+		cur->arg = ft_strdup(tree->arg);
 		tree = tree->right;
 	}
 	sub_arg_to_list(cur, tree);

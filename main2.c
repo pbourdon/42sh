@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 18:50:23 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/23 19:53:18 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/23 22:04:42 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,6 +177,12 @@ void			parsecommand(t_data *data, t_liste *liste)
 	{
 		ft_putstr("trololo");
 		get_tabhash(NULL, 1);
+		if (data->home)
+			free(data->home);
+		if (data->oldpwd)
+			free(data->oldpwd);
+		free(data->line);
+		freetab(data->args);
 		free_list(liste);
 		exit(0);
 	}
