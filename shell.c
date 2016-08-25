@@ -6,7 +6,7 @@
 /*   By: pguzman <pguzman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/04 09:43:51 by pguzman           #+#    #+#             */
-/*   Updated: 2016/08/25 14:49:37 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/25 16:07:40 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void		sig_handler3(int sign)
 void		sig_handler2(int sign)
 {
 	sign = 1;
+	ft_putendl("");
 }
 
 void				shell_listening_char(void)
@@ -136,7 +137,7 @@ void				prepare_to_listen(char buffer[9])
 		dup2(g_shell.shell_fd_0, 0);
 		if (ret == -1)
 		{
-			buffer[0] = 10;
+			buffer[0] = 0;
 			buffer[1] = 0;
 		}
 		g_shell.shell_fd_0 = 0;
@@ -165,10 +166,23 @@ void				delete_selection_if_other_than_option(char *buffer)
 	}
 }
 
+int		is_ctrl_c(char *buffer)
+{
+	if (buffer[0] == 0 && buffer[1] == 0)
+	{
+		ft_putstr("\n");
+		ft_bzero(g_shell.shell_line, g_shell.size);
+		return (1);
+	}
+	return (0);
+}
+
 int					listen(char *buffer)
 {
 	if (is_backspace_key(buffer))
 		press_backspace_key();
+	else if (is_ctrl_c(buffer))
+		return (1);
 	else if (is_delete_key(buffer))
 		press_delete_key();
 	else if (is_direction_key(buffer))
