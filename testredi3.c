@@ -6,7 +6,7 @@
 /*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/14 15:26:37 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/18 17:50:51 by hlouar           ###   ########.fr       */
+/*   Updated: 2016/08/26 08:52:57 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	argliste(t_data *data)
 	tmp = data->liste;
 	k = lastone(data);
 	i = 0;
+	data->posi = 0;
 	while (data->posi != ft_strlentab(data->oldtbe))
 	{
 		if (i == 0)
