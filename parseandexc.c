@@ -6,7 +6,7 @@
 /*   By: hlouar <hlouar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/16 18:30:52 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/25 14:50:53 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/26 06:23:15 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,7 @@ int		createthetab(t_data *data)
 	o = 0;
 	if (createbinpath(data, 1) == 1)
 	{
-		data->tabb = (char **)malloc(sizeof(char *) *
-				ft_strlentab(data->args) + 1);
+		data->tabb = (char **)malloc(sizeof(char *) *															(ft_strlentab(data->args) + 1));
 		data->tabb[o++] = ft_strdup(data->bin);
 		i = 1;
 		while (data->args[i] != NULL)

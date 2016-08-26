@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/20 13:24:32 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/20 18:18:25 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/26 07:08:14 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ t_tk			*split_norm(char **ptr, char **cmd, t_tk **base, t_tk *cur)
 		cur->arg[++i] = *(*cmd + 1);
 		*cmd += 1;
 	}
+//	ft_putendl(cur->arg);
 	cur->tk = add_token(cur->arg);
 	*base = add_end_list(cur, base);
 	while (*cmd && *(*cmd + 1) && *(*cmd + 1) == ' ')
@@ -121,7 +122,7 @@ t_tk			*split_on(char **ptr, char **cmd, t_tk **base, t_tk *cur)
 		cur->tk = OTHER;
 		return (split_on(ptr, cmd, base, NULL));
 	}
-	if (!(cur->arg = ft_memalloc(sizeof(char) * len)))
+	if (!(cur->arg = ft_memalloc(sizeof(char) * len + 1)))
 		return (0);
 	cur->arg = ft_memset(cur->arg, 0, len);
 	cur->arg[0] = c;

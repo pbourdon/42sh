@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/13 17:16:42 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/08/23 19:30:30 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/26 06:56:54 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ void	init_hashtab(char **env)
 	char		**path;
 	char		**tabhash;
 
-	i = 0;
+	i = -1;
 	path = NULL;
 	if (!(tabhash = (char **)malloc(sizeof(char *) * 4096)))
 		return ;

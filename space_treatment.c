@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/07 16:36:13 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/07 16:36:15 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/08/26 01:57:33 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,7 @@ t_tk			*find_space(char *cmd, t_tk *token, int inib, char quote)
 	tmp = cmd;
 	while (cmd && *cmd)
 	{
-		if ((!(quote + inib) || (!(inib) && quote == '\'')) &&
-		is_a_spec2(cmd, *cmd))
+		if (!(quote + inib) && is_a_spec2(cmd, *cmd))
 		{
 			token = analyse_and_stock(&ptr, &cmd, &token);
 			ptr = cmd + 1;

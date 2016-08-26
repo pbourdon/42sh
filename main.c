@@ -6,7 +6,7 @@
 /*   By: hlouar <hlouar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/16 17:45:20 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/26 00:33:25 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/26 06:17:07 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void			readgnl2(t_data *data, char *str, t_liste *liste)
 	data->line = ft_strdup(str);
 	free(str);
 	parsecommand(data, liste);
-	if (data->dspam == 0)
+	if (data->dspam == 0 && data->args)
 		freetab(data->args);
 	free(data->line);
 	if (data->home)
@@ -51,7 +51,9 @@ void			sub_read(t_tree *tree, t_data *data)
 {
 	t_liste		*liste;
 	t_liste		*tmp;
+	t_liste		*tt;
 
+	tt = NULL;
 	liste = create_list();
 	arg_to_list(liste, tree);
 	liste = del_last_null_arg(liste);
@@ -59,9 +61,14 @@ void			sub_read(t_tree *tree, t_data *data)
 	tmp = liste;
 	while (tmp)
 	{
-		if (ft_strcmp(tmp->arg, ";") || ft_strcmp(tmp->arg, "||") ||
+		if (ft_strcmp(tmp->arg, ";") && ft_strcmp(tmp->arg, "||") &&
 			ft_strcmp(tmp->arg, "&&"))
 			readgnl2(data, tmp->arg, liste);
+		else
+		{
+			free(tmp->arg);
+			tt = tmp;
+		}
 		tmp = tmp->next;
 	}
 	free_list(liste);
