@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/07 16:48:13 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/22 17:26:13 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/26 07:53:03 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void			free_first_list(t_tk *ptr)
 		free(ptr);
 		ptr = tmp;
 	}
-	free(ptr);
+//	free(ptr);
 }
 
 void			free_list(t_liste *ptr)
