@@ -6,7 +6,7 @@
 /*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 17:15:32 by hlouar            #+#    #+#             */
-/*   Updated: 2016/05/23 10:01:00 by hlouar           ###   ########.fr       */
+/*   Updated: 2016/08/26 07:52:09 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*transformtab(char *str)
 		i++;
 	}
 	dst[o] = '\0';
-	free(str);
+	ft_memdel((void *)&str);
 	return (dst);
 }
 
