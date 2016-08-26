@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/13 17:16:42 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/08/26 06:56:54 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/26 08:21:21 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ char	**init_fill_tab(char **tabhash, char *path)
 		return (0);
 	while ((ent = readdir(dir)))
 	{
-		if (++i > 2)
+		if (ft_strcmp(ent->d_name, ".") && ft_strcmp(ent->d_name, ".."))
 		{
 			tmp = ft_str2join(path, "/", ent->d_name);
 			if (!access(tmp, F_OK | X_OK) || !access(tmp, F_OK | W_OK))
