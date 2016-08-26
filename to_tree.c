@@ -6,7 +6,7 @@
 /*   By: cmichaud <cmichaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/21 19:36:50 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/08/19 11:47:41 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/26 07:38:36 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int			is_base(t_tk **tk, t_tk **base, t_tk **save)
 	{
 		*save = (*tk)->next;
 		*base = NULL;
+		ft_memdel((void *)(&(*tk)));
 		*tk = *save;
 		if (*tk == NULL)
 			return (0);
