@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/13 17:16:42 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/08/26 08:21:21 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/27 17:25:10 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,10 +167,7 @@ void	init_hashtab(char **env)
 		tabhash[i] = NULL;
 	i = 0;
 	while (env && env[i] && ft_strncmp(env[i], "PATH=", 5))
-	{
-		ft_putendl(env[i]);
 		++i;
-	}
 	if (env[i])
 		path = ft_strsplit((env[i] + 5), ':');
 	else
