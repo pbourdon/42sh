@@ -118,7 +118,8 @@ int				main(int ac, char **av, char **env)
 	if (data.env[0] == NULL)
 	{
 		data.env[0] = "PATH=/bin";
-		data.env[1] = NULL;
+		data.env[1] = "TERM=xterm-256color";
+		data.env[2] = NULL;
 	}
 	data.envi = 0;
 	data.turn = 0;

@@ -16,7 +16,7 @@
 // {
 	// char		**tab2;
 	// int			j;
-// 
+//
 	// j = 0;
 	// tab2 = ft_memalloc(sizeof(char *) * ft_strlentab(tab));
 	// while (j < i)
@@ -24,14 +24,14 @@
 		// tab2 = ft_strdup(tab[j]);
 		// j++;
 	// }
-	// 
+	//
 	// return (tab2);
 // }
-// 
+//
 // char			**create_string_inib(char **tab, char inib, int i, int y)
 // {
 	// int			len;
-	// 
+	//
 	// len = 0;
 	// y = ft_strlentab(tab);
 	// while (y > i)
@@ -51,7 +51,7 @@
 // char			**check_inib(char **tab)
 // {
 	// int			i;
-// 
+//
 	// i = 0;
 	// while (tab[i])
 	// {
@@ -64,7 +64,7 @@
 	// }
 	// return (tab);
 // }
-// 
+//
 
 char			*cut(char *str, int pos, int inib)
 {
@@ -108,7 +108,7 @@ char			**sub_complete(char **tb, char **tb2, int i, int j)
 	ft_putendl("debug:split 2");
 	while (tb[i])
 	{
-		tab3[i] = ft_strdup(tb[i]); 
+		tab3[i] = ft_strdup(tb[i]);
 		i++;
 	}
 	ft_putendl("debug:split 3");

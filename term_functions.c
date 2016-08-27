@@ -14,9 +14,9 @@
 
 int			term_init(t_term *term)
 {
-	if ((term->term_name = getenv("TERM")) == NULL)
+	term->term_name = "xterm-256color";
+	if (tgetent(NULL, term->term_name) < 1)
 		return (-1);
-	tgetent(NULL, term->term_name);
 	tcgetattr(0, &(term->term));
 	tcgetattr(0, &term->term_copy);
 	term->term.c_lflag &= ~(ICANON);

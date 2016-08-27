@@ -60,7 +60,7 @@ int		hash_bin(char *bin)
 {
 	int i;
 	int res;
-	
+
 	i = -1;
 	res = 1;
 	while (bin[++i])
@@ -166,8 +166,11 @@ void	init_hashtab(char **env)
 	while (++i < 4096)
 		tabhash[i] = NULL;
 	i = 0;
-	while (env && env[0] && ft_strncmp(env[i], "PATH=", 5))
+	while (env && env[i] && ft_strncmp(env[i], "PATH=", 5))
+	{
+		ft_putendl(env[i]);
 		++i;
+	}
 	if (env[i])
 		path = ft_strsplit((env[i] + 5), ':');
 	else

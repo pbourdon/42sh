@@ -65,9 +65,6 @@ int		checkagred(char *str)
 	i = 0;
 	while (str[i] != '>' && str[i] != '<')
 	{
-		// ft_putendl("____________");
-		// ft_putchar(str[i]);
-		// ft_putendl("____________");
 		if (str[i] == '\0')
 			return (-2);
 		i++;
@@ -84,6 +81,7 @@ int		checkagred(char *str)
 		free(dst);
 		return (1);
 	}
+	free(dst);
 	return (-1);
 }
 
