@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/21 17:01:40 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/08/26 00:31:21 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/27 13:53:25 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,17 @@ char		*ft_str_f_join(char *b, char *d)
 char		*get_arg_nodes(t_tree *tree)
 {
 	char	*str;
+	char	*tmp;
 
 	str = NULL;
 	while (tree)
 	{
 		if (tree->left)
-			str = ft_str_f_join(str, get_arg_nodes(tree->left));
+		{
+			tmp = get_arg_nodes(tree->left);
+			str = ft_str_f_join(str, tmp);
+			ft_memdel((void **)&tmp);
+		}
 		str = ft_str_f_join(str, tree->arg);
 		tree = tree->right;
 	}
