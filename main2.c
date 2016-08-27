@@ -405,7 +405,6 @@ void			dell_history(void)
 	free(history->str);
 	free(history);
 	g_shell.history = malloc(sizeof(*(g_shell.history)));
-	ft_putendl("coucou, tu veux voir ma bite ?");
 }
 
 void			switch_option(char *str)
@@ -432,7 +431,6 @@ void			history(t_data *data)
 		show_history();
 	else if (ft_strncmp(data->args[1], "-", 0) == 0)
 		switch_option(data->args[1]);
-	ft_putendl("hello, world");
 }
 
 void			parsecommand(t_data *data, t_liste *liste)
