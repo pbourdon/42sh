@@ -398,13 +398,14 @@ void			dell_history(void)
 	while (history != NULL)
 	{
 		tmp = history->next;
-		free(history->str);
+		if (history->str)
+			free(history->str);
 		free(history);
 		history = tmp;
 	}
-	free(history->str);
 	free(history);
 	g_shell.history = malloc(sizeof(*(g_shell.history)));
+	g_shell.history->str = NULL;
 }
 
 void			switch_option(char *str)
