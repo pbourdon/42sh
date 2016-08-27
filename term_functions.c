@@ -6,7 +6,7 @@
 /*   By: pguzman <pguzman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/04 10:23:04 by pguzman           #+#    #+#             */
-/*   Updated: 2016/08/25 13:51:50 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/27 14:50:47 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int			term_init(t_term *term)
 {
-	term->term_name = "xterm-256color";
+	if ((term->term_name = getenv("TERM")) == NULL)
+		return (-1);
 	if (tgetent(NULL, term->term_name) < 1)
 		return (-1);
 	tcgetattr(0, &(term->term));
