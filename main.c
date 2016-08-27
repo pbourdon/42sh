@@ -6,7 +6,7 @@
 /*   By: hlouar <hlouar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/16 17:45:20 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/26 07:55:40 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/27 17:07:11 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,7 @@ void			sub_read(t_tree *tree, t_data *data)
 {
 	t_liste		*liste;
 	t_liste		*tmp;
-	t_liste		*tt;
 
-	tt = NULL;
 	liste = create_list();
 	arg_to_list(liste, tree);
 	liste = del_last_null_arg(liste);
@@ -65,16 +63,7 @@ void			sub_read(t_tree *tree, t_data *data)
 			ft_strcmp(tmp->arg, "&&"))
 			readgnl2(data, tmp->arg, liste);
 		else
-		{
 			free(tmp->arg);
-			tt = tmp;
-		}
-		tmp = tmp->next;
-	}
-	tmp = NULL;
-	while (tmp)
-	{
-		free(tmp->arg);
 		tmp = tmp->next;
 	}
 	free_list(liste);
