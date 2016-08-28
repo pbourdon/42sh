@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 15:01:47 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/28 17:54:48 by hlouar           ###   ########.fr       */
+/*   Updated: 2016/08/28 18:34:31 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,7 @@ int					shell_loop(t_term *term, t_data *data, char **env)
 		g_shell.last_backslash = 0;
 		g_shell.history_index = get_history_length() + 1;
 		prompt_line(env);
-		if (!shterm_listen(term))
-		{
-			ft_putstr("exit\nexit\n");
-			return (0);
-		}
+		shterm_listen(term);
 		readgnl(data, g_shell.shell_line);
 		if ((g_shell.shell_line)[0] == '\0')
 			continue ;

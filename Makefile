@@ -6,7 +6,7 @@
 #    By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/02 13:52:37 by bde-maze          #+#    #+#              #
-#    Updated: 2016/08/23 19:45:31 by cmichaud         ###   ########.fr        #
+#    Updated: 2016/08/28 17:43:20 by pguzman          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,7 +95,7 @@ norm:
 	@norminette $(SRC) $(HEADER)
 
 $(NAME): compile_lib compile_p $(OBJ)
-		@clang $(FLAGS) -lncurses -o $(NAME) $(OBJ) -L libft -lft
+		@clang $(FLAGS) -ltermcap -o $(NAME) $(OBJ) -L libft -lft
 		@echo ""
 		@echo "\033[32mCompilation Succeeded\033[39m"
 		@echo ""

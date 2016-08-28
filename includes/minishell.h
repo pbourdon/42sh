@@ -6,7 +6,7 @@
 /*   By: cmichaud <cmichaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/20 18:33:29 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/08/25 13:49:34 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/28 20:34:05 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -362,7 +362,7 @@ char					*secondpartequal(char *str);
 char					*firstpartequal(char *str);
 char					**freshnewtab(t_data *data, char *dst, char *dst2);
 int						alreadyin(t_data *data, char *str);
-
+int						ft_init_verif(void);
 t_shell					g_shell;
 t_cursor				g_cursor;
 
