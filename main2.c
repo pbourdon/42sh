@@ -473,6 +473,20 @@ void			parsecommand(t_data *data, t_liste *liste)
 		callsetenv(data);
 	else if (ft_strcmp(data->args[0], "unsetenv") == 0)
 		callunsetenv(data);
+	else if ((ft_strlentab(data->args) == 1) && (ft_strcmp(data->args[0], "$?") == 0))
+	{
+		if (data->binreturn == 0)
+		{
+			ft_putnbr(0);
+			ft_putendl(": Command not found.");
+		}
+		else
+		{
+			ft_putnbr(1);
+			ft_putendl(": Command not found.");
+		}
+	return ;
+}
 	else if (ft_strcmp(data->args[0], "cd") == 0)
 		cdcall(data);
 	else if (ft_strcmp(data->args[0], "history") == 0)

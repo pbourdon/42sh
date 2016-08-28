@@ -117,6 +117,7 @@ typedef struct			s_data
 	char				**oldtbe;
 	int					posi;
 	char				**builttab;
+	int					binreturn;
 	struct s_liste2		*liste;
 }						t_data;
 

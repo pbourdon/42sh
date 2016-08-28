@@ -90,13 +90,15 @@ int		createthetab(t_data *data)
 void	forkall(t_data *data)
 {
 	pid_t	father;
+	int		status;
 
+	status = 0;
 	if (createthetab(data) == 1)
 	{
 		father = fork();
 		if (father > 0)
 		{
-			wait(0);
+			wait(&status);
 			ft_reset_term(g_shell.term_reset.term);
 		}
 		else if (father == 0)
@@ -113,8 +115,10 @@ void	forkall(t_data *data)
 			}
 		}
 		freetab(data->tabb);
+		data->binreturn = status;
 		return ;
 	}
 	else
+		data->binreturn = 324;
 		return ;
 }
