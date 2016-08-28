@@ -6,13 +6,13 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 15:01:47 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/28 15:02:02 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/08/28 17:28:06 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 
-void				*realloc(void *ptr, size_t size)
+void				*ft_realloc(void *ptr, size_t size)
 {
 	char			*newptr;
 
@@ -22,7 +22,7 @@ void				*realloc(void *ptr, size_t size)
 		newptr = (char *)malloc(size);
 		if (!newptr)
 			return (NULL);
-		ft_memcpy(newptr, ptr, size);
+		ft_memcpy(newptr, ptr, g_shell.length_line);
 		ft_memdel(&ptr);
 	}
 	return (newptr);
@@ -83,6 +83,7 @@ void				update_shell_line_original(void)
 	if (g_shell.length_line > (g_shell.size / 2) - 20)
 	{
 		g_shell.size = g_shell.size * 2;
-		g_shell.shell_line = realloc(g_shell.shell_line, g_shell.size);
+		g_shell.shell_line = ft_realloc(g_shell.shell_line, g_shell.size);
+		g_shell.shell_line_original = ft_realloc(g_shell.shell_line_original, g_shell.size);
 	}
 }
