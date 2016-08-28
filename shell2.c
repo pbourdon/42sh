@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 15:01:47 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/28 17:28:06 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/28 17:54:48 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,7 @@ void				update_shell_line_original(void)
 		else if (g_shell.shell_backslash_level != 0)
 		{
 			ft_bzero(g_shell.shell_line_original, g_shell.size);
-			g_shell.shell_line_original =
-			ft_strcat(g_shell.shell_line_original,
+			g_shell.shell_line_original = ft_strcat(g_shell.shell_line_original,
 				&g_shell.shell_line[g_shell.last_backslash]);
 		}
 	}
@@ -84,6 +83,7 @@ void				update_shell_line_original(void)
 	{
 		g_shell.size = g_shell.size * 2;
 		g_shell.shell_line = ft_realloc(g_shell.shell_line, g_shell.size);
-		g_shell.shell_line_original = ft_realloc(g_shell.shell_line_original, g_shell.size);
+		g_shell.shell_line_original =
+			ft_realloc(g_shell.shell_line_original, g_shell.size);
 	}
 }

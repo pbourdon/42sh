@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 18:50:23 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/26 07:00:44 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/28 17:53:03 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,29 @@ void			sub_parsecommand2(t_data *data)
 		forkall(data, 0);
 }
 
+void			sub_sub_parse(t_data *data)
+{
+	mainredi(data, 0);
+	free(data->liste);
+	freetab(data->oldtbe);
+}
+
 void			sub_parsecommand(t_data *data)
 {
 	if (ifitsredi(data) != 0)
-	{
-		mainredi(data, 0);
-		free(data->liste);
-		freetab(data->oldtbe);
-		return ;
-	}
+		return (sub_sub_parse(data));
 	else if (checklineok(data, data->args) != -1)
 		return ;
 	else if (ft_strcmp(data->args[0], "export") == 0)
+	{
 		insertthetmp(data);
+		return ;
+	}
 	else if (ft_strcmp(data->args[0], "env") == 0)
+	{
 		callallenv(data);
+		return ;
+	}
 	else if (ft_strcmp(data->args[0], "setenv") == 0)
 		callsetenv(data);
 	else if (ft_strcmp(data->args[0], "unsetenv") == 0)
