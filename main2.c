@@ -60,7 +60,47 @@ void			parsecommand(t_data *data, t_liste *liste)
 		free_list(liste);
 		exit(0);
 	}
+<<<<<<< HEAD
 	sub_parsecommand(data);
+=======
+	else if (ifitsredi(data) != 0)
+	{
+		mainredi(data);
+		free(data->liste);
+		freetab(data->oldtbe);
+		return ;
+	}
+	else if (checklineok(data, data->args) != -1)
+			return ;
+	else if (ft_strcmp(data->args[0], "export") == 0)
+		insertthetmp(data);
+	else if (ft_strcmp(data->args[0], "env") == 0)
+		callallenv(data);
+	else if (ft_strcmp(data->args[0], "setenv") == 0)
+		callsetenv(data);
+	else if (ft_strcmp(data->args[0], "unsetenv") == 0)
+		callunsetenv(data);
+	else if ((ft_strlentab(data->args) == 1) && (ft_strcmp(data->args[0], "$?") == 0))
+	{
+		if (data->binreturn == 0)
+		{
+			ft_putnbr(0);
+			ft_putendl(": Command not found.");
+		}
+		else
+		{
+			ft_putnbr(1);
+			ft_putendl(": Command not found.");
+		}
+	return ;
+}
+	else if (ft_strcmp(data->args[0], "cd") == 0)
+		cdcall(data);
+	else if (ft_strcmp(data->args[0], "history") == 0)
+		history(data);
+	else
+		forkall(data);
+>>>>>>> a4d87465cad87b409c30e943e0f3d08993e168ae
 }
 
 int				switch_case(t_tk *ptr, int nb_redir, int nb_redir2)
