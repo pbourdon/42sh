@@ -143,14 +143,23 @@ typedef struct			s_liste
 	struct s_liste		*next;
 }						t_liste;
 
+char					**split_on_inib(char *str);
+void					show_history_until(char *len);
+void					show_history(void);
+int						ft_strisdigit(char *str);
+int						ft_strlen_inib(char *str, int quote, int inib, int word);
+char					quote_norm(int inib, char quote, char c);
+void					history(t_data *data);
 int						add_token(char *str);
 t_liste					*create_list(void);
+int						is_a_word(int quote, int inib, char c);
 void					free_tree(t_tree *tree);
 int						switch_case(t_tk *ptr, int nb_redir, int nb_redir2);
 void					free_first_list(t_tk *ptr);
 void					free_list(t_liste *ptr);
 void					arg_to_list(t_liste *liste, t_tree *tree);
 t_liste					*create_list();
+char					*ft_strcpy_inib(char *dest, char *str, int i, int j);
 t_liste					*del_last_null_arg(t_liste *liste);
 t_tree					*to_tree(t_tree *tree, t_tk *tk, int prio, char *str);
 void					go_free(char *cwd, char *hostname, char *curtime);

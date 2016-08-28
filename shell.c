@@ -12,9 +12,9 @@
 
 #include "includes/minishell.h"
 
-void 	*realloc(void *ptr, size_t size)
+void				*realloc(void *ptr, size_t size)
 {
-	char	*newptr;
+	char			*newptr;
 
 	newptr = NULL;
 	if (ptr)
@@ -85,14 +85,14 @@ void				update_shell_line_original(void)
 }
 
 
-void		sig_handler3(int sign)
+void				sig_handler3(int sign)
 {
 	sign = 1;
 	g_shell.shell_fd_0 = dup(0);
 	close(0);
 }
 
-void		sig_handler2(int sign)
+void				sig_handler2(int sign)
 {
 	sign = 1;
 	ft_putendl("");
@@ -166,7 +166,7 @@ void				delete_selection_if_other_than_option(char *buffer)
 	}
 }
 
-int		is_ctrl_c(char *buffer)
+int					is_ctrl_c(char *buffer)
 {
 	if (buffer[0] == 0 && buffer[1] == 0)
 	{

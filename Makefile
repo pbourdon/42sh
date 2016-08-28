@@ -17,55 +17,58 @@ HEADER = includes/minishell.h
 FLAGS = -Wall -Werror -Wextra -g3 -O3
 
 SRC = 	builtin_exit_error.c \
+		split_inib_tools.c \
+		new_arg_to_list.c \
 		space_treatment.c \
 		term_functions.c \
 		split_on_spec.c \
 		old_functions.c \
 		parseandexc2.c \
-		new_arg_to_list.c \
+		ft_redirect4.c \
+		tools_split.c \
 		parseandexc.c \
 		press_key1.c \
 		add_letter.c \
 		good_order.c \
+		split_inib.c \
 		allwrites.c \
 		term_read.c \
+		testredi2.c \
+		testredi3.c \
+		testredi4.c \
+		testredi5.c \
+		testredi6.c \
 		unsetenv.c \
+		builenv3.c \
+		builenv2.c \
 		go_words.c \
+		testredi.c \
+		history2.c \
 		is_key1.c \
 		to_tree.c \
 		history.c \
 		setenv2.c \
 		spliter.c \
+		builenv.c \
+		prompt.c \
 		tools2.c \
 		setenv.c \
 		signal.c \
 		cursor.c \
 		tools.c \
 		error.c \
+		agreg.c \
 		shell.c \
+		main2.c \
 		env2.c \
 		env3.c \
 		main.c \
-		main2.c \
 		free.c \
+		hash.c \
 		env.c \
-		prompt.c \
 		cd2.c \
 		cd3.c \
 		cd.c \
-		agreg.c \
-		ft_redirect4.c \
-		testredi.c \
-		testredi2.c \
-		testredi3.c \
-		testredi4.c \
-		testredi5.c \
-		testredi6.c \
-		tools_split.c \
-		hash.c \
-		builenv.c \
-		builenv3.c \
-		builenv2.c
 
 OBJDIR = obj/
 

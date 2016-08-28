@@ -22,7 +22,6 @@ void			free_first_list(t_tk *ptr)
 		free(ptr);
 		ptr = tmp;
 	}
-//	free(ptr);
 }
 
 void			free_list(t_liste *ptr)
@@ -49,4 +48,11 @@ void			free_tree(t_tree *tree)
 		free(tree->arg);
 		free(tree);
 	}
+}
+
+void			go_free(char *cwd, char *hostname, char *curtime)
+{
+	free(cwd);
+	free(hostname);
+	free(curtime);
 }
