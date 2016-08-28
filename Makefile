@@ -60,11 +60,15 @@ SRC = 	builtin_exit_error.c \
 		setenv.c \
 		signal.c \
 		cursor.c \
+		shell2.c \
+		shell3.c \
 		tools.c \
 		error.c \
 		agreg.c \
 		shell.c \
 		main2.c \
+		hash2.c \
+		hash3.c \
 		env2.c \
 		env3.c \
 		main.c \

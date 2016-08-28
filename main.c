@@ -103,7 +103,7 @@ int				main(int ac, char **av, char **env)
 	data.allp = NULL;
 	data.voldpwd = NULL;
 	data.env = env;
-	init_hashtab(env);
+	init_hashtab(env, -1);
 	if (data.env[0] == NULL)
 	{
 		data.env[0] = "PATH=/bin";
