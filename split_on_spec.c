@@ -83,7 +83,8 @@ t_tk			*split_norm(char **ptr, char **cmd, t_tk **base, t_tk *cur)
 	int			i;
 
 	i = 0;
-	if (ft_isdigit(**cmd) || !ft_strncmp(*cmd, ">&", 2) || !ft_strncmp(*cmd, "<&", 2))
+	if (ft_isdigit(**cmd) || !ft_strncmp(*cmd, ">&", 2) ||
+		!ft_strncmp(*cmd, "<&", 2))
 		sub_split_norm(cmd, cur, i);
 	else if ((**cmd == '&' || **cmd == '>' || **cmd == '<')
 		&& *(*cmd + 1) == cur->arg[i])
