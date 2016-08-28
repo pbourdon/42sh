@@ -6,7 +6,7 @@
 /*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/24 14:39:48 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/24 14:49:01 by hlouar           ###   ########.fr       */
+/*   Updated: 2016/08/28 17:38:16 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,6 @@ int		checklineok(t_data *data, char **tabb)
 			alreadyintb(data, dst, dst2);
 		else
 			data->builttab = freshnewtab(data, dst, dst2);
-		while (data->builttab[i])
-		{
-			ft_putendl(data->builttab[i]);
-			i++;
-		}
 		return (1);
 	}
 	return (-1);
