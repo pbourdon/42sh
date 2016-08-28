@@ -38,15 +38,6 @@ void			main_init(t_term *term)
 	shell_init();
 }
 
-void			print_list(t_tk *data)
-{
-	while (data)
-	{
-		printf("arg: %s\n", data->arg);
-		data = data->next;
-	}
-}
-
 void			sub_read(t_tree *tree, t_data *data)
 {
 	t_liste		*liste;
@@ -80,7 +71,6 @@ int				readgnl(t_data *data, char *str)
 	ret = 0;
 	if ((ptr = to_list(str, -1)))
 	{
-		// print_list(ptr);
 		ret = check_list(ptr, NULL, 0, 0);
 		ptr = good_order(ptr, ptr, ptr);
 		tree = to_tree(NULL, ptr, 5, NULL);

@@ -14,7 +14,8 @@
 
 void			sub_parsecommand2(t_data *data)
 {
-	if ((ft_strlentab(data->args) == 1) && (ft_strcmp(data->args[0], "$?") == 0))
+	if ((ft_strlentab(data->args) == 1) &&
+		(ft_strcmp(data->args[0], "$?") == 0))
 	{
 		if (data->binreturn == 0)
 		{
