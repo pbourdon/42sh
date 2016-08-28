@@ -70,7 +70,7 @@ char			*get_history_i(int i)
 	return (history->str);
 }
 
-void			add_to_history(t_history *his, char* shell_line)
+void			add_to_history(t_history *his, char *shell_line)
 {
 	t_history	*history;
 

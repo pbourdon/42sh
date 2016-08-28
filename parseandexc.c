@@ -12,14 +12,14 @@
 
 #include "includes/minishell.h"
 
-int		checkaccess(char *str)
+int			checkaccess(char *str)
 {
 	if (access(str, F_OK) == 0)
 		return (1);
 	return (0);
 }
 
-char	*createbinpathtools(t_data *data, char *str, int i)
+char		*createbinpathtools(t_data *data, char *str, int i)
 {
 	free(str);
 	str = ft_strjoin(data->allp[i], "/");
@@ -27,7 +27,7 @@ char	*createbinpathtools(t_data *data, char *str, int i)
 	return (str);
 }
 
-int		createbinpath(t_data *data, int n)
+int			createbinpath(t_data *data, int n)
 {
 	int		i;
 	char	*str;
@@ -43,32 +43,20 @@ int		createbinpath(t_data *data, int n)
 		data->bin = ft_strdup(str);
 		return (1);
 	}
-/*		while (data->allp[i] != NULL)
-		{
-			str = createbinpathtools(data, str, i);
-			if (access(str, F_OK) == 0)
-			{
-				data->bin = ft_strdup(str);
-				freedata(str, data);
-				return (1);
-			}
-			i++;
-		}
-		}*/
 	if (n == 1)
 		errorbinary(data, str);
 	return (0);
 }
 
-int		createthetab(t_data *data)
+int			createthetab(t_data *data)
 {
-	int	i;
-	int	o;
+	int		i;
+	int		o;
 
 	o = 0;
 	if (createbinpath(data, 1) == 1)
 	{
-		data->tabb = (char **)malloc(sizeof(char *) *															(ft_strlentab(data->args) + 1));
+		data->tabb = (char **)malloc(sizeof(char *) * (ft_strlentab(data->args) + 1));
 		data->tabb[o++] = ft_strdup(data->bin);
 		i = 1;
 		while (data->args[i] != NULL)
@@ -87,7 +75,7 @@ int		createthetab(t_data *data)
 	}
 }
 
-void	forkall(t_data *data)
+void		forkall(t_data *data)
 {
 	pid_t	father;
 	int		status;

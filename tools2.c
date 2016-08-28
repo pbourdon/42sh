@@ -12,7 +12,7 @@
 
 #include "includes/minishell.h"
 
-char	*transformtab(char *str)
+char		*transformtab(char *str)
 {
 	int		i;
 	char	*dst;
@@ -38,7 +38,7 @@ char	*transformtab(char *str)
 	return (dst);
 }
 
-char	*withoutspace(char *str)
+char		*withoutspace(char *str)
 {
 	int		i;
 	char	*dst;
@@ -65,7 +65,7 @@ char	*withoutspace(char *str)
 	return (dst);
 }
 
-int		countstr(char *str, int i)
+int			countstr(char *str, int i)
 {
 	while (str[i] != '&')
 	{
@@ -76,7 +76,7 @@ int		countstr(char *str, int i)
 	return (i);
 }
 
-void helpagreve2(t_data *data, t_liste2 *liste)
+void		helpagreve2(t_data *data, t_liste2 *liste)
 {
 	freetab(data->args);
 	data->args = newtab(liste->tabich);

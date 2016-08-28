@@ -144,6 +144,8 @@ typedef struct			s_liste
 	struct s_liste		*next;
 }						t_liste;
 
+int						parenthesis_closed(void);
+void					movements_delete(int a);
 char					**split_on_inib(char *str);
 void					show_history_until(char *len);
 void					show_history(void);

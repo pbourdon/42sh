@@ -28,6 +28,11 @@ SRC = 	builtin_exit_error.c \
 		tools_split.c \
 		parseandexc.c \
 		press_key1.c \
+		press_key2.c \
+		press_key3.c \
+		press_key4.c \
+		press_key5.c \
+		press_key6.c \
 		add_letter.c \
 		good_order.c \
 		split_inib.c \
