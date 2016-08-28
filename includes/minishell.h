@@ -355,7 +355,7 @@ void					free_tabhash(void);
 void					init_hashtab(char **env, int i);
 int						checklineok(t_data *data, char **tabb);
 int						insertthetmp(t_data *data);
-int						alreadyintb2(t_data *data, char *str, char *dst, char **tabb);
+int						intb2(t_data *data, char *str, char *dst, char **tabb);
 void					helpagreve(t_data *data, int a, int b, t_liste2 *liste);
 void					helpagreve2(t_data *data, t_liste2 *liste);
 char					*secondpartequal(char *str);

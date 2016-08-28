@@ -37,7 +37,7 @@ void	alreadyintb3(t_data *data, char **tabb)
 	freetab(tabb);
 }
 
-int		alreadyintb2(t_data *data, char *str, char *dst, char **tabb)
+int		intb2(t_data *data, char *str, char *dst, char **tabb)
 {
 	int i;
 

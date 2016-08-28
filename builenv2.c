@@ -21,7 +21,7 @@ int		alreadyintb(t_data *data, char *str, char *dst)
 	i = 0;
 	if (data->builttab)
 	{
-		alreadyintb2(data, str, dst, tabb);
+		intb2(data, str, dst, tabb);
 		free(str);
 		free(dst);
 		return (1);

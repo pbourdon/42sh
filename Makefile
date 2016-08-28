@@ -36,6 +36,8 @@ SRC = 	builtin_exit_error.c \
 		add_letter.c \
 		good_order.c \
 		split_inib.c \
+		term_read2.c \
+		term_read3.c \
 		allwrites.c \
 		term_read.c \
 		testredi2.c \
@@ -50,6 +52,10 @@ SRC = 	builtin_exit_error.c \
 		testredi.c \
 		history2.c \
 		is_key1.c \
+		is_key2.c \
+		is_key3.c \
+		is_key4.c \
+		is_key5.c \
 		to_tree.c \
 		history.c \
 		setenv2.c \

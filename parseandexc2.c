@@ -12,6 +12,13 @@
 
 #include "includes/minishell.h"
 
+int		checkaccess(char *str)
+{
+	if (access(str, F_OK) == 0)
+		return (1);
+	return (0);
+}
+
 void	catchpath(t_data *data)
 {
 	int	i;

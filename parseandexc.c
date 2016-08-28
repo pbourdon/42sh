@@ -12,13 +12,6 @@
 
 #include "includes/minishell.h"
 
-int			checkaccess(char *str)
-{
-	if (access(str, F_OK) == 0)
-		return (1);
-	return (0);
-}
-
 char		*createbinpathtools(t_data *data, char *str, int i)
 {
 	free(str);
