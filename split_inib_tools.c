@@ -30,7 +30,7 @@ char			quote_norm(int inib, char quote, char c)
 	return (quote);
 }
 
-int				ft_strlen_inib(char *str, int quote, int inib, int word)
+int				ft_strlen_inib(char *str, int quote, int inib, int wrd)
 {
 	int			i;
 	int			len;
@@ -39,8 +39,8 @@ int				ft_strlen_inib(char *str, int quote, int inib, int word)
 	len = 0;
 	while (str && str[++i])
 	{
-		if (!(inib + quote) && word == 1 && str[i] == ' ' && (++len))
-			while (!(word = 0) && str[i] && (str[i] == ' ' || str[i] == '\t'))
+		if (!(inib + quote) && wrd == 1 && str[i] == ' ' && (++len))
+			while (!(wrd = 0) && str[i] && (str[i] == ' ' || str[i] == '\t'))
 				if (!str[++i])
 					break ;
 		if (!quote && !inib && str[i] == '\\')
@@ -48,12 +48,12 @@ int				ft_strlen_inib(char *str, int quote, int inib, int word)
 		else
 		{
 			quote = quote_norm(inib, quote, str[i]);
-			if (!word && is_a_word(quote, inib, str[i]))
-				word = 1;
+			if (!wrd && is_a_word(quote, inib, str[i]))
+				wrd = 1;
 			inib = 0;
 		}
 	}
-	word ? len += 1 : len;
+	wrd ? len += 1 : len;
 	quote ? len = -1 : len;
 	return (len);
 }

@@ -20,7 +20,7 @@ void	callenvitools(t_data *data, char **tabb, int i)
 		free(tabb);
 	data->envi = 1;
 	argsifenv(data, i);
-	forkall(data);
+	forkall(data, 0);
 }
 
 void	callenvi(t_data *data)

@@ -29,14 +29,14 @@ void			sub_parsecommand2(t_data *data)
 		}
 	}
 	else
-		forkall(data);
+		forkall(data, 0);
 }
 
 void			sub_parsecommand(t_data *data)
 {
 	if (ifitsredi(data) != 0)
 	{
-		mainredi(data);
+		mainredi(data, 0);
 		free(data->liste);
 		freetab(data->oldtbe);
 		return ;

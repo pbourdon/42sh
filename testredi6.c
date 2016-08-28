@@ -96,7 +96,7 @@ int		mainpipecond(t_data *data, t_liste2 *liste)
 	}
 	else if (liste->redi == 2)
 	{
-		doubleredichieh(data, liste);
+		doubleredichieh(data, liste, 0);
 		return (5);
 	}
 	else if (liste->redi == 4)

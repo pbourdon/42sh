@@ -41,7 +41,8 @@ void	changepathintab(t_data *data)
 int		createbinpath2(t_data *data, char *str)
 {
 	(void)str;
-	if (!access(data->args[0], F_OK | X_OK) || !access(data->args[0], F_OK | W_OK))
+	if (!access(data->args[0], F_OK | X_OK) ||
+		!access(data->args[0], F_OK | W_OK))
 	{
 		data->bin = ft_strdup(data->args[0]);
 		return (1);

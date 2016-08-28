@@ -35,15 +35,13 @@ void	childhelp(t_data *data, t_liste2 *liste, int pfd[2])
 	hulppls(data, liste, pfd);
 }
 
-int		doubleredichieh(t_data *data, t_liste2 *liste)
+int		doubleredichieh(t_data *data, t_liste2 *liste, int i)
 {
 	int		father;
 	int		out;
 	char	*str;
 	int		fd;
-	int		i;
 
-	i = 0;
 	father = fork();
 	str = ft_strdup(data->args[(ft_strlentab(data->args) - 1)]);
 	fd = open(str, O_RDWR);

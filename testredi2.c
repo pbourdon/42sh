@@ -29,7 +29,7 @@ int		ifitsredi(t_data *data)
 			return (4);
 		if (ft_strcmp(data->args[i], "|") == 0)
 			return (5);
-		if (checkagred(data->args[i]) == 1)
+		if (checkagred(data->args[i], 0, 0) == 1)
 			return (6);
 		i++;
 	}
@@ -61,7 +61,7 @@ int		allif(char *str)
 		(ft_strcmp(str, ">>") == 0) ||
 		(ft_strcmp(str, "<") == 0) ||
 		(ft_strcmp(str, "<<") == 0) ||
-		(checkagred(str) == 1))
+		(checkagred(str, 0, 0) == 1))
 		return (1);
 	return (-1);
 }

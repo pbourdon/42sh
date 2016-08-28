@@ -112,13 +112,11 @@ int		thereisadoubleleft(t_data *data)
 	return (-1);
 }
 
-int		mainredi(t_data *data)
+int		mainredi(t_data *data, int i)
 {
 	int		father;
-	int		i;
 	char	*str;
 
-	i = 0;
 	data->liste = createliste();
 	data->oldtbe = newtab(data->args);
 	father = fork();

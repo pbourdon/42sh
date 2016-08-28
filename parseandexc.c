@@ -76,12 +76,22 @@ int			createthetab(t_data *data)
 	}
 }
 
-void		forkall(t_data *data)
+void		sub_forkall(t_data *data)
+{
+	if (access(data->tabb[0], F_OK) == 0)
+	{
+		ft_reset_term(g_shell.term_reset.term_copy);
+		if (data->envi == 1)
+			execve(data->tabb[0], data->tabb, NULL);
+		else
+			execve(data->tabb[0], data->tabb, data->env);
+	}
+}
+
+void		forkall(t_data *data, int status)
 {
 	pid_t	father;
-	int		status;
 
-	status = 0;
 	if (createthetab(data) == 1)
 	{
 		father = fork();
@@ -91,16 +101,7 @@ void		forkall(t_data *data)
 			ft_reset_term(g_shell.term_reset.term);
 		}
 		else if (father == 0)
-		{
-			if (access(data->tabb[0], F_OK) == 0)
-			{
-				ft_reset_term(g_shell.term_reset.term_copy);
-				if (data->envi == 1)
-					execve(data->tabb[0], data->tabb, NULL);
-				else
-					execve(data->tabb[0], data->tabb, data->env);
-			}
-		}
+			sub_forkall(data);
 		freetab(data->tabb);
 		data->binreturn = status;
 		return ;

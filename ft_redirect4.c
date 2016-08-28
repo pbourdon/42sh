@@ -33,7 +33,7 @@ void		helpmainpipehelp2(t_data *data, t_liste2 *liste, int k)
 		exit(1);
 	dup2(in, 0);
 	close(in);
-	doubleredichieh(data, liste);
+	doubleredichieh(data, liste, 0);
 	if (data->tabchev)
 		freetab(data->tabchev);
 	return ;
@@ -96,9 +96,7 @@ int			execveremix(t_data *data)
 		{
 			ft_reset_term(g_shell.term_reset.term_copy);
 			if (data->envi == 1)
-			{
 				execve(data->tabb[0], data->tabb, NULL);
-			}
 			else
 			{
 				execve(data->tabb[0], data->tabb, data->env);

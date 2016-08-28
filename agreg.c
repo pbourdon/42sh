@@ -55,14 +55,10 @@ int		secondpart(char *str)
 	return (-1);
 }
 
-int		checkagred(char *str)
+int		checkagred(char *str, int i, int o)
 {
-	int		i;
-	int		o;
 	char	*dst;
 
-	o = 0;
-	i = 0;
 	while (str[i] != '>' && str[i] != '<')
 	{
 		if (str[i] == '\0')

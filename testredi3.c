@@ -24,7 +24,7 @@ int		refredi(char *str)
 		return (4);
 	else if (ft_strcmp(str, "|") == 0)
 		return (5);
-	else if (checkagred(str) == 1)
+	else if (checkagred(str, 0, 0) == 1)
 		return (6);
 	return (0);
 }

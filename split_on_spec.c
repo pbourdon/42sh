@@ -92,7 +92,6 @@ t_tk			*split_norm(char **ptr, char **cmd, t_tk **base, t_tk *cur)
 		cur->arg[++i] = *(*cmd + 1);
 		*cmd += 1;
 	}
-//	ft_putendl(cur->arg);
 	cur->tk = add_token(cur->arg);
 	*base = add_end_list(cur, base);
 	while (*cmd && *(*cmd + 1) && *(*cmd + 1) == ' ')

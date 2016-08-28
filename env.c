@@ -77,7 +77,7 @@ void	callenv(t_data *data)
 		{
 			freetab(tabb);
 			argsifenv(data, i);
-			forkall(data);
+			forkall(data, 0);
 			return ;
 		}
 		i++;
