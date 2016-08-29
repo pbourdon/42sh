@@ -72,7 +72,7 @@ char			quote_oo(int inib, char quote, char c)
 	return (quote);
 }
 
-char            is_a_parenthese(char par, char c)
+char			is_a_parenthese(char par, char c)
 {
 	if (!par && (c == '[' || c == '(' || c == '{'))
 		par = c;
@@ -104,13 +104,13 @@ int				ft_cheat(char *str, char tabb[3], int i)
 	return (0);
 }
 
-int 			ft_init_verif(void)
+int				ft_init_verif(void)
 {
-	char tabb[3];
-	int n;
+	char	tabb[3];
+	int		n;
 
 	n = 0;
-	tabb[0] = 0 ;
+	tabb[0] = 0;
 	tabb[1] = 0;
 	tabb[2] = 0;
 	if ((n = ft_cheat(g_shell.shell_line, tabb, -1)))

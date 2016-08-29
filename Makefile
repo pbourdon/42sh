@@ -17,6 +17,7 @@ HEADER = includes/minishell.h
 FLAGS = -Wall -Werror -Wextra -g3 -O3
 
 SRC = 	builtin_exit_error.c \
+		history_show_func.c \
 		split_inib_tools.c \
 		new_arg_to_list.c \
 		space_treatment.c \
@@ -38,6 +39,7 @@ SRC = 	builtin_exit_error.c \
 		split_inib.c \
 		term_read2.c \
 		term_read3.c \
+		shell_lvl.c \
 		allwrites.c \
 		term_read.c \
 		testredi2.c \
@@ -50,7 +52,6 @@ SRC = 	builtin_exit_error.c \
 		builenv2.c \
 		go_words.c \
 		testredi.c \
-		history2.c \
 		is_key1.c \
 		is_key2.c \
 		is_key3.c \

@@ -63,6 +63,7 @@ typedef struct			s_history
 {
 	char				*str;
 	struct s_history	*next;
+	struct s_history	*prev;
 }						t_history;
 
 typedef struct			s_shell
@@ -144,6 +145,10 @@ typedef struct			s_liste
 	struct s_liste		*next;
 }						t_liste;
 
+char					**shell_lvl(char **env, int z);
+void					show_history_rev_until(char *nb);
+void					show_history_rev(void);
+void					dell_history(void);
 int						parenthesis_closed(void);
 void					movements_delete(int a);
 char					**split_on_inib(char *str);
@@ -363,6 +368,7 @@ char					*firstpartequal(char *str);
 char					**freshnewtab(t_data *data, char *dst, char *dst2);
 int						alreadyin(t_data *data, char *str);
 int						ft_init_verif(void);
+
 t_shell					g_shell;
 t_cursor				g_cursor;
 

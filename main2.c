@@ -28,8 +28,6 @@ void			sub_parsecommand2(t_data *data)
 			ft_putendl(": Command not found.");
 		}
 	}
-	else
-		forkall(data, 0);
 }
 
 void			sub_sub_parse(t_data *data)
@@ -63,6 +61,8 @@ void			sub_parsecommand(t_data *data)
 		cdcall(data);
 	else if (ft_strcmp(data->args[0], "history") == 0)
 		history(data);
+	else
+		forkall(data, 0);
 	sub_parsecommand2(data);
 }
 
