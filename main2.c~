@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 18:50:23 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/29 01:52:27 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/29 01:46:01 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ void			parsecommand(t_data *data, t_liste *liste)
 		free(data->line);
 		freetab(data->args);
 		free_list(liste);
-		free(data);
 		exit(0);
 	}
 	sub_parsecommand(data);

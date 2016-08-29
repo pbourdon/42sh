@@ -6,7 +6,7 @@
 /*   By: hlouar <hlouar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/16 16:05:50 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/29 02:11:10 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/25 14:53:22 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	childhelp(t_data *data, t_liste2 *liste, int pfd[2])
 {
 	int in;
 
-	ft_putendl("childhelp");
 	if (liste->redi == 3 || liste->redi == 8)
 	{
 		if (liste->redi == 8)

@@ -1,0 +1,84 @@
+Norme: ./add_letter.c
+Norme: ./allwrites.c
+Norme: ./builenv.c
+Norme: ./arg_to_list.c
+Error (line 78): function arg_to_list has 30 lines
+Error (line 90): 2 assignations
+Error (line 94): 2 assignations
+Norme: ./agreg.c
+Norme: ./builenv3.c
+Norme: ./builtin_exit_error.c
+Norme: ./builenv2.c
+Norme: ./cursor.c
+Norme: ./cd.c
+Norme: ./cd2.c
+Norme: ./env2.c
+Norme: ./env.c
+Norme: ./free.c
+Norme: ./cd3.c
+Norme: ./env3.c
+Norme: ./go_words.c
+Norme: ./error.c
+Norme: ./ft_init_verif.c
+Error (line 29): must begin only by tabulations
+Error (line 30): must begin only by tabulations
+Norme: ./ft_redirect4.c
+Norme: ./hash3.c
+Norme: ./hash2.c
+Norme: ./history2.c
+Norme: ./is_key1.c
+Norme: ./hash.c
+Norme: ./good_order.c
+Norme: ./history.c
+Norme: ./is_key5.c
+Norme: ./is_key4.c
+Norme: ./is_key2.c
+Norme: ./is_key3.c
+Norme: ./old_functions.c
+Norme: ./new_arg_to_list.c
+Norme: ./main2.c
+Norme: ./main.c
+Norme: ./parseandexc2.c
+Norme: ./parseandexc.c
+Norme: ./press_key2.c
+Norme: ./press_key3.c
+Norme: ./press_key1.c
+Norme: ./press_key6.c
+Norme: ./press_key5.c
+Norme: ./setenv2.c
+Norme: ./press_key4.c
+Norme: ./prompt.c
+Norme: ./shell.c
+Norme: ./shell2.c
+Norme: ./shell3.c
+Norme: ./signal.c
+Norme: ./setenv.c
+Norme: ./split_inib_tools.c
+Norme: ./split_inib.c
+Norme: ./spliter.c
+Norme: ./space_treatment.c
+Norme: ./term_functions.c
+Norme: ./term_read.c
+Norme: ./test.c
+Error: 42 header not at top of the file
+Error (line 5): multiple empty lines
+Error (line 6): declarations in main are bad aligned
+Error (line 6): Space before function name
+Error (line 6): declarations in main must be at the top of the function
+Error (line 6): declarations must be followed by one empty line in main
+Error (line 6): bad spacing before main
+Error (line 14, col 5): c is instanciated during declaration
+Norme: ./term_read2.c
+Norme: ./term_read3.c
+Norme: ./split_on_spec.c
+Norme: ./testredi3.c
+Norme: ./testredi2.c
+Norme: ./testredi5.c
+Norme: ./testredi.c
+Norme: ./testredi6.c
+Norme: ./testredi4.c
+Norme: ./tools.c
+Norme: ./tools2.c
+Norme: ./tools_split.c
+Norme: ./unsetenv.c
+Norme: ./to_tree.c

@@ -6,7 +6,7 @@
 /*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/14 15:26:37 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/29 03:36:55 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/26 08:52:57 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,50 +65,23 @@ void	argliste(t_data *data)
 	int			k;
 	t_liste2	*tmp;
 
-	ft_putendl("argliste\n");
 	tmp = data->liste;
-	ft_putendl("lastone >?");
-	sleep(1);
 	k = lastone(data);
-	ft_putendl("lastone");
-	sleep(1);
 	i = 0;
 	data->posi = 0;
-	ft_putendl("while >?");
-	sleep(1);
 	while (data->posi != ft_strlentab(data->oldtbe))
 	{
-		ft_putendl("while LOOP");
-		sleep(1);
 		if (i == 0)
 		{
-			ft_putendl("create tab ? ");
-			sleep(1);
 			tmp->tabich = createtab(data, 0);
-			ft_putendl("create tab");
-			sleep(1);
 			i = 1;
 		}
 		else
-		{
-			ft_putendl("create tab 2? ");
-			sleep(1);
 			tmp->tabich = createtab(data, data->posi + 1);
-			ft_putendl("create tab 2 ");
-			sleep(1);
-		}
 		if (data->oldtbe[data->posi])
-		{
-			ft_putendl("refredi ? ");
-			sleep(1);
 			tmp->redi = refredi(data->oldtbe[data->posi]);
-			ft_putendl("refredi ");
-			sleep(1);
-		}
 		else
 			tmp->redi = 0;
-		if (data->posi == ft_strlentab(data->oldtbe))
-			break ;
 		tmp->next = malloc(sizeof(t_liste2));
 		tmp = tmp->next;
 		tmp->next = NULL;

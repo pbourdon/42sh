@@ -6,7 +6,7 @@
 /*   By: hlouar <hlouar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/14 15:25:49 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/29 03:46:40 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/29 03:24:07 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int		mainpipe(t_data *data, t_liste2 *liste)
 		dup2(pfd[0], 0);
 		if (liste->redi == 3 || liste->redi == 8)
 			return (mainpipe(data, liste->next->next));
-		else if (liste->next)
+		else
 			return (mainpipe(data, liste->next));
 	}
 	close(pfd[0]);
@@ -133,21 +133,6 @@ int		mainredi(t_data *data, int i)
 			ft_putendl("argliste??");
 			sleep(1);
 			argliste(data);
-			t_liste2 *tmp;
-			tmp = data->liste;
-			int i;
-			ft_putendl("liste ?\n\n");
-			while (tmp)
-			{
-				i = -1;
-				ft_putendl("listetab\n");
-				while (tmp->tabich[++i])
-					ft_putendl(tmp->tabich[i]);
-				ft_putnbr(tmp->redi);
-				ft_putendl("<==== liste->redi\n");
-				tmp = tmp->next;
-			}
-			ft_putendl("liste");
 			ft_putendl("argliste");
 			sleep(1);
 			ft_putendl("mainpipe??");

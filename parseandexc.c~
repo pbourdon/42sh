@@ -6,7 +6,7 @@
 /*   By: hlouar <hlouar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/16 18:30:52 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/29 01:33:33 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/29 01:02:36 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void		forkall(t_data *data, int status)
 {
 	pid_t	father;
 
+	ft_putstr(data->line);
 	if (createthetab(data) == 1)
 	{
 		father = fork();

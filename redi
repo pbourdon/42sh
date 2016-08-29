@@ -1,0 +1,63 @@
+arg_to_list.c:	liste->next = NULL;
+arg_to_list.c:	liste->arg = NULL;
+arg_to_list.c:	while (liste->next)
+arg_to_list.c:		liste = liste->next;
+arg_to_list.c:	if (!liste->arg)
+arg_to_list.c:		liste->arg = ft_strdup(tree->arg);
+arg_to_list.c:		tmp = ft_strjoin(liste->arg, buff);
+arg_to_list.c:		free(liste->arg);
+arg_to_list.c:		liste->arg = tmp;
+arg_to_list.c:		if (liste->next && !liste->next->arg)
+arg_to_list.c:			tmp = liste->next;
+arg_to_list.c:			liste->next = NULL;
+arg_to_list.c:		liste = liste->next;
+error.c:		if (liste->tk == 1 && ft_isdigit(liste->arg[0]) == 0)
+error.c:			str = ft_strjoin("1", liste->arg);
+error.c:			free(liste->arg);
+error.c:			liste->arg = str;
+error.c:		liste = liste->next;
+ft_redirect4.c:		in = open(liste->next->tabich[0], O_RDONLY);
+ft_redirect4.c:		ft_putendl(liste->next->tabich[0]);
+ft_redirect4.c:	liste->next = NULL;
+ft_redirect4.c:		data->args = newtab(liste->tabich);
+ft_redirect4.c:		data->args = newtab(liste->tabich);
+new_arg_to_list.c:		if (liste->next && !liste->next->arg)
+new_arg_to_list.c:			tmp = liste->next;
+new_arg_to_list.c:			liste->next = NULL;
+new_arg_to_list.c:		liste = liste->next;
+testredi.c:	if (liste->redi == 6)
+testredi.c:	else if (liste->next->next == NULL)
+testredi.c:		data->args = newtab(liste->tabich);
+testredi.c:		if (liste->redi == 3 || liste->redi == 8)
+testredi.c:			return (mainpipe(data, liste->next->next));
+testredi.c:			return (mainpipe(data, liste->next));
+testredi3.c:	while (liste->next->next != NULL)
+testredi3.c:		freetab(liste->tabich);
+testredi3.c:		liste = liste->next;
+testredi4.c:	if (liste->redi == 3 || liste->redi == 8)
+testredi4.c:		if (liste->redi == 8)
+testredi4.c:			in = open(liste->next->tabich[0], O_RDONLY);
+testredi4.c:			ft_putstr(liste->next->tabich[0]);
+testredi4.c:		in = open(liste->next->tabich[0], O_RDONLY);
+testredi4.c:		ft_putendl(liste->next->tabich[0]);
+testredi4.c:	data->args = newtab(liste->tabich);
+testredi4.c:	if (liste->next->redi == 1)
+testredi4.c:		out = open(liste->next->next->tabich[0], O_WRONLY | O_TRUNC |
+testredi4.c:	else if (liste->next->redi == 2)
+testredi4.c:		if (liste->redi == 3)
+testredi4.c:	if ((liste->redi == 3 || liste->redi == 8) && ((liste->next->redi == 0) ||
+testredi4.c:				((liste->next->redi == 1 || liste->next->redi == 2) &&
+testredi4.c:				liste->next->next->redi == 0)))
+testredi4.c:		if (liste->redi == 3)
+testredi5.c:	out = open(liste->next->tabich[0], O_WRONLY | O_TRUNC |
+testredi5.c:	data->args = newtab(liste->tabich);
+testredi5.c:	data->args = newtab(liste->tabich);
+testredi5.c:	data->args = newtab(liste->tabich);
+testredi6.c:		hist = double_left(liste->next->tabich[0]);
+testredi6.c:	if (liste->redi == 1)
+testredi6.c:	else if (liste->redi == 2)
+testredi6.c:	else if (liste->redi == 4)
+testredi6.c:		liste->redi = 8;
+tools2.c:	data->args = newtab(liste->tabich);
+tools_split.c:	liste->next = NULL;
+tools_split.c:	liste->arg = NULL;

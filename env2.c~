@@ -6,7 +6,7 @@
 /*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/19 17:47:46 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/29 00:39:16 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/05/23 09:11:47 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	callenvi(t_data *data)
 
 void	callallenv(t_data *data)
 {
-	ft_putstr("3\n\n\n\n\\n\n");
 	if (ft_strcmp(data->args[1], "-i") == 0)
 		callenvi(data);
 	else
