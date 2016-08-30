@@ -26,7 +26,7 @@ int		mainpipehelp(t_data *data, t_liste2 *liste)
 	}
 	else if (mainpipehelp2(data, liste) != -1)
 	{
-		exit(0);
+		exit(45);
 		return (2);
 	}
 	else if (liste->next->next == NULL)
@@ -112,29 +112,40 @@ int		thereisadoubleleft(t_data *data)
 	return (-1);
 }
 
+void free_liste2(t_liste2 *ptr)
+{
+	t_liste2		*tmp;
+
+	while (ptr->next != NULL)
+	{
+		tmp = ptr->next;
+		freetab(ptr->tabich);
+		free(ptr);
+		ptr = tmp;
+	}
+	free(ptr);
+}
+
 int		mainredi(t_data *data, int i)
 {
 	int		father;
 	char	*str;
 
-	data->oldtbe = newtab(data->args);
-	if (cdendargs(data) > 0)
-	{
-		stringforcd(data);
-		return (1);
-	}
 	data->liste = createliste();
+	data->oldtbe = newtab(data->args);
 	str = ft_strdup(data->args[(ft_strlentab(data->args) - 1)]);
 	optchev2(data, i, str);
 	free(str);
-	father = fork();
+	argliste(data);
+	if (movecd(data) == 2)
+		return (1);
+	data->args = newtab(data->oldtbe);
 	if (ifitsredi(data) != 0)
 	{
+		father = fork();
 		if (father == 0)
 		{
-			argliste(data);
 			mainpipe(data, data->liste);
-			freeliste(data->liste);
 			exit(0);
 		}
 		else
@@ -143,5 +154,7 @@ int		mainredi(t_data *data, int i)
 			ft_reset_term(g_shell.term_reset.term);
 		}
 	}
+	else
+		return(1);
 	return (1);
 }
