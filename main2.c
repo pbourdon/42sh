@@ -108,5 +108,7 @@ int				switch_case(t_tk *ptr, int nb_redir, int nb_redir2)
 		ft_putendl("Invalid null command.");
 		return (-1);
 	}
+	else if (nb_redir > 1 || nb_redir2 > 1)
+		ft_putendl(ptr->arg);
 	return (0);
 }
