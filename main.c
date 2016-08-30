@@ -6,7 +6,7 @@
 /*   By: hlouar <hlouar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/16 17:45:20 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/27 17:07:11 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/30 16:15:42 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ int				readgnl(t_data *data, char *str)
 		tree = to_tree(NULL, ptr, 5, NULL);
 		if (ret == 0)
 			sub_read(tree, data);
+		else
+			free_tree(tree);
 	}
 	return (0);
 }
@@ -87,6 +89,7 @@ int				main(int ac, char **av, char **env)
 	int			fd;
 
 	fd = 0;
+	data.exit = 0;
 	data.path = NULL;
 	(void)av;
 	(void)ac;
