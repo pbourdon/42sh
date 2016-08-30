@@ -117,12 +117,17 @@ int		mainredi(t_data *data, int i)
 	int		father;
 	char	*str;
 
-	data->liste = createliste();
 	data->oldtbe = newtab(data->args);
-	father = fork();
+	if (cdendargs(data) > 0)
+	{
+		stringforcd(data);
+		return (1);
+	}
+	data->liste = createliste();
 	str = ft_strdup(data->args[(ft_strlentab(data->args) - 1)]);
 	optchev2(data, i, str);
 	free(str);
+	father = fork();
 	if (ifitsredi(data) != 0)
 	{
 		if (father == 0)

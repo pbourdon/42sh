@@ -118,6 +118,7 @@ typedef struct			s_data
 	int					posi;
 	char				**builttab;
 	int					binreturn;
+	char				*forcd;
 	struct s_liste2		*liste;
 }						t_data;
 
@@ -362,6 +363,9 @@ char					*secondpartequal(char *str);
 char					*firstpartequal(char *str);
 char					**freshnewtab(t_data *data, char *dst, char *dst2);
 int						alreadyin(t_data *data, char *str);
+int						stringforcd(t_data *data);
+int 					cdendargs(t_data *data);
+
 
 t_shell					g_shell;
 t_cursor				g_cursor;
