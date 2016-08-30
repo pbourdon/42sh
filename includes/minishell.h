@@ -372,7 +372,10 @@ int						alreadyin(t_data *data, char *str);
 int						stringforcd(t_data *data);
 int 					cdendargs(t_data *data);
 int						ft_init_verif(void);
+<<<<<<< HEAD
 int						movecd(t_data *data);
+=======
+>>>>>>> bab638601fd0efbf06da84b5619287dc704cf648
 
 t_shell					g_shell;
 t_cursor				g_cursor;

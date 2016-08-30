@@ -95,13 +95,12 @@ void			parsecommand(t_data *data, t_liste *liste)
 
 int				switch_case(t_tk *ptr, int nb_redir, int nb_redir2)
 {
-	ft_putendl(ptr->arg);
 	if (ptr->tk == 3 && ft_strncmp(ptr->arg, "|", 1) != 0 && ptr->next == NULL)
 	{
 		ft_putendl("Missing name for redirect.");
 		return (-1);
 	}
-	else if (nb_redir > 1 || nb_redir2 < -1)
+	else if (nb_redir > 1 || nb_redir2 > 1)
 	{
 		ft_putendl("Ambigous output redirect.");
 		return (-1);
