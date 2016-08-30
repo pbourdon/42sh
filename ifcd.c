@@ -12,51 +12,42 @@
 
 #include "includes/minishell.h"
 
-int cdendargs(t_data *data)
+int		movecd(t_data *data)
 {
-	int i;
+	t_liste2 *tmp;
+	int out;
 
-	i = ft_strlentab(data->oldtbe) - 1;
-	while (data->oldtbe[i])
+	tmp = data->liste;
+	while (tmp->next)
 	{
-		if ((ft_strcmp(data->oldtbe[i], ">") == 0) ||
-		(ft_strcmp(data->oldtbe[i], ">>") == 0))
-			return (-1);
-		if (ft_strcmp(data->oldtbe[i], "|") == 0)
+		if (ft_strcmp(tmp->tabich[0], "cd") == 0)
 		{
-			if (ft_strcmp(data->oldtbe[i + 1], "cd") == 0)
+			if ((tmp->redi == 2 && tmp->next->redi == 0)
+			|| (tmp->redi == 1 && tmp->next->redi == 0)
+			|| (tmp->redi == 3 && (tmp->next->redi != 5))
+			|| (tmp->redi == 4 && (tmp->next->redi != 5))
+			|| (tmp->redi == 0))
 			{
-				ft_putendl(data->oldtbe[i + 1]);
-				return (i);
+				if (tmp->redi == 1)
+				{
+					out = open(tmp->next->tabich[0], O_WRONLY | O_TRUNC |
+						O_CREAT, S_IRUSR | S_IWGRP | S_IWUSR | O_APPEND);
+				}
+				else if (tmp->redi == 2)
+				{
+						out = open(tmp->next->tabich[0], O_RDWR);
+						if (out == -1)
+						{
+							out = open(tmp->next->tabich[0], O_WRONLY | O_TRUNC |
+								O_CREAT, S_IRUSR | S_IWGRP | S_IWUSR | O_APPEND);
+						}
+				}
+					data->args = newtab(tmp->tabich);
+					cdcall(data);
+					return (2);
 			}
-			else
-				return (-1);
 		}
-		i--;
+		tmp = tmp->next;
 	}
-	return (0);
+	return (1);
 }
-
-int	stringforcd(t_data *data)
-{
-	int i;
-	char **dst;
-	int o;
-
-	o = 0;
-	i =  cdendargs(data) + 1;
-	if (i <= 0)
-		return (-1);
-	dst = malloc(sizeof(char) * i);
-	while (data->oldtbe[i])
-	{
-		dst[o] = data->oldtbe[i];
-		i++;
-		o++;
-	}
-	dst[o] = NULL;
-	data->args = newtab(dst);
-	// freetab(dst);
-	cdcall(data);
-	return (0);
- }

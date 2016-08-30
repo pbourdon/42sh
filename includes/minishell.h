@@ -6,7 +6,7 @@
 /*   By: cmichaud <cmichaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/20 18:33:29 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/08/28 20:34:05 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/30 13:20:09 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -369,13 +369,10 @@ char					*secondpartequal(char *str);
 char					*firstpartequal(char *str);
 char					**freshnewtab(t_data *data, char *dst, char *dst2);
 int						alreadyin(t_data *data, char *str);
-<<<<<<< HEAD
 int						stringforcd(t_data *data);
 int 					cdendargs(t_data *data);
-
-=======
 int						ft_init_verif(void);
->>>>>>> 407c9576d44bc945af1a4b4e121d5d9d08271485
+int						movecd(t_data *data);
 
 t_shell					g_shell;
 t_cursor				g_cursor;
