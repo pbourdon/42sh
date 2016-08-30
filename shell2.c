@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 15:01:47 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/28 18:34:31 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/30 19:18:37 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void				*ft_realloc(void *ptr, size_t size)
 	if (ptr)
 	{
 		newptr = (char *)malloc(size);
+		ft_bzero(newptr, size);
 		if (!newptr)
 			return (NULL);
 		ft_memcpy(newptr, ptr, g_shell.length_line);
