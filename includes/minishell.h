@@ -369,13 +369,9 @@ char					*secondpartequal(char *str);
 char					*firstpartequal(char *str);
 char					**freshnewtab(t_data *data, char *dst, char *dst2);
 int						alreadyin(t_data *data, char *str);
-<<<<<<< HEAD
 int						stringforcd(t_data *data);
 int 					cdendargs(t_data *data);
-
-=======
 int						ft_init_verif(void);
->>>>>>> 407c9576d44bc945af1a4b4e121d5d9d08271485
 
 t_shell					g_shell;
 t_cursor				g_cursor;
