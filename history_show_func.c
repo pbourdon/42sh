@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   history2.c                                         :+:      :+:    :+:   */
+/*   history_show_func.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,18 +12,39 @@
 
 #include "includes/minishell.h"
 
-void			show_history_until(char *len)
+void			dell_history(void)
+{
+	t_history	*history;
+	t_history	*tmp;
+
+	history = g_shell.history;
+	while (history != NULL)
+	{
+		tmp = history->next;
+		if (history->str)
+			free(history->str);
+		free(history);
+		history = tmp;
+	}
+	free(history);
+	g_shell.history = malloc(sizeof(*(g_shell.history)));
+	g_shell.history->str = NULL;
+	g_shell.history->next = NULL;
+	g_shell.history->prev = NULL;
+}
+
+void			show_history_until(char *nb)
 {
 	int			i;
 	int			j;
-	int			tmp;
+	int			len;
 	t_history	*history;
 
 	i = 0;
 	j = 0;
-	tmp = ft_atoi(len);
+	len = ft_atoi(nb);
 	history = g_shell.history;
-	while (history->next && j <= tmp)
+	while (history && j < len)
 	{
 		ft_putnbr(i++);
 		if (i <= 10)
@@ -45,7 +66,7 @@ void			show_history(void)
 
 	i = 0;
 	history = g_shell.history;
-	while (history->next)
+	while (history)
 	{
 		ft_putnbr(i++);
 		if (i <= 10)
@@ -59,16 +80,52 @@ void			show_history(void)
 	}
 }
 
-int				ft_strisdigit(char *str)
+void			show_history_rev(void)
 {
 	int			i;
+	t_history	*history;
 
-	i = 0;
-	while (str[i])
+	i = g_shell.history_index;
+	history = g_shell.history;
+	while (history->next)
+		history = history->next;
+	while (history)
 	{
-		if (!ft_isdigit(str[i]))
-			return (-1);
-		i++;
+		ft_putnbr(i--);
+		if (i < 9)
+			ft_putstr("     ");
+		else if (i < 99)
+			ft_putstr("    ");
+		else
+			ft_putstr("   ");
+		ft_putendl(history->str);
+		history = history->prev;
 	}
-	return (0);
+}
+
+void			show_history_rev_until(char *nb)
+{
+	int			i;
+	int			j;
+	int			len;
+	t_history	*history;
+
+	i = g_shell.history_index;
+	len = ft_atoi(nb);
+	j = i - len;
+	history = g_shell.history;
+	while (history->next)
+		history = history->next;
+	while (history && i > j)
+	{
+		ft_putnbr(i--);
+		if (i < 9)
+			ft_putstr("     ");
+		else if (i < 99)
+			ft_putstr("    ");
+		else
+			ft_putstr("   ");
+		ft_putendl(history->str);
+		history = history->prev;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: cmichaud <cmichaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/20 18:33:29 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/08/25 13:49:34 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/28 20:34:05 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct			s_history
 {
 	char				*str;
 	struct s_history	*next;
+	struct s_history	*prev;
 }						t_history;
 
 typedef struct			s_shell
@@ -145,6 +146,11 @@ typedef struct			s_liste
 	struct s_liste		*next;
 }						t_liste;
 
+int						is_ctrl_d(char *buffer);
+char					**shell_lvl(char **env, int z);
+void					show_history_rev_until(char *nb);
+void					show_history_rev(void);
+void					dell_history(void);
 int						parenthesis_closed(void);
 void					movements_delete(int a);
 char					**split_on_inib(char *str);
@@ -363,9 +369,13 @@ char					*secondpartequal(char *str);
 char					*firstpartequal(char *str);
 char					**freshnewtab(t_data *data, char *dst, char *dst2);
 int						alreadyin(t_data *data, char *str);
+<<<<<<< HEAD
 int						stringforcd(t_data *data);
 int 					cdendargs(t_data *data);
 
+=======
+int						ft_init_verif(void);
+>>>>>>> 407c9576d44bc945af1a4b4e121d5d9d08271485
 
 t_shell					g_shell;
 t_cursor				g_cursor;

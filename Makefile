@@ -6,7 +6,11 @@
 #    By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/02 13:52:37 by bde-maze          #+#    #+#              #
+<<<<<<< HEAD
 #*   Updated: 2016/08/30 10:57:31 by                  ###   ########.fr       *#
+=======
+#    Updated: 2016/08/28 17:43:20 by pguzman          ###   ########.fr        #
+>>>>>>> 407c9576d44bc945af1a4b4e121d5d9d08271485
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +21,7 @@ HEADER = includes/minishell.h
 FLAGS = -Wall -Werror -Wextra -g3 -O3
 
 SRC = 	builtin_exit_error.c \
+		history_show_func.c \
 		split_inib_tools.c \
 		new_arg_to_list.c \
 		space_treatment.c \
@@ -38,6 +43,7 @@ SRC = 	builtin_exit_error.c \
 		split_inib.c \
 		term_read2.c \
 		term_read3.c \
+		shell_lvl.c \
 		allwrites.c \
 		term_read.c \
 		testredi2.c \
@@ -50,7 +56,6 @@ SRC = 	builtin_exit_error.c \
 		builenv2.c \
 		go_words.c \
 		testredi.c \
-		history2.c \
 		is_key1.c \
 		is_key2.c \
 		is_key3.c \
@@ -96,7 +101,7 @@ norm:
 	@norminette $(SRC) $(HEADER)
 
 $(NAME): compile_lib compile_p $(OBJ)
-		@clang $(FLAGS) -lncurses -o $(NAME) $(OBJ) -L libft -lft
+		@clang $(FLAGS) -ltermcap -o $(NAME) $(OBJ) -L libft -lft
 		@echo ""
 		@echo "\033[32mCompilation Succeeded\033[39m"
 		@echo ""

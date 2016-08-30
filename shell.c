@@ -46,6 +46,8 @@ int					listen(char *buffer)
 		press_backspace_key();
 	else if (is_ctrl_c(buffer))
 		return (1);
+	else if (is_ctrl_d(buffer) && g_shell.length_line == 0)
+		exit(0);
 	else if (is_delete_key(buffer))
 		press_delete_key();
 	else if (is_direction_key(buffer))
@@ -76,6 +78,7 @@ void				shell_init(void)
 	g_shell.shell_backslash_level = 0;
 	g_shell.history = malloc(sizeof(*(g_shell.history)));
 	g_shell.history->next = NULL;
+	g_shell.history->prev = NULL;
 	g_shell.history->str = NULL;
 	g_shell.selected_end = 0;
 	g_shell.selected_start = 0;

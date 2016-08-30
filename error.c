@@ -82,7 +82,7 @@ int				check_list(t_tk *liste, t_tk *ptr, int ret, int nb_agg)
 		if (ptr->tk == 1)
 			nb_agg++;
 		nb_redir = set_redir_var(ptr->arg, nb_redir);
-		nb_redir2 = set_redir_var(ptr->arg, nb_redir2);
+		nb_redir2 = set_redir_var2(ptr->arg, nb_redir2);
 		if ((ret = check_aggr(ptr->arg, ptr->tk)) == -1)
 			return (-1);
 		if ((ret = switch_case(ptr, nb_redir, nb_redir2)) == -1)

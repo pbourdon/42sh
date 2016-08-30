@@ -25,3 +25,10 @@ int	is_option_c(char *buffer)
 		return (1);
 	return (0);
 }
+
+int	is_ctrl_d(char *buffer)
+{
+	if (buffer[0] == 4 && buffer[1] == 0 && buffer[2] == 0 && buffer[3] == 0)
+		return (1);
+	return (0);
+}

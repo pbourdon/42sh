@@ -6,31 +6,16 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 14:36:05 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/28 14:36:29 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/08/29 17:43:15 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 
-int				backslash_at_the_end(void)
-{
-	if (g_shell.length_line > 0 &&
-		g_shell.shell_line[g_shell.length_line - 1] == '\\')
-	{
-		g_shell.backslash_index = 0;
-		g_shell.shell_line[g_shell.length_line - 1] = ' ';
-		g_shell.shell_backslash_level++;
-		g_shell.last_backslash = g_shell.length_line;
-		ft_putstr("\n? ");
-		return (1);
-	}
-	return (0);
-}
-
 int				press_enter_key(void)
 {
 	press_end_key();
-	if (backslash_at_the_end() || !parenthesis_closed())
+	if (ft_init_verif())
 		return (0);
 	if (ft_strcmp(g_shell.shell_line, "") != 0 && g_shell.shell_heredoc == 0)
 		add_to_history(g_shell.history, g_shell.shell_line);
