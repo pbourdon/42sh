@@ -16,7 +16,6 @@ int		movecd(t_data *data)
 {
 	t_liste2 *tmp;
 	int out;
-	char *str;
 
 	tmp = data->liste;
 	while (tmp->next)
