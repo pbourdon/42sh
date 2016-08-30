@@ -85,6 +85,7 @@ int		optchev2(t_data *data, int i, char *str)
 		close(fd);
 		fd = open(str, O_RDWR);
 		tabich = (char **)malloc(sizeof(char *) * (i + 1));
+		close(fd);
 		while (get_next_line(fd, &line) > 0)
 		{
 			tabich[o] = ft_strdup(line);
@@ -118,6 +119,7 @@ void free_liste2(t_liste2 *ptr)
 
 	while (ptr->next != NULL)
 	{
+		ft_putendl("LOOP");
 		tmp = ptr->next;
 		freetab(ptr->tabich);
 		free(ptr);
@@ -139,6 +141,7 @@ int		mainredi(t_data *data, int i)
 	argliste(data);
 	if (movecd(data) == 2)
 		return (1);
+	freetab(data->args);
 	data->args = newtab(data->oldtbe);
 	if (ifitsredi(data) != 0)
 	{

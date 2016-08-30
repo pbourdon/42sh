@@ -89,7 +89,6 @@ int				main(int ac, char **av, char **env)
 	int			fd;
 
 	fd = 0;
-	data.exit = 0;
 	data.path = NULL;
 	(void)av;
 	(void)ac;
