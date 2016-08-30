@@ -66,6 +66,19 @@ void			sub_parsecommand(t_data *data)
 	sub_parsecommand2(data);
 }
 
+void			exit_func(t_data *data, t_liste *liste)
+{
+	get_tabhash(NULL, 1);
+	if (data->home)
+		free(data->home);
+	if (data->oldpwd)
+		free(data->oldpwd);
+	free(data->line);
+	freetab(data->args);
+	free_list(liste);
+	exit(0);
+}
+
 void			parsecommand(t_data *data, t_liste *liste)
 {
 	if (data->line[0] == '\0')
@@ -76,17 +89,7 @@ void			parsecommand(t_data *data, t_liste *liste)
 	if (!(data->args = split_on_inib(data->line)))
 		return ;
 	if (ft_strcmp(data->line, "exit") == 0)
-	{
-		get_tabhash(NULL, 1);
-		if (data->home)
-			free(data->home);
-		if (data->oldpwd)
-			free(data->oldpwd);
-		free(data->line);
-		freetab(data->args);
-		free_list(liste);
-		exit(0);
-	}
+		exit_func(data, liste);
 	sub_parsecommand(data);
 }
 
@@ -99,6 +102,7 @@ int				switch_case(t_tk *ptr, int nb_redir, int nb_redir2)
 	}
 	else if (nb_redir > 1 || nb_redir2 < -1)
 	{
+		ft_putendl(ptr->arg);
 		ft_putendl("Ambigous output redirect.");
 		return (-1);
 	}
@@ -108,7 +112,5 @@ int				switch_case(t_tk *ptr, int nb_redir, int nb_redir2)
 		ft_putendl("Invalid null command.");
 		return (-1);
 	}
-	else if (nb_redir > 1 || nb_redir2 > 1)
-		ft_putendl(ptr->arg);
 	return (0);
 }

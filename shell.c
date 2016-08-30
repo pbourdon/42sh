@@ -46,6 +46,8 @@ int					listen(char *buffer)
 		press_backspace_key();
 	else if (is_ctrl_c(buffer))
 		return (1);
+	else if (is_ctrl_d(buffer) && g_shell.length_line == 0)
+		exit(0);
 	else if (is_delete_key(buffer))
 		press_delete_key();
 	else if (is_direction_key(buffer))

@@ -145,6 +145,7 @@ typedef struct			s_liste
 	struct s_liste		*next;
 }						t_liste;
 
+int						is_ctrl_d(char *buffer);
 char					**shell_lvl(char **env, int z);
 void					show_history_rev_until(char *nb);
 void					show_history_rev(void);
