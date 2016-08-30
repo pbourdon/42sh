@@ -33,7 +33,6 @@ int		mainpipehelp(t_data *data, t_liste2 *liste)
 	{
 		if (createbinpath(data, 2) == 0)
 			return (5);
-		ft_putendl(liste->tabich[0]);
 		freetab(data->args);
 		data->args = newtab(liste->tabich);
 		execveremix(data);
