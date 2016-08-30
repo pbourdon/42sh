@@ -16,6 +16,7 @@ int		movecd(t_data *data)
 {
 	t_liste2 *tmp;
 	int out;
+	char *str;
 
 	tmp = data->liste;
 	while (tmp->next)
@@ -41,6 +42,15 @@ int		movecd(t_data *data)
 							out = open(tmp->next->tabich[0], O_WRONLY | O_TRUNC |
 								O_CREAT, S_IRUSR | S_IWGRP | S_IWUSR | O_APPEND);
 						}
+				}
+				else if (tmp->redi == 3)
+				{
+					out = open(tmp->next->tabich[0], O_RDWR);
+					if (out == -1)
+					{
+						ft_putstr(tmp->next->tabich[0]);
+						ft_putendl(": No such file or directory.");
+					}
 				}
 					data->args = newtab(tmp->tabich);
 					cdcall(data);

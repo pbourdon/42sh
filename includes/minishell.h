@@ -6,7 +6,7 @@
 /*   By: cmichaud <cmichaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/20 18:33:29 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/08/30 13:20:09 by hlouar           ###   ########.fr       */
+/*   Updated: 2016/08/30 16:13:47 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -372,10 +372,7 @@ int						alreadyin(t_data *data, char *str);
 int						stringforcd(t_data *data);
 int 					cdendargs(t_data *data);
 int						ft_init_verif(void);
-<<<<<<< HEAD
 int						movecd(t_data *data);
-=======
->>>>>>> bab638601fd0efbf06da84b5619287dc704cf648
 
 t_shell					g_shell;
 t_cursor				g_cursor;
