@@ -6,27 +6,36 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 18:24:05 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/22 18:24:09 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/08/31 11:41:16 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 
-int		ft_exit_error(char **s)
+int		ft_exit_error(t_data *data, int *out)
 {
 	unsigned char b;
 
+	*out = 1;
 	b = 0;
-	if (s[1])
+	if (data->exit_line)
 	{
-		if (!ft_isnumber(s[1]))
+		if (ft_isnumber(data->exit_line))
+			b = (unsigned char)ft_atoi(data->exit_line);
+		else if (data->exit_line[0] == '-' && data->exit_line[1] && \
+		ft_isnumber(&data->exit_line[1]))
+			b = (unsigned char)ft_atoi(data->exit_line);
+		else if (data->exit_line[0] == '-' && data->exit_line[1] == '-')
 		{
-			ft_putstr_fd("exit: not a numeric argument\n", 2);
-			b = 255;
+			ft_putstr_fd("exit: Badly formed number.\n", 2);
+			*out = 0;
 		}
 		else
-			b = (unsigned char)ft_atoi(s[1]);
-		ft_tabdel(&s);
+		{
+			ft_putstr_fd("exit: Expression Syntax.\n", 2);
+			*out = 0;
+		}
+		ft_strdel(&data->exit_line);
 	}
 	return (b);
 }

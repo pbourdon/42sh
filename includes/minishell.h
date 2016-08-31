@@ -6,7 +6,7 @@
 /*   By: cmichaud <cmichaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/20 18:33:29 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/08/30 17:52:31 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/31 11:28:55 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -278,7 +278,7 @@ void					press_option_right();
 char					*del_from_arr(char *str, int i);
 void					go_right();
 void					go_left();
-int						ft_exit_error(char **s);
+int						ft_exit_error(t_data *data, int *out);
 int						ft_isnumber(char *s);
 void					ft_tabdel(char ***tb);
 char					**ft_tab_trim(char **s);
