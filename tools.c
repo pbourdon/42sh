@@ -6,7 +6,7 @@
 /*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/16 18:45:14 by hlouar            #+#    #+#             */
-/*   Updated: 2016/05/19 17:24:58 by hlouar           ###   ########.fr       */
+/*   Updated: 2016/08/31 04:18:00 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	freetab(char **tabb)
 	int	i;
 
 	i = 0;
+	if (!tabb)
+		return ;
 	while (tabb[i] != NULL)
 	{
 		ft_strdel(&tabb[i]);
