@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minishell.h"
+#include "includes/shell.h"
 
 void		helpmainpipehelp2(t_data *data, t_liste2 *liste, int k)
 {
@@ -83,7 +83,7 @@ int			optchev(t_data *data)
 	return (0);
 }
 
-int			execveremix(t_data *data)
+void		sub_exec(t_data *data)
 {
 	if (ft_strcmp(data->args[0], "exit") == 0)
 		exit(0);
@@ -92,6 +92,10 @@ int			execveremix(t_data *data)
 		callallenv(data);
 		exit(0);
 	}
+}
+
+int			execveremix(t_data *data)
+{
 	if (createthetab(data) == 1)
 	{
 		if (access(data->tabb[0], F_OK) == 0)

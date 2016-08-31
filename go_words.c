@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minishell.h"
+#include "includes/shell.h"
 
 int		get_next_word_after(char *str, int c)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minishell.h"
+#include "includes/shell.h"
 
 t_tk			*add_end_list(t_tk *tk, t_tk **base)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minishell.h"
+#include "includes/shell.h"
 
 int		alreadyin(t_data *data, char *str)
 {

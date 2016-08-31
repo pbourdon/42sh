@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minishell.h"
+#include "includes/shell.h"
 
 int				ft_strlen_word_inib(char *str, int i, int inib, int quote)
 {

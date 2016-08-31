@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minishell.h"
+#include "includes/shell.h"
 #include <stdio.h>
 
 void			readgnl2(t_data *data, char *str, t_liste *liste)
@@ -99,10 +99,8 @@ int				main(int ac, char **av, char **env)
 {
 	t_data		data;
 	t_term		first;
-	int			fd;
 
 	data.okchev = 0;
-	fd = 0;
 	data.exit = 0;
 	data.exit_line = NULL;
 	data.path = NULL;

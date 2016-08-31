@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minishell.h"
+#include "includes/shell.h"
 
 void	childhelp(t_data *data, t_liste2 *liste, int pfd[2])
 {

@@ -13,7 +13,7 @@
 
 NAME = 21sh
 
-HEADER = includes/minishell.h
+HEADER = includes/shell.h
 
 FLAGS = -Wall -Werror -Wextra -g3 -O3 -fsanitize=address
 
