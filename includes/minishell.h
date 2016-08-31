@@ -122,6 +122,7 @@ typedef struct			s_data
 	char				*forcd;
 	int					exit;
 	char				*exit_line;
+	int					okchev;
 	struct s_liste2		*liste;
 }						t_data;
 

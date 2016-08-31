@@ -101,6 +101,7 @@ int				main(int ac, char **av, char **env)
 	t_term		first;
 	int			fd;
 
+	data.okchev = 0;
 	fd = 0;
 	data.exit = 0;
 	data.exit_line = NULL;

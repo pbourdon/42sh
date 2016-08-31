@@ -42,6 +42,7 @@ int		optchev4(t_data *data, int fd, char *line, char **tabich)
 	tabich[o] = NULL;
 	data->tabchev = newtab(tabich);
 	freetab(tabich);
+	data->okchev = 1;
 	return (1);
 }
 

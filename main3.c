@@ -35,8 +35,11 @@ void			sub_sub_parse(t_data *data)
 	mainredi(data, 0);
 	free_liste2(data->liste);
 	freetab(data->oldtbe);
-	// if (data->tabchev)
-	// 	freetab(data->tabchev);
+	if (data->okchev == 1)
+	{
+		data->okchev = 0;
+		freetab(data->tabchev);
+	}
 }
 
 void			sub_parsecommand(t_data *data, int i)
