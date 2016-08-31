@@ -6,7 +6,7 @@
 /*   By: cmichaud <cmichaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/20 18:33:29 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/08/30 17:52:31 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/31 11:09:34 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -377,6 +377,7 @@ int 					cdendargs(t_data *data);
 int						ft_init_verif(void);
 int						movecd(t_data *data);
 void 					free_liste2(t_liste2 *ptr);
+void 					free_list2(t_liste *ptr);
 
 t_shell					g_shell;
 t_cursor				g_cursor;

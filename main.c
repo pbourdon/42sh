@@ -6,7 +6,7 @@
 /*   By: hlouar <hlouar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/16 17:45:20 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/31 03:57:21 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/31 11:11:09 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,11 @@ void			sub_read(t_tree *tree, t_data *data)
 	liste = del_last_null_arg(liste);
 	free_tree(tree);
 	if (check_list_2(liste))
-		tmp = NULL;
+	{
+		free_list2(liste);
+		free(data->line);
+		return ;
+	}
 	else
 		tmp = liste;
 	while (tmp)
