@@ -6,7 +6,7 @@
 /*   By: cmichaud <cmichaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/20 18:33:29 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/08/31 11:46:20 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/31 13:02:28 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -380,7 +380,7 @@ void					sub_parsecommand2(t_data *data);
 void					sub_parsecommand(t_data *data, int i);
 void					free_liste2(t_liste2 *ptr);
 void					free_list2(t_liste *ptr);
-
+int						is_tab(char *buffer);
 t_shell					g_shell;
 t_cursor				g_cursor;
 
