@@ -85,6 +85,7 @@ int		optchev2(t_data *data, int i, char *str)
 			free(line);
 			i++;
 		}
+		free(line);
 		close(fd);
 		fd = open(str, O_RDWR);
 		tabich = (char **)malloc(sizeof(char *) * (i + 1));
@@ -94,6 +95,7 @@ int		optchev2(t_data *data, int i, char *str)
 			free(line);
 			o++;
 		}
+		free(line);
 		close(fd);
 		tabich[o] = NULL;
 		data->tabchev = newtab(tabich);
@@ -122,7 +124,6 @@ void free_liste2(t_liste2 *ptr)
 
 	while (ptr->next != NULL)
 	{
-		ft_putendl("LOOP");
 		tmp = ptr->next;
 		freetab(ptr->tabich);
 		free(ptr);

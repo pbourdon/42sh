@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlouar <hlouar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/16 17:45:20 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/31 11:11:09 by cmichaud         ###   ########.fr       */
+/*   Created: 2016/08/31 11:46:45 by cmichaud          #+#    #+#             */
+/*   Updated: 2016/08/31 11:46:45 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,13 @@ int				readgnl(t_data *data, char *str)
 		else
  			free_tree(tree);
 	}
+	ret = 0;
 	if (data->exit)
 	{
-		ft_putstr("exit ;");
-		if (data->exit_line)
-			ft_putendl(data->exit_line);
-		exit(0);
+		fd = ft_exit_error(data, &ret);
+		data->exit = 0;
+		if (ret == 1)
+			exit (fd);
 	}
 	return (0);
 }
