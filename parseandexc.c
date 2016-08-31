@@ -26,6 +26,7 @@ int			createbinpath(t_data *data, int n)
 	char	*str;
 
 	i = 0;
+	(void)n;
 	str = NULL;
 	if (data->args && data->args[0] &&
 		!ft_strncmp(data->args[0], "./", 2) &&
@@ -36,8 +37,6 @@ int			createbinpath(t_data *data, int n)
 		data->bin = ft_strdup(str);
 		return (1);
 	}
-	if (n == 1)
-		errorbinary(data, str);
 	return (0);
 }
 

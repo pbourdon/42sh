@@ -18,10 +18,16 @@ int		helpall2(t_data *data, t_liste2 *liste)
 
 	out = open(liste->next->tabich[0], O_WRONLY | O_TRUNC |
 			O_CREAT, S_IRUSR | S_IWGRP | S_IWUSR | O_APPEND);
-	dup2(out, 1);
 	close(out);
 	freetab(data->args);
 	data->args = newtab(liste->tabich);
+	if (createbinpath(data, 2) == 0)
+	{
+		ft_putstr(data->args[0]);
+		ft_putendl(": Command not found");
+		exit(0);
+	}
+	dup2(out, 1);
 	execveremix(data);
 	return (1);
 }
