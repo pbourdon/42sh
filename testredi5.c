@@ -44,6 +44,8 @@ int		hulppls(t_data *data, t_liste2 *liste, int pfd[2])
 {
 	freetab(data->args);
 	data->args = newtab(liste->tabich);
+	if (ft_strcmp(data->args[0], "exit") == 0)
+		exit(0);
 	if (createbinpath(data, 2) == 0)
 	{
 		ft_putstr(data->args[0]);

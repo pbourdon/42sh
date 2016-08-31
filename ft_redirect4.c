@@ -85,6 +85,8 @@ int			optchev(t_data *data)
 
 int			execveremix(t_data *data)
 {
+	if (ft_strcmp(data->args[0], "exit") == 0)
+		exit(0);
 	if (ft_strcmp(data->args[0], "env") == 0)
 	{
 		callallenv(data);
