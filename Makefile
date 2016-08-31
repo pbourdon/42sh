@@ -6,7 +6,7 @@
 #    By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/02 13:52:37 by bde-maze          #+#    #+#              #
-#    Updated: 2016/08/31 03:21:40 by cmichaud         ###   ########.fr        #
+#    Updated: 2016/08/31 10:34:49 by cmichaud         ###   ########.fr        #
 #    Updated: 2016/08/28 17:43:20 by pguzman          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
@@ -15,7 +15,7 @@ NAME = 21sh
 
 HEADER = includes/minishell.h
 
-FLAGS = -Wall -Werror -Wextra -g3 -O3
+FLAGS = -Wall -Werror -Wextra -g3 -O3 
 
 SRC = 	builtin_exit_error.c \
 		history_show_func.c \

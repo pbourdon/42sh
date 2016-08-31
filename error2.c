@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/30 17:44:28 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/08/31 06:02:00 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/31 10:59:08 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int		find_error(char *str, int inib, int quote, int i)
 		else
 		{
 			quote = quote_norm(inib, quote, str[i]);
+			while (!quote + inib && str[i] == ' ')
+				i++;
 			a = is_a_word2(quote, inib, str, &i);
 			if ((!t && a == 2) || (t == 2 && a == 2))
 				return (1);

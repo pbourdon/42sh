@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 18:50:23 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/31 03:30:44 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/31 10:52:28 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,10 @@ void			sub_parsecommand(t_data *data)
 	else if (ft_strcmp(data->args[0], "unsetenv") == 0)
 		callunsetenv(data);
 	else if (ft_strcmp(data->args[0], "cd") == 0)
+	{
 		cdcall(data);
+		return ;
+	}
 	else if (ft_strcmp(data->args[0], "history") == 0)
 		history(data);
 	else
@@ -91,10 +94,6 @@ int				is_not_spec(char *str)
 		return (0);
 	if (!ft_strcmp(str, "|"))
 		return (0);
-	if (!ft_strcmp(str, ">"))
-		return (0);
-	if (!ft_strcmp(str, ">>"))
-		return (0);
 	if (!ft_strcmp(str, "<"))
 		return (0);
 	if (!ft_strcmp(str, "<<"))
@@ -117,7 +116,7 @@ void			find_exit(t_data *data)
 		++i;
 	}
 	--i;
-	while (i > 0 && is_not_spec(data->args[i]))
+	while (i > 0 && is_not_spec(data->args[i - 1]))
 		i--;
 	if (!ft_strcmp(data->args[i], "exit"))
 	{
