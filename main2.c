@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 18:50:23 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/28 17:53:03 by hlouar           ###   ########.fr       */
+/*   Updated: 2016/08/31 03:30:44 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,69 @@ void			exit_func(t_data *data, t_liste *liste)
 	exit(0);
 }
 
+int				is_not_spec(char *str)
+{
+	int i;
+
+	i = -1;
+	if (!ft_strcmp(str, "||"))
+		return (0);
+	if (!ft_strcmp(str, "&&"))
+		return (0);
+	if (!ft_strcmp(str, "|"))
+		return (0);
+	if (!ft_strcmp(str, ">"))
+		return (0);
+	if (!ft_strcmp(str, ">>"))
+		return (0);
+	if (!ft_strcmp(str, "<"))
+		return (0);
+	if (!ft_strcmp(str, "<<"))
+		return (0);
+	return (1);
+}
+
+void			find_exit(t_data *data)
+{
+	int		i;
+	int		t;
+	char	*tmp;
+
+	t = 0;
+	i = 0;
+	while (data->args[i])
+	{
+		ft_putstr("find exit main2 : ");
+		ft_putendl(data->args[i]);
+		++i;
+	}
+	--i;
+	while (i > 0 && is_not_spec(data->args[i]))
+		i--;
+	if (!ft_strcmp(data->args[i], "exit"))
+	{
+		data->exit = 1;
+		i++;
+		if (data->exit_line != NULL)
+			ft_memdel((void **)&data->exit_line);
+		if (data->args[i] && is_not_spec(data->args[i]))
+			data->exit_line = ft_strdup(data->args[i++]);
+		while (data->args[i] && is_not_spec(data->args[i]))
+		{
+			tmp = data->exit_line;
+			data->exit_line = ft_strjoin(data->exit_line, " ");
+			free(tmp);
+			tmp = data->exit_line;
+			data->exit_line = ft_strjoin(data->exit_line, data->args[i]);
+			free(tmp);
+			i++;
+		}
+	}
+}
+
 void			parsecommand(t_data *data, t_liste *liste)
 {
+	(void)liste;
 	if (data->line[0] == '\0')
 	{
 		data->dspam = 1;
@@ -88,8 +149,7 @@ void			parsecommand(t_data *data, t_liste *liste)
 	}
 	if (!(data->args = split_on_inib(data->line)))
 		return ;
-	if (ft_strcmp(data->line, "exit") == 0)
-		exit_func(data, liste);
+	find_exit(data);
 	sub_parsecommand(data);
 }
 

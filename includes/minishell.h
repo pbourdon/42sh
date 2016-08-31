@@ -6,7 +6,7 @@
 /*   By: cmichaud <cmichaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/20 18:33:29 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/08/30 16:13:47 by hlouar           ###   ########.fr       */
+/*   Updated: 2016/08/30 17:52:31 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,8 @@ typedef struct			s_data
 	char				**builttab;
 	int					binreturn;
 	char				*forcd;
+	int					exit;
+	char				*exit_line;
 	struct s_liste2		*liste;
 }						t_data;
 
@@ -182,6 +184,7 @@ char					*replace_rest_of_space(char *ptr, int len);
 char					*erase_first_space(char *line);
 int						is_a_spec(char c);
 int						check_list(t_tk *liste, t_tk *ptr, int ret, int nb_agg);
+int						check_list_2(t_liste *liste);
 t_tk					*analyse_and_stock(char **ptr, char **cmd, t_tk **base);
 t_tk					*to_list(char *cmd, int i);
 t_tk					*find_space(char *cmd, t_tk *tk, int inib, char quote);

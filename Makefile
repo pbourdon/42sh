@@ -6,7 +6,7 @@
 #    By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/02 13:52:37 by bde-maze          #+#    #+#              #
-#*   Updated: 2016/08/30 16:13:25 by                  ###   ########.fr       *#
+#    Updated: 2016/08/31 03:21:40 by cmichaud         ###   ########.fr        #
 #    Updated: 2016/08/28 17:43:20 by pguzman          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
@@ -70,6 +70,7 @@ SRC = 	builtin_exit_error.c \
 		cursor.c \
 		shell2.c \
 		shell3.c \
+		error2.c \
 		tools.c \
 		error.c \
 		agreg.c \

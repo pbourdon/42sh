@@ -6,7 +6,7 @@
 /*   By: hlouar <hlouar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/16 17:45:20 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/30 16:15:42 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/31 03:23:46 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ void			sub_read(t_tree *tree, t_data *data)
 	arg_to_list(liste, tree);
 	liste = del_last_null_arg(liste);
 	free_tree(tree);
-	tmp = liste;
+	if (check_list_2(liste))
+		tmp = NULL;
+	else
+		tmp = liste;
 	while (tmp)
 	{
 		if (ft_strcmp(tmp->arg, ";") && ft_strcmp(tmp->arg, "||") &&
@@ -77,7 +80,14 @@ int				readgnl(t_data *data, char *str)
 		if (ret == 0)
 			sub_read(tree, data);
 		else
-			free_tree(tree);
+ 			free_tree(tree);
+	}
+	if (data->exit)
+	{
+		ft_putstr("exit ;");
+		if (data->exit_line)
+			ft_putendl(data->exit_line);
+		exit(0);
 	}
 	return (0);
 }
@@ -90,6 +100,7 @@ int				main(int ac, char **av, char **env)
 
 	fd = 0;
 	data.exit = 0;
+	data.exit_line = NULL;
 	data.path = NULL;
 	(void)av;
 	(void)ac;
