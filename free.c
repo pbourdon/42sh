@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/07 16:48:13 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/26 07:53:03 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/31 11:08:51 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,20 @@ void			free_list(t_liste *ptr)
 	while (ptr != NULL)
 	{
 		tmp = ptr->next;
+		free(ptr);
+		ptr = tmp;
+	}
+	free(ptr);
+}
+
+void			free_list2(t_liste *ptr)
+{
+	t_liste		*tmp;
+
+	while (ptr != NULL)
+	{
+		tmp = ptr->next;
+		free(ptr->arg);
 		free(ptr);
 		ptr = tmp;
 	}
