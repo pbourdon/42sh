@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell.h                                        :+:      :+:    :+:   */
+/*   shell.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmichaud <cmichaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/20 18:33:29 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/08/31 13:02:28 by pguzman          ###   ########.fr       */
+/*   Created: 2016/08/31 15:53:35 by bde-maze          #+#    #+#             */
+/*   Updated: 2016/08/31 15:53:39 by bde-maze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,7 @@ typedef struct			s_liste
 	struct s_liste		*next;
 }						t_liste;
 
+t_liste2				*createliste(void);
 int						is_ctrl_d(char *buffer);
 char					**shell_lvl(char **env, int z);
 void					show_history_rev_until(char *nb);

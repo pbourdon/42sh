@@ -12,15 +12,24 @@
 
 #include "includes/shell.h"
 
-void	writeonwhile(void)
+void		writeonwhile(void)
 {
 	ft_putstr("minishell $> ");
 }
 
-void	errorbinary(t_data *data, char *str)
+void		errorbinary(t_data *data, char *str)
 {
 	if (str)
 		free(str);
 	ft_putstr("zsh: command not found: ");
 	ft_putendl(data->args[0]);
+}
+
+t_liste2	*createliste(void)
+{
+	t_liste2	*liste;
+
+	liste = (t_liste2 *)malloc(sizeof(t_liste2));
+	liste->next = NULL;
+	return (liste);
 }

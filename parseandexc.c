@@ -99,6 +99,10 @@ void		forkall(t_data *data, int status)
 		return ;
 	}
 	else
+	{
+		ft_putstr(data->args[0]);
+		ft_putendl(": Command no found.");
 		data->binreturn = 324;
+	}
 	return ;
 }

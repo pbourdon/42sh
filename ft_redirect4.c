@@ -39,15 +39,6 @@ void		helpmainpipehelp2(t_data *data, t_liste2 *liste, int k)
 	return ;
 }
 
-t_liste2	*createliste(void)
-{
-	t_liste2	*liste;
-
-	liste = (t_liste2 *)malloc(sizeof(t_liste2));
-	liste->next = NULL;
-	return (liste);
-}
-
 void		help_dbl(t_data *data, int i, t_liste2 *liste, int fd)
 {
 	if (fd == -1)
