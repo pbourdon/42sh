@@ -32,16 +32,21 @@ int		movecd(t_data *data)
 				{
 					out = open(tmp->next->tabich[0], O_WRONLY | O_TRUNC |
 						O_CREAT, S_IRUSR | S_IWGRP | S_IWUSR | O_APPEND);
+					close(out);
 				}
-				else if (tmp->redi == 2)
-				{
-						out = open(tmp->next->tabich[0], O_RDWR);
-						if (out == -1)
-						{
-							out = open(tmp->next->tabich[0], O_WRONLY | O_TRUNC |
-								O_CREAT, S_IRUSR | S_IWGRP | S_IWUSR | O_APPEND);
-						}
-				}
+				// else if (tmp->redi == 2)
+				// {
+				// 		out = open(tmp->next->tabich[0], O_RDWR);
+				// 		if (out == -1)
+				// 		{
+				// 			close(out);
+				// 			out = open(tmp->next->tabich[0], O_WRONLY | O_TRUNC |
+				// 				O_CREAT, S_IRUSR | S_IWGRP | S_IWUSR | O_APPEND);
+				// 			close(out);
+				// 		}
+				// 		else
+				// 			close(out);
+				// }
 				else if (tmp->redi == 3)
 				{
 					out = open(tmp->next->tabich[0], O_RDWR);
@@ -50,10 +55,12 @@ int		movecd(t_data *data)
 						ft_putstr(tmp->next->tabich[0]);
 						ft_putendl(": No such file or directory.");
 					}
+						close(out);
 				}
-					data->args = newtab(tmp->tabich);
-					cdcall(data);
-					return (2);
+				freetab(data->args);
+				data->args = newtab(tmp->tabich);
+				cdcall(data);
+				return (2);
 			}
 		}
 		tmp = tmp->next;

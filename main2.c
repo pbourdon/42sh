@@ -33,8 +33,9 @@ void			sub_parsecommand2(t_data *data)
 void			sub_sub_parse(t_data *data)
 {
 	mainredi(data, 0);
-	// free(data->liste);
-	// freetab(data->oldtbe);
+	free_liste2(data->liste);
+	freetab(data->oldtbe);
+	freetab(data->tabchev);
 }
 
 void			sub_parsecommand(t_data *data)

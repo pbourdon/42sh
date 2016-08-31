@@ -376,6 +376,7 @@ int						stringforcd(t_data *data);
 int 					cdendargs(t_data *data);
 int						ft_init_verif(void);
 int						movecd(t_data *data);
+void 					free_liste2(t_liste2 *ptr);
 
 t_shell					g_shell;
 t_cursor				g_cursor;
