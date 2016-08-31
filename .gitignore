@@ -1,7 +1,7 @@
 # Prerequisites
 *.d
 .DS_STORE
-
+.nfs*
 # Object files
 *.o
 *.ko
