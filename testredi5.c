@@ -6,7 +6,7 @@
 /*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/16 16:04:05 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/25 16:18:25 by hlouar           ###   ########.fr       */
+/*   Updated: 2016/08/31 17:02:39 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int		helpall2(t_data *data, t_liste2 *liste)
 
 	out = open(liste->next->tabich[0], O_WRONLY | O_TRUNC |
 			O_CREAT, S_IRUSR | S_IWGRP | S_IWUSR | O_APPEND);
-	close(out);
 	freetab(data->args);
 	data->args = newtab(liste->tabich);
 	if (createbinpath(data, 2) == 0)
@@ -28,6 +27,7 @@ int		helpall2(t_data *data, t_liste2 *liste)
 		exit(0);
 	}
 	dup2(out, 1);
+	close(out);
 	execveremix(data);
 	return (1);
 }
