@@ -81,20 +81,23 @@ int		optchev2(t_data *data, int i, char *str)
 	{
 		fd = open(str, O_RDWR);
 		while (get_next_line(fd, &line) > 0)
+		{
+			free(line);
 			i++;
+		}
 		close(fd);
 		fd = open(str, O_RDWR);
 		tabich = (char **)malloc(sizeof(char *) * (i + 1));
-		close(fd);
 		while (get_next_line(fd, &line) > 0)
 		{
 			tabich[o] = ft_strdup(line);
+			free(line);
 			o++;
 		}
+		close(fd);
 		tabich[o] = NULL;
 		data->tabchev = newtab(tabich);
 		freetab(tabich);
-		close(fd);
 	}
 	return (1);
 }
