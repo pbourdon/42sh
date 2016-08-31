@@ -67,24 +67,22 @@ void			sub_read(t_tree *tree, t_data *data)
 	free_list(liste);
 }
 
-int				readgnl(t_data *data, char *str)
+int				readgnl(t_data *data, char *str, int fd)
 {
 	t_tk		*ptr;
 	t_tree		*tree;
-	int			fd;
 	int			ret;
 
-	fd = 1;
 	ret = 0;
 	if ((ptr = to_list(str, -1)))
 	{
-		ret = check_list(ptr, NULL, 0, 0);
+		ret = check_list(ptr, ptr, 0, 0);
 		ptr = good_order(ptr, ptr, ptr);
 		tree = to_tree(NULL, ptr, 5, NULL);
 		if (ret == 0)
 			sub_read(tree, data);
 		else
- 			free_tree(tree);
+			free_tree(tree);
 	}
 	ret = 0;
 	if (data->exit)
@@ -92,7 +90,7 @@ int				readgnl(t_data *data, char *str)
 		fd = ft_exit_error(data, &ret);
 		data->exit = 0;
 		if (ret == 1)
-			exit (fd);
+			exit(fd);
 	}
 	return (0);
 }

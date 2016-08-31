@@ -29,11 +29,11 @@ int				is_a_word2(int quote, int inib, char *str, int *p)
 	return (1);
 }
 
-int		find_error(char *str, int inib, int quote, int i)
+int				find_error(char *str, int inib, int quote, int i)
 {
 	int t;
 	int a;
-	
+
 	t = 0;
 	while (str[++i])
 	{
@@ -54,11 +54,11 @@ int		find_error(char *str, int inib, int quote, int i)
 	return (0);
 }
 
-int		check_list_2(t_liste *liste)
+int				check_list_2(t_liste *liste)
 {
 	while (liste)
 	{
-		if (ft_strcmp(";", liste->arg), find_error(liste->arg, 0, 0, -1))
+		if (ft_strcmp(";", liste->arg) && find_error(liste->arg, 0, 0, -1))
 		{
 			ft_putendl("Invalid null command.");
 			return (1);

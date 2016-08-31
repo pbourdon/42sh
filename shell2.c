@@ -38,7 +38,7 @@ int					shell_loop(t_term *term, t_data *data, char **env)
 		g_shell.history_index = get_history_length() + 1;
 		prompt_line(env);
 		shterm_listen(term);
-		readgnl(data, g_shell.shell_line);
+		readgnl(data, g_shell.shell_line, 1);
 		if ((g_shell.shell_line)[0] == '\0')
 			continue ;
 	}

@@ -91,7 +91,6 @@ int				check_list(t_tk *liste, t_tk *ptr, int ret, int nb_agg)
 	under_cmd = 0;
 	nb_redir = 0;
 	nb_redir2 = 0;
-	ptr = liste;
 	last = 0;
 	while (ptr != NULL)
 	{

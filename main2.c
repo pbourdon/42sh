@@ -12,64 +12,6 @@
 
 #include "includes/minishell.h"
 
-void			sub_parsecommand2(t_data *data)
-{
-	if ((ft_strlentab(data->args) == 1) &&
-		(ft_strcmp(data->args[0], "$?") == 0))
-	{
-		if (data->binreturn == 0)
-		{
-			ft_putnbr(0);
-			ft_putendl(": Command not found.");
-		}
-		else
-		{
-			ft_putnbr(1);
-			ft_putendl(": Command not found.");
-		}
-	}
-}
-
-void			sub_sub_parse(t_data *data)
-{
-	mainredi(data, 0);
-	free_liste2(data->liste);
-	freetab(data->oldtbe);
-	freetab(data->tabchev);
-}
-
-void			sub_parsecommand(t_data *data)
-{
-	if (ifitsredi(data) != 0)
-		return (sub_sub_parse(data));
-	else if (checklineok(data, data->args) != -1)
-		return ;
-	else if (ft_strcmp(data->args[0], "export") == 0)
-	{
-		insertthetmp(data);
-		return ;
-	}
-	else if (ft_strcmp(data->args[0], "env") == 0)
-	{
-		callallenv(data);
-		return ;
-	}
-	else if (ft_strcmp(data->args[0], "setenv") == 0)
-		callsetenv(data);
-	else if (ft_strcmp(data->args[0], "unsetenv") == 0)
-		callunsetenv(data);
-	else if (ft_strcmp(data->args[0], "cd") == 0)
-	{
-		cdcall(data);
-		return ;
-	}
-	else if (ft_strcmp(data->args[0], "history") == 0)
-		history(data);
-	else
-		forkall(data, 0);
-	sub_parsecommand2(data);
-}
-
 void			exit_func(t_data *data, t_liste *liste)
 {
 	get_tabhash(NULL, 1);
@@ -101,20 +43,10 @@ int				is_not_spec(char *str)
 	return (1);
 }
 
-void			find_exit(t_data *data)
+void			find_exit(t_data *data, int i, char *tmp)
 {
-	int		i;
-	int		t;
-	char	*tmp;
-
-	t = 0;
-	i = 0;
 	while (data->args[i])
-	{
-		ft_putstr("find exit main2 : ");
-		ft_putendl(data->args[i]);
 		++i;
-	}
 	--i;
 	while (i > 0 && is_not_spec(data->args[i - 1]))
 		i--;
@@ -149,8 +81,8 @@ void			parsecommand(t_data *data, t_liste *liste)
 	}
 	if (!(data->args = split_on_inib(data->line)))
 		return ;
-	find_exit(data);
-	sub_parsecommand(data);
+	find_exit(data, 0, NULL);
+	sub_parsecommand(data, 0);
 }
 
 int				switch_case(t_tk *ptr, int nb_redir, int nb_redir2)
