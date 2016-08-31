@@ -34,19 +34,17 @@ int		movecd(t_data *data)
 						O_CREAT, S_IRUSR | S_IWGRP | S_IWUSR | O_APPEND);
 					close(out);
 				}
-				// else if (tmp->redi == 2)
-				// {
-				// 		out = open(tmp->next->tabich[0], O_RDWR);
-				// 		if (out == -1)
-				// 		{
-				// 			close(out);
-				// 			out = open(tmp->next->tabich[0], O_WRONLY | O_TRUNC |
-				// 				O_CREAT, S_IRUSR | S_IWGRP | S_IWUSR | O_APPEND);
-				// 			close(out);
-				// 		}
-				// 		else
-				// 			close(out);
-				// }
+				else if (tmp->redi == 2)
+				{
+						out = open(tmp->next->tabich[0], O_RDWR);
+						close(out);
+						if (out == -1)
+						{
+							out = open(tmp->next->tabich[0], O_WRONLY | O_TRUNC |
+								O_CREAT, S_IRUSR | S_IWGRP | S_IWUSR | O_APPEND);
+							close(out);
+						}
+				}
 				else if (tmp->redi == 3)
 				{
 					out = open(tmp->next->tabich[0], O_RDWR);

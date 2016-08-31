@@ -140,13 +140,13 @@ int		mainredi(t_data *data, int i)
 	data->liste = createliste();
 	data->oldtbe = newtab(data->args);
 	str = ft_strdup(data->args[(ft_strlentab(data->args) - 1)]);
-	optchev2(data, i, str);
-	free(str);
 	argliste(data);
 	if (movecd(data) == 2)
 		return (1);
 	freetab(data->args);
 	data->args = newtab(data->oldtbe);
+	optchev2(data, i, str);
+	free(str);
 	if (ifitsredi(data) != 0)
 	{
 		father = fork();
