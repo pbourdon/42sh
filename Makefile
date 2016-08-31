@@ -15,7 +15,7 @@ NAME = 21sh
 
 HEADER = includes/minishell.h
 
-FLAGS = -Wall -Werror -Wextra -g3 -O3 
+FLAGS = -Wall -Werror -Wextra -g3 -O3
 
 SRC = 	builtin_exit_error.c \
 		history_show_func.c \
@@ -48,6 +48,7 @@ SRC = 	builtin_exit_error.c \
 		testredi4.c \
 		testredi5.c \
 		testredi6.c \
+		testredi7.c \
 		unsetenv.c \
 		builenv3.c \
 		builenv2.c \

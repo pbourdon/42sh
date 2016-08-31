@@ -6,7 +6,7 @@
 /*   By: hlouar <hlouar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/14 15:25:49 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/25 14:52:31 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/08/31 14:05:51 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,72 +69,8 @@ int		mainpipe(t_data *data, t_liste2 *liste)
 	return (1);
 }
 
-int		optchev2(t_data *data, int i, char *str)
+int		initmainredi(t_data *data, int i)
 {
-	int		o;
-	char	**tabich;
-	char	*line;
-	int		fd;
-
-	o = 0;
-	if (optchev(data) == 1)
-	{
-		fd = open(str, O_RDWR);
-		while (get_next_line(fd, &line) > 0)
-		{
-			free(line);
-			i++;
-		}
-		free(line);
-		close(fd);
-		fd = open(str, O_RDWR);
-		tabich = (char **)malloc(sizeof(char *) * (i + 1));
-		while (get_next_line(fd, &line) > 0)
-		{
-			tabich[o] = ft_strdup(line);
-			free(line);
-			o++;
-		}
-		free(line);
-		close(fd);
-		tabich[o] = NULL;
-		data->tabchev = newtab(tabich);
-		freetab(tabich);
-	}
-	return (1);
-}
-
-int		thereisadoubleleft(t_data *data)
-{
-	int i;
-
-	i = 0;
-	while (data->oldtbe[i])
-	{
-		if (ft_strcmp(data->oldtbe[i], "<<") == 0)
-			return (1);
-		i++;
-	}
-	return (-1);
-}
-
-void free_liste2(t_liste2 *ptr)
-{
-	t_liste2		*tmp;
-
-	while (ptr->next != NULL)
-	{
-		tmp = ptr->next;
-		freetab(ptr->tabich);
-		free(ptr);
-		ptr = tmp;
-	}
-	free(ptr);
-}
-
-int		mainredi(t_data *data, int i)
-{
-	int		father;
 	char	*str;
 
 	data->liste = createliste();
@@ -147,6 +83,15 @@ int		mainredi(t_data *data, int i)
 	data->args = newtab(data->oldtbe);
 	optchev2(data, i, str);
 	free(str);
+	return (0);
+}
+
+int		mainredi(t_data *data, int i)
+{
+	int		father;
+
+	if (initmainredi(data, i) == 1)
+		return (1);
 	if (ifitsredi(data) != 0)
 	{
 		father = fork();
@@ -162,6 +107,6 @@ int		mainredi(t_data *data, int i)
 		}
 	}
 	else
-		return(1);
+		return (1);
 	return (1);
 }

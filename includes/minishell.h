@@ -380,6 +380,7 @@ void					sub_parsecommand2(t_data *data);
 void					sub_parsecommand(t_data *data, int i);
 void					free_liste2(t_liste2 *ptr);
 void					free_list2(t_liste *ptr);
+int						optchev2(t_data *data, int i, char *str);
 
 t_shell					g_shell;
 t_cursor				g_cursor;

@@ -1,0 +1,1526 @@
+21sh
+Makefile
+Makefile~
+READ_ME.txt
+add_letter.c
+agreg.c
+allwrites.c
+builenv.c
+builenv2.c
+builenv3.c
+builtin_exit_error.c
+cd.c
+cd2.c
+cd3.c
+cursor.c
+env.c
+env2.c
+env3.c
+error.c
+error2.c
+free.c
+ft_redirect4.c
+go_words.c
+good_order.c
+hash.c
+hash2.c
+hash3.c
+history.c
+history_show_func.c
+ifcd.c
+includes
+is_key1.c
+is_key2.c
+is_key3.c
+is_key4.c
+is_key5.c
+kiki
+libft
+main.c
+main2.c
+main3.c
+new_arg_to_list.c
+obj
+old_functions.c
+parseandexc.c
+parseandexc2.c
+press_key1.c
+press_key2.c
+press_key3.c
+press_key4.c
+press_key5.c
+press_key6.c
+prompt.c
+setenv.c
+setenv2.c
+shell.c
+shell2.c
+shell3.c
+shell_lvl.c
+signal.c
+space_treatment.c
+split_inib.c
+split_inib_tools.c
+split_on_spec.c
+spliter.c
+term_functions.c
+term_read.c
+term_read2.c
+term_read3.c
+test
+testredi.c
+testredi2.c
+testredi3.c
+testredi4.c
+testredi5.c
+testredi6.c
+ti
+to_tree.c
+tools.c
+tools2.c
+tools_split.c
+toto
+unsetenv.c
+21sh
+Makefile
+Makefile~
+READ_ME.txt
+add_letter.c
+agreg.c
+allwrites.c
+builenv.c
+builenv2.c
+builenv3.c
+builtin_exit_error.c
+cd.c
+cd2.c
+cd3.c
+cursor.c
+env.c
+env2.c
+env3.c
+error.c
+error2.c
+free.c
+ft_redirect4.c
+go_words.c
+good_order.c
+hash.c
+hash2.c
+hash3.c
+history.c
+history_show_func.c
+ifcd.c
+includes
+is_key1.c
+is_key2.c
+is_key3.c
+is_key4.c
+is_key5.c
+kiki
+libft
+main.c
+main2.c
+main3.c
+new_arg_to_list.c
+obj
+old_functions.c
+parseandexc.c
+parseandexc2.c
+press_key1.c
+press_key2.c
+press_key3.c
+press_key4.c
+press_key5.c
+press_key6.c
+prompt.c
+setenv.c
+setenv2.c
+shell.c
+shell2.c
+shell3.c
+shell_lvl.c
+signal.c
+space_treatment.c
+split_inib.c
+split_inib_tools.c
+split_on_spec.c
+spliter.c
+term_functions.c
+term_read.c
+term_read2.c
+term_read3.c
+test
+testredi.c
+testredi2.c
+testredi3.c
+testredi4.c
+testredi5.c
+testredi6.c
+ti
+to_tree.c
+tools.c
+tools2.c
+tools_split.c
+toto
+unsetenv.c
+total 669
+drwxr-xr-x   7 hlouar  2015_paris    4096 Aug 31 13:08 .
+drwx------  70 hlouar  2015_paris    4096 Aug 31 13:09 ..
+-rw-r--r--   1 hlouar  2015_paris      50 Aug 31 11:49 .file_for_ready
+drwxr-xr-x   8 hlouar  2015_paris    4096 Aug 31 13:09 .git
+-rw-r--r--   1 hlouar  2015_paris     287 Aug 31 10:34 .gitignore
+-rw-r--r--   1 hlouar  2015_paris    2786 Aug 31 10:34 .nfs.20051034.5bcf
+-rwxr-xr-x   1 hlouar  2015_paris  117368 Aug 31 13:09 21sh
+-rw-r--r--   1 hlouar  2015_paris    2904 Aug 31 12:30 Makefile
+-rw-r--r--   1 hlouar  2015_paris    2897 Aug 31 10:34 Makefile~
+-rw-r--r--   1 hlouar  2015_paris     248 Aug 31 10:34 READ_ME.txt
+-rw-r--r--   1 hlouar  2015_paris    1345 Aug 31 10:34 add_letter.c
+-rw-r--r--   1 hlouar  2015_paris    2346 Aug 31 10:34 agreg.c
+-rw-r--r--   1 hlouar  2015_paris    1120 Aug 31 10:34 allwrites.c
+-rw-r--r--   1 hlouar  2015_paris    2191 Aug 31 10:34 builenv.c
+-rw-r--r--   1 hlouar  2015_paris    2731 Aug 31 10:34 builenv2.c
+-rw-r--r--   1 hlouar  2015_paris    1813 Aug 31 10:34 builenv3.c
+-rw-r--r--   1 hlouar  2015_paris    1824 Aug 31 11:44 builtin_exit_error.c
+-rw-r--r--   1 hlouar  2015_paris    2184 Aug 31 10:34 cd.c
+-rw-r--r--   1 hlouar  2015_paris    2396 Aug 31 10:34 cd2.c
+-rw-r--r--   1 hlouar  2015_paris    2637 Aug 31 10:34 cd3.c
+-rw-r--r--   1 hlouar  2015_paris    1117 Aug 31 10:34 cursor.c
+-rw-r--r--   1 hlouar  2015_paris    2039 Aug 31 10:34 env.c
+-rw-r--r--   1 hlouar  2015_paris    1674 Aug 31 10:34 env2.c
+-rw-r--r--   1 hlouar  2015_paris    1911 Aug 31 10:34 env3.c
+-rw-r--r--   1 hlouar  2015_paris    2834 Aug 31 12:30 error.c
+-rw-r--r--   1 hlouar  2015_paris    1925 Aug 31 12:30 error2.c
+-rw-r--r--   1 hlouar  2015_paris    1621 Aug 31 12:16 free.c
+-rw-r--r--   1 hlouar  2015_paris    2603 Aug 31 10:34 ft_redirect4.c
+-rw-r--r--   1 hlouar  2015_paris    1299 Aug 31 10:34 go_words.c
+-rw-r--r--   1 hlouar  2015_paris    2713 Aug 31 10:34 good_order.c
+-rw-r--r--   1 hlouar  2015_paris    2842 Aug 31 10:34 hash.c
+-rw-r--r--   1 hlouar  2015_paris    2013 Aug 31 10:34 hash2.c
+-rw-r--r--   1 hlouar  2015_paris    1222 Aug 31 10:34 hash3.c
+-rw-r--r--   1 hlouar  2015_paris    2371 Aug 31 10:34 history.c
+-rw-r--r--   1 hlouar  2015_paris    2825 Aug 31 10:34 history_show_func.c
+-rw-r--r--   1 hlouar  2015_paris    2194 Aug 31 12:55 ifcd.c
+drwxr-xr-x   2 hlouar  2015_paris    4096 Aug 31 12:30 includes
+-rw-r--r--   1 hlouar  2015_paris    1640 Aug 31 10:34 is_key1.c
+-rw-r--r--   1 hlouar  2015_paris    1814 Aug 31 10:34 is_key2.c
+-rw-r--r--   1 hlouar  2015_paris    1679 Aug 31 10:34 is_key3.c
+-rw-r--r--   1 hlouar  2015_paris    1521 Aug 31 10:34 is_key4.c
+-rw-r--r--   1 hlouar  2015_paris    1266 Aug 31 12:30 is_key5.c
+-rw---xr-x   1 hlouar  2015_paris    1742 Aug 31 13:10 kiki
+drwxr-xr-x   2 hlouar  2015_paris    4096 Aug 31 12:16 libft
+-rw-r--r--   1 hlouar  2015_paris    2854 Aug 31 12:30 main.c
+-rw-r--r--   1 hlouar  2015_paris    2794 Aug 31 12:30 main2.c
+-rw-r--r--   1 hlouar  2015_paris    2092 Aug 31 12:38 main3.c
+-rw-r--r--   1 hlouar  2015_paris    2499 Aug 31 10:34 new_arg_to_list.c
+drwxr-xr-x   2 hlouar  2015_paris    4096 Aug 31 13:09 obj
+-rw-r--r--   1 hlouar  2015_paris    2032 Aug 31 10:34 old_functions.c
+-rw-r--r--   1 hlouar  2015_paris    2483 Aug 31 10:34 parseandexc.c
+-rw-r--r--   1 hlouar  2015_paris    1686 Aug 31 10:34 parseandexc2.c
+-rw-r--r--   1 hlouar  2015_paris    2961 Aug 31 10:34 press_key1.c
+-rw-r--r--   1 hlouar  2015_paris    2720 Aug 31 10:34 press_key2.c
+-rw-r--r--   1 hlouar  2015_paris    2564 Aug 31 10:34 press_key3.c
+-rw-r--r--   1 hlouar  2015_paris    2455 Aug 31 10:34 press_key4.c
+-rw-r--r--   1 hlouar  2015_paris    2379 Aug 31 10:34 press_key5.c
+-rw-r--r--   1 hlouar  2015_paris    2349 Aug 31 10:34 press_key6.c
+-rw-r--r--   1 hlouar  2015_paris    2718 Aug 31 10:34 prompt.c
+-rw-r--r--   1 hlouar  2015_paris    2751 Aug 31 10:34 setenv.c
+-rw-r--r--   1 hlouar  2015_paris    1086 Aug 31 10:34 setenv2.c
+-rw-r--r--   1 hlouar  2015_paris    3238 Aug 31 10:34 shell.c
+-rw-r--r--   1 hlouar  2015_paris    2645 Aug 31 12:30 shell2.c
+-rw-r--r--   1 hlouar  2015_paris    2447 Aug 31 10:34 shell3.c
+-rw-r--r--   1 hlouar  2015_paris    1843 Aug 31 10:34 shell_lvl.c
+-rw-r--r--   1 hlouar  2015_paris    1295 Aug 31 10:34 signal.c
+-rw-r--r--   1 hlouar  2015_paris    2728 Aug 31 10:34 space_treatment.c
+-rw-r--r--   1 hlouar  2015_paris    2977 Aug 31 10:34 split_inib.c
+-rw-r--r--   1 hlouar  2015_paris    1826 Aug 31 10:34 split_inib_tools.c
+-rw-r--r--   1 hlouar  2015_paris    3179 Aug 31 10:34 split_on_spec.c
+-rw-r--r--   1 hlouar  2015_paris    2473 Aug 31 10:34 spliter.c
+-rw-r--r--   1 hlouar  2015_paris    1518 Aug 31 10:34 term_functions.c
+-rw-r--r--   1 hlouar  2015_paris    2080 Aug 31 10:34 term_read.c
+-rw-r--r--   1 hlouar  2015_paris    2084 Aug 31 10:34 term_read2.c
+-rw-r--r--   1 hlouar  2015_paris    2188 Aug 31 10:34 term_read3.c
+drwxr-xr-x   2 hlouar  2015_paris    4096 Aug 31 10:34 test
+-rw-r--r--   1 hlouar  2015_paris    3938 Aug 31 13:09 testredi.c
+-rw-r--r--   1 hlouar  2015_paris    2389 Aug 31 10:34 testredi2.c
+-rw-r--r--   1 hlouar  2015_paris    2359 Aug 31 10:34 testredi3.c
+-rw-r--r--   1 hlouar  2015_paris    3097 Aug 31 10:34 testredi4.c
+-rw-r--r--   1 hlouar  2015_paris    2087 Aug 31 10:34 testredi5.c
+-rw-r--r--   1 hlouar  2015_paris    2441 Aug 31 10:34 testredi6.c
+-rw---x---   1 hlouar  2015_paris       0 Aug 31 12:33 ti
+-rw-r--r--   1 hlouar  2015_paris    2547 Aug 31 10:34 to_tree.c
+-rw-r--r--   1 hlouar  2015_paris    1715 Aug 31 10:34 tools.c
+-rw-r--r--   1 hlouar  2015_paris    1839 Aug 31 10:34 tools2.c
+-rw-r--r--   1 hlouar  2015_paris    1533 Aug 31 10:34 tools_split.c
+-rw---x---   1 hlouar  2015_paris    6638 Aug 31 13:05 toto
+-rw-r--r--   1 hlouar  2015_paris    1529 Aug 31 10:34 unsetenv.c
+total 680
+drwxr-xr-x   7 hlouar  2015_paris    4096 Aug 31 13:08 .
+drwx------  70 hlouar  2015_paris    4096 Aug 31 13:10 ..
+-rw-r--r--   1 hlouar  2015_paris      50 Aug 31 11:49 .file_for_ready
+drwxr-xr-x   8 hlouar  2015_paris    4096 Aug 31 13:10 .git
+-rw-r--r--   1 hlouar  2015_paris     287 Aug 31 10:34 .gitignore
+-rw-r--r--   1 hlouar  2015_paris    2786 Aug 31 10:34 .nfs.20051034.5bcf
+-rwxr-xr-x   1 hlouar  2015_paris  117368 Aug 31 13:10 21sh
+-rw-r--r--   1 hlouar  2015_paris    2904 Aug 31 12:30 Makefile
+-rw-r--r--   1 hlouar  2015_paris    2897 Aug 31 10:34 Makefile~
+-rw-r--r--   1 hlouar  2015_paris     248 Aug 31 10:34 READ_ME.txt
+-rw-r--r--   1 hlouar  2015_paris    1345 Aug 31 10:34 add_letter.c
+-rw-r--r--   1 hlouar  2015_paris    2346 Aug 31 10:34 agreg.c
+-rw-r--r--   1 hlouar  2015_paris    1120 Aug 31 10:34 allwrites.c
+-rw-r--r--   1 hlouar  2015_paris    2191 Aug 31 10:34 builenv.c
+-rw-r--r--   1 hlouar  2015_paris    2731 Aug 31 10:34 builenv2.c
+-rw-r--r--   1 hlouar  2015_paris    1813 Aug 31 10:34 builenv3.c
+-rw-r--r--   1 hlouar  2015_paris    1824 Aug 31 11:44 builtin_exit_error.c
+-rw-r--r--   1 hlouar  2015_paris    2184 Aug 31 10:34 cd.c
+-rw-r--r--   1 hlouar  2015_paris    2396 Aug 31 10:34 cd2.c
+-rw-r--r--   1 hlouar  2015_paris    2637 Aug 31 10:34 cd3.c
+-rw-r--r--   1 hlouar  2015_paris    1117 Aug 31 10:34 cursor.c
+-rw-r--r--   1 hlouar  2015_paris    2039 Aug 31 10:34 env.c
+-rw-r--r--   1 hlouar  2015_paris    1674 Aug 31 10:34 env2.c
+-rw-r--r--   1 hlouar  2015_paris    1911 Aug 31 10:34 env3.c
+-rw-r--r--   1 hlouar  2015_paris    2834 Aug 31 12:30 error.c
+-rw-r--r--   1 hlouar  2015_paris    1925 Aug 31 12:30 error2.c
+-rw-r--r--   1 hlouar  2015_paris    1621 Aug 31 12:16 free.c
+-rw-r--r--   1 hlouar  2015_paris    2603 Aug 31 10:34 ft_redirect4.c
+-rw-r--r--   1 hlouar  2015_paris    1299 Aug 31 10:34 go_words.c
+-rw-r--r--   1 hlouar  2015_paris    2713 Aug 31 10:34 good_order.c
+-rw-r--r--   1 hlouar  2015_paris    2842 Aug 31 10:34 hash.c
+-rw-r--r--   1 hlouar  2015_paris    2013 Aug 31 10:34 hash2.c
+-rw-r--r--   1 hlouar  2015_paris    1222 Aug 31 10:34 hash3.c
+-rw-r--r--   1 hlouar  2015_paris    2371 Aug 31 10:34 history.c
+-rw-r--r--   1 hlouar  2015_paris    2825 Aug 31 10:34 history_show_func.c
+-rw-r--r--   1 hlouar  2015_paris    2194 Aug 31 12:55 ifcd.c
+drwxr-xr-x   2 hlouar  2015_paris    4096 Aug 31 12:30 includes
+-rw-r--r--   1 hlouar  2015_paris    1640 Aug 31 10:34 is_key1.c
+-rw-r--r--   1 hlouar  2015_paris    1814 Aug 31 10:34 is_key2.c
+-rw-r--r--   1 hlouar  2015_paris    1679 Aug 31 10:34 is_key3.c
+-rw-r--r--   1 hlouar  2015_paris    1521 Aug 31 10:34 is_key4.c
+-rw-r--r--   1 hlouar  2015_paris    1266 Aug 31 12:30 is_key5.c
+-rw---xr-x   1 hlouar  2015_paris    7574 Aug 31 13:10 kiki
+drwxr-xr-x   2 hlouar  2015_paris    4096 Aug 31 12:16 libft
+-rw-r--r--   1 hlouar  2015_paris    2854 Aug 31 12:30 main.c
+-rw-r--r--   1 hlouar  2015_paris    2794 Aug 31 12:30 main2.c
+-rw-r--r--   1 hlouar  2015_paris    2092 Aug 31 12:38 main3.c
+-rw-r--r--   1 hlouar  2015_paris    2499 Aug 31 10:34 new_arg_to_list.c
+drwxr-xr-x   2 hlouar  2015_paris    4096 Aug 31 13:09 obj
+-rw-r--r--   1 hlouar  2015_paris    2032 Aug 31 10:34 old_functions.c
+-rw-r--r--   1 hlouar  2015_paris    2483 Aug 31 10:34 parseandexc.c
+-rw-r--r--   1 hlouar  2015_paris    1686 Aug 31 10:34 parseandexc2.c
+-rw-r--r--   1 hlouar  2015_paris    2961 Aug 31 10:34 press_key1.c
+-rw-r--r--   1 hlouar  2015_paris    2720 Aug 31 10:34 press_key2.c
+-rw-r--r--   1 hlouar  2015_paris    2564 Aug 31 10:34 press_key3.c
+-rw-r--r--   1 hlouar  2015_paris    2455 Aug 31 10:34 press_key4.c
+-rw-r--r--   1 hlouar  2015_paris    2379 Aug 31 10:34 press_key5.c
+-rw-r--r--   1 hlouar  2015_paris    2349 Aug 31 10:34 press_key6.c
+-rw-r--r--   1 hlouar  2015_paris    2718 Aug 31 10:34 prompt.c
+-rw-r--r--   1 hlouar  2015_paris    2751 Aug 31 10:34 setenv.c
+-rw-r--r--   1 hlouar  2015_paris    1086 Aug 31 10:34 setenv2.c
+-rw-r--r--   1 hlouar  2015_paris    3238 Aug 31 10:34 shell.c
+-rw-r--r--   1 hlouar  2015_paris    2645 Aug 31 12:30 shell2.c
+-rw-r--r--   1 hlouar  2015_paris    2447 Aug 31 10:34 shell3.c
+-rw-r--r--   1 hlouar  2015_paris    1843 Aug 31 10:34 shell_lvl.c
+-rw-r--r--   1 hlouar  2015_paris    1295 Aug 31 10:34 signal.c
+-rw-r--r--   1 hlouar  2015_paris    2728 Aug 31 10:34 space_treatment.c
+-rw-r--r--   1 hlouar  2015_paris    2977 Aug 31 10:34 split_inib.c
+-rw-r--r--   1 hlouar  2015_paris    1826 Aug 31 10:34 split_inib_tools.c
+-rw-r--r--   1 hlouar  2015_paris    3179 Aug 31 10:34 split_on_spec.c
+-rw-r--r--   1 hlouar  2015_paris    2473 Aug 31 10:34 spliter.c
+-rw-r--r--   1 hlouar  2015_paris    1518 Aug 31 10:34 term_functions.c
+-rw-r--r--   1 hlouar  2015_paris    2080 Aug 31 10:34 term_read.c
+-rw-r--r--   1 hlouar  2015_paris    2084 Aug 31 10:34 term_read2.c
+-rw-r--r--   1 hlouar  2015_paris    2188 Aug 31 10:34 term_read3.c
+drwxr-xr-x   2 hlouar  2015_paris    4096 Aug 31 10:34 test
+-rw-r--r--   1 hlouar  2015_paris    3938 Aug 31 13:09 testredi.c
+-rw-r--r--   1 hlouar  2015_paris    2389 Aug 31 10:34 testredi2.c
+-rw-r--r--   1 hlouar  2015_paris    2359 Aug 31 10:34 testredi3.c
+-rw-r--r--   1 hlouar  2015_paris    3097 Aug 31 10:34 testredi4.c
+-rw-r--r--   1 hlouar  2015_paris    2087 Aug 31 10:34 testredi5.c
+-rw-r--r--   1 hlouar  2015_paris    2441 Aug 31 10:34 testredi6.c
+-rw---x---   1 hlouar  2015_paris       0 Aug 31 12:33 ti
+-rw-r--r--   1 hlouar  2015_paris    2547 Aug 31 10:34 to_tree.c
+-rw-r--r--   1 hlouar  2015_paris    1715 Aug 31 10:34 tools.c
+-rw-r--r--   1 hlouar  2015_paris    1839 Aug 31 10:34 tools2.c
+-rw-r--r--   1 hlouar  2015_paris    1533 Aug 31 10:34 tools_split.c
+-rw---x---   1 hlouar  2015_paris    6638 Aug 31 13:05 toto
+-rw-r--r--   1 hlouar  2015_paris    1529 Aug 31 10:34 unsetenv.c
+total 692
+drwxr-xr-x   7 hlouar  2015_paris    4096 Aug 31 13:11 .
+drwx------  70 hlouar  2015_paris    4096 Aug 31 13:11 ..
+-rw-r--r--   1 hlouar  2015_paris      50 Aug 31 11:49 .file_for_ready
+drwxr-xr-x   8 hlouar  2015_paris    4096 Aug 31 13:11 .git
+-rw-r--r--   1 hlouar  2015_paris     287 Aug 31 10:34 .gitignore
+-rw-r--r--   1 hlouar  2015_paris    2786 Aug 31 10:34 .nfs.20051034.5bcf
+-rwxr-xr-x   1 hlouar  2015_paris  117368 Aug 31 13:11 21sh
+-rw-r--r--   1 hlouar  2015_paris    2904 Aug 31 12:30 Makefile
+-rw-r--r--   1 hlouar  2015_paris    2897 Aug 31 10:34 Makefile~
+-rw-r--r--   1 hlouar  2015_paris     248 Aug 31 10:34 READ_ME.txt
+-rw-r--r--   1 hlouar  2015_paris    1345 Aug 31 10:34 add_letter.c
+-rw-r--r--   1 hlouar  2015_paris    2346 Aug 31 10:34 agreg.c
+-rw-r--r--   1 hlouar  2015_paris    1120 Aug 31 10:34 allwrites.c
+-rw-r--r--   1 hlouar  2015_paris    2191 Aug 31 10:34 builenv.c
+-rw-r--r--   1 hlouar  2015_paris    2731 Aug 31 10:34 builenv2.c
+-rw-r--r--   1 hlouar  2015_paris    1813 Aug 31 10:34 builenv3.c
+-rw-r--r--   1 hlouar  2015_paris    1824 Aug 31 11:44 builtin_exit_error.c
+-rw-r--r--   1 hlouar  2015_paris    2184 Aug 31 10:34 cd.c
+-rw-r--r--   1 hlouar  2015_paris    2396 Aug 31 10:34 cd2.c
+-rw-r--r--   1 hlouar  2015_paris    2637 Aug 31 10:34 cd3.c
+-rw-r--r--   1 hlouar  2015_paris    1117 Aug 31 10:34 cursor.c
+-rw-r--r--   1 hlouar  2015_paris    2039 Aug 31 10:34 env.c
+-rw-r--r--   1 hlouar  2015_paris    1674 Aug 31 10:34 env2.c
+-rw-r--r--   1 hlouar  2015_paris    1911 Aug 31 10:34 env3.c
+-rw-r--r--   1 hlouar  2015_paris    2834 Aug 31 12:30 error.c
+-rw-r--r--   1 hlouar  2015_paris    1925 Aug 31 12:30 error2.c
+-rw-r--r--   1 hlouar  2015_paris    1621 Aug 31 12:16 free.c
+-rw-r--r--   1 hlouar  2015_paris    2603 Aug 31 10:34 ft_redirect4.c
+-rw-r--r--   1 hlouar  2015_paris    1299 Aug 31 10:34 go_words.c
+-rw-r--r--   1 hlouar  2015_paris    2713 Aug 31 10:34 good_order.c
+-rw-r--r--   1 hlouar  2015_paris    2842 Aug 31 10:34 hash.c
+-rw-r--r--   1 hlouar  2015_paris    2013 Aug 31 10:34 hash2.c
+-rw-r--r--   1 hlouar  2015_paris    1222 Aug 31 10:34 hash3.c
+-rw-r--r--   1 hlouar  2015_paris    2371 Aug 31 10:34 history.c
+-rw-r--r--   1 hlouar  2015_paris    2825 Aug 31 10:34 history_show_func.c
+-rw-r--r--   1 hlouar  2015_paris    2194 Aug 31 12:55 ifcd.c
+drwxr-xr-x   2 hlouar  2015_paris    4096 Aug 31 12:30 includes
+-rw-r--r--   1 hlouar  2015_paris    1640 Aug 31 10:34 is_key1.c
+-rw-r--r--   1 hlouar  2015_paris    1814 Aug 31 10:34 is_key2.c
+-rw-r--r--   1 hlouar  2015_paris    1679 Aug 31 10:34 is_key3.c
+-rw-r--r--   1 hlouar  2015_paris    1521 Aug 31 10:34 is_key4.c
+-rw-r--r--   1 hlouar  2015_paris    1266 Aug 31 12:30 is_key5.c
+-rw---xr-x   1 hlouar  2015_paris   13406 Aug 31 13:11 kiki
+drwxr-xr-x   2 hlouar  2015_paris    4096 Aug 31 13:11 libft
+-rw-r--r--   1 hlouar  2015_paris    2854 Aug 31 12:30 main.c
+-rw-r--r--   1 hlouar  2015_paris    2794 Aug 31 12:30 main2.c
+-rw-r--r--   1 hlouar  2015_paris    2114 Aug 31 13:11 main3.c
+-rw-r--r--   1 hlouar  2015_paris    2499 Aug 31 10:34 new_arg_to_list.c
+drwxr-xr-x   2 hlouar  2015_paris    4096 Aug 31 13:11 obj
+-rw-r--r--   1 hlouar  2015_paris    2032 Aug 31 10:34 old_functions.c
+-rw-r--r--   1 hlouar  2015_paris    2483 Aug 31 10:34 parseandexc.c
+-rw-r--r--   1 hlouar  2015_paris    1686 Aug 31 10:34 parseandexc2.c
+-rw-r--r--   1 hlouar  2015_paris    2961 Aug 31 10:34 press_key1.c
+-rw-r--r--   1 hlouar  2015_paris    2720 Aug 31 10:34 press_key2.c
+-rw-r--r--   1 hlouar  2015_paris    2564 Aug 31 10:34 press_key3.c
+-rw-r--r--   1 hlouar  2015_paris    2455 Aug 31 10:34 press_key4.c
+-rw-r--r--   1 hlouar  2015_paris    2379 Aug 31 10:34 press_key5.c
+-rw-r--r--   1 hlouar  2015_paris    2349 Aug 31 10:34 press_key6.c
+-rw-r--r--   1 hlouar  2015_paris    2718 Aug 31 10:34 prompt.c
+-rw-r--r--   1 hlouar  2015_paris    2751 Aug 31 10:34 setenv.c
+-rw-r--r--   1 hlouar  2015_paris    1086 Aug 31 10:34 setenv2.c
+-rw-r--r--   1 hlouar  2015_paris    3238 Aug 31 10:34 shell.c
+-rw-r--r--   1 hlouar  2015_paris    2645 Aug 31 12:30 shell2.c
+-rw-r--r--   1 hlouar  2015_paris    2447 Aug 31 10:34 shell3.c
+-rw-r--r--   1 hlouar  2015_paris    1843 Aug 31 10:34 shell_lvl.c
+-rw-r--r--   1 hlouar  2015_paris    1295 Aug 31 10:34 signal.c
+-rw-r--r--   1 hlouar  2015_paris    2728 Aug 31 10:34 space_treatment.c
+-rw-r--r--   1 hlouar  2015_paris    2977 Aug 31 10:34 split_inib.c
+-rw-r--r--   1 hlouar  2015_paris    1826 Aug 31 10:34 split_inib_tools.c
+-rw-r--r--   1 hlouar  2015_paris    3179 Aug 31 10:34 split_on_spec.c
+-rw-r--r--   1 hlouar  2015_paris    2473 Aug 31 10:34 spliter.c
+-rw-r--r--   1 hlouar  2015_paris    1518 Aug 31 10:34 term_functions.c
+-rw-r--r--   1 hlouar  2015_paris    2080 Aug 31 10:34 term_read.c
+-rw-r--r--   1 hlouar  2015_paris    2084 Aug 31 10:34 term_read2.c
+-rw-r--r--   1 hlouar  2015_paris    2188 Aug 31 10:34 term_read3.c
+drwxr-xr-x   2 hlouar  2015_paris    4096 Aug 31 10:34 test
+-rw-r--r--   1 hlouar  2015_paris    3939 Aug 31 13:11 testredi.c
+-rw-r--r--   1 hlouar  2015_paris    2389 Aug 31 10:34 testredi2.c
+-rw-r--r--   1 hlouar  2015_paris    2359 Aug 31 10:34 testredi3.c
+-rw-r--r--   1 hlouar  2015_paris    3097 Aug 31 10:34 testredi4.c
+-rw-r--r--   1 hlouar  2015_paris    2087 Aug 31 10:34 testredi5.c
+-rw-r--r--   1 hlouar  2015_paris    2441 Aug 31 10:34 testredi6.c
+-rw---x---   1 hlouar  2015_paris       0 Aug 31 12:33 ti
+-rw-r--r--   1 hlouar  2015_paris    2547 Aug 31 10:34 to_tree.c
+-rw-r--r--   1 hlouar  2015_paris    1715 Aug 31 10:34 tools.c
+-rw-r--r--   1 hlouar  2015_paris    1839 Aug 31 10:34 tools2.c
+-rw-r--r--   1 hlouar  2015_paris    1533 Aug 31 10:34 tools_split.c
+-rw---x---   1 hlouar  2015_paris    6638 Aug 31 13:05 toto
+-rw-r--r--   1 hlouar  2015_paris    1529 Aug 31 10:34 unsetenv.c
+21sh
+Makefile
+Makefile~
+READ_ME.txt
+add_letter.c
+agreg.c
+allwrites.c
+builenv.c
+builenv2.c
+builenv3.c
+builtin_exit_error.c
+cd.c
+cd2.c
+cd3.c
+cursor.c
+env.c
+env2.c
+env3.c
+error.c
+error2.c
+free.c
+ft_redirect4.c
+go_words.c
+good_order.c
+hash.c
+hash2.c
+hash3.c
+history.c
+history_show_func.c
+ifcd.c
+includes
+is_key1.c
+is_key2.c
+is_key3.c
+is_key4.c
+is_key5.c
+kiki
+libft
+main.c
+main2.c
+main3.c
+new_arg_to_list.c
+obj
+old_functions.c
+parseandexc.c
+parseandexc2.c
+press_key1.c
+press_key2.c
+press_key3.c
+press_key4.c
+press_key5.c
+press_key6.c
+prompt.c
+setenv.c
+setenv2.c
+shell.c
+shell2.c
+shell3.c
+shell_lvl.c
+signal.c
+space_treatment.c
+split_inib.c
+split_inib_tools.c
+split_on_spec.c
+spliter.c
+term_functions.c
+term_read.c
+term_read2.c
+term_read3.c
+test
+testredi.c
+testredi2.c
+testredi3.c
+testredi4.c
+testredi5.c
+testredi6.c
+ti
+to_tree.c
+tools.c
+tools2.c
+tools_split.c
+toto
+unsetenv.c
+21sh
+Makefile
+Makefile~
+READ_ME.txt
+add_letter.c
+agreg.c
+allwrites.c
+builenv.c
+builenv2.c
+builenv3.c
+builtin_exit_error.c
+cd.c
+cd2.c
+cd3.c
+cursor.c
+env.c
+env2.c
+env3.c
+error.c
+error2.c
+free.c
+ft_redirect4.c
+go_words.c
+good_order.c
+hash.c
+hash2.c
+hash3.c
+history.c
+history_show_func.c
+ifcd.c
+includes
+is_key1.c
+is_key2.c
+is_key3.c
+is_key4.c
+is_key5.c
+kiki
+libft
+main.c
+main2.c
+main3.c
+new_arg_to_list.c
+obj
+old_functions.c
+parseandexc.c
+parseandexc2.c
+press_key1.c
+press_key2.c
+press_key3.c
+press_key4.c
+press_key5.c
+press_key6.c
+prompt.c
+setenv.c
+setenv2.c
+shell.c
+shell2.c
+shell3.c
+shell_lvl.c
+signal.c
+space_treatment.c
+split_inib.c
+split_inib_tools.c
+split_on_spec.c
+spliter.c
+term_functions.c
+term_read.c
+term_read2.c
+term_read3.c
+test
+testredi.c
+testredi2.c
+testredi3.c
+testredi4.c
+testredi5.c
+testredi6.c
+ti
+to_tree.c
+tools.c
+tools2.c
+tools_split.c
+toto
+unsetenv.c
+21sh
+Makefile
+Makefile~
+READ_ME.txt
+add_letter.c
+agreg.c
+allwrites.c
+builenv.c
+builenv2.c
+builenv3.c
+builtin_exit_error.c
+cd.c
+cd2.c
+cd3.c
+cursor.c
+env.c
+env2.c
+env3.c
+error.c
+error2.c
+free.c
+ft_redirect4.c
+go_words.c
+good_order.c
+hash.c
+hash2.c
+hash3.c
+history.c
+history_show_func.c
+ifcd.c
+includes
+is_key1.c
+is_key2.c
+is_key3.c
+is_key4.c
+is_key5.c
+kiki
+libft
+main.c
+main2.c
+main3.c
+new_arg_to_list.c
+obj
+old_functions.c
+parseandexc.c
+parseandexc2.c
+press_key1.c
+press_key2.c
+press_key3.c
+press_key4.c
+press_key5.c
+press_key6.c
+prompt.c
+setenv.c
+setenv2.c
+shell.c
+shell2.c
+shell3.c
+shell_lvl.c
+signal.c
+space_treatment.c
+split_inib.c
+split_inib_tools.c
+split_on_spec.c
+spliter.c
+term_functions.c
+term_read.c
+term_read2.c
+term_read3.c
+test
+testredi.c
+testredi2.c
+testredi3.c
+testredi4.c
+testredi5.c
+testredi6.c
+ti
+tiki
+to_tree.c
+tools.c
+tools2.c
+tools_split.c
+toto
+unsetenv.c
+21sh
+Makefile
+Makefile~
+READ_ME.txt
+add_letter.c
+agreg.c
+allwrites.c
+builenv.c
+builenv2.c
+builenv3.c
+builtin_exit_error.c
+cd.c
+cd2.c
+cd3.c
+cursor.c
+env.c
+env2.c
+env3.c
+error.c
+error2.c
+free.c
+ft_redirect4.c
+go_words.c
+good_order.c
+hash.c
+hash2.c
+hash3.c
+history.c
+history_show_func.c
+ifcd.c
+includes
+is_key1.c
+is_key2.c
+is_key3.c
+is_key4.c
+is_key5.c
+kiki
+libft
+main.c
+main2.c
+main3.c
+new_arg_to_list.c
+obj
+old_functions.c
+parseandexc.c
+parseandexc2.c
+press_key1.c
+press_key2.c
+press_key3.c
+press_key4.c
+press_key5.c
+press_key6.c
+prompt.c
+setenv.c
+setenv2.c
+shell.c
+shell2.c
+shell3.c
+shell_lvl.c
+signal.c
+space_treatment.c
+split_inib.c
+split_inib_tools.c
+split_on_spec.c
+spliter.c
+term_functions.c
+term_read.c
+term_read2.c
+term_read3.c
+test
+testredi.c
+testredi2.c
+testredi3.c
+testredi4.c
+testredi5.c
+testredi6.c
+ti
+tiki
+to_tree.c
+tools.c
+tools2.c
+tools_split.c
+toto
+unsetenv.c
+21sh
+Makefile
+Makefile~
+READ_ME.txt
+add_letter.c
+agreg.c
+allwrites.c
+builenv.c
+builenv2.c
+builenv3.c
+builtin_exit_error.c
+cd.c
+cd2.c
+cd3.c
+cursor.c
+env.c
+env2.c
+env3.c
+error.c
+error2.c
+free.c
+ft_redirect4.c
+go_words.c
+good_order.c
+hash.c
+hash2.c
+hash3.c
+history.c
+history_show_func.c
+ifcd.c
+includes
+is_key1.c
+is_key2.c
+is_key3.c
+is_key4.c
+is_key5.c
+kiki
+libft
+main.c
+main2.c
+main3.c
+new_arg_to_list.c
+obj
+old_functions.c
+parseandexc.c
+parseandexc2.c
+press_key1.c
+press_key2.c
+press_key3.c
+press_key4.c
+press_key5.c
+press_key6.c
+prompt.c
+setenv.c
+setenv2.c
+shell.c
+shell2.c
+shell3.c
+shell_lvl.c
+signal.c
+space_treatment.c
+split_inib.c
+split_inib_tools.c
+split_on_spec.c
+spliter.c
+term_functions.c
+term_read.c
+term_read2.c
+term_read3.c
+test
+testredi.c
+testredi2.c
+testredi3.c
+testredi4.c
+testredi5.c
+testredi6.c
+ti
+tiki
+to_tree.c
+tools.c
+tools2.c
+tools_split.c
+toto
+unsetenv.c
+21sh
+Makefile
+Makefile~
+READ_ME.txt
+add_letter.c
+agreg.c
+allwrites.c
+builenv.c
+builenv2.c
+builenv3.c
+builtin_exit_error.c
+cd.c
+cd2.c
+cd3.c
+cursor.c
+env.c
+env2.c
+env3.c
+error.c
+error2.c
+free.c
+ft_redirect4.c
+go_words.c
+good_order.c
+hash.c
+hash2.c
+hash3.c
+history.c
+history_show_func.c
+ifcd.c
+includes
+is_key1.c
+is_key2.c
+is_key3.c
+is_key4.c
+is_key5.c
+kiki
+libft
+main.c
+main2.c
+main3.c
+new_arg_to_list.c
+obj
+old_functions.c
+parseandexc.c
+parseandexc2.c
+press_key1.c
+press_key2.c
+press_key3.c
+press_key4.c
+press_key5.c
+press_key6.c
+prompt.c
+setenv.c
+setenv2.c
+shell.c
+shell2.c
+shell3.c
+shell_lvl.c
+signal.c
+space_treatment.c
+split_inib.c
+split_inib_tools.c
+split_on_spec.c
+spliter.c
+term_functions.c
+term_read.c
+term_read2.c
+term_read3.c
+test
+testredi.c
+testredi2.c
+testredi3.c
+testredi4.c
+testredi5.c
+testredi6.c
+ti
+tiki
+to_tree.c
+tools.c
+tools2.c
+tools_split.c
+toto
+unsetenv.c
+21sh
+Makefile
+Makefile~
+READ_ME.txt
+add_letter.c
+agreg.c
+allwrites.c
+builenv.c
+builenv2.c
+builenv3.c
+builtin_exit_error.c
+cd.c
+cd2.c
+cd3.c
+cursor.c
+env.c
+env2.c
+env3.c
+error.c
+error2.c
+free.c
+ft_redirect4.c
+go_words.c
+good_order.c
+hash.c
+hash2.c
+hash3.c
+history.c
+history_show_func.c
+ifcd.c
+includes
+is_key1.c
+is_key2.c
+is_key3.c
+is_key4.c
+is_key5.c
+kiki
+libft
+main.c
+main2.c
+main3.c
+new_arg_to_list.c
+obj
+old_functions.c
+parseandexc.c
+parseandexc2.c
+press_key1.c
+press_key2.c
+press_key3.c
+press_key4.c
+press_key5.c
+press_key6.c
+prompt.c
+setenv.c
+setenv2.c
+shell.c
+shell2.c
+shell3.c
+shell_lvl.c
+signal.c
+space_treatment.c
+split_inib.c
+split_inib_tools.c
+split_on_spec.c
+spliter.c
+term_functions.c
+term_read.c
+term_read2.c
+term_read3.c
+test
+testredi.c
+testredi2.c
+testredi3.c
+testredi4.c
+testredi5.c
+testredi6.c
+ti
+tiki
+to_tree.c
+tools.c
+tools2.c
+tools_split.c
+toto
+unsetenv.c
+21sh
+Makefile
+Makefile~
+READ_ME.txt
+add_letter.c
+agreg.c
+allwrites.c
+builenv.c
+builenv2.c
+builenv3.c
+builtin_exit_error.c
+cd.c
+cd2.c
+cd3.c
+cursor.c
+env.c
+env2.c
+env3.c
+error.c
+error2.c
+free.c
+ft_redirect4.c
+go_words.c
+good_order.c
+hash.c
+hash2.c
+hash3.c
+history.c
+history_show_func.c
+ifcd.c
+includes
+is_key1.c
+is_key2.c
+is_key3.c
+is_key4.c
+is_key5.c
+kiki
+libft
+main.c
+main2.c
+main3.c
+new_arg_to_list.c
+obj
+old_functions.c
+parseandexc.c
+parseandexc2.c
+press_key1.c
+press_key2.c
+press_key3.c
+press_key4.c
+press_key5.c
+press_key6.c
+prompt.c
+setenv.c
+setenv2.c
+shell.c
+shell2.c
+shell3.c
+shell_lvl.c
+signal.c
+space_treatment.c
+split_inib.c
+split_inib_tools.c
+split_on_spec.c
+spliter.c
+term_functions.c
+term_read.c
+term_read2.c
+term_read3.c
+test
+testredi.c
+testredi2.c
+testredi3.c
+testredi4.c
+testredi5.c
+testredi6.c
+ti
+tiki
+to_tree.c
+tools.c
+tools2.c
+tools_split.c
+toto
+unsetenv.c
+21sh
+Makefile
+Makefile~
+READ_ME.txt
+add_letter.c
+agreg.c
+allwrites.c
+builenv.c
+builenv2.c
+builenv3.c
+builtin_exit_error.c
+cd.c
+cd2.c
+cd3.c
+cursor.c
+env.c
+env2.c
+env3.c
+error.c
+error2.c
+free.c
+ft_redirect4.c
+go_words.c
+good_order.c
+hash.c
+hash2.c
+hash3.c
+history.c
+history_show_func.c
+ifcd.c
+includes
+is_key1.c
+is_key2.c
+is_key3.c
+is_key4.c
+is_key5.c
+kiki
+libft
+main.c
+main2.c
+main3.c
+new_arg_to_list.c
+obj
+old_functions.c
+parseandexc.c
+parseandexc2.c
+press_key1.c
+press_key2.c
+press_key3.c
+press_key4.c
+press_key5.c
+press_key6.c
+prompt.c
+setenv.c
+setenv2.c
+shell.c
+shell2.c
+shell3.c
+shell_lvl.c
+signal.c
+space_treatment.c
+split_inib.c
+split_inib_tools.c
+split_on_spec.c
+spliter.c
+term_functions.c
+term_read.c
+term_read2.c
+term_read3.c
+test
+testredi.c
+testredi2.c
+testredi3.c
+testredi4.c
+testredi5.c
+testredi6.c
+ti
+tiki
+to_tree.c
+tools.c
+tools2.c
+tools_split.c
+toto
+unsetenv.c
+21sh
+Makefile
+Makefile~
+READ_ME.txt
+add_letter.c
+agreg.c
+allwrites.c
+builenv.c
+builenv2.c
+builenv3.c
+builtin_exit_error.c
+cd.c
+cd2.c
+cd3.c
+cursor.c
+env.c
+env2.c
+env3.c
+error.c
+error2.c
+free.c
+ft_redirect4.c
+go_words.c
+good_order.c
+hash.c
+hash2.c
+hash3.c
+history.c
+history_show_func.c
+ifcd.c
+includes
+is_key1.c
+is_key2.c
+is_key3.c
+is_key4.c
+is_key5.c
+kiki
+libft
+main.c
+main2.c
+main3.c
+new_arg_to_list.c
+obj
+old_functions.c
+parseandexc.c
+parseandexc2.c
+press_key1.c
+press_key2.c
+press_key3.c
+press_key4.c
+press_key5.c
+press_key6.c
+prompt.c
+setenv.c
+setenv2.c
+shell.c
+shell2.c
+shell3.c
+shell_lvl.c
+signal.c
+space_treatment.c
+split_inib.c
+split_inib_tools.c
+split_on_spec.c
+spliter.c
+term_functions.c
+term_read.c
+term_read2.c
+term_read3.c
+test
+testredi.c
+testredi2.c
+testredi3.c
+testredi4.c
+testredi5.c
+testredi6.c
+ti
+tiki
+to_tree.c
+tools.c
+tools2.c
+tools_split.c
+toto
+unsetenv.c
+21sh
+Makefile
+Makefile~
+READ_ME.txt
+add_letter.c
+agreg.c
+allwrites.c
+builenv.c
+builenv2.c
+builenv3.c
+builtin_exit_error.c
+cd.c
+cd2.c
+cd3.c
+cursor.c
+env.c
+env2.c
+env3.c
+error.c
+error2.c
+free.c
+ft_redirect4.c
+go_words.c
+good_order.c
+hash.c
+hash2.c
+hash3.c
+history.c
+history_show_func.c
+ifcd.c
+includes
+is_key1.c
+is_key2.c
+is_key3.c
+is_key4.c
+is_key5.c
+kiki
+libft
+main.c
+main2.c
+main3.c
+new_arg_to_list.c
+obj
+old_functions.c
+parseandexc.c
+parseandexc2.c
+press_key1.c
+press_key2.c
+press_key3.c
+press_key4.c
+press_key5.c
+press_key6.c
+prompt.c
+setenv.c
+setenv2.c
+shell.c
+shell2.c
+shell3.c
+shell_lvl.c
+signal.c
+space_treatment.c
+split_inib.c
+split_inib_tools.c
+split_on_spec.c
+spliter.c
+term_functions.c
+term_read.c
+term_read2.c
+term_read3.c
+test
+testredi.c
+testredi2.c
+testredi3.c
+testredi4.c
+testredi5.c
+testredi6.c
+ti
+tiki
+to_tree.c
+tools.c
+tools2.c
+tools_split.c
+toto
+unsetenv.c
+21sh
+Makefile
+Makefile~
+READ_ME.txt
+add_letter.c
+agreg.c
+allwrites.c
+builenv.c
+builenv2.c
+builenv3.c
+builtin_exit_error.c
+cd.c
+cd2.c
+cd3.c
+cursor.c
+env.c
+env2.c
+env3.c
+error.c
+error2.c
+free.c
+ft_redirect4.c
+go_words.c
+good_order.c
+hash.c
+hash2.c
+hash3.c
+history.c
+history_show_func.c
+ifcd.c
+includes
+is_key1.c
+is_key2.c
+is_key3.c
+is_key4.c
+is_key5.c
+kiki
+libft
+main.c
+main2.c
+main3.c
+new_arg_to_list.c
+obj
+old_functions.c
+parseandexc.c
+parseandexc2.c
+press_key1.c
+press_key2.c
+press_key3.c
+press_key4.c
+press_key5.c
+press_key6.c
+prompt.c
+setenv.c
+setenv2.c
+shell.c
+shell2.c
+shell3.c
+shell_lvl.c
+signal.c
+space_treatment.c
+split_inib.c
+split_inib_tools.c
+split_on_spec.c
+spliter.c
+term_functions.c
+term_read.c
+term_read2.c
+term_read3.c
+test
+testredi.c
+testredi2.c
+testredi3.c
+testredi4.c
+testredi5.c
+testredi6.c
+ti
+tiki
+to_tree.c
+tools.c
+tools2.c
+tools_split.c
+toto
+unsetenv.c
+21sh
+Makefile
+Makefile~
+READ_ME.txt
+add_letter.c
+agreg.c
+allwrites.c
+builenv.c
+builenv2.c
+builenv3.c
+builtin_exit_error.c
+cd.c
+cd2.c
+cd3.c
+cursor.c
+env.c
+env2.c
+env3.c
+error.c
+error2.c
+free.c
+ft_redirect4.c
+go_words.c
+good_order.c
+hash.c
+hash2.c
+hash3.c
+history.c
+history_show_func.c
+ifcd.c
+includes
+is_key1.c
+is_key2.c
+is_key3.c
+is_key4.c
+is_key5.c
+kiki
+libft
+main.c
+main2.c
+main3.c
+new_arg_to_list.c
+obj
+old_functions.c
+parseandexc.c
+parseandexc2.c
+press_key1.c
+press_key2.c
+press_key3.c
+press_key4.c
+press_key5.c
+press_key6.c
+prompt.c
+setenv.c
+setenv2.c
+shell.c
+shell2.c
+shell3.c
+shell_lvl.c
+signal.c
+space_treatment.c
+split_inib.c
+split_inib_tools.c
+split_on_spec.c
+spliter.c
+term_functions.c
+term_read.c
+term_read2.c
+term_read3.c
+test
+testredi.c
+testredi2.c
+testredi3.c
+testredi4.c
+testredi5.c
+testredi6.c
+ti
+tiki
+to_tree.c
+tools.c
+tools2.c
+tools_split.c
+toto
+unsetenv.c
