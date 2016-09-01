@@ -6,7 +6,7 @@
 /*   By: hlouar <hlouar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/16 18:30:52 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/26 06:23:15 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/09/01 15:27:14 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int			createbinpath(t_data *data, int n)
 	(void)n;
 	str = NULL;
 	if (data->args && data->args[0] &&
-		!ft_strncmp(data->args[0], "./", 2) &&
+		(!ft_strncmp(data->args[0], "./", 2) || data->args[0][0] == '/') &&
 		createbinpath2(data, str) == 1)
 		return (1);
 	else if ((str = get_bin(data->args[0])))
