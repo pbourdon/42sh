@@ -6,7 +6,7 @@
 /*   By: hlouar <hlouar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/14 15:22:47 by hlouar            #+#    #+#             */
-/*   Updated: 2016/08/25 14:20:54 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/09/02 14:29:17 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,17 +76,32 @@ int			optchev(t_data *data)
 
 void		sub_exec(t_data *data)
 {
+	int ret;
+	int ex;
+
+	ret = 0;	
+	ex = 0;
 	if (ft_strcmp(data->args[0], "exit") == 0)
-		exit(0);
+	{
+		ex = ft_exit_error(data, &ret);
+		if (ret)
+			exit(ex);
+	}
 	if (ft_strcmp(data->args[0], "env") == 0)
 	{
 		callallenv(data);
-		exit(0);
+		exit((data->binreturn = 0));
+	}
+	if (ft_strcmp(data->args[0], "echo") == 0)
+	{
+		callecho(data->args);
+		exit((data->binreturn = 0));
 	}
 }
 
 int			execveremix(t_data *data)
 {
+	sub_exec(data);
 	if (createthetab(data) == 1)
 	{
 		if (access(data->tabb[0], F_OK) == 0)
