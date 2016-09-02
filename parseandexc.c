@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parseandexc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlouar <hlouar@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/16 18:30:52 by hlouar            #+#    #+#             */
-/*   Updated: 2016/09/01 15:27:14 by cmichaud         ###   ########.fr       */
+/*   Created: 2016/05/16 18:30:52 by bde-maze          #+#    #+#             */
+/*   Updated: 2016/08/26 06:23:15 by bde-maze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,12 +96,15 @@ void		forkall(t_data *data, int status)
 			sub_forkall(data);
 		freetab(data->tabb);
 		data->binreturn = status;
+		// ft_putstr("valeur de retour: ");
+		// ft_putnbr(data->binreturn);
+		// ft_putstr("\n");
 		return ;
 	}
 	else
 	{
 		ft_putstr(data->args[0]);
-		ft_putendl(": Command no found.");
+		ft_putendl(": Command not found.");
 		data->binreturn = 324;
 	}
 	return ;

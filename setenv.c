@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setenv.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/18 11:02:55 by hlouar            #+#    #+#             */
-/*   Updated: 2016/05/23 10:00:18 by hlouar           ###   ########.fr       */
+/*   Created: 2016/05/18 11:02:55 by bde-maze          #+#    #+#             */
+/*   Updated: 2016/05/23 10:00:18 by bde-maze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,6 @@ char	**setenvifdontexist(t_data *data, int a)
 	dst = NULL;
 	i = 0;
 	o = 0;
-	if (data->args[a][0] == '=')
-	{
-		ft_putendl("setenv: Variable name must begin with a letter.");
-		dst = newtab(data->env);
-		return (dst);
-	}
 	tmp = ft_strdup(data->env[ft_strlentab(data->env) - 1]);
 	dst = (char **)malloc(sizeof(char *) * (ft_strlentab(data->env) + 2));
 	while (data->env[i])

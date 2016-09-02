@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/31 11:46:45 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/08/31 11:46:45 by cmichaud         ###   ########.fr       */
+/*   Created: 2016/08/31 11:46:45 by bde-maze          #+#    #+#             */
+/*   Updated: 2016/08/31 11:46:45 by bde-maze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/shell.h"
-#include <stdio.h>
 
 void			readgnl2(t_data *data, char *str, t_liste *liste)
 {
@@ -38,6 +37,26 @@ void			main_init(t_term *term)
 	shell_init();
 }
 
+
+int				opbi(char *operator, t_data *data)
+{
+	if (ft_strcmp(operator, "&&") == 0)
+	{
+		if (data->binreturn == 0)
+			return (0);
+		else
+			return (-1);
+	}
+	if (ft_strcmp(operator, "||") == 0)
+	{
+		if (data->binreturn != 0)
+			return (0);
+		else
+			return (-1);
+	}
+	return (0);
+}
+
 void			sub_read(t_tree *tree, t_data *data)
 {
 	t_liste		*liste;
@@ -61,7 +80,20 @@ void			sub_read(t_tree *tree, t_data *data)
 			ft_strcmp(tmp->arg, "&&"))
 			readgnl2(data, tmp->arg, liste);
 		else
+		{
+			if (ft_strcmp(tmp->arg, ";"))
+			{
+				if (opbi(tmp->arg, data))
+				{
+					while (tmp->next && ft_strcmp(tmp->arg, ";"))
+					{
+						free(tmp->arg);
+						tmp = tmp->next;
+					}
+				}
+			}
 			free(tmp->arg);
+		}
 		tmp = tmp->next;
 	}
 	free_list(liste);
