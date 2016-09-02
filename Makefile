@@ -79,6 +79,7 @@ SRC = 	builtin_exit_error.c \
 		main3.c \
 		hash2.c \
 		hash3.c \
+		echo.c \
 		env2.c \
 		env3.c \
 		ifcd.c \

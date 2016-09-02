@@ -105,7 +105,6 @@ t_tk			*to_list(char *cmd, int i)
 		return (0);
 	cmd = free_space(cmd, 0, 0, -1);
 	tk = find_space(cmd, tk, 0, 0);
-	print_l(tk);
 	tmp = tk;
 	while (tk)
 		tk = tk->next;
