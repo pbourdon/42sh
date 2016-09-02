@@ -6,7 +6,7 @@
 #    By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/02 13:52:37 by bde-maze          #+#    #+#              #
-#    Updated: 2016/08/31 16:04:05 by bde-maze         ###   ########.fr        #
+#    Updated: 2016/09/01 19:02:38 by cmichaud         ###   ########.fr        #
 #    Updated: 2016/08/28 17:43:20 by pguzman          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
@@ -80,6 +80,7 @@ SRC = 	builtin_exit_error.c \
 		main3.c \
 		hash2.c \
 		hash3.c \
+		echo.c \
 		env2.c \
 		env3.c \
 		ifcd.c \

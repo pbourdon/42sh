@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/31 12:25:20 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/31 12:25:31 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/01 19:04:55 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void			sub_parsecommand(t_data *data, int i)
 		return ;
 	else if (ft_strcmp(data->args[0], "export") == 0 && (i = 1))
 		insertthetmp(data);
+	else if (ft_strcmp(data->args[0], "echo") == 0 && (i = 1))
+		callecho(data->args);
 	else if (ft_strcmp(data->args[0], "env") == 0 && (i = 1))
 		callallenv(data);
 	else if (ft_strcmp(data->args[0], "setenv") == 0 && (i = 1))
