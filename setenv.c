@@ -39,6 +39,12 @@ char	**setenvifdontexist(t_data *data, int a)
 	dst = NULL;
 	i = 0;
 	o = 0;
+	if (data->args[a][0] == '=')
+	{
+		ft_putendl("setenv: Variable name must begin with a letter.");
+		dst = newtab(data->env);
+		return (dst);
+	}
 	tmp = ft_strdup(data->env[ft_strlentab(data->env) - 1]);
 	dst = (char **)malloc(sizeof(char *) * (ft_strlentab(data->env) + 2));
 	while (data->env[i])

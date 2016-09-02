@@ -24,6 +24,7 @@ char	*joincd2(char *str, t_data *data)
 	}
 	else if (ft_strcmp(data->args[1], "-") == 0)
 	{
+		ft_putendl("MDR RAOE");
 		if (data->voldpwd)
 			str = ft_strdup(data->voldpwd);
 		else
