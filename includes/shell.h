@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/31 15:53:35 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/31 15:53:39 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/01 19:07:28 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -386,5 +386,6 @@ int						optchev2(t_data *data, int i, char *str);
 int						is_tab(char *buffer);
 t_shell					g_shell;
 t_cursor				g_cursor;
+void					callecho(char **args);
 
 #endif
