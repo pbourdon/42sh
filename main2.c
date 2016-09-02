@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 18:50:23 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/31 10:52:28 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/31 10:52:28 by bde-maze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,10 @@ void			parsecommand(t_data *data, t_liste *liste)
 		return ;
 	find_exit(data, 0, NULL);
 	sub_parsecommand(data, 0);
+	// ft_putstr("valeur de retour: ");
+	// ft_putnbr(data->binreturn);
+	// ft_putstr("\n");
+
 }
 
 int				switch_case(t_tk *ptr, int nb_redir, int nb_redir2)

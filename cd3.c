@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd3.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlouar <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/23 08:57:51 by hlouar            #+#    #+#             */
-/*   Updated: 2016/05/23 09:04:27 by hlouar           ###   ########.fr       */
+/*   Created: 2016/05/23 08:57:51 by bde-maze          #+#    #+#             */
+/*   Updated: 2016/05/23 09:04:27 by bde-maze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ char	*joincd2(char *str, t_data *data)
 	}
 	else if (ft_strcmp(data->args[1], "-") == 0)
 	{
-		ft_putendl("MDR RAOE");
 		if (data->voldpwd)
 			str = ft_strdup(data->voldpwd);
 		else

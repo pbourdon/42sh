@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/20 13:24:40 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/18 17:59:11 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/08/18 17:59:11 by bde-maze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int				is_a_spec2(char *str, char c)
 	if (i == 1)
 		return (1);
 	else if (ft_strncmp(str, "&&", 2) == 0)
+		return (1);
+	else if (ft_strncmp(str, "||", 2) == 0)
 		return (1);
 	return (0);
 }
@@ -75,6 +77,20 @@ t_tk			*analyse_and_stock(char **ptr, char **cmd, t_tk **base)
 	return (*base);
 }
 
+void		print_l(t_tk *tk)
+{
+	while (tk)
+	{
+		ft_putstr("args: ");
+		ft_putendl(tk->arg);
+		ft_putstr("token: ");
+		ft_putnbr(tk->tk);
+		ft_putstr("\n");
+		tk = tk->next;
+	}
+}
+
+
 t_tk			*to_list(char *cmd, int i)
 {
 	t_tk		*tmp;
@@ -89,6 +105,7 @@ t_tk			*to_list(char *cmd, int i)
 		return (0);
 	cmd = free_space(cmd, 0, 0, -1);
 	tk = find_space(cmd, tk, 0, 0);
+	print_l(tk);
 	tmp = tk;
 	while (tk)
 		tk = tk->next;
