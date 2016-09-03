@@ -108,17 +108,18 @@ void			switch_option(t_data *data, char *str)
 	int i;
 
 	i = 0;
-	// if (str[1] != 'c' && str[1] != 'r' && ft_strlen(str) > 2)
-	// {
-		// data->binreturn = 255;
-		// ft_putendl("usage : -c OR -r");
-		// return ;
-	// }
-	if (ft_strcmp(str, "--help") == 0) // show the helper
+	if (ft_strcmp(str, "--help") == 0)
 		show_helper_history();
+	else if (str[2])
+	{
+		ft_putendl("sh: history: cannot use more than one option");
+		show_helper_history();
+		data->binreturn = 255;
+		return ;
+	}
 	else if (str[1] == 'c')
 		dell_history();
-	else if (str[1] == 'd') // delete the history entry at position offset
+	else if (str[1] == 'd')
 		dell_history_offset(data, data->args[2]);
 	else if (str[1] == 'i')
 	{
@@ -137,9 +138,11 @@ void			switch_option(t_data *data, char *str)
 
 int				check_syntax(char **command)
 {
-	if (command[1] != NULL)
-		;
-
+	if (command[1] != NULL && (!ft_strisdigit(command[1]) || command[1][0] != '-'))
+	{
+		ft_putendl("sh: history: illegal usage");
+		return (1);
+	}
 	return (0);
 }
 
@@ -150,6 +153,7 @@ void			history(t_data *data)
 	len = ft_strlentab(data->args);
 	if (check_syntax(data->args) == 1)
 	{
+		show_helper_history();
 		data->binreturn = 255;
 		return ;
 	}
@@ -165,7 +169,6 @@ void			history(t_data *data)
 		switch_option(data, data->args[1]);
 	else if (data->args[1] && ft_strisdigit(data->args[1]) != -1)
 		show_history_until(data->args[1]);
-	ft_putendl("sorti");
 }
 
 char			*get_history_i(int i)
