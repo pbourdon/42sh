@@ -80,7 +80,10 @@ void			parsecommand(t_data *data, t_liste *liste)
 		return ;
 	}
 	if (!(data->args = split_on_inib(data->line)))
+	  {
+	    data->binreturn = 255;
 		return ;
+	  }
 	find_exit(data, 0, NULL);
 	sub_parsecommand(data, 0);
 	// ft_putstr("valeur de retour: ");

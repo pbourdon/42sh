@@ -28,9 +28,18 @@ int				ft_strisdigit(char *str)
 
 void			switch_option(t_data *data, char *str)
 {
-	if (ft_strstr(str, "c") != NULL)
+	int i;
+
+	i = 0;
+	if (str[1] != 'c' && str[1] != 'r' && ft_strlen(str) > 2)
+	{
+		data->binreturn = 255;
+		ft_putendl("usage : -c OR -r");
+		return ;
+	}
+	if (str[1] == 'c')
 		dell_history();
-	if (ft_strstr(str, "r") != NULL)
+	if (str[1] == 'r')
 	{
 		if (data->args[2] == NULL)
 			show_history_rev();
@@ -46,14 +55,15 @@ void			history(t_data *data)
 	len = ft_strlentab(data->args);
 	if (data->args[1] == NULL)
 		show_history();
-	else if (ft_strncmp(data->args[1], "-", 0) == 0 && (data->args[2] == NULL ||
-		(data->args[2] && ft_strisdigit(data->args[2]) != -1)))
-		switch_option(data, data->args[1]);
-	else if (len > 2)
+	else if (data->args[1][0] == '-' && data->args[1][1] != 'r' && len > 2)
 	{
+		data->binreturn = 255;
 		ft_putendl("too many arguments");
 		return ;
 	}
+	else if (ft_strncmp(data->args[1], "-", 0) == 0 && (data->args[2] == NULL ||
+		(data->args[2] && ft_strisdigit(data->args[2]) != -1)))
+		switch_option(data, data->args[1]);
 	if (data->args[1] && ft_strisdigit(data->args[1]) != -1)
 		show_history_until(data->args[1]);
 }
