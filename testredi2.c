@@ -47,11 +47,15 @@ int		ft_strlenremx(char **tabich, int i, char *c)
 	return (i);
 }
 
-void	helpcreatetab(t_data *data, int i, char **tabich)
+void	helpcreatetab(t_data *data, int i, char **tabich, char *str)
 {
 	freetab(data->args);
 	data->args = newtab(tabich);
 	data->posi = i;
+	if (str)
+		data->tmpagreg = ft_strdup(str);
+	else
+		data->tmpagreg = NULL;
 }
 
 int		allif(char *str)
@@ -71,16 +75,20 @@ char	**createtab(t_data *data, int i)
 	char	**tabich;
 	int		length;
 	int		o;
+	char	*str;
 
+	str = NULL;
 	o = 0;
 	length = ft_strlenremx(data->oldtbe, i, "|");
 	tabich = malloc(sizeof(char *) * (length + 1));
 	while (data->oldtbe[i] != NULL)
 	{
+		if (checkagred(data->oldtbe[i], 0, 0) == 1)
+			str = ft_strdup(data->oldtbe[i]);
 		if (allif(data->oldtbe[i]) == 1)
 		{
 			tabich[o] = NULL;
-			helpcreatetab(data, i, tabich);
+			helpcreatetab(data, i, tabich, str);
 			return (tabich);
 		}
 		tabich[o] = ft_strdup(data->oldtbe[i]);
@@ -88,6 +96,6 @@ char	**createtab(t_data *data, int i)
 		o++;
 	}
 	tabich[o] = NULL;
-	helpcreatetab(data, i, tabich);
+	helpcreatetab(data, i, tabich, str);
 	return (tabich);
 }

@@ -63,4 +63,5 @@ void			sub_parsecommand(t_data *data, int i)
 		history(data);
 	else if (i == 0 && ft_strcmp(data->args[0], "exit") != 0)
 		forkall(data, 0);
+	return ;
 }

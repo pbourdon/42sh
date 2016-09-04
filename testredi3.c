@@ -82,6 +82,10 @@ void	argliste(t_data *data)
 			tmp->redi = refredi(data->oldtbe[data->posi]);
 		else
 			tmp->redi = 0;
+		if (data->tmpagreg != NULL)
+			tmp->agreg = ft_strdup(data->tmpagreg);
+		else
+			tmp->agreg = NULL;
 		tmp->next = malloc(sizeof(t_liste2));
 		tmp = tmp->next;
 		tmp->next = NULL;

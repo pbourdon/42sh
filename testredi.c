@@ -14,12 +14,7 @@
 
 int		mainpipehelp(t_data *data, t_liste2 *liste)
 {
-	if (liste->redi == 6)
-	{
-		agreve(data, liste);
-		return (4);
-	}
-	else if (mainpipecond(data, liste) != -1)
+	if (mainpipecond(data, liste) != -1)
 	{
 		exit(0);
 		return (6);
@@ -47,6 +42,8 @@ int		mainpipe(t_data *data, t_liste2 *liste)
 	int		pfd[2];
 
 	pipe(pfd);
+	// if (liste->redi == 6)
+	// 	dup2(1, 2);
 	if (mainpipehelp(data, liste) != 0)
 	{
 		close(pfd[0]);
@@ -58,7 +55,7 @@ int		mainpipe(t_data *data, t_liste2 *liste)
 	{
 		close(pfd[1]);
 		dup2(pfd[0], 0);
-		if (liste->redi == 3 || liste->redi == 8)
+		if ((liste->redi == 3 || liste->redi == 8 || liste->redi == 6) && liste->next->next)
 			return (mainpipe(data, liste->next->next));
 		else
 			return (mainpipe(data, liste->next));
@@ -77,8 +74,8 @@ int		initmainredi(t_data *data, int i)
 	data->oldtbe = newtab(data->args);
 	str = ft_strdup(data->args[(ft_strlentab(data->args) - 1)]);
 	argliste(data);
-	if (movecd(data) == 2)
-		return (1);
+	// if (movecd(data) == 2)
+		// return (1);
 	freetab(data->args);
 	data->args = newtab(data->oldtbe);
 	optchev2(data, i, str);

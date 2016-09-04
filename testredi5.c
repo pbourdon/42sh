@@ -46,10 +46,72 @@ void	printtab(char **tabb)
 	ft_putendl("_______TAB________");
 }
 
+int		agregmid2(t_liste2 *liste, int pfd[2], int status)
+{
+	int b;
+	b = ft_atoi(decoupe2(liste->agreg));
+	if (status == 0)
+	{
+		if (b == 2)
+			dup2(pfd[1], 2);
+		else
+			dup2(pfd[1], 1);
+	}
+	else
+	{
+		if (b == 1)
+			dup2(pfd[1], 2);
+		else
+			dup2(pfd[1], 1);
+	}
+	// if (ft_strcmp(dst, "-") == 0)
+	// 	close(pfd[1]);
+	return (1);
+}
+
+int		agregmid(t_data *data, t_liste2 *liste, int pfd[2])
+{
+	pid_t father;
+	int status;
+	int a;
+	char *dst;
+
+	dst = decoupe2(liste->agreg);
+	a = ft_atoi(decoupe1(liste->agreg));
+	if (ft_strcmp(dst, "-") == 0)
+	{
+		close(a);
+		free(dst);
+		if (execveremix(data) == -1)
+			exit(0);
+		return (5);
+	}
+	free(dst);
+	status = 0;
+	father = fork();
+	if (father == 0)
+	{
+		close(1);
+		close(2);
+		execveremix(data);
+	}
+	else
+		wait(&status);
+	agregmid2(liste, pfd, status);
+	if (execveremix(data) == -1)
+		exit(0);
+	return(65);
+}
+
 int		hulppls(t_data *data, t_liste2 *liste, int pfd[2])
 {
 	freetab(data->args);
 	data->args = newtab(liste->tabich);
+	if (liste->redi == 6)
+	{
+		agregmid(data, liste, pfd);
+		return (50);
+	}
 	if (ft_strcmp(data->args[0], "exit") == 0)
 		exit(0);
 	if (createbinpath(data, 2) == 0)
@@ -58,6 +120,7 @@ int		hulppls(t_data *data, t_liste2 *liste, int pfd[2])
 		ft_putendl(": Command not found");
 		exit(0);
 	}
+	dup2(pfd[2], 2);
 	dup2(pfd[1], 1);
 	close(pfd[0]);
 	if (execveremix(data) == -1)

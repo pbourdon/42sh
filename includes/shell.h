@@ -49,6 +49,7 @@ typedef struct			s_liste2
 {
 	char				**tabich;
 	int					redi;
+	char				*agreg;
 	struct s_liste2		*next;
 }						t_liste2;
 
@@ -123,6 +124,7 @@ typedef struct			s_data
 	int					exit;
 	char				*exit_line;
 	int					okchev;
+	char				*tmpagreg;
 	struct s_liste2		*liste;
 }						t_data;
 
