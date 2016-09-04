@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 14:35:48 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/01 17:23:24 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/04 17:51:56 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ int				ft_init_verif(void)
 {
 	char	tabb[3];
 	int		n;
-
+	char	*a;
+	a = "\n";
 	n = 0;
 	tabb[0] = 0;
 	tabb[1] = 0;
@@ -79,10 +80,22 @@ int				ft_init_verif(void)
 	{
 		if (n == 1)
 			g_shell.shell_line[g_shell.length_line - 1] = ' ';
+		if (n == 2)
+		{
+			g_shell.shell_line = add_to_array(g_shell.shell_line, a[0], \
+					g_cursor.position_line, g_shell.length_line);
+			g_shell.length_line++;
+			movements_delete(1);
+			if (g_shell.backslash_index >= 0)
+				g_shell.backslash_index++;
+		}
 		g_shell.backslash_index = 0;
 		g_shell.shell_backslash_level++;
 		g_shell.last_backslash = g_shell.length_line;
-		ft_putstr("\n? ");
+		 if (n == 1 || n == 3)
+			ft_putstr("\n? ");
+		 else
+		 	ft_putstr("? ");
 		return (1);
 	}
 	return (0);
