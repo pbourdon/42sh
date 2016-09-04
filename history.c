@@ -103,6 +103,107 @@ void			dell_history_offset(t_data *data, char *offset)
 	}
 }
 
+#include <stdio.h>
+
+void			read_loop(int out)
+{
+	t_history	*history;
+	char	 	*line;
+	int			i = 0;
+
+	history = g_shell.history;
+	while (get_next_line(out, &line) > 0)
+	{
+		ft_putnbr(i);
+		ft_putstr("\n");
+		if (history == NULL)
+			history = malloc(sizeof(*history));
+		history->str = ft_strdup(line);
+		history->next->prev = history;
+		history = history->next;
+		history->next = NULL;
+		i++;
+	}
+		// history->next = malloc(sizeof(*(history)));
+		// history->str = ft_strdup(line);
+		// history = history->next;
+		// history->prev = history;
+		// history->next = NULL;
+		// history->str = NULL;
+	// }
+	while (g_shell.history)
+		g_shell.history = g_shell.history->prev;
+	// free(line);
+}
+
+int				append_to_list()
+{
+	t_history	*tmp;
+	int			out;
+
+	out = open(".ftsh_history", O_RDWR);
+	if (out < 0)
+		return (-1);
+	dell_history();
+	read_loop(out);
+	tmp = g_shell.history;
+	while (tmp)
+	{
+		printf("tmp: %p, tmp->str: %p, str: %s, tmp->next: %p\n", tmp, tmp->str, tmp->str, tmp->next);
+		ft_putendl(tmp->str);
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
+void			add_arg_to_history(t_data *data)
+{
+	int			i;
+
+	i = 2;
+	if (data->args[2] == NULL)
+	{
+		ft_putendl("sh: history: give at least one argument");
+		show_helper_history();
+		data->binreturn = 255;
+		return ;
+	}
+	while (data->args[i])
+		add_to_history(g_shell.history, data->args[i++]);
+}
+
+void			append_to_file()
+{
+	t_history	*history;
+	int			fd;
+
+	history = g_shell.history;
+	fd = open(".ftsh_history", O_WRONLY | O_TRUNC |
+		O_CREAT, S_IRUSR | S_IWGRP | S_IWUSR);
+	while (history)
+	{
+		ft_putendl_fd(history->str, fd);
+		history = history->next;
+	}
+}
+
+void			switch_option_2(t_data *data, char *str)
+{
+	// if (str[1] == 'r')
+	// {
+		// if (append_to_list() == -1)
+		// {
+			// ft_putendl("sh: history: no history source file");
+			// data->binreturn = 255;
+		// }
+	// }
+	if (str[1] == 'w')
+		append_to_file();
+	if (str[1] == 's')
+		add_arg_to_history(data);
+}
+
+
 void			switch_option(t_data *data, char *str)
 {
 	int i;
@@ -128,12 +229,8 @@ void			switch_option(t_data *data, char *str)
 		else if (ft_strisdigit(data->args[2]) != -1)
 			show_history_rev_until(data->args[2]);
 	}
-	// if (str[1] == 'r') // add the content of the history file to the history list
-// 
-	// if (str[1] == 'w') // add the content of the history list to the history file
-// 
-	// if (str[1] == 's') // add the args to the end of the history list as a single entry
-// 
+	else
+		switch_option_2(data, str);
 }
 
 int				check_syntax(char **command)
@@ -141,6 +238,15 @@ int				check_syntax(char **command)
 	if (command[1] != NULL && (!ft_strisdigit(command[1]) || command[1][0] != '-'))
 	{
 		ft_putendl("sh: history: illegal usage");
+		return (1);
+	}
+	if ((command[1] != NULL && command[1][0] == '-') && (command[1][1] != 'c'
+		&& command[1][1] != 'r' && command[1][1] != 'w'
+		&& command[1][1] != 'd' && command[1][1] != 's'))
+	{
+		ft_putstr("sh: history: ");
+		ft_putstr(command[1]);
+		ft_putendl(": invalid option");
 		return (1);
 	}
 	return (0);

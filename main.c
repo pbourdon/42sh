@@ -99,6 +99,18 @@ void			sub_read(t_tree *tree, t_data *data)
 	free_list(liste);
 }
 
+void			printt(t_tk *ptr)
+{
+	while (ptr)
+	{
+		ft_putstr("token: ");
+		ft_putnbr(ptr->tk);
+		ft_putstr(" arg: ");
+		ft_putendl(ptr->arg);
+		ptr = ptr->next;
+	}
+}
+
 int				readgnl(t_data *data, char *str, int fd)
 {
 	t_tk		*ptr;
@@ -108,6 +120,7 @@ int				readgnl(t_data *data, char *str, int fd)
 	ret = 0;
 	if ((ptr = to_list(str, -1)))
 	{
+		printt(ptr);
 		ret = check_list(ptr, ptr, 0, 0);
 		ptr = good_order(ptr, ptr, ptr);
 		tree = to_tree(NULL, ptr, 5, NULL);
