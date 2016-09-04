@@ -50,6 +50,7 @@ char	*cdiftwo(t_data *data)
 		return (ptr);
 	}
 	writecdiftwo2(data->args[1]);
+	data->binreturn = 255;
 	return (str);
 }
 
@@ -90,5 +91,8 @@ void	cdcall(t_data *data)
 		cdcall2(data, str);
 	}
 	else
-		ft_putendl("cd: too many arguments");
+	  {
+	  ft_putendl("cd: too many arguments");
+	  data->binreturn = 255;
+	  }
 }

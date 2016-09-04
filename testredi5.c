@@ -22,6 +22,7 @@ int		helpall2(t_data *data, t_liste2 *liste)
 	data->args = newtab(liste->tabich);
 	if (createbinpath(data, 2) == 0)
 	{
+	  data->binreturn = 255;
 		ft_putstr(data->args[0]);
 		ft_putendl(": Command not found");
 		exit(0);
@@ -116,6 +117,7 @@ int		hulppls(t_data *data, t_liste2 *liste, int pfd[2])
 		exit(0);
 	if (createbinpath(data, 2) == 0)
 	{
+	  data->binreturn = 255;
 		ft_putstr(data->args[0]);
 		ft_putendl(": Command not found");
 		exit(0);

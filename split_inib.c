@@ -112,7 +112,7 @@ char			**split_on_inib(char *str)
 	if (len == -1)
 		ft_putendl("Unmatched quote.");
 	if (len <= 0)
-		return (NULL);
+	    return (NULL);
 	argv = (char **)malloc(sizeof(char *) * (len + 1));
 	argv = ft_split_inib(argv, str, len, -1);
 	argv[len] = NULL;
