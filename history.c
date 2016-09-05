@@ -103,8 +103,6 @@ void			dell_history_offset(t_data *data, char *offset)
 	}
 }
 
-#include <stdio.h>
-
 void			read_loop(int out)
 {
 	t_history	*history;
@@ -235,7 +233,7 @@ void			switch_option(t_data *data, char *str)
 
 int				check_syntax(char **command)
 {
-	if (command[1] != NULL && (!ft_strisdigit(command[1]) || command[1][0] != '-'))
+	if (command[1] != NULL && (ft_strisdigit(command[1]) == -1 && command[1][0] != '-'))
 	{
 		ft_putendl("sh: history: illegal usage");
 		return (1);

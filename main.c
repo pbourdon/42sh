@@ -23,12 +23,13 @@ void			readgnl2(t_data *data, char *str, t_liste *liste)
 	free(str);
 	parsecommand(data, liste);
 	if (data->dspam == 0 && data->args)
-		freetab(data->args);
-	free(data->line);
+		ft_tabdel(&data->args);
+	if (data->line != NULL)
+		ft_strdel(&data->line);
 	if (data->home)
-		free(data->home);
+		ft_strdel(&data->home);
 	if (data->oldpwd)
-		free(data->oldpwd);
+		ft_strdel(&data->oldpwd);
 }
 
 void			main_init(t_term *term)
