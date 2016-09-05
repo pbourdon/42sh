@@ -153,6 +153,8 @@ typedef struct			s_liste
 	struct s_liste		*next;
 }						t_liste;
 
+int						check_syntax_designator(t_data *data);
+void					designator(t_data *data);
 t_liste2				*createliste(void);
 int						is_ctrl_d(char *buffer);
 char					**shell_lvl(char **env, int z);
@@ -382,7 +384,7 @@ int						stringforcd(t_data *data);
 int						cdendargs(t_data *data);
 int						ft_init_verif(void);
 int						movecd(t_data *data);
-void					sub_parsecommand2(t_data *data);
+int						sub_parsecommand2(t_data *data);
 void					sub_parsecommand(t_data *data, int i);
 void					free_liste2(t_liste2 *ptr);
 void					free_list2(t_liste *ptr);

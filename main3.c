@@ -12,15 +12,22 @@
 
 #include "includes/shell.h"
 
-void			sub_parsecommand2(t_data *data)
+int				sub_parsecommand2(t_data *data)
 {
 	if ((ft_strlentab(data->args) == 1) &&
 		(ft_strcmp(data->args[0], "$?") == 0))
-	  {
+	{
 			ft_putnbr(data->binreturn);
-			ft_putendl(": Command not found.");
-			data->binreturn = 255;
+			ft_putchar('\n');
+			data->binreturn = 0;
+			return (0);
 	}
+	else if (check_syntax_designator(data) == 0)
+	{
+		designator(data);
+		return (0);
+	}
+	return (1);
 }
 
 void			sub_sub_parse(t_data *data)
@@ -52,8 +59,9 @@ void			sub_parsecommand(t_data *data, int i)
 		callunsetenv(data);
 	else if (ft_strcmp(data->args[0], "cd") == 0 && (i = 1))
 		cdcall(data);
-	sub_parsecommand2(data);
-	if (ft_strcmp(data->args[0], "history") == 0 && (i = 1))
+	else if (sub_parsecommand2(data) == 0)
+		return ;
+	else if (ft_strcmp(data->args[0], "history") == 0 && (i = 1))
 		history(data);
 	else if (i == 0 && ft_strcmp(data->args[0], "exit") != 0)
 		forkall(data, 0);
