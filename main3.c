@@ -33,7 +33,7 @@ void			sub_sub_parse(t_data *data)
 	{
 		data->okchev = 0;
 		freetab(data->tabchev);
-	}
+	 }
 }
 
 void			sub_parsecommand(t_data *data, int i)

@@ -50,6 +50,7 @@ typedef struct			s_liste2
 	char				**tabich;
 	int					redi;
 	char				*agreg;
+	char				*rediavan;
 	struct s_liste2		*next;
 }						t_liste2;
 
@@ -125,6 +126,7 @@ typedef struct			s_data
 	char				*exit_line;
 	int					okchev;
 	char				*tmpagreg;
+	char				*avredi;
 	struct s_liste2		*liste;
 }						t_data;
 
@@ -386,6 +388,8 @@ void					free_liste2(t_liste2 *ptr);
 void					free_list2(t_liste *ptr);
 int						optchev2(t_data *data, int i, char *str);
 int						is_tab(char *buffer);
+int						isanum(char *str);
+
 t_shell					g_shell;
 t_cursor				g_cursor;
 void					callecho(char **args);

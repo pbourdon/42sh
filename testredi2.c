@@ -29,6 +29,8 @@ int		ifitsredi(t_data *data)
 			return (4);
 		if (ft_strcmp(data->args[i], "|") == 0)
 			return (5);
+		if (ft_strstr(data->args[i], ">") != NULL)
+			return (7);
 		if (checkagred(data->args[i], 0, 0) == 1)
 			return (6);
 		i++;
@@ -65,7 +67,8 @@ int		allif(char *str)
 		(ft_strcmp(str, ">>") == 0) ||
 		(ft_strcmp(str, "<") == 0) ||
 		(ft_strcmp(str, "<<") == 0) ||
-		(checkagred(str, 0, 0) == 1))
+		(checkagred(str, 0, 0) == 1) ||
+		(ft_strstr(str, ">") != NULL))
 		return (1);
 	return (-1);
 }
@@ -76,18 +79,26 @@ char	**createtab(t_data *data, int i)
 	int		length;
 	int		o;
 	char	*str;
+	char	*str2;
 
+	str2 = NULL;
 	str = NULL;
 	o = 0;
 	length = ft_strlenremx(data->oldtbe, i, "|");
 	tabich = malloc(sizeof(char *) * (length + 1));
 	while (data->oldtbe[i] != NULL)
 	{
+		if ((ft_strstr(data->oldtbe[i], ">") != NULL) && (ft_strcmp(data->oldtbe[i], ">") != 0) && ((checkagred(data->oldtbe[i], 0, 0) != 1)))
+			str2 = ft_strdup(data->oldtbe[i]);
 		if (checkagred(data->oldtbe[i], 0, 0) == 1)
 			str = ft_strdup(data->oldtbe[i]);
 		if (allif(data->oldtbe[i]) == 1)
 		{
 			tabich[o] = NULL;
+			if (str2)
+				data->avredi = ft_strdup(str2);
+			else
+				data->avredi = NULL;
 			helpcreatetab(data, i, tabich, str);
 			return (tabich);
 		}
@@ -97,5 +108,9 @@ char	**createtab(t_data *data, int i)
 	}
 	tabich[o] = NULL;
 	helpcreatetab(data, i, tabich, str);
+	if (str2)
+		data->avredi = ft_strdup(str2);
+	else
+		data->avredi = NULL;
 	return (tabich);
 }

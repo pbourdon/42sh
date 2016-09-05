@@ -55,7 +55,7 @@ int		mainpipe(t_data *data, t_liste2 *liste)
 	{
 		close(pfd[1]);
 		dup2(pfd[0], 0);
-		if ((liste->redi == 3 || liste->redi == 8 || liste->redi == 6) && liste->next->next)
+		if ((liste->redi == 3 || liste->redi == 8 || liste->redi == 6 || liste->redi == 7) && liste->next->next)
 			return (mainpipe(data, liste->next->next));
 		else
 			return (mainpipe(data, liste->next));
@@ -70,12 +70,14 @@ int		initmainredi(t_data *data, int i)
 {
 	char	*str;
 
+	// ft_putendl(g_shell.shell_line);
 	data->liste = createliste();
+	data->args = ft_strsplit(g_shell.shell_line, ' ');
 	data->oldtbe = newtab(data->args);
 	str = ft_strdup(data->args[(ft_strlentab(data->args) - 1)]);
 	argliste(data);
-	// if (movecd(data) == 2)
-		// return (1);
+	if (movecd(data) == 2)
+		return (1);
 	freetab(data->args);
 	data->args = newtab(data->oldtbe);
 	optchev2(data, i, str);
@@ -85,10 +87,22 @@ int		initmainredi(t_data *data, int i)
 
 int		mainredi(t_data *data, int i)
 {
+	(void)data;
+	(void)i;
 	int		father;
+	t_liste2 *tmp;
 
 	if (initmainredi(data, i) == 1)
 		return (1);
+	tmp = data->liste;
+	while (tmp->next)
+	{
+		ft_putendl(ft_itoa(tmp->redi));
+		if (tmp->rediavan)
+			ft_putendl(tmp->rediavan);
+		ft_putendl("__________");
+		tmp = tmp->next;
+	}
 	if (ifitsredi(data) != 0)
 	{
 		father = fork();

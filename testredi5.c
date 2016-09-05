@@ -82,9 +82,12 @@ int		agregmid(t_data *data, t_liste2 *liste, int pfd[2])
 	if (ft_strcmp(dst, "-") == 0)
 	{
 		close(a);
+		// else
+		dup2(pfd[1], 1);
 		free(dst);
 		if (execveremix(data) == -1)
 			exit(0);
+		dup2(pfd[1], 1);
 		return (5);
 	}
 	free(dst);
@@ -108,6 +111,27 @@ int		hulppls(t_data *data, t_liste2 *liste, int pfd[2])
 {
 	freetab(data->args);
 	data->args = newtab(liste->tabich);
+	if (liste->redi == 7)
+	{
+		ft_putendl("CHIO");
+		char **tabb;
+		tabb = ft_strsplit(liste->rediavan, '>');
+		int out;
+
+		out = open(tabb[1], O_WRONLY | O_TRUNC |
+		O_CREAT, S_IRUSR | S_IWGRP | S_IWUSR | O_APPEND |
+		S_IRWXO);
+		int k = ft_atoi(tabb[0]);
+		if (isanum(tabb[0]))
+		{
+			dup2(out, k);
+			// dup2(pfd[1], 1);
+			// close(pfd[0]);
+			if (execveremix(data) == -1)
+				exit(0);
+		}
+		return(67);
+	}
 	if (liste->redi == 6)
 	{
 		agregmid(data, liste, pfd);

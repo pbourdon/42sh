@@ -26,6 +26,8 @@ int		refredi(char *str)
 		return (5);
 	else if (checkagred(str, 0, 0) == 1)
 		return (6);
+	else if (ft_strstr(str, ">") != NULL)
+		return (7);
 	return (0);
 }
 
@@ -86,6 +88,10 @@ void	argliste(t_data *data)
 			tmp->agreg = ft_strdup(data->tmpagreg);
 		else
 			tmp->agreg = NULL;
+		if (data->avredi != NULL)
+			tmp->rediavan = ft_strdup(data->avredi);
+		else
+			tmp->rediavan = NULL;
 		tmp->next = malloc(sizeof(t_liste2));
 		tmp = tmp->next;
 		tmp->next = NULL;
