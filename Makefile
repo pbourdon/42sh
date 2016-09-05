@@ -39,6 +39,7 @@ SRC = 	builtin_exit_error.c \
 		split_inib.c \
 		term_read2.c \
 		term_read3.c \
+		designator.c \
 		shell_lvl.c \
 		allwrites.c \
 		term_read.c \
