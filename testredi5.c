@@ -122,7 +122,6 @@ int		hulppls(t_data *data, t_liste2 *liste, int pfd[2])
 		ft_putendl(": Command not found");
 		exit(0);
 	}
-	dup2(pfd[2], 2);
 	dup2(pfd[1], 1);
 	close(pfd[0]);
 	if (execveremix(data) == -1)
