@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/31 15:53:35 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/01 19:07:28 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/09/05 18:40:33 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -391,7 +391,7 @@ void					free_list2(t_liste *ptr);
 int						optchev2(t_data *data, int i, char *str);
 int						is_tab(char *buffer);
 int						isanum(char *str);
-
+int						get_pos_l(void);
 t_shell					g_shell;
 t_cursor				g_cursor;
 void					callecho(char **args);

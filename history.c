@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/03 16:03:52 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/17 17:19:24 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/05 18:40:50 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void			sub_del_offset(int offset)
 
 void			dell_history_offset(t_data *data, char *offset)
 {
-	int			real_offset;	
+	int			real_offset;
 
 	if (offset != NULL)
 	{
@@ -147,7 +147,7 @@ int				append_to_list()
 	tmp = g_shell.history;
 	while (tmp)
 	{
-		printf("tmp: %p, tmp->str: %p, str: %s, tmp->next: %p\n", tmp, tmp->str, tmp->str, tmp->next);
+		//printf("tmp: %p, tmp->str: %p, str: %s, tmp->next: %p\n", tmp, tmp->str, tmp->str, tmp->next);
 		ft_putendl(tmp->str);
 		tmp = tmp->next;
 	}
