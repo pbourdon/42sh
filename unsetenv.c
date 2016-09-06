@@ -33,7 +33,7 @@ char	**ft_unsetenv(t_data *data, int a)
 		i++;
 	}
 	dst[o] = NULL;
-	free(tmp);
+	ft_strdel(&tmp);
 	if (data->turn == 1)
 		freetab(data->env);
 	return (dst);

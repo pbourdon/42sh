@@ -14,7 +14,7 @@
 
 char		*createbinpathtools(t_data *data, char *str, int i)
 {
-	free(str);
+	ft_strdel(&str);
 	str = ft_strjoin(data->allp[i], "/");
 	str = ft_joinfree(str, data->args[0], 1);
 	return (str);
@@ -59,7 +59,7 @@ int			createthetab(t_data *data)
 			i++;
 		}
 		data->tabb[o] = NULL;
-		free(data->bin);
+		ft_strdel(&data->bin);
 		return (1);
 	}
 	else

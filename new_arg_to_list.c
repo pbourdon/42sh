@@ -30,7 +30,7 @@ t_liste		*del_last_null_arg(t_liste *liste)
 			{
 				t = tmp->next;
 				if (tmp->arg)
-					free(tmp->arg);
+					ft_strdel(&tmp->arg);
 				free(tmp);
 				tmp = t;
 			}
@@ -52,10 +52,10 @@ char		*ft_str_f_join(char *b, char *d)
 		return (b);
 	tmp = b;
 	b = ft_strjoin(b, " ");
-	free(tmp);
+	ft_strdel(&tmp);
 	tmp = b;
 	b = ft_strjoin(b, d);
-	free(tmp);
+	ft_strdel(&tmp);
 	tmp = NULL;
 	return (b);
 }

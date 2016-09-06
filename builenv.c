@@ -66,10 +66,10 @@ char	*secondpartequal(char *str)
 char	**freshnewtab2(char **tabb, int i, char *dst, char *dst2)
 {
 	tabb[i] = ft_strdup(dst);
-	free(dst);
+	ft_strdel(&dst);
 	tabb[i + 1] = ft_strdup("=");
 	tabb[i + 2] = ft_strdup(dst2);
-	free(dst2);
+	ft_strdel(&dst2);
 	tabb[i + 3] = NULL;
 	return (tabb);
 }

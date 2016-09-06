@@ -21,7 +21,7 @@ char	*getpwd(void)
 	if (getcwd(tmp, 1024) != NULL)
 	{
 		dst = ft_strdup(tmp);
-		free(tmp);
+		ft_strdel(&tmp);
 		return (dst);
 	}
 	return (NULL);
@@ -85,7 +85,7 @@ void	changepwdenv(t_data *data)
 		freetab(data->env);
 	data->env = newtab(tabb);
 	freetab(tabb);
-	free(str);
+	ft_strdel(&str);
 }
 
 void	gethome(t_data *data)

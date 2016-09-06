@@ -22,7 +22,7 @@ char		**ft_tab_trim(char **s)
 	{
 		temp = s[i];
 		s[i] = ft_strtrim(s[i]);
-		free(temp);
+		ft_strdel(&temp);
 		i++;
 	}
 	return (s);

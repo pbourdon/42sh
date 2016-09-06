@@ -20,12 +20,12 @@ int		rognagestring(char *str, char *str2)
 	str = ft_strsub(str, 0, ft_strlenremix(str));
 	if (ft_strcmp(dst, str) == 0)
 	{
-		free(str);
-		free(dst);
+		ft_strdel(&str);
+		ft_strdel(&dst);
 		return (1);
 	}
-	free(str);
-	free(dst);
+	ft_strdel(&str);
+	ft_strdel(&dst);
 	return (0);
 }
 

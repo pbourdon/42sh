@@ -61,7 +61,7 @@ void			sub_del_offset(int offset)
 	{
 		tmp = history->next;
 		if (history->str)
-			free(history->str);
+			ft_strdel(&history->str);
 		free(history);
 		history = tmp;
 		i++;
@@ -131,7 +131,7 @@ void			read_loop(int out)
 	// }
 	while (g_shell.history)
 		g_shell.history = g_shell.history->prev;
-	// free(line);
+	// ft_strdel(line);
 }
 
 int				append_to_list()
@@ -147,7 +147,6 @@ int				append_to_list()
 	tmp = g_shell.history;
 	while (tmp)
 	{
-		//printf("tmp: %p, tmp->str: %p, str: %s, tmp->next: %p\n", tmp, tmp->str, tmp->str, tmp->next);
 		ft_putendl(tmp->str);
 		tmp = tmp->next;
 	}

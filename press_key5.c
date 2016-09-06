@@ -17,7 +17,7 @@ int				press_enter_key(void)
 	press_end_key();
 	if (ft_init_verif())
 		return (0);
-	if (ft_strcmp(g_shell.shell_line, "") != 0 && g_shell.shell_heredoc == 0)
+	if (ft_strcmp(g_shell.shell_line, "") != 0 && g_shell.shell_heredoc == 0 && g_shell.shell_line[0] != '!')
 		add_to_history(g_shell.history, g_shell.shell_line);
 	g_shell.backslash_index = -1;
 	if (g_shell.shell_heredoc == 0)

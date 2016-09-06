@@ -26,7 +26,7 @@ char			*get_pwd(void)
 	len = ft_strlen(cwd);
 	tmp = ft_memalloc(sizeof(char) * len + 1);
 	tmp = ft_strncpy(tmp, cwd, len);
-	free(cwd);
+	ft_strdel(&cwd);
 	return (tmp);
 }
 
@@ -63,7 +63,7 @@ char			*save_post(char *hostname)
 	len = len - 6;
 	tmp = ft_memalloc(sizeof(char) * len + 1);
 	tmp = ft_strncpy(tmp, hostname, len);
-	free(hostname);
+	ft_strdel(&hostname);
 	return (tmp);
 }
 
@@ -80,7 +80,7 @@ char			*get_user_name(char **env)
 		{
 			tmp = ft_strdup(env[i] + 5);
 			str = ft_strjoin(tmp, "@");
-			free(tmp);
+			ft_strdel(&tmp);
 			return (str);
 		}
 		i++;

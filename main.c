@@ -20,7 +20,7 @@ void			readgnl2(t_data *data, char *str, t_liste *liste)
 	gethome(data);
 	str = (transformtab(withoutspace(str)));
 	data->line = ft_strdup(str);
-	free(str);
+	ft_strdel(&str);
 	parsecommand(data, liste);
 	if (data->dspam == 0 && data->args)
 		ft_tabdel(&data->args);
@@ -70,7 +70,7 @@ void			sub_read(t_tree *tree, t_data *data)
 	if (check_list_2(liste))
 	{
 		free_list2(liste);
-		free(data->line);
+		ft_strdel(&data->line);
 		return ;
 	}
 	else
@@ -88,12 +88,12 @@ void			sub_read(t_tree *tree, t_data *data)
 				{
 					while (tmp->next && ft_strcmp(tmp->arg, ";"))
 					{
-						free(tmp->arg);
+						ft_strdel(&tmp->arg);
 						tmp = tmp->next;
 					}
 				}
 			}
-			free(tmp->arg);
+			ft_strdel(&tmp->arg);
 		}
 		tmp = tmp->next;
 	}

@@ -49,7 +49,7 @@ int		secondpart(char *str)
 	dst[o] = '\0';
 	if (isanum(dst) == 1 || dst[o - 1] == '-')
 	{
-		free(dst);
+		ft_strdel(&dst);
 		return (1);
 	}
 	return (-1);
@@ -74,10 +74,10 @@ int		checkagred(char *str, int i, int o)
 	dst[o] = '\0';
 	if (isanum(dst) == 1 && (secondpart(str) == 1))
 	{
-		free(dst);
+		ft_strdel(&dst);
 		return (1);
 	}
-	free(dst);
+	ft_strdel(&dst);
 	return (-1);
 }
 

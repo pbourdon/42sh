@@ -22,8 +22,8 @@ int		alreadyintb(t_data *data, char *str, char *dst)
 	if (data->builttab)
 	{
 		intb2(data, str, dst, tabb);
-		free(str);
-		free(dst);
+		ft_strdel(&str);
+		ft_strdel(&dst);
 		return (1);
 	}
 	return (-1);
@@ -105,7 +105,7 @@ int		insertthetmp(t_data *data)
 				data->builttab = modiftabafteruse(data);
 				freetab(data->args);
 				data->args = ft_strsplit(str, ' ');
-				free(str);
+				ft_strdel(&str);
 				callsetenv(data);
 				return (1);
 			}

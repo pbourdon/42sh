@@ -61,7 +61,7 @@ char		*withoutspace(char *str)
 		o++;
 	}
 	dst[o] = '\0';
-	free(str);
+	ft_strdel(&str);
 	return (dst);
 }
 

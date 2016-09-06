@@ -90,11 +90,11 @@ int		errcd(t_data *data)
 	if (rep == NULL)
 	{
 		writeerrcd(data->args[1]);
-		free(str);
+		ft_strdel(&str);
 		return (-1);
 	}
 	closedir(rep);
-	free(str);
+	ft_strdel(&str);
 	return (1);
 }
 

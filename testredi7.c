@@ -19,10 +19,10 @@ int		optchev3(int fd, char *line)
 	i = 0;
 	while (get_next_line(fd, &line) > 0)
 	{
-		free(line);
+		ft_strdel(&line);
 		i++;
 	}
-	free(line);
+	ft_strdel(&line);
 	return (i);
 }
 
@@ -34,10 +34,10 @@ int		optchev4(t_data *data, int fd, char *line, char **tabich)
 	while (get_next_line(fd, &line) > 0)
 	{
 		tabich[o] = ft_strdup(line);
-		free(line);
+		ft_strdel(&line);
 		o++;
 	}
-	free(line);
+	ft_strdel(&line);
 	close(fd);
 	tabich[o] = NULL;
 	data->tabchev = newtab(tabich);

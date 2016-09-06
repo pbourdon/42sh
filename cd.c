@@ -20,7 +20,7 @@ void	writecdiftwo2(char *str)
 
 void	freecdiftwo(char *str, char **dst)
 {
-	free(str);
+	ft_strdel(&str);
 	freetab(dst);
 }
 
@@ -61,10 +61,10 @@ void	cdcall2(t_data *data, char *str)
 		str = joincd(str, data);
 		chdir(str);
 		if (str)
-			free(str);
+			ft_strdel(&str);
 		changepwdenv(data);
 		if (data->voldpwd)
-			free(data->voldpwd);
+			ft_strdel(&data->voldpwd);
 		data->turn = 1;
 	}
 }
@@ -78,10 +78,10 @@ void	cdcall(t_data *data)
 		str = cdiftwo(data);
 		chdir(str);
 		if (str)
-			free(str);
+			ft_strdel(&str);
 		changepwdenv(data);
 		if (data->voldpwd)
-			free(data->voldpwd);
+			ft_strdel(&data->voldpwd);
 		data->turn = 1;
 		return ;
 	}

@@ -44,7 +44,7 @@ void			free_list2(t_liste *ptr)
 	while (ptr != NULL)
 	{
 		tmp = ptr->next;
-		free(ptr->arg);
+		ft_strdel(&ptr->arg);
 		free(ptr);
 		ptr = tmp;
 	}
@@ -59,14 +59,14 @@ void			free_tree(t_tree *tree)
 		free_tree(tree->right);
 	if (tree)
 	{
-		free(tree->arg);
+		ft_strdel(&tree->arg);
 		free(tree);
 	}
 }
 
 void			go_free(char *cwd, char *hostname, char *curtime)
 {
-	free(cwd);
-	free(hostname);
-	free(curtime);
+	ft_strdel(&cwd);
+	ft_strdel(&hostname);
+	ft_strdel(&curtime);
 }

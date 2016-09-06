@@ -26,7 +26,7 @@ char		**get_tabhash(char **new, int b)
 		{
 			if (tabhash[i])
 			{
-				free(tabhash[i]);
+				ft_strdel(&tabhash[i]);
 				tabhash[i] = NULL;
 			}
 		}
@@ -91,6 +91,6 @@ char		*ft_str2join(char *bar, char *yoo, char *foo)
 
 	tmp = ft_strjoin(bar, yoo);
 	t = ft_strjoin(tmp, foo);
-	free(tmp);
+	ft_strdel(&tmp);
 	return (t);
 }

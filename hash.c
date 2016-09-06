@@ -33,7 +33,7 @@ char		**init_fill_tab(char **tabhash, char *path, int res)
 					tabhash[res] = tmp;
 			}
 			else
-				free(tmp);
+				ft_strdel(&tmp);
 		}
 	}
 	closedir(dir);
@@ -72,7 +72,7 @@ void		init_hashtab(char **env, int i)
 	{
 		if (!access(path[i], F_OK | X_OK) || !access(path[i], F_OK | W_OK))
 			tabhash = init_fill_tab(tabhash, path[i], 0);
-		free(path[i]);
+		ft_strdel(&path[i]);
 	}
 	free(path);
 	get_tabhash(tabhash, 0);

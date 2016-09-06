@@ -16,10 +16,10 @@ void			exit_func(t_data *data, t_liste *liste)
 {
 	get_tabhash(NULL, 1);
 	if (data->home)
-		free(data->home);
+		ft_strdel(&data->home);
 	if (data->oldpwd)
-		free(data->oldpwd);
-	free(data->line);
+		ft_strdel(&data->oldpwd);
+	ft_strdel(&data->line);
 	freetab(data->args);
 	free_list(liste);
 	exit(0);
@@ -62,10 +62,10 @@ void			find_exit(t_data *data, int i, char *tmp)
 		{
 			tmp = data->exit_line;
 			data->exit_line = ft_strjoin(data->exit_line, " ");
-			free(tmp);
+			ft_strdel(&tmp);
 			tmp = data->exit_line;
 			data->exit_line = ft_strjoin(data->exit_line, data->args[i]);
-			free(tmp);
+			ft_strdel(&tmp);
 			i++;
 		}
 	}

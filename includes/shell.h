@@ -30,6 +30,12 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+
+
+#include <stdio.h>
+
+
+
 # define OTHER 0
 # define AGGR 1
 # define BACK 2

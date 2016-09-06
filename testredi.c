@@ -81,7 +81,7 @@ int		initmainredi(t_data *data, int i)
 	freetab(data->args);
 	data->args = newtab(data->oldtbe);
 	optchev2(data, i, str);
-	free(str);
+	ft_strdel(&str);
 	return (0);
 }
 

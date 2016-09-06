@@ -41,7 +41,7 @@ void	changepathintab(t_data *data)
 	if (data->path)
 	{
 		data->allp = ft_strsplit(data->path, ':');
-		free(data->path);
+		ft_strdel(&data->path);
 	}
 }
 
@@ -59,6 +59,6 @@ int		createbinpath2(t_data *data, char *str)
 
 void	freedata(char *str, t_data *data)
 {
-	free(str);
+	ft_strdel(&str);
 	freetab(data->allp);
 }

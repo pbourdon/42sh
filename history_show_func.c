@@ -22,7 +22,7 @@ void			dell_history(void)
 	{
 		tmp = history->next;
 		if (history->str)
-			free(history->str);
+			ft_strdel(&history->str);
 		free(history);
 		history = tmp;
 	}

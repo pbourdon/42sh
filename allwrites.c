@@ -20,7 +20,7 @@ void		writeonwhile(void)
 void		errorbinary(t_data *data, char *str)
 {
 	if (str)
-		free(str);
+		ft_strdel(&str);
 	ft_putstr("zsh: command not found: ");
 	data->binreturn = 255;
 	ft_putendl(data->args[0]);

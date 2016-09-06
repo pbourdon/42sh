@@ -46,8 +46,8 @@ int		agreve(t_data *data, t_liste2 *liste)
 		ft_putendl(": bad file descriptor");
 		exit(0);
 	}
-	free(str);
-	free(dst);
+	ft_strdel(&str);
+	ft_strdel(&dst);
 	helpagreve(data, a, b, liste);
 	exit(0);
 }

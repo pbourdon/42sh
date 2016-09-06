@@ -84,13 +84,13 @@ int		agregmid(t_data *data, t_liste2 *liste, int pfd[2])
 		close(a);
 		// else
 		dup2(pfd[1], 1);
-		free(dst);
+		ft_strdel(&dst);
 		if (execveremix(data) == -1)
 			exit(0);
 		dup2(pfd[1], 1);
 		return (5);
 	}
-	free(dst);
+	ft_strdel(&dst);
 	status = 0;
 	father = fork();
 	if (father == 0)
