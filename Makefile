@@ -14,16 +14,19 @@ NAME = 21sh
 
 HEADER = includes/shell.h
 
-FLAGS = -Wall -Werror -Wextra -g3 -O3
+FLAGS = -Wall -Werror -Wextra -g3 -O3 -fsanitize=address
 
 SRC = 	builtin_exit_error.c \
+		designator_string.c \
 		history_show_func.c \
 		split_inib_tools.c \
 		new_arg_to_list.c \
 		space_treatment.c \
 		term_functions.c \
+		history_option.c \
 		split_on_spec.c \
 		old_functions.c \
+		history_tools.c \
 		parseandexc2.c \
 		ft_redirect4.c \
 		tools_split.c \

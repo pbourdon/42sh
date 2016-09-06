@@ -78,57 +78,6 @@ void		design_to_index(t_data *data, int index)
 	readgnl(data, create_command(history->str, data->args), 1);
 }
 
-int			sub_loop(char **command, char *target)
-{
-	int		i;
-
-	i = 0;
-	while (command[i])
-	{
-		if (ft_strstr(command[i], target) != NULL)
-			return (1);
-		i++;
-	}
-	return (-1);
-}
-
-void		sub_design_to_string(t_data *data, char *command, int find)
-{
-	if (find == 1)
-	{
-		ft_putendl(command);
-		readgnl(data, create_command(command, data->args), 1);
-	}
-	else
-	{
-		ft_putstr("sh: ");
-		ft_putstr(data->args[0]);
-		ft_putendl(": event not found");
-		data->binreturn = 255;
-	}
-}
-
-void		design_to_string(t_data *data, char *target, int find)
-{
-	t_history	*history;
-	char		**command;
-
-	target += 2;
-	history = g_shell.history;
-	while (history)
-	{
-		command = ft_strsplit(history->str, ' ');
-		if (sub_loop(command, target) == 1)
-		{
-			find = 1;
-			break ;
-		}
-		history = history->next;
-		freetab(command);
-	}
-	sub_design_to_string(data, history->str, find);
-}
-
 int			check_syntax_designator(t_data *data)
 {
 	if (data->args[0][0] == '!')
@@ -147,7 +96,8 @@ void		designator(t_data *data)
 	char	*tmp;
 
 	i = 0;
-	if (ft_isdigit(data->args[0][1]) || (data->args[0][1] == '-' && ft_isdigit(data->args[0][2])))
+	if (ft_isdigit(data->args[0][1]) ||
+		(data->args[0][1] == '-' && ft_isdigit(data->args[0][2])))
 	{
 		tmp = data->args[0];
 		if (ft_strisdigit(++tmp) == 0)
@@ -159,4 +109,6 @@ void		designator(t_data *data)
 		design_to_index_rev(data, 1);
 	else if (data->args[0][1] == '?')
 		design_to_string(data, data->args[0], 0);
+	else
+		design_to_start_string(data, data->args[0], 0);
 }

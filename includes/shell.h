@@ -159,6 +159,16 @@ typedef struct			s_liste
 	struct s_liste		*next;
 }						t_liste;
 
+char					*create_command(char *command, char **args);
+void					add_arg_to_history(t_data *data);
+void					add_to_history(t_history *his, char *shell_line);
+int						check_syntax(char **command);
+int						ft_get_lenght_list(t_history *history);
+int						append_to_list(void);
+void					append_to_file(void);
+void					design_to_start_string(t_data *data, char *target, int find);
+void					design_to_string(t_data *data, char *target, int find);
+void					show_helper_history(void);
 int						check_syntax_designator(t_data *data);
 void					designator(t_data *data);
 t_liste2				*createliste(void);
