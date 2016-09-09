@@ -67,14 +67,14 @@ void			sub_read(t_tree *tree, t_data *data)
 	arg_to_list(liste, tree);
 	liste = del_last_null_arg(liste);
 	free_tree(tree);
-	if (check_list_2(liste))
-	{
-		free_list2(liste);
-		ft_strdel(&data->line);
-		return ;
-	}
-	else
-		tmp = liste;
+	// if (check_list_2(liste))
+	// {
+		// free_list2(liste);
+		// ft_strdel(&data->line);
+		// return ;
+	// }
+	// else
+	tmp = liste;
 	while (tmp)
 	{
 		if (ft_strcmp(tmp->arg, ";") && ft_strcmp(tmp->arg, "||") &&
@@ -121,8 +121,8 @@ int				readgnl(t_data *data, char *str, int fd)
 	ret = 0;
 	if ((ptr = to_list(str, -1)))
 	{
+		ret = check_list(ptr);
 		printt(ptr);
-		ret = check_list(ptr, ptr, 0, 0);
 		ptr = good_order(ptr, ptr, ptr);
 		tree = to_tree(NULL, ptr, 5, NULL);
 		if (ret == 0)

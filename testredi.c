@@ -100,7 +100,7 @@ int		mainredi(t_data *data, int i)
 		ft_putendl(ft_itoa(tmp->redi));
 		if (tmp->rediavan)
 			ft_putendl(tmp->rediavan);
-		ft_putendl("__________");
+		// ft_putendl("__________");
 		tmp = tmp->next;
 	}
 	if (ifitsredi(data) != 0)
