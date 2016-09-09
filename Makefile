@@ -32,6 +32,7 @@ SRC = 	builtin_exit_error.c \
 		ft_redirect4.c \
 		tools_split.c \
 		parseandexc.c \
+		check_error.c \
 		press_key1.c \
 		press_key2.c \
 		press_key3.c \
