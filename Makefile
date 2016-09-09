@@ -6,7 +6,7 @@
 #    By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/02 13:52:37 by bde-maze          #+#    #+#              #
-#*   Updated: 2016/09/05 12:33:14 by                  ###   ########.fr       *#
+#*   Updated: 2016/09/09 12:48:16 by                  ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = 21sh
 
 HEADER = includes/shell.h
 
-FLAGS = -Wall -Werror -Wextra -g3 -O3 -fsanitize=address
+FLAGS = -Wall -Werror -Wextra -g3 -O3
 
 SRC = 	builtin_exit_error.c \
 		designator_string.c \
@@ -28,6 +28,7 @@ SRC = 	builtin_exit_error.c \
 		old_functions.c \
 		history_tools.c \
 		parseandexc2.c \
+		newredi1.c \
 		ft_redirect4.c \
 		tools_split.c \
 		parseandexc.c \

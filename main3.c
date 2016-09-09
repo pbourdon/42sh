@@ -46,7 +46,9 @@ void			sub_sub_parse(t_data *data)
 void			sub_parsecommand(t_data *data, int i)
 {
 	if (ifitsredi(data) != 0)
-		return (sub_sub_parse(data));
+	{
+		launch_main_fork(data);
+	}
 	else if (checklineok(data, data->args) != -1)
 		return ;
 	else if (ft_strcmp(data->args[0], "export") == 0 && (i = 1))

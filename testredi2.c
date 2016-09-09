@@ -29,10 +29,10 @@ int		ifitsredi(t_data *data)
 			return (4);
 		if (ft_strcmp(data->args[i], "|") == 0)
 			return (5);
-		if (ft_strstr(data->args[i], ">") != NULL)
-			return (7);
-		if (checkagred(data->args[i], 0, 0) == 1)
-			return (6);
+		// if (ft_strstr(data->args[i], ">") != NULL)
+		// 	return (7);
+		// if (checkagred(data->args[i], 0, 0) == 1)
+		// 	return (6);
 		i++;
 	}
 	return (0);

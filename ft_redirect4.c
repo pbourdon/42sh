@@ -79,7 +79,7 @@ void		sub_exec(t_data *data)
 	int ret;
 	int ex;
 
-	ret = 0;	
+	ret = 0;
 	ex = 0;
 	if (ft_strcmp(data->args[0], "exit") == 0)
 	{
@@ -101,21 +101,21 @@ void		sub_exec(t_data *data)
 
 int			execveremix(t_data *data)
 {
-	sub_exec(data);
+	// sub_exec(data);
 	if (createthetab(data) == 1)
 	{
 		if (access(data->tabb[0], F_OK) == 0)
 		{
-			ft_reset_term(g_shell.term_reset.term_copy);
+			// ft_reset_term(g_shell.term_reset.term_copy);
 			if (data->envi == 1)
 				execve(data->tabb[0], data->tabb, NULL);
 			else
 			{
 				execve(data->tabb[0], data->tabb, data->env);
-				ft_reset_term(g_shell.term_reset.term);
+				// ft_reset_term(g_shell.term_reset.term);
 				return (1);
 			}
-			ft_reset_term(g_shell.term_reset.term);
+			// ft_reset_term(g_shell.term_reset.term);
 		}
 		freetab(data->tabb);
 		freetab(data->args);

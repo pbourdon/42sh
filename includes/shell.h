@@ -60,6 +60,20 @@ typedef struct			s_liste2
 	struct s_liste2		*next;
 }						t_liste2;
 
+typedef struct			s_larg
+{
+	char				**tabb;
+	struct s_larg		*next;
+	struct s_redi		*redi;
+}						t_larg;
+
+typedef struct			s_redi
+{
+	int					redi;
+	char				*agreg;
+	struct s_redi		*next;
+}						t_redi;
+
 typedef struct			s_term
 {
 	char				*term_name;
@@ -133,6 +147,7 @@ typedef struct			s_data
 	int					okchev;
 	char				*tmpagreg;
 	char				*avredi;
+	struct	s_larg		*argli;
 	struct s_liste2		*liste;
 }						t_data;
 
@@ -188,6 +203,7 @@ char					quote_norm(int inib, char quote, char c);
 void					history(t_data *data);
 int						add_token(char *str);
 t_liste					*create_list(void);
+void 					launch_main_fork(t_data *data);
 int						is_a_word(int quote, int inib, char c);
 void					free_tree(t_tree *tree);
 int						switch_case(t_tk *ptr, int nb_redir, int nb_redir2);
@@ -203,6 +219,7 @@ void					aff(t_tree *tree);
 t_tk					*good_order(t_tk *ptr, t_tk *prev, t_tk *base);
 int						sub_split_on_spec(char **cmd, char **ptr);
 int						is_a_spec2(char *str, char c);
+void 					fill_the_main_liste(t_data *data);
 char					*free_space(char *str, int quote, int d, int i);
 char					*replace_rest_of_space(char *ptr, int len);
 char					*erase_first_space(char *line);
@@ -222,6 +239,7 @@ char					**printifenv(char **tabb, char *str);
 int						alreadyexist(char **tabb, char *str);
 int						ft_strlenremix(char *str);
 char					*getpwd(void);
+void 					fill_the_agreg_liste(t_data *data);
 char					**newtab(char **tabb);
 void					freedata(char *str, t_data *data);
 int						errcd(t_data *data);
