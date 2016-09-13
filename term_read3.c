@@ -21,23 +21,25 @@ int     since_last(int k)
 	a = k;
 	while (g_shell.shell_line[a] != '\n')
 	{
+		if (a == 0)
+			return (g_cursor.position_line - g_shell.last_backslash + 3);
 		a--;
 		i++;
 	}
-	if (i == 0 && g_shell.backslash_index == -1)
+	if (i == 0)
 	{
 		a--;
 		while (g_shell.shell_line[a] != '\n')
 		{
+			if (a == 0)
+				return (g_cursor.position_line - g_shell.last_backslash + 3);
 			a--;
 			i++;
 		}
 		i++;
 	}
-	else if (i == 0)
-	{
-		return (k - g_shell.last_backslash + 3);
-	}
+	ft_putnbr_fd(i, 2);
+	ft_putstr_fd("OIO\n", 2);
 	return (i);
 }
 
@@ -151,6 +153,7 @@ int	get_pos_jump(void)
 
 int		get_pos_back(void)
 {
+	ft_putstr_fd("HERE\n", 2);
 	if (g_shell.backslash_index == -1)
 	{
 		if (ft_strchr_i(g_shell.shell_line, '\n') >= g_cursor.position_line)
@@ -164,7 +167,10 @@ int		get_pos_back(void)
 			return ((since_last(g_cursor.position_line) - 1) % g_shell.shell_win_size);
 	}
 	else
+	{
+		ft_putstr_fd("YEP IT, HERE\ns", 2);
 			return ((since_last(g_cursor.position_line) - 1) % g_shell.shell_win_size);
+		}
 }
 
 int		get_pos_l2(void)
