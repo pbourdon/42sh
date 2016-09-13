@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/04 09:43:51 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/25 16:07:40 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/08 14:37:08 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,11 @@ void				shell_init(void)
 	g_shell.history->next = NULL;
 	g_shell.history->prev = NULL;
 	g_shell.history->str = NULL;
-	g_shell.selected_end = 0;
-	g_shell.selected_start = 0;
+	g_shell.selected_end = -1;
+	g_shell.selected_start = -1;
 	g_shell.selected_copy = "";
 	g_shell.shell_fd_0 = 0;
+	g_shell.mode_jump = 0;
 }
 
 t_history			*double_left(char *fin)

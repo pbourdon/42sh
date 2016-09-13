@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 14:35:48 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/04 17:51:56 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/09/08 13:54:06 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ void			press_printable_char(char *buffer)
 		g_shell.shell_line = add_to_array(g_shell.shell_line, buffer[0], \
 				g_cursor.position_line, g_shell.length_line);
 		g_shell.length_line++;
-		movements_delete(1);
+		if (ft_strchr(g_shell.shell_line,'\n'))
+			movements_delete2(1);
+		else
+			movements_delete(1);
 		if (g_shell.backslash_index >= 0)
 			g_shell.backslash_index++;
 	}
@@ -85,7 +88,10 @@ int				ft_init_verif(void)
 			g_shell.shell_line = add_to_array(g_shell.shell_line, a[0], \
 					g_cursor.position_line, g_shell.length_line);
 			g_shell.length_line++;
-			movements_delete(1);
+			if (ft_strchr(g_shell.shell_line,'\n'))
+				movements_delete2(1);
+			else
+				movements_delete(1);
 			if (g_shell.backslash_index >= 0)
 				g_shell.backslash_index++;
 		}

@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 14:36:05 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/29 17:43:15 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/08 14:28:01 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void			press_shift_left(void)
 			g_shell.backslash_index--;
 		go_left(g_cursor, g_shell);
 		move_cursor_left(g_cursor, g_shell);
+		if (ft_strchr(g_shell.shell_line, '\n'))
+			update_cursor();
 		index_c--;
 	}
 }
@@ -70,6 +72,8 @@ void			press_shift_right(void)
 			g_shell.backslash_index++;
 		go_right(g_cursor, g_shell);
 		move_cursor_right(g_cursor, g_shell);
+		if (ft_strchr(g_shell.shell_line, '\n'))
+			update_cursor();
 		index_c++;
 	}
 }

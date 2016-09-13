@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 16:53:08 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/28 16:53:21 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/08 14:55:37 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int		ft_putstr_i(char *str, int i)
 			tputs(tgetstr("mr", NULL), 0, tputs_putchar);
 		}
 		ft_putchar(str[i]);
+		if ((i + 6) % (g_shell.shell_win_size) == 0 && str[i] == '\n')
+			ft_putchar(str[i]);
 		i++;
 		res++;
 		tputs(tgetstr("me", NULL), 0, tputs_putchar);
@@ -52,6 +54,7 @@ char	*del_from_arr(char *str, int i)
 	str[i - 1] = '\0';
 	return (str);
 }
+
 
 void	move_cursor_left(void)
 {

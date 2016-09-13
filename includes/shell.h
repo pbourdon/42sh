@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/31 15:53:35 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/05 18:40:33 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/09/12 14:39:39 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 
 
 
-#include <stdio.h>
+# include <stdio.h>
 
 
 
@@ -107,6 +107,7 @@ typedef struct			s_shell
 	int					size;
 	int					shell_fd_0;
 	struct s_term		term_reset;
+	int					mode_jump;
 }						t_shell;
 
 typedef struct			s_cursor
@@ -193,7 +194,9 @@ void					show_history_rev_until(char *nb);
 void					show_history_rev(void);
 void					dell_history(void);
 int						parenthesis_closed(void);
+
 void					movements_delete(int a);
+void					movements_delete2(int a);
 char					**split_on_inib(char *str);
 void					show_history_until(char *len);
 void					show_history(void);
