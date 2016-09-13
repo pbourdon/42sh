@@ -6,13 +6,13 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 16:53:26 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/08 15:24:57 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/09/13 17:07:40 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/shell.h"
 
-int     since_last(int k)
+int			since_last(int k)
 {
 	int i;
 	int a;
@@ -38,12 +38,10 @@ int     since_last(int k)
 		}
 		i++;
 	}
-	ft_putnbr_fd(i, 2);
-	ft_putstr_fd("OIO\n", 2);
 	return (i);
 }
 
-int		ft_strchr_i(char *str, char c)
+int			ft_strchr_i(char *str, char c)
 {
 	int i;
 
@@ -55,10 +53,10 @@ int		ft_strchr_i(char *str, char c)
 	return (i);
 }
 
-
-void	go_right(void)
+void		go_right(void)
 {
-	if (g_cursor.position_x_rel == g_shell.shell_win_size - 1 || g_shell.shell_line[g_cursor.position_line] == '\n')
+	if (g_cursor.position_x_rel == g_shell.shell_win_size - 1 \
+			|| g_shell.shell_line[g_cursor.position_line] == '\n')
 	{
 		tputs(tgoto(tgetstr("ch", NULL), 0, 0), 1, tputs_putchar);
 		tputs(tgetstr("do", NULL), 0, tputs_putchar);
@@ -69,7 +67,7 @@ void	go_right(void)
 	}
 }
 
-int		get_n_line(void)
+int			get_n_line(void)
 {
 	if (g_shell.shell_win_size == 0)
 		return (-1);
@@ -78,7 +76,7 @@ int		get_n_line(void)
 	return ((g_cursor.position_line + 6) / g_shell.shell_win_size);
 }
 
-int		get_pos_l(void)
+int			get_pos_l(void)
 {
 	if (g_shell.shell_win_size == 0)
 		return (-1);
@@ -90,7 +88,7 @@ int		get_pos_l(void)
 		return (6 + (g_cursor.position_line % g_shell.shell_win_size));
 }
 
-int	get_pos_jump2(void)
+int			get_pos_jump2(void)
 {
 	int a;
 	int i;
@@ -100,29 +98,29 @@ int	get_pos_jump2(void)
 	while (i < g_cursor.position_line)
 	{
 		if (g_shell.shell_line[i] == '\n')
-		a++;
+			a++;
 		i++;
 	}
-	return (a +((g_cursor.position_line + 6) / g_shell.shell_win_size));
+	return (a + ((g_cursor.position_line + 6) / g_shell.shell_win_size));
 }
 
-int		get_pos_back2(void)
+int			get_pos_back2(void)
 {
 	int a;
 	int i;
+
 	i = 0;
 	a = 0;
-
 	while (i < g_cursor.position_line)
 	{
 		if (g_shell.shell_line[i] == '\n')
-		a++;
+			a++;
 		i++;
 	}
-	return (a +((g_cursor.position_line + 2) / g_shell.shell_win_size));
+	return (a + ((g_cursor.position_line + 2) / g_shell.shell_win_size));
 }
 
-int		get_n_line2(void)
+int			get_n_line2(void)
 {
 	if (g_shell.shell_win_size == 0)
 		return (-1);
@@ -135,8 +133,7 @@ int		get_n_line2(void)
 	return ((g_cursor.position_line + 6) / g_shell.shell_win_size);
 }
 
-
-int	get_pos_jump(void)
+int			get_pos_jump(void)
 {
 	if (ft_strchr_i(g_shell.shell_line, '\n') >= g_cursor.position_line)
 	{
@@ -147,11 +144,12 @@ int	get_pos_jump(void)
 	}
 	else
 	{
-		return ((since_last(g_cursor.position_line) - 1) % g_shell.shell_win_size);
+		return ((since_last(g_cursor.position_line) - 1) \
+				% g_shell.shell_win_size);
 	}
 }
 
-int		get_pos_back(void)
+int			get_pos_back(void)
 {
 	ft_putstr_fd("HERE\n", 2);
 	if (g_shell.backslash_index == -1)
@@ -161,33 +159,33 @@ int		get_pos_back(void)
 			if ((g_cursor.position_line + 2) % g_shell.shell_win_size == 0)
 				return (0);
 			else
-				return (((g_cursor.position_line + 2 - g_shell.last_backslash) % g_shell.shell_win_size));
+				return (((g_cursor.position_line + 2 - g_shell.last_backslash) \
+							% g_shell.shell_win_size));
 		}
 		else
-			return ((since_last(g_cursor.position_line) - 1) % g_shell.shell_win_size);
+			return ((since_last(g_cursor.position_line) - 1) \
+					% g_shell.shell_win_size);
 	}
 	else
-	{
-		ft_putstr_fd("YEP IT, HERE\ns", 2);
-			return ((since_last(g_cursor.position_line) - 1) % g_shell.shell_win_size);
-		}
+		return ((since_last(g_cursor.position_line) - 1) \
+				% g_shell.shell_win_size);
 }
 
-int		get_pos_l2(void)
+int			get_pos_l2(void)
 {
 	if (g_shell.shell_win_size == 0)
 		return (-1);
 	if (g_shell.backslash_index == -1)
 		return (get_pos_jump());
 	else if (g_shell.shell_backslash_level > 0)
-			return (get_pos_back());
+		return (get_pos_back());
 	if ((g_cursor.position_line + 6) % g_shell.shell_win_size == 0)
 		return (0);
 	else
 		return (((g_cursor.position_line + 6) % g_shell.shell_win_size));
 }
 
-void  	go_left_jump()
+void		go_left_jump(void)
 {
 	g_cursor.position_line--;
 	tputs(tgoto(tgetstr("ch", NULL), 0, \
@@ -195,7 +193,7 @@ void  	go_left_jump()
 	g_cursor.position_line++;
 }
 
-void	go_left(void)
+void		go_left(void)
 {
 	ft_putstr_fd("000", 2);
 	if (g_cursor.position_x_rel == 0)
@@ -218,12 +216,10 @@ void	go_left(void)
 	}
 }
 
-
-void	update_cursor(void)
+void		update_cursor(void)
 {
 	if (ft_strchr(g_shell.shell_line, '\n'))
 	{
-		ft_putstr_fd("NOOOOOOOOO\n\n", 2);
 		g_cursor.position_x_rel = get_pos_l2();
 		g_cursor.position_y_rel = get_n_line2();
 	}

@@ -6,13 +6,13 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 15:02:07 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/08 15:59:08 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/09/13 17:14:09 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/shell.h"
 
-void print_cursor_fd_2()
+void		print_cursor_fd_2()
 {
 	ft_putstr_fd("Cursor : \n position_line : ", 2);
 	ft_putnbr_fd(g_cursor.position_line, 2);
@@ -25,7 +25,7 @@ void print_cursor_fd_2()
 	ft_putstr_fd("\n",2);
 }
 
-void print_shell_fd_2()
+void		print_shell_fd_2()
 {
 	t_history *h;
 
@@ -66,20 +66,20 @@ void print_shell_fd_2()
 	// }
 }
 
-void				sig_handler3(int sign)
+void		sig_handler3(int sign)
 {
 	sign = 1;
 	g_shell.shell_fd_0 = dup(0);
 	close(0);
 }
 
-void				sig_handler2(int sign)
+void		sig_handler2(int sign)
 {
 	sign = 1;
 	ft_putendl("");
 }
 
-void				shell_listening_char(void)
+void		shell_listening_char(void)
 {
 	struct winsize	w;
 	char			*buffer;
@@ -89,17 +89,14 @@ void				shell_listening_char(void)
 		signal(SIGINT, sig_handler3);
 		signal(SIGQUIT, sig_handler3);
 		signal(SIGTSTP, sig_handler3);
-		buffer = (char *)malloc(sizeof(*buffer) * 9);
-		buffer[8] = '\0';
+		buffer = ft_strnew(8);
 		update_shell_line_original();
 		ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 		g_shell.shell_win_size = w.ws_col;
-		//update_cursor(); FUCKING UPDATE!!!!!!!!!!!!!!!!!
 		prepare_to_listen(buffer);
 		if (listen(buffer))
 			break ;
-		//if (ft_strchr(g_shell.shell_line, '\n'))
-			update_cursor(); //NOT SURE!!!!!!!!!
+		update_cursor();
 		print_shell_fd_2();
 		print_cursor_fd_2();
 		ft_strdel(&buffer);
@@ -110,7 +107,7 @@ void				shell_listening_char(void)
 	ft_strdel(&buffer);
 }
 
-void				prepare_to_listen(char buffer[9])
+void		prepare_to_listen(char buffer[9])
 {
 	int				ret;
 
@@ -131,9 +128,10 @@ void				prepare_to_listen(char buffer[9])
 		buffer[ret] = '\0';
 }
 
-void				delete_selection_if_other_than_option(char *buffer)
+void		delete_selection_if_other_than_option(char *buffer)
 {
 	int				temp;
+
 	if (!is_option_left(buffer) && !is_option_right(buffer))
 	{
 		if (g_shell.selected_end != -1 && g_shell.selected_start != -1)
@@ -146,6 +144,6 @@ void				delete_selection_if_other_than_option(char *buffer)
 			press_backspace_key();
 			while (g_cursor.position_line < temp)
 				press_right_key();
-	}
+		}
 	}
 }

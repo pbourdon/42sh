@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/04 10:23:53 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/08 17:55:43 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/09/13 17:00:27 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,6 @@ void	delete_shell_backslash_line(void)
 		press_left_key();
 		if (ft_strchr(g_shell.shell_line, '\n'))
 			update_cursor();
-		// if (!ft_strchr(g_shell.shell_line,'\n'))
-			// g_shell.shell_line[g_shell.last_backslash + i] = '\0';
-		// else
 		g_shell.shell_line[g_cursor.position_line + 1] = '\0';
 		g_shell.length_line--;
 		i++;
@@ -61,10 +58,10 @@ void	replace_shell_backslash_line(char *str)
 {
 	int		i;
 	char	*del;
+
 	ft_putstr_fd("4\n", 2);
 	i = g_shell.last_backslash;
 	delete_shell_backslash_line();
-// sleep(1);
 	ft_putstr(str);
 	i = ft_strlen(str);
 	while (i > 0)

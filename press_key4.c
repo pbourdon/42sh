@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 14:35:48 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/08 13:54:06 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/09/13 16:58:02 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void			press_printable_char(char *buffer)
 		g_shell.shell_line = add_to_array(g_shell.shell_line, buffer[0], \
 				g_cursor.position_line, g_shell.length_line);
 		g_shell.length_line++;
-		if (ft_strchr(g_shell.shell_line,'\n'))
+		if (ft_strchr(g_shell.shell_line, '\n'))
 			movements_delete2(1);
 		else
 			movements_delete(1);
@@ -69,13 +69,10 @@ int				ft_cheat(char *str, char tabb[3], int i)
 	return (0);
 }
 
-int				ft_init_verif(void)
+int				ft_init_verif(int n, char *a)
 {
 	char	tabb[3];
-	int		n;
-	char	*a;
-	a = "\n";
-	n = 0;
+
 	tabb[0] = 0;
 	tabb[1] = 0;
 	tabb[2] = 0;
@@ -88,20 +85,14 @@ int				ft_init_verif(void)
 			g_shell.shell_line = add_to_array(g_shell.shell_line, a[0], \
 					g_cursor.position_line, g_shell.length_line);
 			g_shell.length_line++;
-			if (ft_strchr(g_shell.shell_line,'\n'))
-				movements_delete2(1);
-			else
+			(ft_strchr(g_shell.shell_line, '\n')) ? movements_delete2(1) : \
 				movements_delete(1);
-			if (g_shell.backslash_index >= 0)
-				g_shell.backslash_index++;
+			(g_shell.backslash_index >= 0) ? g_shell.backslash_index++ : 0;
 		}
 		g_shell.backslash_index = 0;
 		g_shell.shell_backslash_level++;
 		g_shell.last_backslash = g_shell.length_line;
-		 if (n == 1 || n == 3)
-			ft_putstr("\n? ");
-		 else
-		 	ft_putstr("? ");
+		ft_putstr((n == 1 || n == 3) ? "\n? " : "? ");
 		return (1);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 14:36:05 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/08 14:28:01 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/09/13 16:58:15 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 int				press_enter_key(void)
 {
 	press_end_key();
-	if (ft_init_verif())
+	if (ft_init_verif(0, "\n"))
 		return (0);
-	if (ft_strcmp(g_shell.shell_line, "") != 0 && g_shell.shell_heredoc == 0 && g_shell.shell_line[0] != '!')
+	if (ft_strcmp(g_shell.shell_line, "") != 0 && g_shell.shell_heredoc == 0 \
+			&& g_shell.shell_line[0] != '!')
 		add_to_history(g_shell.history, g_shell.shell_line);
 	g_shell.backslash_index = -1;
 	if (g_shell.shell_heredoc == 0)

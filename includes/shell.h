@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/31 15:53:35 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/12 14:39:39 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/09/13 16:56:28 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -419,7 +419,7 @@ char					**freshnewtab(t_data *data, char *dst, char *dst2);
 int						alreadyin(t_data *data, char *str);
 int						stringforcd(t_data *data);
 int						cdendargs(t_data *data);
-int						ft_init_verif(void);
+int						ft_init_verif(int n, char *a);
 int						movecd(t_data *data);
 int						sub_parsecommand2(t_data *data);
 void					sub_parsecommand(t_data *data, int i);

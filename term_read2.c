@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 16:53:08 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/08 14:55:37 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/09/13 17:01:17 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ char	*del_from_arr(char *str, int i)
 	str[i - 1] = '\0';
 	return (str);
 }
-
 
 void	move_cursor_left(void)
 {

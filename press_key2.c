@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 14:35:10 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/08 16:19:41 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/09/13 16:47:30 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,8 @@ void			movements_delete2(int a)
 	if ((g_cursor.position_x_rel == g_shell.shell_win_size - 1) && \
 			g_cursor.position_line != g_shell.length_line)
 	{
-		if (ft_strchr(g_shell.shell_line, '\n'))
-		{
-			ft_putstr(" ");
-			tputs(tgetstr("le", NULL), 0, tputs_putchar);
-		}
+		ft_putstr(" ");
+		tputs(tgetstr("le", NULL), 0, tputs_putchar);
 	}
 	move_cursor_right(g_cursor, g_shell);
 	update_cursor();
@@ -113,7 +110,7 @@ void			press_delete_key(void)
 		g_shell.shell_line = del_from_arr(g_shell.shell_line, \
 				g_cursor.position_line + 1);
 		g_shell.length_line--;
-		if (ft_strchr(g_shell.shell_line,'\n'))
+		if (ft_strchr(g_shell.shell_line, '\n'))
 			movements_delete2(0);
 		else
 			movements_delete(0);

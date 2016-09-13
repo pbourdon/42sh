@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 14:35:27 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/08 13:46:06 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/09/13 16:47:47 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void			press_home_key(void)
 	while (h > 0)
 	{
 		if (g_shell.backslash_index == 0)
-		break ;
+			break ;
 		press_left_key();
 		h--;
 		if (ft_strchr(g_shell.shell_line, '\n'))
