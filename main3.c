@@ -57,6 +57,8 @@ void			sub_parsecommand(t_data *data, int i)
 		callallenv(data);
 	else if (ft_strcmp(data->args[0], "setenv") == 0 && (i = 1))
 		callsetenv(data);
+	else if (ft_strcmp(data->args[0], "unset") == 0 && (i = 1))
+		deletefromenv(data, 1);
 	else if (ft_strcmp(data->args[0], "unsetenv") == 0 && (i = 1))
 		callunsetenv(data);
 	else if (ft_strcmp(data->args[0], "cd") == 0 && (i = 1))

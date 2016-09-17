@@ -64,3 +64,59 @@ int		intb2(t_data *data, char *str, char *dst, char **tabb)
 	alreadyintb3(data, tabb);
 	return (1);
 }
+
+void deletefromenvtool(t_data *data, char **tabb, int k, int in)
+{
+	printtab(tabb);
+	if (in == 1)
+	{
+		if (data->builttab)
+		{
+			freetab(data->builttab);
+			if (tabb[0] == NULL)
+				data->builttab = NULL;
+			else
+				data->builttab = newtab(tabb);
+			freetab(tabb);
+		}
+	}
+	if (data->args[k + 1])
+		deletefromenv(data, k + 1);
+}
+
+void deletefromenv(t_data *data, int k)
+{
+	int i;
+	int o;
+	char **tabb;
+	int in;
+
+	in = 0;
+	o = 0;
+	i = 0;
+	if (data->builttab)
+	{
+		tabb = malloc(sizeof(char *) * (ft_strlentab(data->builttab) - 2));
+		while (data->builttab[i])
+		{
+			ft_putendl("titi");
+			if (ft_strcmp(data->builttab[i], data->args[k]) == 0)
+			{
+				in = 1;
+				if (data->builttab[i + 3])
+					i = i + 3;
+				else
+				{
+					tabb[o] = NULL;
+					deletefromenvtool(data, tabb, k, in);
+					return ;
+				}
+			}
+			tabb[o] = ft_strdup(data->builttab[i]);
+			o++;
+			i++;
+		}
+		tabb[o]= NULL;
+		deletefromenvtool(data, tabb, k, in);
+	}
+}

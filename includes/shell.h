@@ -175,6 +175,7 @@ typedef struct			s_liste
 }						t_liste;
 
 char					*create_command(char *command, char **args);
+void 					deletefromenv(t_data *data, int k);
 void					add_arg_to_history(t_data *data);
 void					add_to_history(t_history *his, char *shell_line);
 int						check_syntax(char **command);
