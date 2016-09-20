@@ -44,9 +44,9 @@ void		design_to_index_rev(t_data *data, int index)
 	}
 	if (i > len)
 	{
-		ft_putstr("sh: ");
-		ft_putstr(data->args[0]);
-		ft_putendl(": event not found");
+		ft_putstr_fd("sh: ", 2);
+		ft_putstr_fd(data->args[0], 2);
+		ft_putendl_fd(": event not found", 2);
 		data->binreturn = 255;
 		return ;
 	}
@@ -68,14 +68,16 @@ void		design_to_index(t_data *data, int index)
 	}
 	if (i < index)
 	{
-		ft_putstr("sh: ");
-		ft_putstr(data->args[0]);
-		ft_putendl(": event not found");
+		ft_putstr_fd("sh: ", 2);
+		ft_putstr_fd(data->args[0], 2);
+		ft_putendl_fd(": event not found", 2);
 		data->binreturn = 255;
 		return ;
 	}
 	ft_putendl(history->str);
 	readgnl(data, create_command(history->str, data->args), 1);
+	ft_putendl(data->home);
+	ft_putendl(data->pwd);
 }
 
 int			check_syntax_designator(t_data *data)

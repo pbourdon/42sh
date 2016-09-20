@@ -50,9 +50,9 @@ void			dell_history_offset(t_data *data, char *offset)
 		if (ft_strisdigit(offset) != 0 ||
 			real_offset >= ft_get_lenght_list(g_shell.history))
 		{
-			ft_putstr("sh: history: ");
-			ft_putstr(offset);
-			ft_putendl(": history position out of range");
+			ft_putstr_fd("sh: history: ", 2);
+			ft_putstr_fd(offset, 2);
+			ft_putendl_fd(": history position out of range", 2);
 			data->binreturn = 255;
 			return ;
 		}
@@ -60,7 +60,7 @@ void			dell_history_offset(t_data *data, char *offset)
 	}
 	else if (offset == NULL)
 	{
-		ft_putendl("sh: history: -d: option requires an argument");
+		ft_putendl_fd("sh: history: -d: option requires an argument", 2);
 		show_helper_history();
 		data->binreturn = 255;
 		return ;
@@ -73,7 +73,7 @@ void			switch_option_2(t_data *data, char *str)
 	{
 		if (append_to_list() == -1)
 		{
-			ft_putendl("sh: history: no history source file");
+			ft_putendl_fd("sh: history: no history source file", 2);
 			data->binreturn = 255;
 		}
 	}
@@ -92,7 +92,7 @@ void			switch_option(t_data *data, char *str)
 		show_helper_history();
 	else if (str[2])
 	{
-		ft_putendl("sh: history: cannot use more than one option");
+		ft_putendl_fd("sh: history: cannot use more than one option", 2);
 		show_helper_history();
 		data->binreturn = 255;
 		return ;

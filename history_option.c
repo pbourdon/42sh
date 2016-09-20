@@ -43,6 +43,7 @@ void			read_loop(int out)
 	if (get_next_line(out, &line) > 0)
 	{
 		history->str = ft_strdup(line);
+		ft_strdel(&line);
 		history->prev = NULL;
 		history->next = NULL;
 		while (get_next_line(out, &line) > 0)
@@ -53,13 +54,14 @@ void			read_loop(int out)
 			history->str = ft_strdup(line);
 			history->prev = tmp;
 			history->next = NULL;
+			ft_strdel(&line);
 		}
+		ft_strdel(&line);
 	}
 }
 
 int				append_to_list(void)
 {
-	t_history	*tmp;
 	int			out;
 
 	out = open(".ftsh_history", O_RDWR);
@@ -67,12 +69,6 @@ int				append_to_list(void)
 		return (-1);
 	dell_history();
 	read_loop(out);
-	tmp = g_shell.history;
-	while (tmp)
-	{
-		ft_putendl(tmp->str);
-		tmp = tmp->next;
-	}
 	return (0);
 }
 
@@ -83,7 +79,7 @@ void			add_arg_to_history(t_data *data)
 	i = 2;
 	if (data->args[2] == NULL)
 	{
-		ft_putendl("sh: history: give at least one argument");
+		ft_putendl_fd("sh: history: give at least one argument", 2);
 		show_helper_history();
 		data->binreturn = 255;
 		return ;

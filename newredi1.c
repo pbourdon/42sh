@@ -274,11 +274,11 @@ void 	main_fork(t_data *data, t_larg *liste)
 	if ((father = fork()) == 0)
 		main_fork_exec(data, liste, pfd);
 	else
-		{
-			close(pfd[1]);
-			dup2(pfd[0], 0);
-			return (main_fork(data, liste->next));
-		}
+	{
+		close(pfd[1]);
+		dup2(pfd[0], 0);
+		return (main_fork(data, liste->next));
+	}
 	close(pfd[0]);
 	close(pfd[1]);
 	waitpid(father, NULL, 0);

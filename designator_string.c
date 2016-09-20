@@ -35,9 +35,9 @@ void		sub_design_to_string(t_data *data, char *command, int find)
 	}
 	else
 	{
-		ft_putstr("sh: ");
-		ft_putstr(data->args[0]);
-		ft_putendl(": event not found");
+		ft_putstr_fd("sh: ", 2);
+		ft_putstr_fd(data->args[0], 2);
+		ft_putendl_fd(": event not found", 2);
 		data->binreturn = 255;
 	}
 }
