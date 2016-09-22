@@ -14,7 +14,7 @@ NAME = 21sh
 
 HEADER = includes/shell.h
 
-FLAGS = -Wall -Werror -Wextra -g3 -O3
+FLAGS = -Wall -Werror -Wextra -g3 -O3 -fsanitize=address
 
 SRC = 	builtin_exit_error.c \
 		designator_string.c \
