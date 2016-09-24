@@ -6,7 +6,7 @@
 /*   By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/24 14:39:48 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/28 17:38:16 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/21 23:23:51 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		checklineok(t_data *data, char **tabb)
 	i = 0;
 	if (ft_strlentab(tabb) != 1)
 		return (-1);
-	if (ft_strstr(tabb[0], "=") != NULL)
+	if (ft_strstr(tabb[0], "=") != NULL && tabb[0] && tabb[0][0] != '=')
 	{
 		dst = firstpartequal(tabb[0]);
 		dst2 = secondpartequal(tabb[0]);
@@ -87,13 +87,13 @@ char	**modiftabafteruse(t_data *data)
 	return (tabb);
 }
 
-int		insertthetmp(t_data *data)
+void	insertthetmp(t_data *data)
 {
 	char	*str;
 	int		i;
 
 	i = 0;
-	if (data->builttab)
+	if (export_no_pipe(data) == 2 && data->builttab)
 	{
 		while (data->builttab[i])
 		{
@@ -107,10 +107,10 @@ int		insertthetmp(t_data *data)
 				data->args = ft_strsplit(str, ' ');
 				ft_strdel(&str);
 				callsetenv(data);
-				return (1);
+				return ;
 			}
 			i += 3;
 		}
 	}
-	return (1);
+	return ;
 }

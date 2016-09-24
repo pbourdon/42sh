@@ -29,23 +29,19 @@ char			*get_history_i(int i)
 
 int				check_syntax(char **command)
 {
-	char		*str;
-
-	str = command[1];
 	if (command[1] != NULL &&
 		(ft_strisdigit(command[1]) == -1 && command[1][0] != '-'))
 	{
-		ft_putendl_fd("sh: history: illegal usage", 2);
+		ft_putendl("sh: history: illegal usage");
 		return (1);
 	}
 	if ((command[1] != NULL && command[1][0] == '-') && (command[1][1] != 'c'
 		&& command[1][1] != 'r' && command[1][1] != 'w' && command[1][1] != 'i'
-		&& command[1][1] != 'd' && command[1][1] != 's' &&
-		ft_strcmp(++str, "help") != 0 && ft_strcmp(++str, "help") != 0))
+		&& command[1][1] != 'd' && command[1][1] != 's'))
 	{
-		ft_putstr_fd("sh: history: ", 2);
-		ft_putstr_fd(command[1], 2);
-		ft_putendl_fd(": invalid option", 2);
+		ft_putstr("sh: history: ");
+		ft_putstr(command[1]);
+		ft_putendl(": invalid option");
 		return (1);
 	}
 	return (0);
@@ -82,9 +78,7 @@ void			show_helper_history(void)
 {
 	ft_putendl("Syntax:");
 	ft_putendl("        history");
-	ft_putendl("        history --help");
 	ft_putendl("        history [n]");
-	ft_putendl("        history -i [n]");
 	ft_putendl("        history [-crw]");
 	ft_putendl("        history -d offset");
 	ft_putendl("        history -s arg");

@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 18:24:05 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/31 11:41:16 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/22 17:28:01 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,56 @@ int		ft_exit_error(t_data *data, int *out)
 		else if (data->exit_line[0] == '-' && data->exit_line[1] == '-')
 		{
 			ft_putstr_fd("exit: Badly formed number.\n", 2);
-			*out = 0;
+			*out = 255;
 		}
 		else
 		{
 			ft_putstr_fd("exit: Expression Syntax.\n", 2);
-			*out = 0;
+			*out = 255;
 		}
 		ft_strdel(&data->exit_line);
 	}
 	return (b);
+}
+
+void	exit_no_pipe(t_data *data, char **tabb)
+{
+	if (tabb[0] && tabb[1] && tabb[2])
+		return (ft_putendl_fd("exit : too many arguments", 2));
+	ft_reset_term(g_shell.term_reset.term);
+	if (!tabb[1])
+	{
+		free_all_liste(&data->liste);
+		exit((data->binreturn = 0));
+	}
+	if (ft_isnumber(tabb[1]) ||
+		(tabb[1][0] == '-' && ft_isnumber(*(tabb + 1) + 1)))
+	{
+		data->binreturn = ft_atoi(tabb[1]);
+		free_all_liste(&data->liste);
+		exit(data->binreturn);
+	}
+	ft_putendl_fd("exit: Expression Syntax.\n", 2);
+	data->binreturn = ft_atoi(tabb[1]);
+	free_all_liste(&data->liste);
+	exit(data->binreturn);
+}
+
+void	exit_on_pipe(t_data *data, char **tabb)
+{
+	if (tabb[0] && tabb[1] && tabb[2])
+		ft_putendl_fd("exit : too many arguments", 2);
+	if (!tabb[1])
+		exit((data->binreturn = 0));
+	else if (tabb[0] && tabb[1])
+	{
+		if (ft_isnumber(tabb[1]) ||
+			(tabb[1][0] == '-' && ft_isnumber(*(tabb + 1) + 1)))
+			exit((data->binreturn = ft_atoi(tabb[1])));
+		else
+			ft_putendl_fd("exit: Expression Syntax.\n", 2);
+	}
+	exit((data->binreturn = 255));
 }
 
 int		ft_isnumber(char *s)

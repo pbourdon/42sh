@@ -1,0 +1,615 @@
+Norme: ./add_letter.c
+Norme: ./allwrites.c
+Norme: ./builenv.c
+Norme: ./agreg.c
+Norme: ./builenv2.c
+Norme: ./builenv3.c
+Norme: ./cd.c
+Norme: ./cd2.c
+Norme: ./builtin_exit_error.c
+Norme: ./cdcall.c
+Norme: ./cd_getpwd.c
+Norme: ./cursor.c
+Norme: ./designator_string.c
+Norme: ./cd3.c
+Norme: ./check_error.c
+Norme: ./designator.c
+Norme: ./env.c
+Norme: ./echo.c
+Error: 6 functions in the file
+Norme: ./error.c
+Error: 42 header not at top of the file
+Error (line 1): C++ comment
+Error (line 1): line has 84 characters
+Error (line 2): C++ comment
+Error (line 2): line has 84 characters
+Error (line 3): C++ comment
+Error (line 3): line has 84 characters
+Error (line 4): C++ comment
+Error (line 4): line has 84 characters
+Error (line 5): C++ comment
+Error (line 5): line has 84 characters
+Error (line 6): C++ comment
+Error (line 6): line has 84 characters
+Error (line 7): C++ comment
+Error (line 7): line has 84 characters
+Error (line 8): C++ comment
+Error (line 8): line has 84 characters
+Error (line 9): C++ comment
+Error (line 9): line has 84 characters
+Error (line 10): C++ comment
+Error (line 10): line has 84 characters
+Error (line 11): C++ comment
+Error (line 11): line has 84 characters
+Error (line 13): C++ comment
+Error (line 15): C++ comment
+Error (line 16): C++ comment
+Error (line 17): C++ comment
+Error (line 18): C++ comment
+Error (line 19): C++ comment
+Error (line 20): C++ comment
+Error (line 21): C++ comment
+Error (line 22): C++ comment
+Error (line 23): C++ comment
+Error (line 24): C++ comment
+Error (line 25): C++ comment
+Error (line 26): C++ comment
+Error (line 27): C++ comment
+Error (line 28): C++ comment
+Error (line 29): C++ comment
+Error (line 31): C++ comment
+Error (line 32): C++ comment
+Error (line 33): C++ comment
+Error (line 34): C++ comment
+Error (line 35): C++ comment
+Error (line 36): C++ comment
+Error (line 37): C++ comment
+Error (line 38): C++ comment
+Error (line 39): C++ comment
+Error (line 40): C++ comment
+Error (line 41): C++ comment
+Error (line 42): C++ comment
+Error (line 43): C++ comment
+Error (line 44): C++ comment
+Error (line 45): C++ comment
+Error (line 47): C++ comment
+Error (line 48): C++ comment
+Error (line 49): C++ comment
+Error (line 50): C++ comment
+Error (line 51): C++ comment
+Error (line 52): C++ comment
+Error (line 53): C++ comment
+Error (line 54): C++ comment
+Error (line 55): C++ comment
+Error (line 56): C++ comment
+Error (line 57): C++ comment
+Error (line 58): C++ comment
+Error (line 59): C++ comment
+Error (line 60): C++ comment
+Error (line 61): C++ comment
+Error (line 62): C++ comment
+Error (line 63): C++ comment
+Error (line 64): C++ comment
+Error (line 65): C++ comment
+Error (line 66): C++ comment
+Error (line 68): C++ comment
+Error (line 69): C++ comment
+Error (line 70): C++ comment
+Error (line 72): C++ comment
+Error (line 73): C++ comment
+Error (line 74): C++ comment
+Error (line 75): C++ comment
+Error (line 76): C++ comment
+Error (line 77): C++ comment
+Error (line 78): C++ comment
+Error (line 79): C++ comment
+Error (line 80): C++ comment
+Error (line 81): C++ comment
+Error (line 82): C++ comment
+Error (line 84): C++ comment
+Error (line 85): C++ comment
+Error (line 86): C++ comment
+Error (line 87): C++ comment
+Error (line 88): C++ comment
+Error (line 89): C++ comment
+Error (line 91): C++ comment
+Error (line 92): C++ comment
+Error (line 93): C++ comment
+Error (line 94): C++ comment
+Error (line 95): C++ comment
+Error (line 96): C++ comment
+Error (line 97): C++ comment
+Error (line 98): C++ comment
+Error (line 99): C++ comment
+Error (line 100): C++ comment
+Error (line 101): C++ comment
+Error (line 102): C++ comment
+Error (line 103): C++ comment
+Error (line 104): C++ comment
+Error (line 105): C++ comment
+Error (line 106): C++ comment
+Error (line 107): C++ comment
+Error (line 108): C++ comment
+Error (line 109): C++ comment
+Error (line 110): C++ comment
+Error (line 111): C++ comment
+Norme: ./diffsetenv.c
+Norme: ./env3.c
+Norme: ./exit_cd_on_pipe.c
+Error (line 15): Space before function name
+Error (line 15): Space before function name
+Error (line 15): Space before function name
+Error (line 15): Space before function name
+Error (line 15, col 4): bad spacing
+Error (line 17): bad indentation
+Error (line 17): must begin only by tabulations
+Error (line 18): bad indentation
+Error (line 18): must begin only by tabulations
+Error (line 19): bad indentation
+Error (line 19): must begin only by tabulations
+Error (line 20): bad indentation
+Error (line 20): must begin only by tabulations
+Error (line 21): bad indentation
+Error (line 21): must begin only by tabulations
+Error (line 22): bad indentation
+Error (line 22): must begin only by tabulations
+Error (line 23): bad indentation
+Error (line 23): must begin only by tabulations
+Error (line 24): must begin only by tabulations
+Error (line 28): bad indentation
+Error (line 28): must begin only by tabulations
+Error (line 29): bad indentation
+Error (line 29): must begin only by tabulations
+Norme: ./free.c
+Norme: ./go_words.c
+Norme: ./error2.c
+Error (line 22): line has 94 characters
+Error (line 22, col 37): bad spacing
+Norme: ./ft_redirect4.c
+Error: global scope bad aligned
+Error (line 13): preprocessor block must be followed by one empty line
+Error (line 14): comment not well formatted
+Error (line 78): declarations in cd_on_pipe are bad aligned
+Error (line 78): declarations in cd_on_pipe must be at the top of the function
+Error (line 79): bad indentation
+Error (line 79, col 0): no newline after block
+Error (line 79, col 9): tabb is instanciated during declaration
+Error (line 101): function sub_exec has 46 lines
+Error (line 101): declarations in sub_exec must be at the top of the function
+Error (line 101): declarations must be followed by one empty line in sub_exec
+Error (line 115): C++ comment
+Error (line 116): C++ comment
+Error (line 117): C++ comment
+Error (line 118): C++ comment
+Error (line 121, col 6): i is instanciated during declaration
+Error (line 131, col 6): i is instanciated during declaration
+Error (line 144): bad indentation
+Error (line 144): must begin only by tabulations
+Error (line 145): bad indentation
+Error (line 145): must begin only by tabulations
+Error (line 157): bad indentation
+Error (line 157): C++ comment
+Error (line 163): C++ comment
+Error (line 166): C++ comment
+Norme: ./hash.c
+Norme: ./hash3.c
+Norme: ./hash2.c
+Norme: ./good_order.c
+Norme: ./history_show_func.c
+Norme: ./history_option.c
+Error (line 36): function read_loop has 26 lines
+Error (line 110): must begin only by tabulations
+Norme: ./ifcd.c
+Error (line 14): comment not well formatted
+Norme: ./is_key1.c
+Norme: ./history_tools.c
+Norme: ./history.c
+Norme: ./is_key4.c
+Norme: ./is_key2.c
+Norme: ./is_key3.c
+Norme: ./is_key5.c
+Norme: ./main3.c
+Error: 42 header must be followed by one empty line
+Error (line 12): comment not well formatted
+Norme: ./new_arg_to_list.c
+Norme: ./env2.c
+Error: 13 functions in the file
+Error (line 146): comment not well formatted
+Error (line 146): comment not well placed
+Error (line 208): function env_phase_2 has 31 lines
+Error (line 243): function exec_on_env has 37 lines
+Error (line 243): declarations in exec_on_env must be at the top of the function
+Error (line 243): declarations must be followed by one empty line in exec_on_env
+Error (line 249): C++ comment
+Error (line 250): C++ comment
+Error (line 251): comment not well formatted
+Error (line 251): comment not well placed
+Error (line 280): C++ comment
+Error (line 284): function print_or_exec has 34 lines
+Norme: ./main.c
+Error: global scope bad aligned
+Error: 10 functions in the file
+Error (line 35): bad spacing after main_init
+Error (line 46): multiple empty lines
+Error (line 47): bad spacing before opbi
+Error (line 66): function sub_read has 38 lines
+Error (line 75): C++ comment
+Error (line 76): C++ comment
+Error (line 77): bad indentation
+Error (line 77): C++ comment
+Error (line 78): bad indentation
+Error (line 78): C++ comment
+Error (line 79): bad indentation
+Error (line 79): C++ comment
+Error (line 80): C++ comment
+Error (line 81): C++ comment
+Error (line 162): must begin only by tabulations
+Error (line 162): line has 84 characters
+Error (line 174): C++ comment
+Error (line 175): C++ comment
+Error (line 176): C++ comment
+Error (line 181): C++ comment
+Error (line 182): C++ comment
+Error (line 184): C++ comment
+Error (line 185): C++ comment
+Error (line 190): C++ comment
+Error (line 191): C++ comment
+Error (line 196): function init_data has 26 lines
+Norme: ./nsplit_inib.c
+Error: 8 functions in the file
+Error (line 61): function ft_nstrcpy_inib has 26 lines
+Error (line 134): function ft_nsplit_inib has 29 lines
+Error (line 167): declarations must be followed by one empty line in split_on_inib
+Error (line 170): C++ comment
+Error (line 170): spaces at the end of line
+Error (line 171): bad indentation
+Error (line 171): spaces at the end of line
+Error (line 178): bad indentation
+Error (line 178): must begin only by tabulations
+Error (line 179): C++ comment
+Error (line 185): declarations must be followed by one empty line in nsplit_on_inib
+Error (line 189): bad indentation
+Error (line 189): spaces at the end of line
+Error (line 199): bad indentation
+Error (line 199): must begin only by tabulations
+Norme: ./old_functions.c
+Norme: ./parseandexc.c
+Error (line 44): spaces at the end of line
+Error (line 44, col 23): bad character after ;
+Error (line 90): function forkall has 26 lines
+Error (line 106): C++ comment
+Error (line 107): C++ comment
+Error (line 108): C++ comment
+Norme: ./parseandexc2.c
+Norme: ./press_key1.c
+Norme: ./press_key2.c
+Norme: ./press_key3.c
+Norme: ./main2.c
+Error: 12 functions in the file
+Error (line 23): C++ comment
+Error (line 104): declarations in get_arg are bad aligned
+Error (line 131): function choose_redi has 67 lines
+Error (line 193): spaces at the end of line
+Error (line 193, col 2): no newline after block
+Error (line 252): declarations in final_list are bad aligned
+Error (line 281): declarations in parsecommand are bad aligned
+Error (line 281): function parsecommand has 53 lines
+Error (line 281): declarations in parsecommand must be at the top of the function
+Error (line 281): declarations must be followed by one empty line in parsecommand
+Error (line 281): bad spacing after parsecommand
+Error (line 291): bad indentation
+Error (line 291): must begin only by tabulations
+Error (line 292): bad indentation
+Error (line 292): must begin only by tabulations
+Error (line 301, col 5): i is instanciated during declaration
+Error (line 336): bad indentation
+Error (line 336, col 23): bad character after ;
+Error (line 336, col 24): no newline before block
+Error (line 337): comment not well formatted
+Norme: ./press_key5.c
+Error (line 20): line has 110 characters
+Norme: ./press_key6.c
+Norme: ./press_key4.c
+Error (line 69): function ft_init_verif has 31 lines
+Error (line 69): declarations must be followed by one empty line in ft_init_verif
+Error (line 95): must begin only by tabulations
+Error (line 97): must begin only by tabulations
+Error (line 98): bad indentation
+Error (line 98): must begin only by tabulations
+Norme: ./prompt.c
+Norme: ./setenv2.c
+Norme: ./setenv.c
+Error (line 55): C++ comment
+Error (line 56): bad indentation
+Error (line 97): C++ comment
+Error (line 98): C++ comment
+Error (line 99): bad indentation
+Error (line 122): C++ comment
+Error (line 123, col 2): no empty line before block
+Norme: ./shell.c
+Error (line 101): C++ comment
+Norme: ./shell2.c
+Norme: ./shell3.c
+Norme: ./signal.c
+Norme: ./shell_lvl.c
+Norme: ./space_treatment.c
+Norme: ./split_inib.c
+Error (line 115): bad indentation
+Error (line 115): must begin only by tabulations
+Norme: ./split_inib_tools.c
+Norme: ./spliter.c
+Error: global scope bad aligned
+Error: 6 functions in the file
+Error (line 80): bad spacing after print_l
+Error (line 93): multiple empty lines
+Error (line 94): bad spacing before to_list
+Norme: ./term_functions.c
+Norme: ./term_read.c
+Norme: ./split_on_spec.c
+Error (line 53): function sub_split_norm has 31 lines
+Error (line 88): function split_norm has 27 lines
+Norme: ./term_read2.c
+Norme: ./term_read3.c
+Norme: ./testff.c
+Error (line 15): Space before function name
+Error (line 15): declarations in main must be at the top of the function
+Error (line 15): declarations must be followed by one empty line in main
+Error (line 27, col 7): i is instanciated during declaration
+Error (line 31, col 4): missing space after break
+Norme: ./testredi.c
+Error (line 14): comment not well formatted
+Error (line 58): line has 113 characters
+Norme: ./testredi3.c
+Error (line 14): comment not well formatted
+Norme: ./testredi4.c
+Error (line 14): comment not well formatted
+Norme: ./testredi5.c
+Error (line 13): preprocessor block must be followed by one empty line
+Error (line 14): comment not well formatted
+Error (line 36): bad spacing before printtab
+Error (line 49): comment not well formatted
+Norme: ./testredi6.c
+Error (line 14): comment not well formatted
+Norme: ./testredi7.c
+Error (line 14): comment not well formatted
+Norme: ./to_tree.c
+Norme: ./testredi2.c
+Error (line 32): bad indentation
+Error (line 32): C++ comment
+Error (line 33): bad indentation
+Error (line 33): C++ comment
+Error (line 34): bad indentation
+Error (line 34): C++ comment
+Error (line 35): bad indentation
+Error (line 35): C++ comment
+Error (line 76): function createtab has 38 lines
+Error (line 91): line has 143 characters
+Norme: ./tools.c
+Norme: ./tools_split.c
+Norme: ./tools2.c
+Error (line 78): comment not well formatted
+Norme: ./toto.c
+Warning: /nfs/2015/c/cmichaud/Project/21_sh/merge/toto.c may not compile or is invalid for some reasons.
+Norme: ./unsetenv.c
+Error (line 37): C++ comment
+Error (line 38): bad indentation
+Norme: ./newredi1.c
+Error: global scope bad aligned
+Error: 27 functions in the file
+Error (line 38): comment not well formatted
+Error (line 191): bad spacing before stock_fd
+Error (line 240, col 4): bad spacing
+Error (line 269, col 4): bad spacing
+Error (line 299, col 4): bad spacing
+Error (line 321): function handle_heredoc has 47 lines
+Error (line 456): bad indentation
+Error (line 456): C++ comment
+Error (line 457): bad indentation
+Error (line 457): C++ comment
+Error (line 460): bad indentation
+Error (line 460): C++ comment
+Error (line 461): bad indentation
+Error (line 461): C++ comment
+Error (line 466, col 4): bad spacing
+Error (line 474): bad indentation
+Error (line 475): bad indentation
+Error (line 476): bad indentation
+Error (line 477): bad indentation
+Error (line 478): bad indentation
+Error (line 486, col 4): bad spacing
+Error (line 502, col 4): bad spacing
+Error (line 539): function handle_agreg has 26 lines
+Error (line 542, col 4): bad spacing
+Error (line 557): C++ comment
+Error (line 558): bad indentation
+Error (line 558): C++ comment
+Error (line 561): bad indentation
+Error (line 561): C++ comment
+Error (line 562): bad indentation
+Error (line 562): C++ comment
+Error (line 569): function main_fork_exec_rediclose has 28 lines
+Error (line 569): declarations in main_fork_exec_rediclose must be at the top of the function
+Error (line 569): declarations must be followed by one empty line in main_fork_exec_rediclose
+Error (line 569): line has 83 characters
+Error (line 571): C++ comment
+Error (line 572): C++ comment
+Error (line 580): comment not well formatted
+Error (line 601): declarations in main_fork_exec must be at the top of the function
+Error (line 601): declarations must be followed by one empty line in main_fork_exec
+Error (line 603): bad indentation
+Error (line 603): C++ comment
+Error (line 604): bad indentation
+Error (line 604): C++ comment
+Error (line 605): C++ comment
+Error (line 606): bad indentation
+Error (line 606): C++ comment
+Error (line 608): C++ comment
+Error (line 611): bad indentation
+Error (line 611): must begin only by tabulations
+Error (line 612): C++ comment
+Error (line 613): C++ comment
+Error (line 614): C++ comment
+Error (line 615): C++ comment
+Error (line 616): C++ comment
+Error (line 617): C++ comment
+Error (line 618): C++ comment
+Error (line 619): C++ comment
+Error (line 620): C++ comment
+Error (line 621): C++ comment
+Error (line 625): comment not well formatted
+Error (line 640): Space before function name
+Error (line 640): Space before function name
+Error (line 640): Space before function name
+Error (line 640): function exec_loop has 28 lines
+Error (line 640, col 4): bad spacing
+Error (line 649): spaces at the end of line
+Error (line 649, col 17): bad character after ;
+Error (line 664): C++ comment
+Error (line 665): Empty line
+Error (line 666): C++ comment
+Error (line 672): declarations in tmp_pipe are bad aligned
+Error (line 672): Space before function name
+Error (line 672): Space before function name
+Error (line 672): Space before function name
+Error (line 672): bad spacing after tmp_pipe
+Error (line 672, col 4): bad spacing
+Error (line 680, col 7): Spacing after call to exit
+Error (line 687): multiple empty lines
+Error (line 688): Space before function name
+Error (line 688): function main_fork has 54 lines
+Error (line 688): bad spacing before main_fork
+Error (line 688): bad spacing after main_fork
+Error (line 688, col 4): bad spacing
+Error (line 692): C++ comment
+Error (line 693): C++ comment
+Error (line 694): Empty line
+Error (line 695): C++ comment
+Error (line 696): C++ comment
+Error (line 697): C++ comment
+Error (line 698): C++ comment
+Error (line 699): C++ comment
+Error (line 700): C++ comment
+Error (line 701): C++ comment
+Error (line 702): C++ comment
+Error (line 703): C++ comment
+Error (line 704): C++ comment
+Error (line 705): C++ comment
+Error (line 706): C++ comment
+Error (line 707): comment not well formatted
+Error (line 707): comment not well placed
+Error (line 709): spaces at the end of line
+Error (line 744, col 0): no empty line before block
+Error (line 745): comment not well formatted
+Error (line 782): declarations in free_liste2 are bad aligned
+Error (line 782): function free_liste2 has 31 lines
+Error (line 788, col 6): i is instanciated during declaration
+Error (line 869): declarations in launch_main_fork are bad aligned
+Error (line 869): Space before function name
+Error (line 878): must begin only by tabulations
+Error (line 888): C++ comment
+Error (line 889, col 0): no empty line before block
+Norme: ./newredi11.c
+Error: global scope bad aligned
+Error: 31 functions in the file
+Error (line 38): comment not well formatted
+Error (line 191): bad spacing before stock_fd
+Error (line 240, col 4): bad spacing
+Error (line 269, col 4): bad spacing
+Error (line 299, col 4): bad spacing
+Error (line 321): function handle_heredoc has 47 lines
+Error (line 456): bad indentation
+Error (line 456): C++ comment
+Error (line 457): bad indentation
+Error (line 457): C++ comment
+Error (line 460): bad indentation
+Error (line 460): C++ comment
+Error (line 461): bad indentation
+Error (line 461): C++ comment
+Error (line 466, col 4): bad spacing
+Error (line 474): bad indentation
+Error (line 475): bad indentation
+Error (line 476): bad indentation
+Error (line 477): bad indentation
+Error (line 478): bad indentation
+Error (line 486, col 4): bad spacing
+Error (line 502, col 4): bad spacing
+Error (line 536): function handle_agreg has 26 lines
+Error (line 539, col 4): bad spacing
+Error (line 554): C++ comment
+Error (line 555): bad indentation
+Error (line 555): C++ comment
+Error (line 558): bad indentation
+Error (line 558): C++ comment
+Error (line 559): bad indentation
+Error (line 559): C++ comment
+Error (line 566): line has 83 characters
+Error (line 568): C++ comment
+Error (line 569): C++ comment
+Error (line 570): Empty line
+Error (line 577): comment not well formatted
+Error (line 577): comment not well placed
+Error (line 589): declarations in main_fork_exec must be at the top of the function
+Error (line 589): declarations must be followed by one empty line in main_fork_exec
+Error (line 591): bad indentation
+Error (line 591): C++ comment
+Error (line 592): bad indentation
+Error (line 592): C++ comment
+Error (line 593): C++ comment
+Error (line 594): bad indentation
+Error (line 594): C++ comment
+Error (line 596): C++ comment
+Error (line 599): bad indentation
+Error (line 599): must begin only by tabulations
+Error (line 600): C++ comment
+Error (line 601): C++ comment
+Error (line 602): C++ comment
+Error (line 603): C++ comment
+Error (line 604): C++ comment
+Error (line 605): C++ comment
+Error (line 606): C++ comment
+Error (line 607): C++ comment
+Error (line 608): C++ comment
+Error (line 609): C++ comment
+Error (line 613): comment not well formatted
+Error (line 627): bad spacing before wait_all_pid
+Error (line 647): Space before function name
+Error (line 647): function main_fork has 26 lines
+Error (line 647, col 4): bad spacing
+Error (line 652): C++ comment
+Error (line 653): C++ comment
+Error (line 654): C++ comment
+Error (line 655): C++ comment
+Error (line 656): C++ comment
+Error (line 657): C++ comment
+Error (line 658): C++ comment
+Error (line 677): declarations in free_liste2 are bad aligned
+Error (line 677): function free_liste2 has 31 lines
+Error (line 683, col 6): i is instanciated during declaration
+Error (line 752): bad spacing after free_tabb
+Error (line 762): multiple empty lines
+Error (line 763): bad spacing before free_lfd
+Error (line 788): declarations in free_all are bad aligned
+Error (line 788): function free_all has 56 lines
+Error (line 788): declarations in free_all must be at the top of the function
+Error (line 788): declarations must be followed by one empty line in free_all
+Error (line 788, col 0): free_all has 8 variables
+Error (line 805, col 5): i is instanciated during declaration
+Error (line 815, col 8): tk is instanciated during declaration
+Error (line 816, col 8): tmp is instanciated during declaration
+Error (line 827, col 15): hc is instanciated during declaration
+Error (line 828, col 15): tp is instanciated during declaration
+Error (line 851): spaces at the end of line
+Error (line 853): spaces at the end of line
+Error (line 859): function builtin_no_pipe has 98 lines
+Error (line 859): declarations in builtin_no_pipe must be at the top of the function
+Error (line 859): declarations must be followed by one empty line in builtin_no_pipe
+Error (line 919): comment not well formatted
+Error (line 919): comment not well placed
+Error (line 921): C++ comment
+Error (line 922): C++ comment
+Error (line 923): comment not well formatted
+Error (line 923): comment not well placed
+Error (line 957): Empty line
+Error (line 959, col 0): no empty line before block
+Error (line 961): declarations in launch_main_fork are bad aligned
+Error (line 961): Space before function name

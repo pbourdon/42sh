@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/09 13:50:40 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/09 13:50:53 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/21 18:10:20 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int			check_pipe(t_tk *liste)
 {
 	while (liste)
 	{
-		if (ft_strcmp(liste->arg, "|") == 0 || ft_strcmp(liste->arg, "||") == 0)
+		if (ft_strcmp(liste->arg, "|") == 0 || liste->tk == OPBI)
 		{
 			if (liste->next == NULL || (liste->next->tk > 1 &&
 				(ft_strcmp(liste->next->arg, ">") != 0 &&
@@ -37,7 +37,8 @@ int			check_redi(t_tk *liste)
 {
 	while (liste)
 	{
-		if (ft_strcmp(liste->arg, ">") == 0 || ft_strcmp(liste->arg, ">>") == 0 ||
+		if (ft_strcmp(liste->arg, ">") == 0 || ft_strcmp(liste->arg, ">>") == 0
+			||
 			ft_strcmp(liste->arg, "<") == 0 || ft_strcmp(liste->arg, "<<") == 0)
 		{
 			if (liste->next == NULL || liste->next->tk > 1)
@@ -51,7 +52,7 @@ int			check_redi(t_tk *liste)
 	return (0);
 }
 
-void			add_digit_aggr(t_tk *liste)
+void		add_digit_aggr(t_tk *liste)
 {
 	char		*str;
 

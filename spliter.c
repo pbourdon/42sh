@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/20 13:24:40 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/18 17:59:11 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/22 17:50:13 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int				sub_split_on_spec(char **cmd, char **ptr)
 	char		*tmp;
 
 	tmp = *cmd;
-	if (!ft_strncmp(*cmd, ">&", 2) || !ft_strncmp(*cmd, "<&", 2))
+	if ((**cmd == '>' || **cmd == '<') && ft_strncmp(*cmd, "<<", 2))
 	{
 		while (*cmd - 1 && ft_isdigit(*(*cmd - 1)))
 			*cmd -= 1;
@@ -76,20 +76,6 @@ t_tk			*analyse_and_stock(char **ptr, char **cmd, t_tk **base)
 	tk->next = maillon;
 	return (*base);
 }
-
-void		print_l(t_tk *tk)
-{
-	while (tk)
-	{
-		ft_putstr("args: ");
-		ft_putendl(tk->arg);
-		ft_putstr("token: ");
-		ft_putnbr(tk->tk);
-		ft_putstr("\n");
-		tk = tk->next;
-	}
-}
-
 
 t_tk			*to_list(char *cmd, int i)
 {

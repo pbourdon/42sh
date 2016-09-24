@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/06 16:02:03 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/06 16:02:18 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/21 23:44:31 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void			add_to_history(t_history *his, char *shell_line)
 			while (history->next)
 				history = history->next;
 		}
-		history->next = malloc(sizeof(*history));
+		history->next = (t_history *)malloc(sizeof(t_history));
 		history->next->str = ft_strdup(shell_line);
 		history->next->prev = history;
 		history->next->next = NULL;
@@ -42,26 +42,26 @@ void			read_loop(int out)
 	history = g_shell.history;
 	if (get_next_line(out, &line) > 0)
 	{
-		history->str = ft_strdup(line);
-		ft_strdel(&line);
-		history->prev = NULL;
-		history->next = NULL;
+		history = hist_stock(line, NULL, NULL, history);
+		ft_memdel((void **)&line);
 		while (get_next_line(out, &line) > 0)
 		{
-			history->next = (t_history *)malloc(sizeof(*(history)));
+			history->next = (t_history *)malloc(sizeof(t_history));
 			tmp = history;
 			history = history->next;
-			history->str = ft_strdup(line);
-			history->prev = tmp;
-			history->next = NULL;
-			ft_strdel(&line);
+			history = hist_stock(line, NULL, tmp, history);
+			ft_memdel((void **)&line);
 		}
-		ft_strdel(&line);
+		if (line)
+			ft_memdel((void **)&line);
 	}
+	if (line)
+		ft_memdel((void **)&line);
 }
 
 int				append_to_list(void)
 {
+	t_history	*tmp;
 	int			out;
 
 	out = open(".ftsh_history", O_RDWR);
@@ -69,6 +69,14 @@ int				append_to_list(void)
 		return (-1);
 	dell_history();
 	read_loop(out);
+	tmp = g_shell.history;
+	while (tmp)
+	{
+		ft_putendl(tmp->str);
+		tmp = tmp->next;
+	}
+	close(out);
+	tmp = NULL;
 	return (0);
 }
 
@@ -94,11 +102,16 @@ void			append_to_file(void)
 	int			fd;
 
 	history = g_shell.history;
-	fd = open(".ftsh_history", O_WRONLY | O_TRUNC |
-		O_CREAT, S_IRUSR | S_IWGRP | S_IWUSR);
+	if ((fd = open(".ftsh_history", O_WRONLY | O_TRUNC |
+			O_CREAT, S_IRUSR | S_IWGRP | S_IWUSR)) == -1)
+	{
+		ft_putendl_fd("21sh : open failed", 2);
+		return ;
+	}
 	while (history)
 	{
 		ft_putendl_fd(history->str, fd);
 		history = history->next;
 	}
+	close(fd);
 }

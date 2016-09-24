@@ -6,7 +6,7 @@
 /*   By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 11:10:04 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/05/23 09:02:23 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/21 17:56:07 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	writecdiftwo2(char *str)
 {
-	ft_putstr("cd: string not in pwd: ");
-	ft_putendl(str);
+	ft_putstr_fd("cd: string not in pwd: ", 2);
+	ft_putendl_fd(str, 2);
 }
 
 void	freecdiftwo(char *str, char **dst)
@@ -32,9 +32,8 @@ char	*cdiftwo(t_data *data)
 	char	*ptr;
 	int		i;
 
-	i = 1;
 	str = getpwd();
-	if (ft_strstr(str, data->args[1]) != NULL)
+	if ((i = 1) && ft_strstr(str, data->args[1]) != NULL)
 	{
 		tabb = ft_strsplit(str, '/');
 		ptr = ft_joinfree("/", ft_strjoin(tabb[0], "/"), 2);
@@ -59,40 +58,13 @@ void	cdcall2(t_data *data, char *str)
 	if (errcd(data) == 1)
 	{
 		str = joincd(str, data);
+		to_set_opwd(data);
 		chdir(str);
 		if (str)
 			ft_strdel(&str);
-		changepwdenv(data);
+		to_set_pwd(data);
 		if (data->voldpwd)
 			ft_strdel(&data->voldpwd);
 		data->turn = 1;
 	}
-}
-
-void	cdcall(t_data *data)
-{
-	char	*str;
-
-	if (ft_strlentab(data->args) == 3)
-	{
-		str = cdiftwo(data);
-		chdir(str);
-		if (str)
-			ft_strdel(&str);
-		changepwdenv(data);
-		if (data->voldpwd)
-			ft_strdel(&data->voldpwd);
-		data->turn = 1;
-		return ;
-	}
-	else if (ft_strlentab(data->args) < 4)
-	{
-		str = NULL;
-		cdcall2(data, str);
-	}
-	else
-	  {
-	  ft_putendl("cd: too many arguments");
-	  data->binreturn = 255;
-	  }
 }

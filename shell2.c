@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 15:01:47 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/30 19:18:37 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/24 17:19:19 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,15 @@ void				*ft_realloc(void *ptr, size_t size)
 
 int					shell_loop(t_term *term, t_data *data, char **env)
 {
+	(void)env;
 	while (g_shell.shell_status)
 	{
 		g_shell.shell_backslash_level = 0;
 		g_shell.last_backslash = 0;
 		g_shell.history_index = get_history_length() + 1;
-		prompt_line(env);
+		prompt_line(data->env);
 		shterm_listen(term);
-		readgnl(data, g_shell.shell_line, 1);
+		readgnl(data, g_shell.shell_line);
 		if ((g_shell.shell_line)[0] == '\0')
 			continue ;
 	}

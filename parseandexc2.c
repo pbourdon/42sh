@@ -6,7 +6,7 @@
 /*   By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/19 17:18:02 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/23 17:28:20 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/11 19:46:12 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,19 @@ void	changepathintab(t_data *data)
 int		createbinpath2(t_data *data, char *str)
 {
 	(void)str;
-	if (!access(data->args[0], F_OK | X_OK) ||
-		!access(data->args[0], F_OK | W_OK))
+	if (!access(data->args[0], F_OK | X_OK))
 	{
 		data->bin = ft_strdup(data->args[0]);
 		return (1);
+	}
+	else
+	{
+		ft_putstr_fd(data->args[0], 2);
+		if (!access(data->args[0], F_OK))
+			ft_putendl_fd(": Permission denied", 2);
+		else
+			ft_putendl_fd(": Command not found.", 2);
+		exit(1);
 	}
 	return (0);
 }

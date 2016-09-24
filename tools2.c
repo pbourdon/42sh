@@ -6,7 +6,7 @@
 /*   By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 17:15:32 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/26 07:52:09 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/10 16:19:36 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,11 @@ int			countstr(char *str, int i)
 	}
 	return (i);
 }
-
+/*
 void		helpagreve2(t_data *data, t_liste2 *liste)
 {
 	freetab(data->args);
 	data->args = newtab(liste->tabich);
 	execveremix(data);
 }
+*/

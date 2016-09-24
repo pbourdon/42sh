@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/04 09:43:51 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/25 16:07:40 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/18 21:42:14 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void				shell_init(void)
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 	g_shell.shell_win_size = w.ws_col;
 	g_shell.shell_backslash_level = 0;
-	g_shell.history = malloc(sizeof(*(g_shell.history)));
+	g_shell.history = (t_history *)malloc(sizeof(t_history));
 	g_shell.history->next = NULL;
 	g_shell.history->prev = NULL;
 	g_shell.history->str = NULL;
@@ -94,10 +94,11 @@ t_history			*double_left(char *fin)
 {
 	t_history		*hered;
 
-	hered = malloc(sizeof(*(hered)));
+	hered = (t_history *)malloc(sizeof(t_history));
 	hered->next = NULL;
 	hered->str = NULL;
 	g_shell.history_index = get_history_length() + 1;
+//	ft_bzero(g_shell.shell_line_original, g_shell.size);
 	while (ft_strcmp(fin, g_shell.shell_line_original) != 0)
 	{
 		ft_putstr("heredoc>");

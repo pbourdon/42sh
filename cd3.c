@@ -6,13 +6,13 @@
 /*   By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/23 08:57:51 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/05/23 09:04:27 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/21 18:11:46 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/shell.h"
 
-char	*joincd2(char *str, t_data *data)
+char	*joincd2(char *str, t_data *data, int i)
 {
 	if (ft_strlentab(data->args) == 1)
 	{
@@ -24,9 +24,10 @@ char	*joincd2(char *str, t_data *data)
 	}
 	else if (ft_strcmp(data->args[1], "-") == 0)
 	{
-		if (data->voldpwd)
-			str = ft_strdup(data->voldpwd);
-		else
+		while (data->env[++i])
+			if (!ft_strncmp("OLDPWD=", data->env[i], 7))
+				str = ft_strdup(data->env[i] + 7);
+		if (!str)
 			str = getpwd();
 		return (str);
 	}
@@ -45,7 +46,7 @@ char	*joincd(char *str, t_data *data)
 			(ft_strcmp(data->args[1], "-") == 0) ||
 			data->args[1][0] == '/')
 	{
-		str = joincd2(str, data);
+		str = joincd2(str, data, -1);
 		return (str);
 	}
 	else
@@ -69,13 +70,13 @@ void	writeerrcd(char *str)
 	stat(str, &sb);
 	if ((S_ISREG(sb.st_mode)))
 	{
-		ft_putstr("cd: not a directory: ");
-		ft_putendl(str);
+		ft_putstr_fd("cd: not a directory: ", 2);
+		ft_putendl_fd(str, 2);
 	}
 	else
 	{
-		ft_putstr("cd: not such file or directory: ");
-		ft_putendl(str);
+		ft_putstr_fd("cd: not such file or directory: ", 2);
+		ft_putendl_fd(str, 2);
 	}
 }
 
@@ -89,6 +90,7 @@ int		errcd(t_data *data)
 	rep = opendir(str);
 	if (rep == NULL)
 	{
+		data->binreturn = 255;
 		writeerrcd(data->args[1]);
 		ft_strdel(&str);
 		return (-1);

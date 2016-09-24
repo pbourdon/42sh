@@ -6,56 +6,98 @@
 /*   By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/19 17:47:46 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/05/23 09:11:47 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/22 00:00:48 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/shell.h"
 
-void	callenvitools(t_data *data, char **tabb, int i)
+void	env_phase_2_2(t_data *data, int e)
 {
-	if (data->fona == 1)
-		freetab(tabb);
+	char **tmp;
+
+	if (e)
+	{
+		tmp = data->cur_env;
+		data->cur_env = get_env_nd_var(data->liste->tabb, tmp);
+		free_new_env(tmp);
+	}
 	else
-		free(tabb);
-	data->envi = 1;
-	argsifenv(data, i);
-	forkall(data, 0);
+		data->cur_env = get_env_nd_var(data->liste->tabb, data->env);
 }
 
-void	callenvi(t_data *data)
+void	env_phase_2(t_data *data, int e)
 {
-	int		i;
-	char	**tabb;
-
-	i = 2;
-	tabb = (char **)malloc(sizeof(char *) * ft_strlentab(data->args) + 1);
-	data->fona = 0;
-	while (data->args[i])
+	if (!data->liste->tabb[1])
+		return (printab(data->cur_env));
+	else if (env_error(data->liste->tabb))
+		data->binreturn = 1;
+	else if (!ft_strcmp(data->liste->tabb[1], "-i"))
 	{
-		if (ft_strstr(data->args[i], "=") != NULL)
-		{
-			tabb[i - 2] = ft_strdup(data->args[i]);
-			data->fona = 1;
-		}
-		else
-		{
-			tabb[i - 2] = NULL;
-			callenvitools(data, tabb, i);
-			return ;
-		}
-		i++;
+		if (e)
+			free_new_env(data->cur_env);
+		data->cur_env = get_var(data->liste->tabb);
 	}
-	tabb[i - 2] = NULL;
-	printab(tabb);
-	freetab(tabb);
-	data->envi = 0;
+	else
+		env_phase_2_2(data, e);
+	data->binreturn = 0;
+	print_or_exec(data);
+}
+
+void	exec_on_env(t_data *data)
+{
+	pid_t	t;
+
+	data->binreturn = 0;
+	if ((t = fork()) == 0)
+	{
+		data->args = newtab(data->liste->tabb);
+		if (is_a_builtin(data->args[0]))
+		{
+			builtin_no_pipe(data);
+			free_new_env(data->args);
+			exit(1);
+		}
+		if (createthetab(data))
+		{
+			free_new_env(data->args);
+			execve(data->tabb[0], data->tabb, data->cur_env);
+		}
+		exit(1);
+	}
+	else
+		waitpid(t, &data->binreturn, 0);
+	data->args = NULL;
+}
+
+void	print_or_exec(t_data *data)
+{
+	char	*tmp;
+	char	**tabb;
+	int		i;
+	int		p;
+
+	p = -1;
+	tabb = data->liste->tabb;
+	i = 1;
+	if (!ft_strcmp(tabb[i], "-i"))
+		i++;
+	while (tabb[i] && (tmp = ft_strchr(tabb[i], '=')))
+		i++;
+	if (!tabb[i])
+	{
+		printab(data->cur_env);
+		free_new_env(data->cur_env);
+		data->cur_env = NULL;
+		return ;
+	}
+	else
+		p_or_e_choice(data, tabb, i);
 }
 
 void	callallenv(t_data *data)
 {
-	if (ft_strcmp(data->args[1], "-i") == 0)
-		callenvi(data);
-	else
-		callenv(data);
+	if (!data->liste->tabb[1])
+		return (printab(data->env));
+	env_phase_2(data, 0);
 }

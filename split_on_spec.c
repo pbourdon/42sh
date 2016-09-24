@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/20 13:24:32 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/26 07:08:14 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/22 18:49:14 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,31 +25,6 @@ t_tk			*add_end_list(t_tk *tk, t_tk **base)
 	return (*base);
 }
 
-void			sub_sub_split_norm(char **cmd, t_tk *cur, int i)
-{
-	char		*tmp;
-
-	tmp = *cmd;
-	while (*cmd && ft_isdigit(**cmd))
-	{
-		cur->arg[++i] = **cmd;
-		*cmd += 1;
-	}
-	if (*(*cmd) && (*(*cmd)) == '-')
-	{
-		cur->arg[++i] = *(*cmd);
-		*cmd += 1;
-	}
-	if (!is_a_spec2(*cmd, **cmd) && **cmd != ' ' && **cmd != 0)
-	{
-		*cmd = tmp;
-		tmp = ft_strchr(cur->arg, '&');
-		*(tmp + 1) = 0;
-	}
-	cur->arg[++i] = 0;
-	*cmd -= 1;
-}
-
 void			sub_split_norm(char **cmd, t_tk *cur, int i)
 {
 	if (ft_isdigit(**cmd))
@@ -61,21 +36,24 @@ void			sub_split_norm(char **cmd, t_tk *cur, int i)
 			*cmd += 1;
 		}
 	}
-	if (!ft_strncmp(*cmd, ">&", 2))
+	if ((**cmd == '>' || **cmd == '<') && *(*cmd + 1) != '&')
 	{
-		if (ft_isdigit(cur->arg[0]))
-			cur->arg[++i] = '>';
-		cur->arg[++i] = '&';
-		*cmd += 2;
+		cur->arg[++i] = **cmd;
+		if (*(*cmd + 1) == '>')
+			cur->arg[++i] = *(*cmd + 1);
+		return ;
 	}
-	else if (!ft_strncmp(*cmd, "<&", 2))
-	{
-		if (ft_isdigit(cur->arg[0]))
-			cur->arg[++i] = '<';
-		cur->arg[++i] = '&';
-		*cmd += 2;
-	}
-	sub_sub_split_norm(cmd, cur, i);
+	sub_split_norm_norm(cmd, cur, i);
+}
+
+t_tk			*split_norm_2(char **ptr, char **cmd, t_tk **base, t_tk *cur)
+{
+	cur->tk = add_token(cur->arg);
+	*base = add_end_list(cur, base);
+	while (*cmd && *(*cmd + 1) && *(*cmd + 1) == ' ')
+		*cmd += 1;
+	*ptr = *cmd;
+	return (*base);
 }
 
 t_tk			*split_norm(char **ptr, char **cmd, t_tk **base, t_tk *cur)
@@ -83,8 +61,16 @@ t_tk			*split_norm(char **ptr, char **cmd, t_tk **base, t_tk *cur)
 	int			i;
 
 	i = 0;
-	if (ft_isdigit(**cmd) || !ft_strncmp(*cmd, ">&", 2) ||
-		!ft_strncmp(*cmd, "<&", 2))
+	if ((**cmd == '<' || **cmd == '>') && ft_strncmp(*cmd, "<<", 2))
+	{
+		cur->arg[0] = '1';
+		if (**cmd == '<')
+			cur->arg[0] = '0';
+		cur->arg[++i] = **cmd;
+	}
+	else
+		cur->arg[0] = **cmd;
+	if ((ft_isdigit(**cmd)))
 		sub_split_norm(cmd, cur, i);
 	else if ((**cmd == '&' || **cmd == '>' || **cmd == '<' || **cmd == '|')
 		&& *(*cmd + 1) == cur->arg[i])
@@ -92,12 +78,7 @@ t_tk			*split_norm(char **ptr, char **cmd, t_tk **base, t_tk *cur)
 		cur->arg[++i] = *(*cmd + 1);
 		*cmd += 1;
 	}
-	cur->tk = add_token(cur->arg);
-	*base = add_end_list(cur, base);
-	while (*cmd && *(*cmd + 1) && *(*cmd + 1) == ' ')
-		*cmd += 1;
-	*ptr = *cmd;
-	return (*base);
+	return (split_norm_2(ptr, cmd, base, cur));
 }
 
 t_tk			*split_on(char **ptr, char **cmd, t_tk **base, t_tk *cur)
@@ -125,6 +106,5 @@ t_tk			*split_on(char **ptr, char **cmd, t_tk **base, t_tk *cur)
 	if (!(cur->arg = ft_memalloc(sizeof(char) * len + 1)))
 		return (0);
 	cur->arg = ft_memset(cur->arg, 0, len);
-	cur->arg[0] = c;
 	return (split_norm(ptr, cmd, base, cur));
 }

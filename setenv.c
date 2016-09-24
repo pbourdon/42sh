@@ -6,7 +6,7 @@
 /*   By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 11:02:55 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/05/23 10:00:18 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/21 21:57:40 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,7 @@ char	**setenvifdontexist(t_data *data, int a)
 	dst[o] = ft_strdup(tmp);
 	ft_strdel(&tmp);
 	dst[o + 1] = NULL;
-	if (data->turn == 1)
-		freetab2(data);
+	freetab2(data);
 	return (dst);
 }
 
@@ -94,8 +93,7 @@ char	**setenvifexist(t_data *data, int a)
 	o = 0;
 	dst = (char **)malloc(sizeof(char *) * ft_strlentab(data->env) + 1);
 	dst = setenvifexistool(data, dst, a, o);
-	if (data->turn == 1)
-		freetab2(data);
+	freetab2(data);
 	return (dst);
 }
 
@@ -104,21 +102,22 @@ void	callsetenv(t_data *data)
 	int	i;
 
 	i = 1;
-	if (ft_strcmp(data->line, "setenv") == 0)
+	if (ft_strcmp(data->args[0], "setenv") == 0)
 	{
 		printab(data->env);
+		data->binreturn = 0;
 		return ;
 	}
 	while (data->args[i])
 	{
-		if (ft_strstr(data->args[i], "=") != NULL)
+		if (ft_strstr(data->args[i], "=") != NULL && data->args[i][0] != '=')
 		{
 			if (alreadyexist(data->env, data->args[i]) == 1)
 				data->env = setenvifexist(data, i);
 			else
 				data->env = setenvifdontexist(data, i);
-			data->turn = 1;
 		}
 		i++;
 	}
+	data->binreturn = 0;
 }

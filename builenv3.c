@@ -6,7 +6,7 @@
 /*   By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/24 14:43:22 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/24 14:48:17 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/22 17:48:52 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,8 @@ int		intb2(t_data *data, char *str, char *dst, char **tabb)
 	return (1);
 }
 
-void deletefromenvtool(t_data *data, char **tabb, int k, int in)
+void	deletefromenvtool(t_data *data, char **tabb, int k, int in)
 {
-	printtab(tabb);
 	if (in == 1)
 	{
 		if (data->builttab)
@@ -84,39 +83,31 @@ void deletefromenvtool(t_data *data, char **tabb, int k, int in)
 		deletefromenv(data, k + 1);
 }
 
-void deletefromenv(t_data *data, int k)
+void	deletefromenv(t_data *data, int k)
 {
-	int i;
-	int o;
-	char **tabb;
-	int in;
+	int		i;
+	int		o;
+	char	**tabb;
+	int		in;
 
 	in = 0;
 	o = 0;
-	i = 0;
-	if (data->builttab)
+	i = -1;
+	if (!data->builttab)
+		return ;
+	tabb = (char **)malloc(sizeof(char *) * (ft_strlentab(data->builttab) - 2));
+	while (data->builttab[++i])
 	{
-		tabb = malloc(sizeof(char *) * (ft_strlentab(data->builttab) - 2));
-		while (data->builttab[i])
+		if (ft_strcmp(data->builttab[i], data->args[k]) == 0 && (in = 1))
 		{
-			ft_putendl("titi");
-			if (ft_strcmp(data->builttab[i], data->args[k]) == 0)
-			{
-				in = 1;
-				if (data->builttab[i + 3])
-					i = i + 3;
-				else
-				{
-					tabb[o] = NULL;
-					deletefromenvtool(data, tabb, k, in);
-					return ;
-				}
-			}
-			tabb[o] = ft_strdup(data->builttab[i]);
-			o++;
-			i++;
+			if (data->builttab[i + 3])
+				i = i + 3;
+			else if (!(tabb[o] = NULL))
+				return (deletefromenvtool(data, tabb, k, in));
 		}
-		tabb[o]= NULL;
-		deletefromenvtool(data, tabb, k, in);
+		tabb[o] = ft_strdup(data->builttab[i]);
+		o++;
 	}
+	tabb[o] = NULL;
+	deletefromenvtool(data, tabb, k, in);
 }

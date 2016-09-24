@@ -6,7 +6,7 @@
 /*   By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/30 17:44:28 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/31 10:59:08 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/21 23:24:45 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int				is_a_word2(int quote, int inib, char *str, int *p)
 	i = *p;
 	if (!(is_a_word(quote, inib, str[i])) && str[i] != ' ')
 		return (0);
-	if (!quote + inib && ((str[i] == '|'  && !str[i + 1]) || str[i] == '<' || str[i] == '>'))
+	if (!quote + inib &&
+		((str[i] == '|' && !str[i + 1]) || str[i] == '<' || str[i] == '>'))
 	{
 		if ((str[i] == '>' && str[i + 1] == '>') ||
 			(str[i] == '<' && str[i + 1] == '<'))

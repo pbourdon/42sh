@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 14:35:48 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/04 17:51:56 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/09/22 16:55:23 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int				ft_cheat(char *str, char tabb[3], int i)
 	return (0);
 }
 
-int				ft_init_verif(void)
+int		ft_init_verif(void)
 {
 	char	tabb[3];
 	int		n;

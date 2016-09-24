@@ -6,7 +6,7 @@
 /*   By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 10:40:39 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/05/23 09:25:30 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/21 18:12:34 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,6 @@ void	callenv(t_data *data)
 
 	i = 1;
 	tabb = newtab(data->env);
-	if (ft_strcmp(data->line, "env") == 0)
-	{
-		freetab(tabb);
-		printab(data->env);
-		return ;
-	}
 	while (data->args[i])
 	{
 		if (ft_strstr(data->args[i], "=") != NULL)

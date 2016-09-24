@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/31 15:53:35 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/05 18:40:33 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/09/24 17:12:48 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,31 @@
 # define INPUT 0
 # define OUTPUT 1
 
-typedef struct			s_liste2
+typedef struct          s_lfd
 {
-	char				**tabich;
-	int					redi;
-	char				*agreg;
-	char				*rediavan;
-	struct s_liste2		*next;
-}						t_liste2;
+    int                 fd;
+    int                 open;
+    int                 read;
+    int                 write;
+    struct s_lfd        *next;
+}                       t_lfd;
+
+typedef struct          s_lredi
+{
+    char                *str;
+    int                 redi;
+    struct s_lredi      *next;
+}                       t_lredi;
+
+typedef struct          s_liste2
+{
+    char                **tabb;
+    t_lredi             *redir;
+    t_lfd               *fd;
+	pid_t				pid;
+	int					pfd[2];
+    struct s_liste2     *next;
+}                       t_liste2;
 
 typedef struct			s_larg
 {
@@ -87,6 +104,12 @@ typedef struct			s_history
 	struct s_history	*next;
 	struct s_history	*prev;
 }						t_history;
+
+typedef struct			s_hist_cont
+{
+	struct s_history	*hist;
+	struct s_hist_cont	*next;
+}						t_hist_cont;
 
 typedef struct			s_shell
 {
@@ -139,7 +162,9 @@ typedef struct			s_data
 	char				**tabchev;
 	char				**oldtbe;
 	int					posi;
+	int					d;
 	char				**builttab;
+	char				**cur_env;
 	int					binreturn;
 	char				*forcd;
 	int					exit;
@@ -147,7 +172,10 @@ typedef struct			s_data
 	int					okchev;
 	char				*tmpagreg;
 	char				*avredi;
-	struct	s_larg		*argli;
+	struct s_builtin	*built;
+	struct s_hist_cont	*hist_cont;
+	struct s_tk			*l;
+	struct s_larg		*argli;
 	struct s_liste2		*liste;
 }						t_data;
 
@@ -174,19 +202,72 @@ typedef struct			s_liste
 	struct s_liste		*next;
 }						t_liste;
 
-char					*create_command(char *command, char **args);
-void 					deletefromenv(t_data *data, int k);
+typedef struct			s_builtin
+{
+	char				*str;
+	void				(*blt)(struct s_data *data);//, char **tabb, int i);
+}						t_builtin;
+
+void					built_or_launch(t_data *data);
+void					send_error(t_data *data);
+int						builtin_check1(t_data *data);
+char					**get_arg(t_tk **tk, char **tabb);
+t_lfd					*init_fd(t_lfd *fd, t_lfd *base);
+t_liste2				*final_list(t_liste2 *dest, t_tk *tk, int nb_pipe);
+void					sub_split_norm_norm(char **cmd, t_tk *cur, int i);
+void					sub_sub_split_norm(char **cmd, t_tk *cur, int i);
+void					free_all_liste(t_liste2 **l);
+void					redi_loop(t_liste2 *l, t_lredi *liste, t_data *data);
+void					stock_fd(t_lfd *l, int fd, int t);
+void					search_close_fd(t_liste2 *l, int df);
+void					heredoc_to_stdin(t_liste2 *l, t_history *hist, t_history *t);
+void					free_heredoc(t_history *hist);
+int						check_if_its_agreg(char *str);
+void					to_handle_agreg(t_liste2 *l, t_lredi *liste);
+void					to_to_handle_heredoc(t_liste2 *l, t_lredi *liste, t_data *data);
+void					to_main_fork_redirection_dbl(t_liste2 *l, t_lredi *liste);
+void					to_main_fork_redirection2(t_liste2 *l, t_lredi *liste);
+void					to_main_fork_redirection(t_liste2 *l, t_lredi *liste);
+void					stock_all_heredoc(t_data *data, t_liste2 *l);
+void					free_all(t_data *data, t_liste2 *liste);
+void					exec_on_env(t_data *data);
+void					env_phase_2(t_data *data, int e);
+void					p_or_e_choice(t_data *data, char **tabb, int i);
+char					**get_env_nd_var(char **tabb, char **env);
+char					**get_var(char **tabb);
+int						env_error(char **tabb);
+t_history				*hist_stock(char *line, t_history *n,
+								   t_history *p, t_history *history);
+int						export_no_pipe(t_data *data);
+void					export_on_pipe(t_data *data);
+void					builtin_echo(char *str);
+char					*cdiftwo(t_data *data);
+void					cdcall2(t_data *data, char *str);
+void					deletefromenv(t_data *data, int k);
+void					free_new_env(char **env);
+void					builtin_no_pipe(t_data *data);
+int						is_a_builtin(char *str);
+void					print_or_exec(t_data *data);
+void					to_set_opwd(t_data *data);
+void					to_set_pwd(t_data *data);
+void					free_liste2(t_liste2 *l);
+void					exit_on_pipe(t_data *data, char **tabb);
+void					exit_no_pipe(t_data *data, char **tabb);
+t_tk		            *nsplit_on_inib(char *str);
+void					create_command(char *command, t_liste2 *liste);
 void					add_arg_to_history(t_data *data);
 void					add_to_history(t_history *his, char *shell_line);
 int						check_syntax(char **command);
 int						ft_get_lenght_list(t_history *history);
 int						append_to_list(void);
 void					append_to_file(void);
-void					design_to_start_string(t_data *data, char *target, int find);
-void					design_to_string(t_data *data, char *target, int find);
+void					design_to_start_string(t_data *data, char *target,\
+											   int find, t_liste2 *liste);
+void					design_to_string(t_data *data, char *target, int find,\
+										 t_liste2 *liste);
 void					show_helper_history(void);
 int						check_syntax_designator(t_data *data);
-void					designator(t_data *data);
+void					designator(t_data *data, t_liste2 *cur);
 t_liste2				*createliste(void);
 int						is_ctrl_d(char *buffer);
 char					**shell_lvl(char **env, int z);
@@ -270,7 +351,7 @@ void					callallenv(t_data *data);
 void					printenv(t_data *data);
 void					callenv(t_data *data);
 void					forkall(t_data *data, int status);
-int						readgnl(t_data *data, char *str, int fd);
+int						readgnl(t_data *data, char *str);
 void					freetab(char **tabb);
 int						shell_loop(t_term *term, t_data *data, char **env);
 void					shell_init(void);
@@ -280,7 +361,7 @@ int						shell_var_exists(char **cp, const char *name, int len);
 int						shell_envlen(char **envp);
 char					**shell_parsing(char *line);
 int						shell_builtins(char **s, char ***cp, char *builtin[5]);
-void					main_init(t_term *term);
+int						main_init(t_term *term);
 int						tputs_putchar(int c);
 int						shterm_listen(t_term *term);
 void					shell_listening_char();
@@ -369,7 +450,7 @@ char					*extract_str(char *str, int a, int b);
 int						ifitsredi(t_data *data);
 int						mainredi(t_data *data, int i);
 int						doubleredichieh(t_data *data, t_liste2 *liste, int i);
-int						execveremix(t_data *data);
+int						execveremix(t_data *data, t_liste2 *cur);
 int						createthetab(t_data *data);
 char					*decoupe1(char *str);
 char					*decoupe2(char *str);
@@ -407,7 +488,7 @@ char					**get_tabhash(char **new, int b);
 void					free_tabhash(void);
 void					init_hashtab(char **env, int i);
 int						checklineok(t_data *data, char **tabb);
-int						insertthetmp(t_data *data);
+void					insertthetmp(t_data *data);
 int						intb2(t_data *data, char *str, char *dst, char **tabb);
 void					helpagreve(t_data *data, int a, int b, t_liste2 *liste);
 void					helpagreve2(t_data *data, t_liste2 *liste);
@@ -430,5 +511,6 @@ int						get_pos_l(void);
 t_shell					g_shell;
 t_cursor				g_cursor;
 void					callecho(char **args);
+void                    main_fork(t_data *data, t_liste2 *liste);
 
 #endif

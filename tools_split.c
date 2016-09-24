@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/23 10:46:37 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/23 10:46:54 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/10 13:40:44 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int				add_token(char *str)
 	int			ret;
 
 	ret = 0;
+	while (str && *str && ft_isdigit(*str))
+		str += 1;
 	if (ft_strstr(str, ">&") != NULL || ft_strstr(str, "<&") != NULL)
 		ret = AGGR;
 	else if (!(ft_strncmp(str, ">", 1)) || !(ft_strncmp(str, "<", 1)) ||

@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/03 16:03:52 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/05 18:40:50 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/09/18 21:25:01 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void			sub_del_offset(int offset)
 	if (history == NULL)
 	{
 		free(history);
-		g_shell.history = malloc(sizeof(*(g_shell.history)));
+		g_shell.history = (t_history *)malloc(sizeof(t_history));
 		g_shell.history->str = NULL;
 		g_shell.history->next = NULL;
 		g_shell.history->prev = NULL;
@@ -50,9 +50,9 @@ void			dell_history_offset(t_data *data, char *offset)
 		if (ft_strisdigit(offset) != 0 ||
 			real_offset >= ft_get_lenght_list(g_shell.history))
 		{
-			ft_putstr_fd("sh: history: ", 2);
-			ft_putstr_fd(offset, 2);
-			ft_putendl_fd(": history position out of range", 2);
+			ft_putstr("sh: history: ");
+			ft_putstr(offset);
+			ft_putendl(": history position out of range");
 			data->binreturn = 255;
 			return ;
 		}
@@ -60,7 +60,7 @@ void			dell_history_offset(t_data *data, char *offset)
 	}
 	else if (offset == NULL)
 	{
-		ft_putendl_fd("sh: history: -d: option requires an argument", 2);
+		ft_putendl("sh: history: -d: option requires an argument");
 		show_helper_history();
 		data->binreturn = 255;
 		return ;
@@ -73,7 +73,7 @@ void			switch_option_2(t_data *data, char *str)
 	{
 		if (append_to_list() == -1)
 		{
-			ft_putendl_fd("sh: history: no history source file", 2);
+			ft_putendl("sh: history: no history source file");
 			data->binreturn = 255;
 		}
 	}
@@ -92,7 +92,7 @@ void			switch_option(t_data *data, char *str)
 		show_helper_history();
 	else if (str[2])
 	{
-		ft_putendl_fd("sh: history: cannot use more than one option", 2);
+		ft_putendl("sh: history: cannot use more than one option");
 		show_helper_history();
 		data->binreturn = 255;
 		return ;
@@ -128,5 +128,10 @@ void			history(t_data *data)
 	else if (data->args[1][0] == '-')
 		switch_option(data, data->args[1]);
 	else if (data->args[1] && ft_strisdigit(data->args[1]) != -1)
-		show_history_until(data->args[1]);
+	{
+		if (data->args[2])
+			ft_putendl_fd("history : too many arguments", 2);
+		else
+			show_history_until(data->args[1]);
+	}
 }

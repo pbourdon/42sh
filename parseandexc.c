@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/16 18:30:52 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/26 06:23:15 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/22 17:39:08 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,13 @@ int			createbinpath(t_data *data, int n)
 	{
 		data->bin = ft_strdup(str);
 		return (1);
+	}
+	else
+	{
+		ft_putstr_fd(data->args[0], 2);
+		ft_putendl_fd(": Command not found.", 2);
+		data->binreturn = 255;
+		exit(1);
 	}
 	return (0);
 }
@@ -96,9 +103,6 @@ void		forkall(t_data *data, int status)
 			sub_forkall(data);
 		freetab(data->tabb);
 		data->binreturn = status;
-		// ft_putstr("valeur de retour: ");
-		// ft_putnbr(data->binreturn);
-		// ft_putstr("\n");
 		return ;
 	}
 	else

@@ -6,7 +6,7 @@
 #    By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/02 13:52:37 by bde-maze          #+#    #+#              #
-#*   Updated: 2016/09/09 12:48:16 by                  ###   ########.fr       *#
+#    Updated: 2016/09/22 19:56:28 by cmichaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = 21sh
 
 HEADER = includes/shell.h
 
-FLAGS = -Wall -Werror -Wextra -g3 -O3 -fsanitize=address
+FLAGS = -Wall -Werror -Wextra -g3 -O3
 
 SRC = 	builtin_exit_error.c \
 		designator_string.c \
@@ -28,10 +28,10 @@ SRC = 	builtin_exit_error.c \
 		old_functions.c \
 		history_tools.c \
 		parseandexc2.c \
-		newredi1.c \
 		ft_redirect4.c \
 		tools_split.c \
 		parseandexc.c \
+		nsplit_inib.c \
 		check_error.c \
 		press_key1.c \
 		press_key2.c \
@@ -41,24 +41,18 @@ SRC = 	builtin_exit_error.c \
 		press_key6.c \
 		add_letter.c \
 		good_order.c \
-		split_inib.c \
 		term_read2.c \
 		term_read3.c \
 		designator.c \
+		env_tools.c \
 		shell_lvl.c \
 		allwrites.c \
 		term_read.c \
-		testredi2.c \
-		testredi3.c \
-		testredi4.c \
-		testredi5.c \
-		testredi6.c \
-		testredi7.c \
 		unsetenv.c \
 		builenv3.c \
 		builenv2.c \
 		go_words.c \
-		testredi.c \
+		cd_getpwd.c \
 		is_key1.c \
 		is_key2.c \
 		is_key3.c \
@@ -77,18 +71,21 @@ SRC = 	builtin_exit_error.c \
 		shell2.c \
 		shell3.c \
 		error2.c \
+		cdcall.c \
 		tools.c \
-		error.c \
 		agreg.c \
 		shell.c \
 		main2.c \
-		main3.c \
 		hash2.c \
 		hash3.c \
+		callecho.c \
+		env_var_handle.c \
+		history_norm_tool.c \
+		export_on_pipe.c \
+		main_loop.c \
 		echo.c \
 		env2.c \
 		env3.c \
-		ifcd.c \
 		main.c \
 		free.c \
 		hash.c \
@@ -96,6 +93,15 @@ SRC = 	builtin_exit_error.c \
 		cd2.c \
 		cd3.c \
 		cd.c \
+		launch_main_fork.c \
+		redi_handler.c \
+		redi_heredochandler.c \
+		redi_handle_tool.c \
+		builtin_handler.c \
+		final_liste.c \
+		free_all.c \
+		free_all_norm.c \
+		split_on_spec_norm.c \
 
 OBJDIR = obj/
 

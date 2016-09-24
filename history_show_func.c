@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 13:52:23 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/28 13:53:23 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/18 22:21:12 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@ void			dell_history(void)
 	{
 		tmp = history->next;
 		if (history->str)
-			ft_strdel(&history->str);
-		free(history);
+			ft_memdel((void **)&history->str);
+		ft_memdel((void **)&history);
 		history = tmp;
 	}
-	free(history);
-	g_shell.history = malloc(sizeof(*(g_shell.history)));
+	g_shell.history = (t_history *)malloc(sizeof(t_history));
 	g_shell.history->str = NULL;
 	g_shell.history->next = NULL;
 	g_shell.history->prev = NULL;

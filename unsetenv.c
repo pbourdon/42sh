@@ -6,7 +6,7 @@
 /*   By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 17:11:03 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/05/19 17:24:00 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/22 19:02:40 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ char	**ft_unsetenv(t_data *data, int a)
 	}
 	dst[o] = NULL;
 	ft_strdel(&tmp);
-	if (data->turn == 1)
-		freetab(data->env);
+	freetab(data->env);
 	return (dst);
 }
 

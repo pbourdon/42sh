@@ -3,89 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   cd2.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/23 08:56:01 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/05/23 09:03:27 by bde-maze         ###   ########.fr       */
+/*   Created: 2016/09/21 18:08:14 by cmichaud          #+#    #+#             */
+/*   Updated: 2016/09/21 18:08:32 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/shell.h"
 
-char	*getpwd(void)
+void	add_opwd(t_data *data, char *opwd)
 {
-	char	*tmp;
-	char	*dst;
+	char	**new;
+	int		i;
 
-	tmp = ft_memalloc(1024);
-	if (getcwd(tmp, 1024) != NULL)
-	{
-		dst = ft_strdup(tmp);
-		ft_strdel(&tmp);
-		return (dst);
-	}
-	return (NULL);
+	new = (char **)malloc(sizeof(char *) * (ft_strlentab(data->env) + 2));
+	i = -1;
+	while (data->env[++i])
+		new[i] = ft_strdup(data->env[i]);
+	new[i] = ft_strjoin("OLDPWD=", opwd);
+	data->voldpwd = opwd;
+	new[++i] = NULL;
+	freetab(data->env);
+	data->env = new;
 }
 
-char	*changepwd3(t_data *data, char *str, char *str2)
-{
-	if (data->oldpwd)
-		data->voldpwd = ft_strdup(data->oldpwd);
-	else
-		data->voldpwd = ft_strdup(str2);
-	if (data->oldpwd)
-		str = ft_strjoin("OLDPWD=", data->oldpwd);
-	else
-		str = ft_strjoin("OLDPWD=", str2);
-	return (str);
-}
-
-char	**changepwd2(t_data *data, char **tabb, char *str)
-{
-	int	i;
-	int	o;
-
-	i = 0;
-	o = 0;
-	while (data->env[i])
-	{
-		if (rognagestring(data->env[i], "PWD=") == 1)
-		{
-			tabb[o] = ft_strjoin("PWD=", str);
-			o++;
-			i++;
-		}
-		else if (rognagestring(data->env[i], "OLDPWD=") == 1)
-		{
-			tabb[o] = changepwd3(data, tabb[o], str);
-			o++;
-			i++;
-		}
-		tabb[o] = ft_strdup(data->env[i]);
-		o++;
-		i++;
-	}
-	tabb[o] = NULL;
-	return (tabb);
-}
-
-void	changepwdenv(t_data *data)
+void	to_set_opwd(t_data *data)
 {
 	int		i;
-	char	**tabb;
-	int		o;
 	char	*str;
+	char	**tabb;
+	char	*pwd;
 
 	str = getpwd();
-	o = 0;
-	tabb = (char **)malloc(sizeof(char *) * (ft_strlentab(data->env) + 1));
-	i = 0;
-	tabb = changepwd2(data, tabb, str);
-	if (data->turn == 1)
-		freetab(data->env);
-	data->env = newtab(tabb);
-	freetab(tabb);
-	ft_strdel(&str);
+	tabb = data->env;
+	i = -1;
+	pwd = NULL;
+	while (tabb[++i])
+	{
+		if (!ft_strncmp(tabb[i], "OLDPWD=", 7))
+		{
+			free(tabb[i]);
+			tabb[i] = ft_strjoin("OLDPWD=", str);
+			ft_memdel((void **)&str);
+			return ;
+		}
+	}
+	return (add_opwd(data, str));
 }
 
 void	gethome(t_data *data)
