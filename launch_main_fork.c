@@ -106,6 +106,7 @@ void		launch_main_fork(t_data *data)
 		main_fork(data, data->liste);
 	else
 		wait(&status);
+	go_home();
 	data->binreturn = status;
 	free_all(data, data->liste);
 }

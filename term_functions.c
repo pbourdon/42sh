@@ -25,8 +25,6 @@ int			term_init(t_term *term)
 	tcgetattr(0, &term->term_copy);
 	term->term.c_lflag &= ~(ICANON);
 	term->term.c_lflag &= ~(ECHO);
-	term->term.c_cc[VMIN] = 1;
-	term->term.c_cc[VTIME] = 0;
 	tcsetattr(0, TCSANOW, &(term->term));
 	return (1);
 }
@@ -37,9 +35,23 @@ int			tputs_putchar(int c)
 	return (1);
 }
 
-int			ft_reset_term(struct termios term)
+void			ft_reset_term()
 {
-	if (tcsetattr(0, 0, &term) == -1)
-		return (-1);
-	return (0);
+	struct termios term;
+
+	tputs(tgetstr("ve", NULL), 1, tputs_putchar);
+	tcgetattr(0, &term);
+	term.c_lflag |= ICANON;
+	term.c_lflag |= ECHO;
+	tcsetattr(0, TCSANOW, &term);
+}
+
+void			go_home()
+{
+	struct termios s;
+
+	tcgetattr(0, &(s));
+	s.c_lflag &= ~(ICANON);
+	s.c_lflag &= ~(ECHO);
+	tcsetattr(0, TCSANOW, &(s));
 }

@@ -95,6 +95,7 @@ int			execveremix(t_data *data, t_liste2 *cur)
 	{
 		if (access(data->tabb[0], F_OK) == 0)
 		{
+			ft_reset_term();
 			if (data->envi == 1)
 				execve(data->tabb[0], data->tabb, NULL);
 			else
