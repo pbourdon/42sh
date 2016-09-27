@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/31 15:53:35 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/27 16:57:00 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/09/27 17:42:25 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -476,13 +476,8 @@ int						mainpipe(t_data *data, t_liste2 *liste);
 void					rediboucle(t_liste2 *liste);
 void					helpmainpipehelp2(t_data *data, t_liste2 *liste, int k);
 void					delete_selection_if_other_than_option(char *buffer);
-<<<<<<< HEAD
 void					ft_reset_term();
 void					go_home();
-=======
-void						ft_reset_term();
-void          go_home();
->>>>>>> 854fb75ad4b26ec938b23a8c2ba5868c01c8c031
 void					sig_handler_ctrl_c(int a);
 int						countstr(char *str, int i);
 int						agreve(t_data *data, t_liste2 *liste);

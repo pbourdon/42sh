@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/04 10:23:04 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/27 14:28:41 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/09/27 17:03:45 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ int			term_init(t_term *term)
 	tcgetattr(0, &term->term_copy);
 	term->term.c_lflag &= ~(ICANON);
 	term->term.c_lflag &= ~(ECHO);
-	term->term.c_cc[VMIN] = 1;
-	term->term.c_cc[VTIME] = 0;
 	tcsetattr(0, TCSANOW, &(term->term));
 	return (1);
 }
@@ -37,11 +35,34 @@ int			tputs_putchar(int c)
 	return (1);
 }
 
-int			ft_reset_term(struct termios term)
+<<<<<<< HEAD
+void		ft_reset_term()
 {
-	if (tcsetattr(0, TCSANOW, &term))
-	{
-		return (-1);
-	}
-	return (0);
+	struct termios term;
+	
+=======
+void			ft_reset_term()
+{
+	struct termios term;
+
+>>>>>>> 854fb75ad4b26ec938b23a8c2ba5868c01c8c031
+	tputs(tgetstr("ve", NULL), 1, tputs_putchar);
+	tcgetattr(0, &term);
+	term.c_lflag |= ICANON;
+	term.c_lflag |= ECHO;
+	tcsetattr(0, TCSANOW, &term);
+}
+
+<<<<<<< HEAD
+void		go_home()
+=======
+void			go_home()
+>>>>>>> 854fb75ad4b26ec938b23a8c2ba5868c01c8c031
+{
+	struct termios s;
+
+	tcgetattr(0, &(s));
+	s.c_lflag &= ~(ICANON);
+	s.c_lflag &= ~(ECHO);
+	tcsetattr(0, TCSANOW, &(s));
 }
