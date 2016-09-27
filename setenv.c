@@ -53,6 +53,7 @@ char	**setenvifdontexist(t_data *data, int a)
 	ft_strdel(&tmp);
 	dst[o + 1] = NULL;
 	freetab2(data);
+	i = 0;
 	return (dst);
 }
 
@@ -102,9 +103,8 @@ void	callsetenv(t_data *data)
 	int	i;
 
 	i = 1;
-	if (ft_strcmp(data->args[0], "setenv") == 0)
+	if (ft_strcmp(data->args[0], "setenv") == 0 && (ft_strlentab(data->args) == 1))
 	{
-		printab(data->env);
 		data->binreturn = 0;
 		return ;
 	}

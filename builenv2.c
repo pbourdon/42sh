@@ -46,6 +46,12 @@ int		checklineok(t_data *data, char **tabb)
 			alreadyintb(data, dst, dst2);
 		else
 			data->builttab = freshnewtab(data, dst, dst2);
+		i = 0;
+		while (data->builttab[i])
+		{
+			ft_putendl(data->builttab[i]);
+			i++;
+		}
 		return (1);
 	}
 	return (-1);
@@ -55,6 +61,7 @@ char	**modiftabafteruse2(t_data *data, char **tabb, int i, int o)
 {
 	while (data->builttab[i])
 	{
+		ft_putendl(data->args[1]);
 		if (ft_strcmp(data->builttab[i], data->args[1]) == 0)
 		{
 			if (data->builttab[i + 3])
@@ -62,7 +69,6 @@ char	**modiftabafteruse2(t_data *data, char **tabb, int i, int o)
 			else
 			{
 				tabb[o] = NULL;
-				freetab(data->builttab);
 				return (tabb);
 			}
 		}
@@ -107,6 +113,7 @@ void	insertthetmp(t_data *data)
 				data->args = ft_strsplit(str, ' ');
 				ft_strdel(&str);
 				callsetenv(data);
+				i = 0;
 				return ;
 			}
 			i += 3;
