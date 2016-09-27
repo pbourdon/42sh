@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 14:35:10 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/13 16:47:30 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/09/20 13:31:16 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,16 @@ void			movements_delete2(int a)
 		move_cursor_right(g_cursor, g_shell);
 		h[0]--;
 	}
-	if ((g_cursor.position_x_rel == g_shell.shell_win_size - 1) && \
-			g_cursor.position_line != g_shell.length_line)
+	if (g_cursor.position_x_rel == g_shell.shell_win_size - 1 /*&& \
+			g_cursor.position_line != g_shell.length_line*/)
 	{
+		ft_putstr_fd("HEEEEEERE\n\n",2);
 		ft_putstr(" ");
 		tputs(tgetstr("le", NULL), 0, tputs_putchar);
 	}
 	move_cursor_right(g_cursor, g_shell);
 	update_cursor();
+	//sleep(1);
 	while (h[1] - a > 0)
 	{
 		go_left(g_cursor, g_shell);

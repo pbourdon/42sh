@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/31 15:53:35 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/13 16:56:28 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/09/27 15:36:21 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -432,5 +432,9 @@ int						get_pos_l(void);
 t_shell					g_shell;
 t_cursor				g_cursor;
 void					callecho(char **args);
+int jump_after_last(int a);
+int			ft_strchr_i(char *str, char c);
+int jump_after_last_and_here(int a);
+
 
 #endif

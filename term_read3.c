@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 16:53:26 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/13 17:07:40 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/09/27 16:16:08 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int			get_pos_l(void)
 	if ((g_cursor.position_line + 6) % g_shell.shell_win_size == 0)
 		return (0);
 	else
-		return (6 + (g_cursor.position_line % g_shell.shell_win_size));
+		return (((g_cursor.position_line + 6) % g_shell.shell_win_size));
 }
 
 int			get_pos_jump2(void)
@@ -133,6 +133,39 @@ int			get_n_line2(void)
 	return ((g_cursor.position_line + 6) / g_shell.shell_win_size);
 }
 
+int aux1()
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = g_cursor.position_line;
+	while (g_shell.shell_line[j - 1] != '\n')
+	{
+		if (j == 1)
+			break ;
+		j--;
+		i++;
+	}
+		return  i % g_shell.shell_win_size;
+}
+int aux2()
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = g_cursor.position_line;
+	while (g_shell.shell_line[j - 1] != '\n')
+	{
+		if (j == 1)
+			break ;
+		j--;
+		i++;
+	}
+		return  (i + 2) % g_shell.shell_win_size;
+}
+
 int			get_pos_jump(void)
 {
 	if (ft_strchr_i(g_shell.shell_line, '\n') >= g_cursor.position_line)
@@ -144,8 +177,7 @@ int			get_pos_jump(void)
 	}
 	else
 	{
-		return ((since_last(g_cursor.position_line) - 1) \
-				% g_shell.shell_win_size);
+			return aux1();
 	}
 }
 
@@ -171,6 +203,62 @@ int			get_pos_back(void)
 				% g_shell.shell_win_size);
 }
 
+int jump_after_last(int a)
+{
+	int i;
+
+	i = a;
+	while (i < g_shell.length_line)
+	{
+		if (g_shell.shell_line[i] == '\n')
+		{
+				return(1);
+		}
+		i++;
+	}
+	return (0);
+}
+
+int jump_after_last_and_here(int a)
+{
+	int i;
+
+	i = g_shell.last_backslash;
+	while (i != a)
+	{
+		if (g_shell.shell_line[i] == '\n')
+		{
+			return (1);
+		}
+		i++;
+	}
+	return (0);
+}
+int			get_pos_backv2(void)
+{
+
+		if (jump_after_last(g_shell.last_backslash))
+		{
+			if (!jump_after_last_and_here(g_cursor.position_line))
+			{
+				if ((g_cursor.position_line - g_shell.last_backslash + 2) % g_shell.shell_win_size == 0)
+					return (0);
+				else
+					return (((g_cursor.position_line - g_shell.last_backslash + 2) % g_shell.shell_win_size));
+			}
+			else
+			{
+					return aux1();
+			}
+		}
+		else
+		{
+			return ((2 + g_shell.backslash_index) % g_shell.shell_win_size);
+		}
+
+
+}
+
 int			get_pos_l2(void)
 {
 	if (g_shell.shell_win_size == 0)
@@ -178,7 +266,7 @@ int			get_pos_l2(void)
 	if (g_shell.backslash_index == -1)
 		return (get_pos_jump());
 	else if (g_shell.shell_backslash_level > 0)
-		return (get_pos_back());
+		return (get_pos_backv2());
 	if ((g_cursor.position_line + 6) % g_shell.shell_win_size == 0)
 		return (0);
 	else
@@ -187,31 +275,40 @@ int			get_pos_l2(void)
 
 void		go_left_jump(void)
 {
-	g_cursor.position_line--;
-	tputs(tgoto(tgetstr("ch", NULL), 0, \
-	get_pos_l2()), 1, tputs_putchar);
-	g_cursor.position_line++;
+	if (g_shell.backslash_index != -1)
+	{
+		g_shell.backslash_index--;
+		g_cursor.position_line--;
+		tputs(tgoto(tgetstr("ch", NULL), 0, \
+		get_pos_l2()), 1, tputs_putchar);
+		g_shell.backslash_index++;
+		g_cursor.position_line++;
+	}
+	else
+	{
+		g_cursor.position_line--;
+		tputs(tgoto(tgetstr("ch", NULL), 0, \
+		get_pos_l2()), 1, tputs_putchar);
+		g_cursor.position_line++;
+	}
+
 }
 
 void		go_left(void)
 {
-	ft_putstr_fd("000", 2);
 	if (g_cursor.position_x_rel == 0)
 	{
-		ft_putstr_fd("1111111\n\n", 2);
 		tputs(tgetstr("up", NULL), 0, tputs_putchar);
 		if (ft_strchr(g_shell.shell_line, '\n'))
 			go_left_jump();
 		else if (g_shell.selected_end != -2)
 		{
-			ft_putstr_fd("222222\n\n", 2);
 			tputs(tgoto(tgetstr("ch", NULL), 0, \
 			g_shell.shell_win_size - 1), 1, tputs_putchar);
 		}
 	}
 	else if (g_cursor.position_line != 0)
 	{
-		ft_putstr_fd("3333333333\n\n", 2);
 		tputs(tgetstr("le", NULL), 0, tputs_putchar);
 	}
 }
