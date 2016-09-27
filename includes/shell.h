@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/31 15:53:35 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/24 17:12:48 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/09/27 18:00:04 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -499,7 +499,6 @@ char					**freshnewtab(t_data *data, char *dst, char *dst2);
 int						alreadyin(t_data *data, char *str);
 int						stringforcd(t_data *data);
 int						cdendargs(t_data *data);
-int						ft_init_verif(void);
 int						movecd(t_data *data);
 int						sub_parsecommand2(t_data *data);
 void					sub_parsecommand(t_data *data, int i);
@@ -513,5 +512,8 @@ t_shell					g_shell;
 t_cursor				g_cursor;
 void					callecho(char **args);
 void                    main_fork(t_data *data, t_liste2 *liste);
+void                                  movements_delete2(int a);
 
+int						ft_init_verif(int a, char *b);
+int ft_strchr_i(char *str, char c);
 #endif

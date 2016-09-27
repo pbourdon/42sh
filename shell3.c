@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 15:02:07 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/28 15:02:23 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/27 17:36:30 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ void				shell_listening_char(void)
 		signal(SIGINT, sig_handler3);
 		signal(SIGQUIT, sig_handler3);
 		signal(SIGTSTP, sig_handler3);
-		buffer = (char *)malloc(sizeof(*buffer) * 9);
-		buffer[8] = '\0';
+		buffer = ft_strnew(8);
 		update_shell_line_original();
 		ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 		g_shell.shell_win_size = w.ws_col;

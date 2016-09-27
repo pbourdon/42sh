@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 14:36:05 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/22 16:52:51 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/09/13 16:58:15 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 int				press_enter_key(void)
 {
 	press_end_key();
-	if (ft_init_verif())
+	if (ft_init_verif(0, "\n"))
 		return (0);
-	if (ft_strcmp(g_shell.shell_line, "") != 0 && g_shell.shell_heredoc == 0\
-		&& g_shell.shell_line[0] != '!')
+	if (ft_strcmp(g_shell.shell_line, "") != 0 && g_shell.shell_heredoc == 0 \
+			&& g_shell.shell_line[0] != '!')
 		add_to_history(g_shell.history, g_shell.shell_line);
 	g_shell.backslash_index = -1;
 	if (g_shell.shell_heredoc == 0)
@@ -54,6 +54,8 @@ void			press_shift_left(void)
 			g_shell.backslash_index--;
 		go_left(g_cursor, g_shell);
 		move_cursor_left(g_cursor, g_shell);
+		if (ft_strchr(g_shell.shell_line, '\n'))
+			update_cursor();
 		index_c--;
 	}
 }
@@ -71,6 +73,8 @@ void			press_shift_right(void)
 			g_shell.backslash_index++;
 		go_right(g_cursor, g_shell);
 		move_cursor_right(g_cursor, g_shell);
+		if (ft_strchr(g_shell.shell_line, '\n'))
+			update_cursor();
 		index_c++;
 	}
 }

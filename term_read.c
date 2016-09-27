@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/04 10:23:53 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/24 15:46:21 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/27 17:44:43 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,17 @@ void	delete_shell_backslash_line(void)
 	int i;
 
 	i = 0;
+	press_end_key();
 	while (g_shell.backslash_index != 0)
 	{
 		press_left_key();
-		g_shell.shell_line[g_shell.last_backslash + i] = '\0';
+		if (ft_strchr(g_shell.shell_line, '\n'))
+			update_cursor();
+		g_shell.shell_line[g_cursor.position_line + 1] = '\0';
 		g_shell.length_line--;
 		i++;
 	}
+	g_shell.shell_line[g_cursor.position_line] = '\0';
 	tputs(tgetstr("cd", NULL), 0, tputs_putchar);
 }
 

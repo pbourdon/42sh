@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 14:35:27 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/28 14:35:42 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/27 17:51:58 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,10 @@ void			press_home_key(void)
 	{
 		if (g_shell.backslash_index == 0)
 			break ;
-		go_left(g_cursor, g_shell);
-		move_cursor_left(g_cursor, g_shell);
-		if (g_shell.backslash_index > 0)
-			g_shell.backslash_index--;
+		press_left_key();
 		h--;
+		if (ft_strchr(g_shell.shell_line, '\n'))
+			update_cursor();
 	}
 }
 
@@ -86,5 +85,7 @@ void			press_end_key(void)
 		go_right(g_cursor, g_shell);
 		move_cursor_right(g_cursor, g_shell);
 		h++;
+		if (ft_strchr(g_shell.shell_line, '\n'))
+			update_cursor();
 	}
 }
