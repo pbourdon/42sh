@@ -90,6 +90,7 @@ char	**modiftabafteruse(t_data *data)
 	tabb = malloc(sizeof(char *) * (ft_strlentab(data->builttab) - 2));
 	i = 0;
 	tabb = modiftabafteruse2(data, tabb, i, o);
+	freetab(data->builttab);
 	return (tabb);
 }
 

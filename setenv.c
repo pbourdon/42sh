@@ -103,8 +103,12 @@ void	callsetenv(t_data *data)
 	int	i;
 
 	i = 1;
+<<<<<<< HEAD
 	if (ft_strcmp(data->args[0], "setenv") == 0 &&\
 		(ft_strlentab(data->args) == 1))
+=======
+	if (ft_strcmp(data->args[0], "setenv") == 0 && (ft_strlentab(data->args) == 1))
+>>>>>>> 854fb75ad4b26ec938b23a8c2ba5868c01c8c031
 	{
 		data->binreturn = 0;
 		return ;
