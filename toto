@@ -2,85 +2,70 @@ Norme: ./add_letter.c
 Norme: ./allwrites.c
 Norme: ./builenv.c
 Norme: ./agreg.c
-Norme: ./builenv2.c
 Norme: ./builenv3.c
+Norme: ./builenv2.c
 Norme: ./cd.c
 Norme: ./builtin_exit_error.c
 Norme: ./builtin_handler.c
+Norme: ./cd2.c
 Norme: ./callecho.c
 Norme: ./cdcall.c
-Norme: ./cd_getpwd.c
 Norme: ./cursor.c
-Norme: ./cd2.c
+Norme: ./cd_getpwd.c
 Norme: ./designator_exec.c
 Norme: ./check_error.c
 Norme: ./cd3.c
 Norme: ./echo.c
+Norme: ./env.c
 Norme: ./designator_string.c
 Norme: ./designator.c
-Norme: ./env.c
-Norme: ./diffsetenv.c
 Norme: ./env3.c
+Norme: ./diffsetenv.c
 Norme: ./env_tools.c
-Norme: ./env2.c
 Norme: ./exit_cd_on_pipe.c
+Norme: ./env2.c
 Norme: ./error2.c
-Norme: ./free.c
 Norme: ./export_on_pipe.c
-Norme: ./free_all.c
+Norme: ./free.c
 Norme: ./env_var_handle.c
-Norme: ./go_words.c
+Norme: ./free_all.c
 Norme: ./free_all_norm.c
-Norme: ./hash.c
-Norme: ./good_order.c
+Norme: ./go_words.c
 Norme: ./final_liste.c
-Norme: ./ft_redirect4.c
-Error (line 53): function sub_exec has 35 lines
-Error (line 61): must begin only by tabulations
-Error (line 98): C++ comment
+Norme: ./good_order.c
 Norme: ./hash3.c
+Norme: ./ft_redirect4.c
+Error (line 105): C++ comment
+Norme: ./hash.c
 Norme: ./history_norm_tool.c
 Norme: ./hash2.c
-Norme: ./history_option.c
-Norme: ./history_show_func.c
 Norme: ./history_tools.c
+Norme: ./history_option.c
 Norme: ./is_key1.c
-Norme: ./is_key3.c
-Norme: ./is_key4.c
 Norme: ./is_key2.c
-Norme: ./history.c
+Norme: ./history_show_func.c
+Norme: ./is_key4.c
+Norme: ./is_key3.c
 Norme: ./is_key5.c
+Norme: ./history.c
+Norme: ./main2.c
 Norme: ./launch_main_fork.c
 Error (line 109): C++ comment
 Norme: ./main_loop.c
 Norme: ./main.c
-Norme: ./old_functions.c
-Norme: ./main2.c
-Error: 6 functions in the file
-Error (line 110): function parsecommand has 30 lines
-Error (line 125): bad indentation
-Error (line 125): must begin only by tabulations
-Error (line 126): bad indentation
-Error (line 126): must begin only by tabulations
-Error (line 127): bad indentation
-Error (line 127): must begin only by tabulations
-Error (line 131): bad indentation
-Error (line 131): must begin only by tabulations
-Error (line 136): bad indentation
-Error (line 136): must begin only by tabulations
-Error (line 137): bad indentation
-Error (line 137): must begin only by tabulations
-Error (line 138): bad indentation
-Error (line 138): must begin only by tabulations
 Norme: ./new_arg_to_list.c
+Norme: ./old_functions.c
+Norme: ./parsecommand.c
 Norme: ./parseandexc2.c
-Norme: ./nsplit_inib.c
-Norme: ./press_key1.c
 Norme: ./parseandexc.c
+Norme: ./nsplit_inib.c
 Norme: ./press_key2.c
+Norme: ./press_key1.c
 Norme: ./press_key3.c
 Norme: ./press_key5.c
 Norme: ./press_key6.c
+Norme: ./redi_handle_tool.c
+Norme: ./prompt.c
 Norme: ./press_key4.c
 Error: global scope bad aligned
 Error (line 69): function ft_init_verif has 31 lines
@@ -89,16 +74,14 @@ Error (line 95): must begin only by tabulations
 Error (line 97): must begin only by tabulations
 Error (line 98): bad indentation
 Error (line 98): must begin only by tabulations
-Norme: ./redi_handle_tool.c
-Norme: ./prompt.c
 Norme: ./setenv2.c
 Norme: ./redi_handler.c
 Norme: ./redi_heredochandler.c
-Norme: ./shell3.c
-Norme: ./shell2.c
 Norme: ./shell.c
+Norme: ./shell3.c
 Norme: ./signal.c
 Norme: ./setenv.c
+Norme: ./shell2.c
 Norme: ./shell_lvl.c
 Norme: ./split_inib_tools.c
 Norme: ./split_on_spec_norm.c
@@ -106,11 +89,11 @@ Norme: ./term_functions.c
 Norme: ./term_read.c
 Norme: ./space_treatment.c
 Norme: ./spliter.c
+Norme: ./split_on_spec.c
 Norme: ./term_read2.c
 Norme: ./term_read3.c
-Norme: ./split_on_spec.c
-Norme: ./tools_split.c
 Norme: ./tools.c
 Norme: ./tools2.c
+Norme: ./tools_split.c
 Norme: ./unsetenv.c
 Norme: ./to_tree.c

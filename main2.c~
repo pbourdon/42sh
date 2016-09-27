@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 18:50:23 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/24 17:04:31 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/09/24 17:32:41 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,10 @@ void			parsecommand(t_data *data, t_liste *liste)
 		ft_memdel((void **)&data->args);
 	data->args = newtab(data->liste->tabb);
  	if (!check_syntax_designator(data))
+	{
+		data->d = 0;
 		return (designator(data, data->liste));
+	}
     i = -1;
     while (data->args && data->args[++i])
         ft_memdel((void **)&data->args[i]);

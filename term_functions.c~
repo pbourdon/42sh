@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/04 10:23:04 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/27 17:42:59 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/09/27 17:03:45 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,17 @@ int			tputs_putchar(int c)
 	return (1);
 }
 
+<<<<<<< HEAD
 void		ft_reset_term()
 {
 	struct termios term;
+	
+=======
+void			ft_reset_term()
+{
+	struct termios term;
 
+>>>>>>> 854fb75ad4b26ec938b23a8c2ba5868c01c8c031
 	tputs(tgetstr("ve", NULL), 1, tputs_putchar);
 	tcgetattr(0, &term);
 	term.c_lflag |= ICANON;
@@ -46,7 +53,11 @@ void		ft_reset_term()
 	tcsetattr(0, TCSANOW, &term);
 }
 
+<<<<<<< HEAD
 void		go_home()
+=======
+void			go_home()
+>>>>>>> 854fb75ad4b26ec938b23a8c2ba5868c01c8c031
 {
 	struct termios s;
 

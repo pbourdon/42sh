@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/06 16:06:15 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/23 00:10:10 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/09/27 13:53:24 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,25 @@ int			sub_loop(char **command, char *target)
 
 void		sub_design_to_string(t_data *data, char *command, t_liste2 *liste)
 {
-	ft_putendl(command);
+	int i;
+
+    i = -1;
 	create_command(command, liste);
-	int i = -1;
-	while (data->args[++i])
-		ft_memdel((void **)&data->args[i]);
-	ft_memdel((void **)&data->args);
-	built_or_launch(data);
+    while (data->args && data->args[++i])
+        ft_memdel((void **)&data->args[i]);
+    ft_memdel((void **)&data->args);
+    if (data->d == 0)
+        built_or_launch(data);
+    else
+    {
+        data->args = newtab(liste->tabb);
+        i = -1;
+		ft_putendl_fd("yolooooooooooo", 2);
+		while (liste->tabb[++i])
+			ft_putendl_fd(liste->tabb[i], 2);
+        ft_putendl_fd("yolooooooooooo", 2);
+		execveremix(data, liste);
+    }
 }
 
 void		design_to_string(t_data *data, char *target, int find, t_liste2 *liste)
@@ -60,6 +72,7 @@ void		design_to_string(t_data *data, char *target, int find, t_liste2 *liste)
 		if (sub_loop(command, target) == 1)
 		{
 			find = 1;
+			freetab(command);
 			break ;
 		}
 		history = history->next;
@@ -70,8 +83,14 @@ void		design_to_string(t_data *data, char *target, int find, t_liste2 *liste)
 		sub_design_to_string(data, history->str, liste);
 		return ;
 	}
-	else
-		send_error(data);
+	send_error(data);
+	if (data->args)
+	{
+		freetab(data->args);
+		data->args = NULL;
+	}
+	if (data->d == 0)
+		free_all(data, data->liste);
 }
 
 void		design_to_start_string(t_data *data, char *target, int find, t_liste2 *liste)
@@ -89,6 +108,7 @@ void		design_to_start_string(t_data *data, char *target, int find, t_liste2 *lis
 		if (ft_strstr(command[0], target) != NULL)
 		{
 			find = 1;
+			freetab(command);
 			break ;
 		}
 		history = history->next;
@@ -97,4 +117,11 @@ void		design_to_start_string(t_data *data, char *target, int find, t_liste2 *lis
 	if (find == 1)
 		return (sub_design_to_string(data, history->str, liste));
 	send_error(data);
+	if (data->args)
+	{
+		freetab(data->args);
+		data->args = NULL;
+	}
+	if (data->d == 0)
+		free_all(data, data->liste);
 }

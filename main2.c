@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 18:50:23 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/24 17:32:41 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/09/27 15:15:30 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,38 +105,4 @@ void			built_or_launch(t_data *data)
 	free_new_env(data->args);
 	data->args = NULL;
 	launch_main_fork(data);
-}
-
-void			parsecommand(t_data *data, t_liste *liste)
-{
-	int			i;
-	int			nb_pipe;
-	t_liste2	*dest;
-
-	(void)liste;
-	data->l = nsplit_on_inib(data->line);
-	if ((nb_pipe = search_nb_pipe(data->l) + 1) > 512)
-	{
-		free_all(data, NULL);
-		return (ft_putendl_fd("sh : over pipe limit", 2));
-	}
-	dest = (t_liste2 *)malloc(sizeof(t_liste2));
-	data->liste = final_list(dest, data->l, nb_pipe);
-    i = -1;
-    while (data->args && data->args[++i])
-        ft_memdel((void **)&data->args[i]);
-	if (data->args)
-		ft_memdel((void **)&data->args);
-	data->args = newtab(data->liste->tabb);
- 	if (!check_syntax_designator(data))
-	{
-		data->d = 0;
-		return (designator(data, data->liste));
-	}
-    i = -1;
-    while (data->args && data->args[++i])
-        ft_memdel((void **)&data->args[i]);
-	if (data->args)
-		ft_memdel((void **)&data->args);
-	built_or_launch(data);
 }

@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 13:31:53 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/24 17:17:52 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/09/27 15:04:12 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,19 @@
 
 void		create_command(char *command, t_liste2 *liste)
 {
+	int i;
+	int t;
+
+	t = 0;
+	i = -1;
+	while (command[++i])
+		if (command[i] == '|')
+			t = i;
 	free(liste->tabb[0]);
-	liste->tabb[0] = ft_strdup(command);
+	if (t != 0 && t < i - 3)
+		liste->tabb[0] = ft_strdup(command + t + 3);
+	else
+		liste->tabb[0] = ft_strdup(command);
 }
 
 void		design_to_index_rev(t_data *data, int index, t_liste2 *cur)
@@ -31,11 +42,8 @@ void		design_to_index_rev(t_data *data, int index, t_liste2 *cur)
 		return (send_error(data));
 	while (history->next)
 		history = history->next;
-	while (history && i > len)
-	{
-		i--;
+	while (history && i-- > len)
 		history = history->prev;
-	}
 	if (i > len)
 	{
 		ft_putstr_fd("sh: ", 2);
@@ -46,19 +54,7 @@ void		design_to_index_rev(t_data *data, int index, t_liste2 *cur)
 	}
 	if (!history || history->str)
 		return (send_error(data));
-	ft_putendl(history->str);
-	create_command(history->str, cur);
-	i = -1;
-	while (data->args && data->args[++i])
-		ft_memdel((void **)&data->args[i]);
-	ft_memdel((void **)&data->args);
-	if (data->d == 0)
-		built_or_launch(data);
-	else
-	{
-		data->args = newtab(cur->tabb);
-		execveremix(data, cur);
-	}
+	return (design_to_exec(data, cur));
 }
 
 void		design_to_index(t_data *data, int index, t_liste2 *cur)
@@ -85,19 +81,7 @@ void		design_to_index(t_data *data, int index, t_liste2 *cur)
 	}
 	if (!history || history->str)
 		return (send_error(data));
-	ft_putendl(history->str);
-	create_command(history->str, cur);
-	i = -1;
-	while (data->args && data->args[++i])
-		ft_memdel((void **)&data->args[i]);
-	ft_memdel((void **)&data->args);
-	if (data->d == 0)
-		built_or_launch(data);
-	else
-	{
-		data->args = newtab(cur->tabb);
-		execveremix(data, cur);
-	}
+	return (design_to_exec(data, cur));
 }
 
 int			check_syntax_designator(t_data *data)
@@ -120,7 +104,7 @@ void		designator(t_data *data, t_liste2 *cur)
 	i = 0;
 	if (ft_isdigit(data->args[0][1]) ||
 		(data->args[0][1] == '-' && ft_isdigit(data->args[0][2])))
-	{	
+	{
 		tmp = data->args[0];
 		if (ft_strisdigit(++tmp) == 0)
 			design_to_index(data, ft_atoi(tmp), cur);
