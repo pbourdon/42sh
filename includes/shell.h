@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/31 15:53:35 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/24 17:12:48 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/09/27 16:57:00 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,6 +208,8 @@ typedef struct			s_builtin
 	void				(*blt)(struct s_data *data);//, char **tabb, int i);
 }						t_builtin;
 
+int						search_nb_pipe(t_tk *tk);
+void					design_to_exec(t_data *data, t_liste2 *cur);
 void					built_or_launch(t_data *data);
 void					send_error(t_data *data);
 int						builtin_check1(t_data *data);
@@ -474,7 +476,8 @@ int						mainpipe(t_data *data, t_liste2 *liste);
 void					rediboucle(t_liste2 *liste);
 void					helpmainpipehelp2(t_data *data, t_liste2 *liste, int k);
 void					delete_selection_if_other_than_option(char *buffer);
-int						ft_reset_term(struct termios term);
+void					ft_reset_term();
+void					go_home();
 void					sig_handler_ctrl_c(int a);
 int						countstr(char *str, int i);
 int						agreve(t_data *data, t_liste2 *liste);

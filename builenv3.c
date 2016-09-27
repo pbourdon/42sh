@@ -93,7 +93,7 @@ void	deletefromenv(t_data *data, int k)
 	in = 0;
 	o = 0;
 	i = -1;
-	if (!data->builttab)
+	if (!data->builttab || !data->builttab[0])
 		return ;
 	tabb = (char **)malloc(sizeof(char *) * (ft_strlentab(data->builttab) - 2));
 	while (data->builttab[++i])

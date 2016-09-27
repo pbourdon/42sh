@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/04 09:43:51 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/27 14:14:47 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/09/18 21:42:14 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ t_history			*double_left(char *fin)
 	hered->next = NULL;
 	hered->str = NULL;
 	g_shell.history_index = get_history_length() + 1;
+//	ft_bzero(g_shell.shell_line_original, g_shell.size);
 	while (ft_strcmp(fin, g_shell.shell_line_original) != 0)
 	{
 		ft_putstr("heredoc>");

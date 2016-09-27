@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/02 15:48:23 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/09/24 17:36:19 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/09/27 16:55:31 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,24 +50,9 @@ void		env_on_pipe(t_data *data)
 	exit((data->binreturn = 0));
 }
 
-int			sub_exec(t_data *data, t_liste2 *cur)
+int			sub_exec_norm(t_data *data)
 {
-	if (!check_syntax_designator(data))
-	{
-		data->d = 1;
-		designator(data, cur);
-	}
-	else if ((ft_strlentab(data->args) == 1) &&\
-				 (ft_strcmp(data->args[0], "$?") == 0))
-	{
-		ft_putnbr(data->binreturn);
-		ft_putchar('\n');
-		exit((data->binreturn = 0));
-	}
-	else if (data->args && data->args[0] && !data->args[1] &&
-		data->args[0][0] != '=' && ft_strchr(data->args[0], '='))
-		exit(0);
-	else if (!ft_strcmp(data->args[0], "exit"))
+	if (!ft_strcmp(data->args[0], "exit"))
 		exit_on_pipe(data, data->args);
 	else if (!ft_strcmp(data->args[0], "export"))
 		export_on_pipe(data);
@@ -82,9 +67,31 @@ int			sub_exec(t_data *data, t_liste2 *cur)
 		callecho(data->args);
 		exit((data->binreturn = 0));
 	}
+	else
+		return (0);
+	return (1);
+}
+
+int			sub_exec(t_data *data, t_liste2 *cur)
+{
+	if (!check_syntax_designator(data))
+	{
+		data->d = 1;
+		designator(data, cur);
+	}
+	else if ((ft_strlentab(data->args) == 1) &&\
+				(ft_strcmp(data->args[0], "$?") == 0))
+	{
+		ft_putnbr(data->binreturn);
+		ft_putchar('\n');
+		exit((data->binreturn = 0));
+	}
+	else if (data->args && data->args[0] && !data->args[1] &&
+		data->args[0][0] != '=' && ft_strchr(data->args[0], '='))
+		exit(0);
 	else if (!ft_strcmp(data->args[0], "history"))
 		history(data);
-	else if (!is_a_builtin(data->args[0]))
+	else if (!sub_exec_norm(data) && !is_a_builtin(data->args[0]))
 		return (1);
 	return (0);
 }
@@ -95,6 +102,7 @@ int			execveremix(t_data *data, t_liste2 *cur)
 	{
 		if (access(data->tabb[0], F_OK) == 0)
 		{
+			ft_reset_term();
 			if (data->envi == 1)
 				execve(data->tabb[0], data->tabb, NULL);
 			else

@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 17:03:20 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/09/24 17:11:53 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/09/27 16:57:34 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ void		launch_main_fork(t_data *data)
 		main_fork(data, data->liste);
 	else
 		wait(&status);
+	go_home();
 	data->binreturn = status;
 	free_all(data, data->liste);
 }
