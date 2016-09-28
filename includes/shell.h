@@ -68,7 +68,7 @@ typedef struct          s_lredi
 }                       t_lredi;
 
 /*
-** liste2 splits the line on pipe. 
+** liste2 splits the line on pipe.
 **
 **tabb splits the command on spaces.
 **
@@ -76,7 +76,7 @@ typedef struct          s_lredi
 **
 **
 **
-*/ 
+*/
 
 typedef struct          s_liste2
 {
@@ -535,4 +535,6 @@ int			get_n_line2(void);
 int			get_n_line(void);
 int			aux1(void);
 int			since_last(int k);
+void				sig_handler22(int sign);
+void				sig_handler2(int sign);
 #endif

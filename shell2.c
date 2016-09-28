@@ -85,3 +85,9 @@ void				update_shell_line_original(void)
 			ft_realloc(g_shell.shell_line_original, g_shell.size);
 	}
 }
+
+void				sig_handler22(int sign)
+{
+	sign = 1;
+	g_shell.shell_heredoc = -1;
+}

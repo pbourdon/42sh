@@ -48,9 +48,17 @@ int					listen(char *buffer)
 		return (1);
 	else if (is_ctrl_d(buffer) && g_shell.length_line == 0)
 	{
-		ft_reset_term(g_shell.term_reset.term);
-		ft_putendl("exit");
-		exit(0);
+		if (g_shell.shell_heredoc == 1)
+		{
+			ft_putendl("");
+			g_shell.shell_heredoc = -1;
+			return (1);
+		}
+		else
+		{
+			ft_reset_term(g_shell.term_reset.term);
+			exit(0);
+		}
 	}
 	else if (is_delete_key(buffer))
 		press_delete_key();
@@ -88,6 +96,7 @@ void				shell_init(void)
 	g_shell.selected_start = -1;
 	g_shell.selected_copy = "";
 	g_shell.shell_fd_0 = 0;
+	g_shell.shell_heredoc = 0;
 }
 
 t_history			*double_left(char *fin)
@@ -98,13 +107,16 @@ t_history			*double_left(char *fin)
 	hered->next = NULL;
 	hered->str = NULL;
 	g_shell.history_index = get_history_length() + 1;
-	while (ft_strcmp(fin, g_shell.shell_line_original) != 0)
+	g_shell.shell_heredoc = 0;
+	while (ft_strcmp(fin, g_shell.shell_line_original) != 0 && g_shell.shell_heredoc != -1)
 	{
 		ft_putstr("heredoc>");
-		g_shell.shell_heredoc = 1;
+		if (g_shell.shell_heredoc == 0)
+			g_shell.shell_heredoc = 1;
 		ft_bzero(g_shell.shell_line, g_shell.size);
 		shterm_listen(NULL);
 		add_to_history(hered, g_shell.shell_line);
 	}
+	g_shell.shell_heredoc = 0;
 	return (hered);
 }
