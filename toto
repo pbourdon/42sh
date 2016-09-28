@@ -1,99 +1,147 @@
-Norme: ./add_letter.c
-Norme: ./allwrites.c
-Norme: ./builenv.c
-Norme: ./agreg.c
-Norme: ./builenv3.c
-Norme: ./builenv2.c
-Norme: ./cd.c
-Norme: ./builtin_exit_error.c
-Norme: ./builtin_handler.c
-Norme: ./cd2.c
-Norme: ./callecho.c
-Norme: ./cdcall.c
-Norme: ./cursor.c
-Norme: ./cd_getpwd.c
-Norme: ./designator_exec.c
-Norme: ./check_error.c
-Norme: ./cd3.c
-Norme: ./echo.c
-Norme: ./env.c
-Norme: ./designator_string.c
-Norme: ./designator.c
-Norme: ./env3.c
-Norme: ./diffsetenv.c
-Norme: ./env_tools.c
-Norme: ./exit_cd_on_pipe.c
-Norme: ./env2.c
-Norme: ./error2.c
-Norme: ./export_on_pipe.c
-Norme: ./free.c
-Norme: ./env_var_handle.c
-Norme: ./free_all.c
-Norme: ./free_all_norm.c
-Norme: ./go_words.c
-Norme: ./final_liste.c
-Norme: ./good_order.c
-Norme: ./hash3.c
-Norme: ./ft_redirect4.c
-Error (line 105): C++ comment
-Norme: ./hash.c
-Norme: ./history_norm_tool.c
-Norme: ./hash2.c
-Norme: ./history_tools.c
-Norme: ./history_option.c
-Norme: ./is_key1.c
-Norme: ./is_key2.c
-Norme: ./history_show_func.c
-Norme: ./is_key4.c
-Norme: ./is_key3.c
-Norme: ./is_key5.c
-Norme: ./history.c
-Norme: ./main2.c
-Norme: ./launch_main_fork.c
-Error (line 109): C++ comment
-Norme: ./main_loop.c
-Norme: ./main.c
-Norme: ./new_arg_to_list.c
-Norme: ./old_functions.c
-Norme: ./parsecommand.c
-Norme: ./parseandexc2.c
-Norme: ./parseandexc.c
-Norme: ./nsplit_inib.c
-Norme: ./press_key2.c
-Norme: ./press_key1.c
-Norme: ./press_key3.c
-Norme: ./press_key5.c
-Norme: ./press_key6.c
-Norme: ./redi_handle_tool.c
-Norme: ./prompt.c
-Norme: ./press_key4.c
-Error: global scope bad aligned
-Error (line 69): function ft_init_verif has 31 lines
-Error (line 69): declarations must be followed by one empty line in ft_init_verif
-Error (line 95): must begin only by tabulations
-Error (line 97): must begin only by tabulations
-Error (line 98): bad indentation
-Error (line 98): must begin only by tabulations
-Norme: ./setenv2.c
-Norme: ./redi_handler.c
-Norme: ./redi_heredochandler.c
-Norme: ./shell.c
-Norme: ./shell3.c
-Norme: ./signal.c
-Norme: ./setenv.c
-Norme: ./shell2.c
-Norme: ./shell_lvl.c
-Norme: ./split_inib_tools.c
-Norme: ./split_on_spec_norm.c
-Norme: ./term_functions.c
-Norme: ./term_read.c
-Norme: ./space_treatment.c
-Norme: ./spliter.c
-Norme: ./split_on_spec.c
-Norme: ./term_read2.c
-Norme: ./term_read3.c
-Norme: ./tools.c
-Norme: ./tools2.c
-Norme: ./tools_split.c
-Norme: ./unsetenv.c
-Norme: ./to_tree.c
+[?12l[?25h#builtin_handler.c#
+#cd.c#
+#toto#
+1
+21sh
+Makefile
+Makefile~
+add_letter.c
+agreg.c
+allwrites.c
+auteur
+bdemaze
+builenv.c
+builenv2.c
+builenv3.c
+builtin_exit_error.c
+builtin_handler.c
+builtin_handler.c~
+callecho.c
+cat
+cd.c
+cd2.c
+cd3.c
+cd_getpwd.c
+cdcall.c
+check_error.c
+cmoi
+cursor.c
+designator
+designator.c
+designator.c~
+designator_exec.c
+designator_exec.c~
+designator_string.c
+designator_string.c~
+diffsetenv.c
+echo.c
+endptet100
+env.c
+env2.c
+env3.c
+env_tools.c
+env_var_handle.c
+error.c
+error2.c
+exit_cd_on_pipe.c
+export_on_pipe.c
+final_liste.c
+free.c
+free_all.c
+free_all.c~
+free_all_norm.c
+free_all_norm.c~
+ft_redirect4.c
+ft_redirect4.c~
+go_words.c
+good_order.c
+hash.c
+hash2.c
+hash3.c
+history.c
+history_norm_tool.c
+history_option.c
+history_show_func.c
+history_tools.c
+ifcd.c
+includes
+is_key1.c
+is_key2.c
+is_key3.c
+is_key4.c
+is_key5.c
+launch_main_fork.c
+launch_main_fork.c~
+libft
+ls
+lslsl
+main.c
+main.c~
+main2.c
+main2.c~
+main3.c
+main_loop.c
+main_loop.c~
+new_arg_to_list.c
+newredi1.c
+nsplit_inib.c
+obj
+old_functions.c
+parseandexc.c
+parseandexc2.c
+parsecommand.c
+parsecommand.c~
+press_key1.c
+press_key2.c
+press_key3.c
+press_key4.c
+press_key5.c
+press_key6.c
+press_key7.c
+prompt.c
+redi_handle_tool.c
+redi_handler.c
+redi_heredochandler.c
+setenv.c
+setenv.c~
+setenv2.c
+shell.c
+shell.c~
+shell2.c
+shell2.c~
+shell3.c
+shell_lvl.c
+signal.c
+space_treatment.c
+split_inib.c
+split_inib_tools.c
+split_on_spec.c
+split_on_spec_norm.c
+spliter.c
+tchik
+tchiki
+term_functions.c
+term_functions.c~
+term_read.c
+term_read2.c
+term_read3.c
+term_read4.c
+term_read5.c
+term_read6.c
+testredi.c
+testredi2.c
+testredi3.c
+testredi4.c
+testredi5.c
+testredi6.c
+testredi7.c
+to_tree.c
+tools.c
+tools2.c
+tools2.c~
+tools_split.c
+toto
+toto.c
+tototo
+trololololo
+unsetenv.c

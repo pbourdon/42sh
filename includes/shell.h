@@ -6,7 +6,7 @@
 /*   By: pguzman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 18:03:28 by pguzman           #+#    #+#             */
-/*   Updated: 2016/09/28 11:06:10 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/09/28 14:08:43 by hlouar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,17 @@ typedef struct          s_lredi
     int                 redi;
     struct s_lredi      *next;
 }                       t_lredi;
+
+/*
+** liste2 splits the line on pipe. 
+**
+**tabb splits the command on spaces.
+**
+**redir --> ls > toto ---> redir->str = toto redir->redi = 1( or another)
+**
+**
+**
+*/ 
 
 typedef struct          s_liste2
 {
