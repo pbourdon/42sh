@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 16:53:08 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/27 17:48:18 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/09/28 10:41:49 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ int		ft_putstr_i(char *str, int i)
 	while (str[i])
 	{
 		if (i >= g_shell.selected_start && i <= g_shell.selected_end)
-			tputs(tgetstr("mr", NULL), 0, tputs_putchar);	
+			tputs(tgetstr("mr", NULL), 0, tputs_putchar);
 		ft_putchar(str[i]);
-		if ((i + 6) % (g_shell.shell_win_size) == 0 && str[i] == '\n' && ft_strchr_i(g_shell.shell_line,'\n') >= i)
-		ft_putchar(str[i]);
+		if ((i + 6) % (g_shell.shell_win_size) == 0 && str[i] == '\n' && \
+				ft_strchr_i(g_shell.shell_line, '\n') >= i)
+			ft_putchar(str[i]);
 		i++;
 		res++;
 		tputs(tgetstr("me", NULL), 0, tputs_putchar);

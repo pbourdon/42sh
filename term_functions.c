@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/04 10:23:04 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/27 17:42:59 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/09/28 10:42:48 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int			tputs_putchar(int c)
 	return (1);
 }
 
-void		ft_reset_term()
+void		ft_reset_term(void)
 {
 	struct termios term;
 
@@ -46,7 +46,7 @@ void		ft_reset_term()
 	tcsetattr(0, TCSANOW, &term);
 }
 
-void		go_home()
+void		go_home(void)
 {
 	struct termios s;
 

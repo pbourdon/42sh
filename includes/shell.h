@@ -6,7 +6,7 @@
 /*   By: pguzman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 18:03:28 by pguzman           #+#    #+#             */
-/*   Updated: 2016/09/27 18:03:37 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/09/28 11:06:10 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -518,4 +518,10 @@ void                                  movements_delete2(int a);
 
 int						ft_init_verif(int a, char *b);
 int ft_strchr_i(char *str, char c);
+int					get_pos_jump(void);
+int					get_pos_backv2(void);
+int			get_n_line2(void);
+int			get_n_line(void);
+int			aux1(void);
+int			since_last(int k);
 #endif

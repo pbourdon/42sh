@@ -6,7 +6,7 @@
 #    By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/02 13:52:37 by bde-maze          #+#    #+#              #
-#    Updated: 2016/09/27 15:14:02 by cmichaud         ###   ########.fr        #
+#    Updated: 2016/09/28 11:00:26 by pguzman          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,10 +39,14 @@ SRC = 	builtin_exit_error.c \
 		press_key4.c \
 		press_key5.c \
 		press_key6.c \
+		press_key7.c \
 		add_letter.c \
 		good_order.c \
 		term_read2.c \
 		term_read3.c \
+		term_read4.c \
+		term_read5.c \
+		term_read6.c \
 		designator.c \
 		env_tools.c \
 		shell_lvl.c \
