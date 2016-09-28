@@ -6,7 +6,7 @@
 /*   By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 11:02:55 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/27 17:43:12 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/09/28 16:51:07 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,8 @@ void	callsetenv(t_data *data)
 	int	i;
 
 	i = 1;
-	if (ft_strcmp(data->args[0], "setenv") == 0 && (ft_strlentab(data->args) == 1))
+	if (ft_strcmp(data->args[0], "setenv") == 0 &&
+			(ft_strlentab(data->args) == 1))
 	{
 		data->binreturn = 0;
 		return ;
