@@ -6,7 +6,7 @@
 /*   By: pguzman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 18:02:53 by pguzman           #+#    #+#             */
-/*   Updated: 2016/09/27 18:02:58 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/09/28 16:34:28 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ int					sub_listen(char *buffer)
 		if (press_enter_key())
 			return (1);
 	}
+	else if (is_end_key(buffer))
+		press_end_key();
+	else if (is_option_key(buffer))
+		press_option_key(buffer);
 	else if (is_shift_direction_key(buffer))
 		press_shift_direction_key(buffer);
 	else if (is_eot(buffer))
@@ -57,6 +61,7 @@ int					listen(char *buffer)
 		else
 		{
 			ft_reset_term(g_shell.term_reset.term);
+			ft_putendl("exit");
 			exit(0);
 		}
 	}
@@ -66,10 +71,6 @@ int					listen(char *buffer)
 		press_direction_key(buffer);
 	else if (is_home_key(buffer))
 		press_home_key();
-	else if (is_end_key(buffer))
-		press_end_key();
-	else if (is_option_key(buffer))
-		press_option_key(buffer);
 	return (sub_listen(buffer));
 }
 
@@ -108,7 +109,8 @@ t_history			*double_left(char *fin)
 	hered->str = NULL;
 	g_shell.history_index = get_history_length() + 1;
 	g_shell.shell_heredoc = 0;
-	while (ft_strcmp(fin, g_shell.shell_line_original) != 0 && g_shell.shell_heredoc != -1)
+	while (ft_strcmp(fin, g_shell.shell_line_original) != 0 \
+			&& g_shell.shell_heredoc != -1)
 	{
 		ft_putstr("heredoc>");
 		if (g_shell.shell_heredoc == 0)
