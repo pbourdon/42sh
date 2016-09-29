@@ -30,6 +30,8 @@ int					sub_listen(char *buffer)
 		if (press_enter_key())
 			return (1);
 	}
+	else if (is_home_key(buffer))
+		press_home_key();
 	else if (is_end_key(buffer))
 		press_end_key();
 	else if (is_option_key(buffer))
@@ -69,8 +71,6 @@ int					listen(char *buffer)
 		press_delete_key();
 	else if (is_direction_key(buffer))
 		press_direction_key(buffer);
-	else if (is_home_key(buffer))
-		press_home_key();
 	return (sub_listen(buffer));
 }
 
@@ -96,7 +96,6 @@ void				shell_init(void)
 	g_shell.selected_start = -1;
 	g_shell.selected_copy = "";
 	g_shell.shell_fd_0 = 0;
-	g_shell.shell_heredoc = 0;
 }
 
 t_history			*double_left(char *fin)

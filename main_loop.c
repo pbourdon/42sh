@@ -64,6 +64,11 @@ t_liste			*sub_read_cond2(t_data *data, t_liste *tmp)
 	return (tmp);
 }
 
+/*
+** ls -la ; pwd ; asdasdsa ; ls | sort > toto; rm toto
+** SPLIT ON ; -> each t_list->arg
+*/
+
 void			sub_read(t_tree *tree, t_data *data)
 {
 	t_liste		*liste;

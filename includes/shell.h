@@ -6,7 +6,7 @@
 /*   By: pguzman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 18:03:28 by pguzman           #+#    #+#             */
-/*   Updated: 2016/09/29 13:22:52 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/09/29 15:54:41 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-
-
-#include <stdio.h>
-
-
-
 # define OTHER 0
 # define AGGR 1
 # define BACK 2
@@ -51,21 +45,21 @@
 # define INPUT 0
 # define OUTPUT 1
 
-typedef struct          s_lfd
+typedef struct			s_lfd
 {
-    int                 fd;
-    int                 open;
-    int                 read;
-    int                 write;
-    struct s_lfd        *next;
-}                       t_lfd;
+	int					fd;
+	int					open;
+	int					read;
+	int					write;
+	struct s_lfd		*next;
+}						t_lfd;
 
-typedef struct          s_lredi
+typedef struct			s_lredi
 {
-    char                *str;
-    int                 redi;
-    struct s_lredi      *next;
-}                       t_lredi;
+	char				*str;
+	int					redi;
+	struct s_lredi		*next;
+}						t_lredi;
 
 /*
 ** liste2 splits the line on pipe.
@@ -78,15 +72,15 @@ typedef struct          s_lredi
 **
 */
 
-typedef struct          s_liste2
+typedef struct			s_liste2
 {
-    char                **tabb;
-    t_lredi             *redir;
-    t_lfd               *fd;
+	char				**tabb;
+	t_lredi				*redir;
+	t_lfd				*fd;
 	pid_t				pid;
 	int					pfd[2];
-    struct s_liste2     *next;
-}                       t_liste2;
+	struct s_liste2		*next;
+}						t_liste2;
 
 typedef struct			s_larg
 {
@@ -216,7 +210,7 @@ typedef struct			s_liste
 typedef struct			s_builtin
 {
 	char				*str;
-	void				(*blt)(struct s_data *data);//, char **tabb, int i);
+	void				(*blt)(struct s_data *data);
 }						t_builtin;
 
 char					*search_tild(char *str, t_data *data);
@@ -234,12 +228,15 @@ void					free_all_liste(t_liste2 **l);
 void					redi_loop(t_liste2 *l, t_lredi *liste, t_data *data);
 void					stock_fd(t_lfd *l, int fd, int t);
 void					search_close_fd(t_liste2 *l, int df);
-void					heredoc_to_stdin(t_liste2 *l, t_history *hist, t_history *t);
+void					heredoc_to_stdin(t_liste2 *l, t_history *hist, \
+		t_history *t);
 void					free_heredoc(t_history *hist);
 int						check_if_its_agreg(char *str);
 void					to_handle_agreg(t_liste2 *l, t_lredi *liste);
-void					to_to_handle_heredoc(t_liste2 *l, t_lredi *liste, t_data *data);
-void					to_main_fork_redirection_dbl(t_liste2 *l, t_lredi *liste);
+void					to_to_handle_heredoc(t_liste2 *l, t_lredi *liste, \
+		t_data *data);
+void					to_main_fork_redirection_dbl(t_liste2 *l, \
+		t_lredi *liste);
 void					to_main_fork_redirection2(t_liste2 *l, t_lredi *liste);
 void					to_main_fork_redirection(t_liste2 *l, t_lredi *liste);
 void					stock_all_heredoc(t_data *data, t_liste2 *l);
@@ -250,8 +247,8 @@ void					p_or_e_choice(t_data *data, char **tabb, int i);
 char					**get_env_nd_var(char **tabb, char **env);
 char					**get_var(char **tabb);
 int						env_error(char **tabb);
-t_history				*hist_stock(char *line, t_history *n,
-								   t_history *p, t_history *history);
+t_history				*hist_stock(char *line, t_history *n, \
+		t_history *p, t_history *history);
 int						export_no_pipe(t_data *data);
 void					export_on_pipe(t_data *data);
 void					builtin_echo(char *str);
@@ -267,7 +264,7 @@ void					to_set_pwd(t_data *data);
 void					free_liste2(t_liste2 *l);
 void					exit_on_pipe(t_data *data, char **tabb);
 void					exit_no_pipe(t_data *data, char **tabb);
-t_tk		            *nsplit_on_inib(char *str);
+t_tk					*nsplit_on_inib(char *str);
 void					create_command(char *command, t_liste2 *liste);
 void					add_arg_to_history(t_data *data);
 void					add_to_history(t_history *his, char *shell_line);
@@ -276,9 +273,9 @@ int						ft_get_lenght_list(t_history *history);
 int						append_to_list(void);
 void					append_to_file(void);
 void					design_to_start_string(t_data *data, char *target,\
-											   int find, t_liste2 *liste);
+		int find, t_liste2 *liste);
 void					design_to_string(t_data *data, char *target, int find,\
-										 t_liste2 *liste);
+		t_liste2 *liste);
 void					show_helper_history(void);
 int						check_syntax_designator(t_data *data);
 void					designator(t_data *data, t_liste2 *cur);
@@ -299,7 +296,7 @@ char					quote_norm(int inib, char quote, char c);
 void					history(t_data *data);
 int						add_token(char *str);
 t_liste					*create_list(void);
-void 					launch_main_fork(t_data *data);
+void					launch_main_fork(t_data *data);
 int						is_a_word(int quote, int inib, char c);
 void					free_tree(t_tree *tree);
 int						switch_case(t_tk *ptr, int nb_redir, int nb_redir2);
@@ -315,7 +312,7 @@ void					aff(t_tree *tree);
 t_tk					*good_order(t_tk *ptr, t_tk *prev, t_tk *base);
 int						sub_split_on_spec(char **cmd, char **ptr);
 int						is_a_spec2(char *str, char c);
-void 					fill_the_main_liste(t_data *data);
+void					fill_the_main_liste(t_data *data);
 char					*free_space(char *str, int quote, int d, int i);
 char					*replace_rest_of_space(char *ptr, int len);
 char					*erase_first_space(char *line);
@@ -335,7 +332,7 @@ char					**printifenv(char **tabb, char *str);
 int						alreadyexist(char **tabb, char *str);
 int						ft_strlenremix(char *str);
 char					*getpwd(void);
-void 					fill_the_agreg_liste(t_data *data);
+void					fill_the_agreg_liste(t_data *data);
 char					**newtab(char **tabb);
 void					freedata(char *str, t_data *data);
 int						errcd(t_data *data);
@@ -525,17 +522,16 @@ int						get_pos_l(void);
 t_shell					g_shell;
 t_cursor				g_cursor;
 void					callecho(char **args);
-void                    main_fork(t_data *data, t_liste2 *liste);
-void                                  movements_delete2(int a);
-
+void					main_fork(t_data *data, t_liste2 *liste);
+void					movements_delete2(int a);
 int						ft_init_verif(int a, char *b);
-int ft_strchr_i(char *str, char c);
-int					get_pos_jump(void);
-int					get_pos_backv2(void);
-int			get_n_line2(void);
-int			get_n_line(void);
-int			aux1(void);
-int			since_last(int k);
-void				sig_handler22(int sign);
-void				sig_handler2(int sign);
+int						ft_strchr_i(char *str, char c);
+int						get_pos_jump(void);
+int						get_pos_backv2(void);
+int						get_n_line2(void);
+int						get_n_line(void);
+int						aux1(void);
+int						since_last(int k);
+void					sig_handler22(int sign);
+void					sig_handler2(int sign);
 #endif

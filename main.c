@@ -88,6 +88,7 @@ int				main_init(t_term *term)
 		return (-1);
 	}
 	shell_init();
+	g_shell.shell_heredoc = 0;
 	return (0);
 }
 
