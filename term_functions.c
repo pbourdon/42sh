@@ -39,7 +39,6 @@ void		ft_reset_term(void)
 {
 	struct termios term;
 
-	tputs(tgetstr("ve", NULL), 1, tputs_putchar);
 	tcgetattr(0, &term);
 	term.c_lflag |= ICANON;
 	term.c_lflag |= ECHO;
