@@ -6,7 +6,7 @@
 /*   By: pguzman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 18:03:28 by pguzman           #+#    #+#             */
-/*   Updated: 2016/09/29 16:04:21 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/09/29 16:40:47 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,7 +202,8 @@ typedef struct			s_builtin
 	void				(*blt)(struct s_data *data);
 }						t_builtin;
 
-char					*search_tild(char *str, t_data *data);
+char					*search_var(char *str, t_data *data, int i, int q);
+char					*search_tild(char *str, t_data *data, int i, int q);
 int						search_nb_pipe(t_tk *tk);
 void					design_to_exec(t_data *data, t_liste2 *cur);
 void					built_or_launch(t_data *data);

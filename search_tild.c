@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 12:09:18 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/09/29 13:26:28 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/09/29 16:21:48 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char		*replace_for_home(char *src, char *pos, char *to_add)
 	return (dest);
 }
 
-char		*search_tild(char *str, t_data *data)
+char		*search_tild(char *str, t_data *data, int inib, int quote)
 {
 	int		i;
 	char	*tmp;
@@ -65,12 +65,17 @@ char		*search_tild(char *str, t_data *data)
 	str = ft_strdup(str);
 	while (str && str[++i])
 	{
-		if (str[i] == '~' && (!str[i + 1] || str[i + 1] == ' '\
-								|| str[i + 1] == '/'))
+		if (!quote && !inib && str[i] == '~' &&\
+			(!str[i + 1] || str[i + 1] == ' ' || str[i + 1] == '/'))
 		{
 			if ((tmp = is_home(data->env)))
 				str = replace_for_home(str, str + i, tmp);
 		}
+		if (!(quote + inib) && str[i] == '\\')
+			inib = 1;
+		else
+			inib = 0;
+		quote = quote_norm(inib, quote, str[i]);
 	}
 	return (str);
 }
