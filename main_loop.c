@@ -69,6 +69,12 @@ t_liste			*sub_read_cond2(t_data *data, t_liste *tmp)
 ** SPLIT ON ; -> each t_list->arg
 */
 
+/*
+** liste2 splits the line on pipe.
+** tabb splits the command on spaces.
+** redir --> ls > toto ---> redir->str = toto redir->redi = 1( or another)
+*/
+
 void			sub_read(t_tree *tree, t_data *data)
 {
 	t_liste		*liste;
