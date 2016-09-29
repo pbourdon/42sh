@@ -6,26 +6,11 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/21 19:36:50 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/26 07:38:36 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/29 15:39:42 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/shell.h"
-
-void		aff(t_tree *tree)
-{
-	if (tree == NULL)
-	{
-		ft_putendl("end node\n");
-		return ;
-	}
-	ft_putendl(tree->arg);
-	ft_putendl("left");
-	aff(tree->left);
-	ft_putendl("right");
-	aff(tree->right);
-	return ;
-}
 
 t_tree		*new_node(t_tk *tk)
 {
