@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 16:29:37 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/09/29 16:39:42 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/09/29 16:46:15 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int				readgnl(t_data *data, char *str)
 	char		*new;
 
 	ret = 0;
-	new = search_tild(str, data);
+	new = search_tild(str, data, 0, 0);
 	new = search_var(new, data, 0, 0);
 	if ((ptr = to_list(new, -1)))
 	{
