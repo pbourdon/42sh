@@ -72,7 +72,6 @@ void	search_close_fd(t_liste2 *l, int df)
 	{
 		if (fd->fd == df)
 		{
-			ft_putendl(ft_itoa(df));
 			close(df);
 			fd->open = 0;
 			fd->read = 0;
