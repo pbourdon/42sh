@@ -6,7 +6,7 @@
 /*   By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/31 11:46:45 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/22 22:00:28 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/09/29 11:50:01 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ t_builtin		*init_built(void)
 
 t_data			*init_data(char **env, t_data *data)
 {
-	data = (t_data *)malloc(sizeof(t_data));
 	data->okchev = 0;
 	data->exit = 0;
 	data->args = NULL;
@@ -99,7 +98,7 @@ int				main(int ac, char **av, char **env)
 
 	(void)av;
 	(void)ac;
-	data = NULL;
+	data = (t_data *)malloc(sizeof(t_data));
 	data = init_data(env, data);
 	init_hashtab(env, -1);
 	main_init(&first);
