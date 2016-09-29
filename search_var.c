@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 13:54:34 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/09/29 16:32:50 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/09/29 16:51:03 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ char		*get_key_value(char *key, char **env)
 	char	*mpt;
 
 	i = -1;
-	ft_putendl("TOLOLO");
 	while (env && env[++i])
 	{
 		mpt = ft_strchr(env[i], '=');
@@ -43,7 +42,6 @@ char		*replace_forr_home(char *src, char *pos, char *to_add, int cut)
 	int		j;
 	int		k;
 
-	ft_putendl("TOLOLO");
 	i = -1;
 	j = -1;
 	k = -1;
@@ -105,7 +103,6 @@ char		*replace_str_with_var(char *str, int i, t_data *data)
 				str[++k] = str[j];
 		}
 		str[++k] = 0;
-		ft_putstr("SUR");
 		return (str);
 	}
 	if (str[i + 1] == '\\')
