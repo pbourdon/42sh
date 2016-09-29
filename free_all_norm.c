@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 23:06:44 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/09/22 22:24:49 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/09/29 13:24:07 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,6 @@ void	free_all(t_data *data, t_liste2 *liste)
 	if (data->hist_cont)
 		free_all_heredoc(&data->hist_cont);
 	data->hist_cont = NULL;
+	if (data->line)
+		ft_memdel((void **)&data->line);
 }

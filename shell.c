@@ -6,7 +6,7 @@
 /*   By: pguzman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 18:02:53 by pguzman           #+#    #+#             */
-/*   Updated: 2016/09/29 11:22:43 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/09/29 13:30:24 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ void				shell_init(void)
 
 	g_shell.shell_status = 1;
 	g_shell.size = 1000;
-	//g_shell.shell_line = (char *)malloc(sizeof(*(g_shell.shell_line)) * 1000);
-	//g_shell.shell_line[999] = '\0';
 	g_shell.shell_line = ft_strnew(999);
 	g_shell.shell_line_original = (char *)malloc(sizeof(char) * 1000);
 	ft_bzero(g_shell.shell_line_original, 1000);

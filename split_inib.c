@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 13:51:02 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/28 13:51:04 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/09/29 13:30:50 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ char			**split_on_inib(char *str)
 	if (len == -1)
 		ft_putendl("Unmatched quote.");
 	if (len <= 0)
-	    return (NULL);
+		return (NULL);
 	argv = (char **)malloc(sizeof(char *) * (len + 1));
 	argv = ft_split_inib(argv, str, len, -1);
 	argv[len] = NULL;

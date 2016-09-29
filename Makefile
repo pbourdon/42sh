@@ -6,7 +6,7 @@
 #    By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/02 13:52:37 by bde-maze          #+#    #+#              #
-#    Updated: 2016/09/28 11:00:26 by pguzman          ###   ########.fr        #
+#    Updated: 2016/09/29 13:22:29 by cmichaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,7 +107,8 @@ SRC = 	builtin_exit_error.c \
 		free_all_norm.c \
 		split_on_spec_norm.c \
 		designator_exec.c \
-		parsecommand.c 
+		parsecommand.c \
+		search_tild.c 
 
 OBJDIR = obj/
 
