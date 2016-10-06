@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 16:29:37 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/09/29 16:46:15 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/10/06 03:55:16 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,8 @@ int				readgnl(t_data *data, char *str)
 		else
 			free_tree(tree);
 	}
+	else
+		ft_memdel((void **)&new);
 	ret = 0;
 	return (0);
 }

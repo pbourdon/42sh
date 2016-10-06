@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 13:54:34 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/09/29 16:51:03 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/10/06 00:10:28 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char		*replace_forr_home(char *src, char *pos, char *to_add, int cut)
 		dest[++j] = src[i];
 	while (to_add[++k])
 		dest[++j] = to_add[k];
-	i += cut;
+	i += cut - 1;
 	while (src && src[i] && src[++i])
 		dest[++j] = src[i];
 	dest[++j] = 0;
@@ -81,8 +81,8 @@ char		*lets_replace_var(char *str, int i, t_data *data)
 		if (str[k] == '\\' || str[k] == '\'' || str[k] == '"' || str[k] == ' ')
 			break ;
 	i -= 1;
-	while (str[k] && str[++k])
-		str[++i] = str[k];
+	while (str[k] && str[k])
+		str[++i] = str[k++];
 	while (i < k)
 		str[++i] = 0;
 	return (str);

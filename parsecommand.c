@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 15:10:39 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/09/27 15:16:48 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/10/06 03:56:52 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void			parsecommand(t_data *data, t_liste *liste)
 	}
 	dest = (t_liste2 *)malloc(sizeof(t_liste2));
 	data->liste = final_list(dest, data->l, nb_pipe);
-	if (design_norm(data))
+	if (data->liste->tabb[0] && design_norm(data))
 		return ;
 	built_or_launch(data);
 }

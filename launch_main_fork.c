@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 17:03:20 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/09/27 16:57:34 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/10/06 03:58:04 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,26 +47,6 @@ int			main_fork_exec_rediclose(t_data *data, t_liste2 *liste,\
 	data->args = newtab(liste->tabb);
 	execveremix(data, liste);
 	return (1);
-}
-
-void		wait_all_pid(t_data *data)
-{
-	t_liste2	*liste;
-	int			status;
-
-	liste = data->liste;
-	status = 0;
-	while (liste)
-	{
-		if (liste->pid == 0)
-			exit(255);
-		else
-			waitpid(liste->pid, &status, 0);
-		liste = liste->next;
-	}
-	if (status)
-		exit(1);
-	exit(0);
 }
 
 void		main_fork(t_data *data, t_liste2 *liste)
