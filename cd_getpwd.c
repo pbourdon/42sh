@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 18:09:06 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/09/21 18:09:07 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/10/07 17:19:39 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	add_pwd(t_data *data, char *pwd)
 	new[++i] = NULL;
 	freetab(data->env);
 	data->env = new;
+	free(pwd);
 }
 
 void	to_set_pwd(t_data *data)
