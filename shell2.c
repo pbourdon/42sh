@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 15:01:47 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/10/07 04:39:00 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/10/07 18:06:41 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int					shell_loop(t_term *term, t_data *data, char **env)
 		g_shell.history_index = get_history_length() + 1;
 		prompt_line(data->env);
 		shterm_listen(term);
-		hash_refresh(data);
+		if (is_there_a_path(data->env))
+			hash_refresh(data);
 		readgnl(data, g_shell.shell_line);
 		if ((g_shell.shell_line)[0] == '\0')
 			continue ;

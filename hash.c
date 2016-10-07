@@ -6,7 +6,7 @@
 /*   By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/13 17:16:42 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/10/07 05:34:59 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/10/07 18:02:45 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,11 @@ void		hash_refresh(t_data *data)
 		i++;
 	if (!env || !env[i] || ft_strcmp(data->binpath, env[i] + 5))
 	{
-		if (data->binpath)
-			ft_memdel((void **)&data->binpath);
+		if (ft_strcmp(get_user_name(data->env), "Unknown@") != 0)
+		{
+			if (data->binpath)
+				ft_memdel((void **)&data->binpath);
+		}
 		get_tabhash(NULL, 1);
 		init_hashtab(data, env, -1);
 	}

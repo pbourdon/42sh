@@ -6,7 +6,7 @@
 /*   By: pguzman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 18:03:28 by pguzman           #+#    #+#             */
-/*   Updated: 2016/10/07 05:37:06 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/10/07 18:06:29 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -528,4 +528,6 @@ int						aux1(void);
 int						since_last(int k);
 void					sig_handler22(int sign);
 void					sig_handler2(int sign);
+char					*get_user_name(char **env);
+int						is_there_a_path(char **env);
 #endif

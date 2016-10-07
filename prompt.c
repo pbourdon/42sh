@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/04 18:03:07 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/23 17:02:25 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/10/07 17:29:22 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ char			*get_user_name(char **env)
 		i++;
 	}
 	return (ft_strdup("Unknown@"));
-	return (NULL);
 }
 
 void			prompt_line(char **env)

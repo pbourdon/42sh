@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 17:55:37 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/10/07 17:18:09 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/10/07 18:02:26 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	cdcall(t_data *data)
 	char	*str;
 
 	data->binreturn = 0;
-//	data->args = newtab(data->liste->tabb);
 	if (ft_strlentab(data->args) == 3)
 	{
 		str = cdiftwo(data);
