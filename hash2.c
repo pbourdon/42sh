@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 15:13:37 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/28 15:13:55 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/10/07 05:22:06 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int			hash_bin(char *bin)
 	res = 1;
 	while (bin[++i])
 		res = res + (bin[i] * 3);
-	while (res >= 4096)
+	while (res > 2048)
 		res = (res >> 2);
 	return (res);
 }
@@ -73,12 +73,21 @@ int			hash_bin(char *bin)
 void		set_open_adressing(char **tabhash, int res, char *path)
 {
 	int		i;
+	int		l;
 
 	i = 0;
+	l = 0;
 	while (tabhash[res] != NULL)
 	{
+		if (l == 2 || !(ft_strcmp(ft_chrbin(path), ft_chrbin(tabhash[res]))))
+		{
+			free(path);
+			return ;
+		}
 		res++;
-		if (res >= 4096)
+		if (res > 2048 && l && (++l))
+			res = 0;
+		else if (res > 2048 && (++l))
 			res /= 7 + (++i);
 	}
 	tabhash[res] = path;

@@ -6,7 +6,7 @@
 /*   By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/31 11:46:45 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/29 11:50:01 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/10/07 03:57:35 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int				main(int ac, char **av, char **env)
 	(void)ac;
 	data = (t_data *)malloc(sizeof(t_data));
 	data = init_data(env, data);
-	init_hashtab(env, -1);
+	init_hashtab(data, data->env, -1);
 	main_init(&first);
 	shell_loop(&first, data, env);
 	return (0);

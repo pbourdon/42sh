@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/16 21:10:55 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/09/21 18:14:33 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/10/07 07:01:04 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	callecho(char **args)
 	while (args[++i])
 	{
 		builtin_echo(args[i]);
-		if (args[i] + 1)
+		if (args[i + 1])
 			write(1, " ", 1);
 	}
 	write(1, "\n", 1);

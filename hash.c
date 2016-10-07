@@ -6,7 +6,7 @@
 /*   By: bde-maze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/13 17:16:42 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/08/27 17:25:10 by bde-maze         ###   ########.fr       */
+/*   Updated: 2016/10/07 05:34:59 by cmichaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,59 +40,43 @@ char		**init_fill_tab(char **tabhash, char *path, int res)
 	return (tabhash);
 }
 
-char		**ft_create_bin_path(void)
+void		hash_refresh(t_data *data)
 {
-	char **path;
-	char *tmp;
+	int		i;
+	char	**env;
 
-	tmp = "/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki";
-	path = ft_strsplit(tmp, ':');
-	return (path);
-}
-
-void		init_hashtab(char **env, int i)
-{
-	char		**path;
-	char		**tabhash;
-
-	path = NULL;
-	if (!(tabhash = (char **)malloc(sizeof(char *) * 4096)))
-		return ;
-	while (++i < 4096)
-		tabhash[i] = NULL;
+	env = data->env;
 	i = 0;
 	while (env && env[i] && ft_strncmp(env[i], "PATH=", 5))
-		++i;
-	if (env[i])
-		path = ft_strsplit((env[i] + 5), ':');
-	else
-		path = ft_create_bin_path();
-	i = -1;
-	while (path && path[++i])
+		i++;
+	if (!env || !env[i] || ft_strcmp(data->binpath, env[i] + 5))
 	{
-		if (!access(path[i], F_OK | X_OK) || !access(path[i], F_OK | W_OK))
-			tabhash = init_fill_tab(tabhash, path[i], 0);
-		ft_strdel(&path[i]);
+		if (data->binpath)
+			ft_memdel((void **)&data->binpath);
+		get_tabhash(NULL, 1);
+		init_hashtab(data, env, -1);
 	}
-	free(path);
-	get_tabhash(tabhash, 0);
 }
 
 char		*get_openaddr(char **tabhash, int hash, char *bin)
 {
 	char	*tmp;
 	int		i;
+	int		l;
 
 	i = 0;
+	l = 0;
 	while (1)
 	{
 		if ((tmp = ft_chrbin(tabhash[hash])))
 			if (tmp == NULL || !ft_strcmp(tmp, bin))
 				break ;
-		if (tmp == NULL)
+		if (tmp == NULL || l == 2)
 			return (NULL);
 		hash++;
-		if (hash > 2048)
+		if (hash > 2048 && l && (++l))
+			hash = 0;
+		else if (hash > 2048 && (++l))
 			hash /= 7 + (++i);
 	}
 	return (tabhash[hash]);
@@ -107,7 +91,7 @@ char		*get_bin(char *bin)
 	if (!(tabhash = get_tabhash(NULL, 0)))
 		return (NULL);
 	hash = hash_bin(bin);
-	if (hash > 4096 || !tabhash[hash])
+	if (hash > 2048 || !tabhash[hash])
 		return (NULL);
 	return (get_openaddr(tabhash, hash, bin));
 }
