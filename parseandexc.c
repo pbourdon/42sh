@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/16 18:30:52 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/10/07 03:50:08 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/10/14 23:48:54 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void		sub_forkall(t_data *data)
 {
 	if (access(data->tabb[0], F_OK) == 0)
 	{
-		ft_reset_term(g_shell.term_reset.term_copy);
+		ft_reset_term();
 		if (data->envi == 1)
 			execve(data->tabb[0], data->tabb, NULL);
 		else
@@ -97,7 +97,7 @@ void		forkall(t_data *data, int status)
 		if (father > 0)
 		{
 			wait(&status);
-			ft_reset_term(g_shell.term_reset.term);
+			go_home();
 		}
 		else if (father == 0)
 			sub_forkall(data);

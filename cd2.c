@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 18:08:14 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/10/10 15:13:19 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/10/14 23:47:17 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	to_set_opwd(t_data *data)
 	char	*pwd;
 
 	str = getpwd();
+	if (!str)
+		str = ft_strdup("/");
 	if (str == NULL)
 		str = ft_strdup("/");
 	tabb = data->env;

@@ -6,7 +6,7 @@
 /*   By: pguzman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 18:02:53 by pguzman           #+#    #+#             */
-/*   Updated: 2016/09/29 13:30:24 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/10/14 23:50:23 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int					listen(char *buffer)
 		}
 		else
 		{
-			ft_reset_term(g_shell.term_reset.term);
+			ft_reset_term();
 			ft_putendl("exit");
 			exit(0);
 		}
@@ -110,7 +110,7 @@ t_history			*double_left(char *fin)
 	while (ft_strcmp(fin, g_shell.shell_line_original) != 0 \
 			&& g_shell.shell_heredoc != -1)
 	{
-		ft_putstr("heredoc>");
+		ft_putstr("hdoc> ");
 		if (g_shell.shell_heredoc == 0)
 			g_shell.shell_heredoc = 1;
 		ft_bzero(g_shell.shell_line, g_shell.size);

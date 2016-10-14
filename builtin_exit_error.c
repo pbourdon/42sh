@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 18:24:05 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/22 17:28:01 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/10/14 23:45:48 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	exit_no_pipe(t_data *data, char **tabb)
 {
 	if (tabb[0] && tabb[1] && tabb[2])
 		return (ft_putendl_fd("exit : too many arguments", 2));
-	ft_reset_term(g_shell.term_reset.term);
+	ft_reset_term();
 	if (!tabb[1])
 	{
 		free_all_liste(&data->liste);

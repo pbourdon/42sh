@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 17:13:01 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/09/24 17:00:08 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/10/14 23:46:28 by pguzman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	builtin_no_pipe(t_data *data)
 	fd1 = dup(1);
 	fd2 = dup(2);
 	redi_loop(data->liste, data->liste->redir, data);
+	ft_reset_term();
 	if (builtin_check0(data))
 		;
 	else if (!ft_strcmp(data->liste->tabb[0], "exit"))
@@ -91,6 +92,7 @@ void	builtin_no_pipe(t_data *data)
 		unset_norm(data);
 	else
 		builtin_check1(data);
+	go_home();
 	dup2(fd0, 0);
 	dup2(fd2, 2);
 	dup2(fd1, 1);
