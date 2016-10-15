@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 14:55:51 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/09/27 15:00:39 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/10/15 18:36:06 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ void			design_to_exec(t_data *data, t_liste2 *cur)
 	else
 	{
 		data->args = newtab(cur->tabb);
-		execveremix(data, cur);
+		execveremix(data);
 	}
 }

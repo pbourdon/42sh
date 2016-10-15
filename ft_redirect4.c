@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/02 15:48:23 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/09/27 16:55:31 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/10/15 18:35:04 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,9 @@ int			sub_exec_norm(t_data *data)
 	return (1);
 }
 
-int			sub_exec(t_data *data, t_liste2 *cur)
+int			sub_exec(t_data *data)
 {
-	if (!check_syntax_designator(data))
-	{
-		data->d = 1;
-		designator(data, cur);
-	}
-	else if ((ft_strlentab(data->args) == 1) &&\
+	if ((ft_strlentab(data->args) == 1) &&\
 				(ft_strcmp(data->args[0], "$?") == 0))
 	{
 		ft_putnbr(data->binreturn);
@@ -96,9 +91,9 @@ int			sub_exec(t_data *data, t_liste2 *cur)
 	return (0);
 }
 
-int			execveremix(t_data *data, t_liste2 *cur)
+int			execveremix(t_data *data)
 {
-	if (sub_exec(data, cur) && createthetab(data) == 1)
+	if (sub_exec(data) && createthetab(data) == 1)
 	{
 		if (access(data->tabb[0], F_OK) == 0)
 		{

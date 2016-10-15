@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/06 16:06:15 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/27 14:54:02 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/10/15 18:35:24 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void		sub_design_to_string(t_data *data, char *command, t_liste2 *liste)
 	else
 	{
 		data->args = newtab(liste->tabb);
-		execveremix(data, liste);
+		execveremix(data);
 	}
 }
 

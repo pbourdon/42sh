@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 15:10:39 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/10/06 03:56:52 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/10/15 18:30:32 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,6 @@ int				design_norm(t_data *data)
 	if (data->args)
 		ft_memdel((void **)&data->args);
 	data->args = newtab(data->liste->tabb);
-	if (!check_syntax_designator(data))
-	{
-		data->d = 0;
-		designator(data, data->liste);
-		return (1);
-	}
 	i = -1;
 	while (data->args && data->args[++i])
 		ft_memdel((void **)&data->args[i]);

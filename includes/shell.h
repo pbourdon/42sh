@@ -6,7 +6,7 @@
 /*   By: pguzman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 18:03:28 by pguzman           #+#    #+#             */
-/*   Updated: 2016/10/07 18:06:29 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/10/15 19:01:32 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -455,7 +455,7 @@ char					*extract_str(char *str, int a, int b);
 int						ifitsredi(t_data *data);
 int						mainredi(t_data *data, int i);
 int						doubleredichieh(t_data *data, t_liste2 *liste, int i);
-int						execveremix(t_data *data, t_liste2 *cur);
+int						execveremix(t_data *data);
 int						createthetab(t_data *data);
 char					*decoupe1(char *str);
 char					*decoupe2(char *str);
@@ -530,4 +530,12 @@ void					sig_handler22(int sign);
 void					sig_handler2(int sign);
 char					*get_user_name(char **env);
 int						is_there_a_path(char **env);
+char					*ft_check_designator(char *command, int *fake);
+char					*ft_error_event_char(char *command);
+char					*ft_replace_designator_norm(int number, char *command);
+char					*ft_replace_designator_rev(int number, char *command);
+char					*ft_replace_designator4(char *command, char *command2);
+char					*ft_replace_designator5(char *command, char *command2);
+char					*ft_replace_designator6(char *command);
+
 #endif

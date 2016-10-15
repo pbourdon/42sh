@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 17:13:01 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/10/14 23:46:28 by pguzman          ###   ########.fr       */
+/*   Updated: 2016/10/15 18:29:50 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,6 @@ int		builtin_check1(t_data *data)
 		ft_putnbr(data->binreturn);
 		ft_putchar('\n');
 		data->binreturn = 0;
-		return (1);
-	}
-	else if (check_syntax_designator(data) == 0)
-	{
-		designator(data, data->liste);
 		return (1);
 	}
 	return (0);

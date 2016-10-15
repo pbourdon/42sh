@@ -6,7 +6,7 @@
 /*   By: cmichaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 17:03:20 by cmichaud          #+#    #+#             */
-/*   Updated: 2016/10/06 03:58:04 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/10/15 18:35:44 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int			main_fork_exec_rediclose(t_data *data, t_liste2 *liste,\
 	redi_loop(liste, liste->redir, data);
 	freetab(data->args);
 	data->args = newtab(liste->tabb);
-	execveremix(data, liste);
+	execveremix(data);
 	return (1);
 }
 
