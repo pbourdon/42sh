@@ -6,7 +6,7 @@
 /*   By: pguzman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 18:03:28 by pguzman           #+#    #+#             */
-/*   Updated: 2016/10/17 13:08:40 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/10/17 12:28:54 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -544,7 +544,5 @@ char					*ft_replace_designator5(char *command, char *command2,
 						int display);
 char					*ft_replace_designator6(char *command);
 char					*ft_strdup_special(char *src, char *dest);
-char					*ft_last_ope(char *final, char *command, int display);
-int						ft_adv_co(char *command, int index);
 
 #endif

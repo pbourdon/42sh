@@ -6,7 +6,7 @@
 /*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 19:14:12 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/10/17 12:12:24 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/10/17 13:09:03 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,6 @@ char			*ft_replace_final(char *replace, char *final, int *index2)
 	return (final);
 }
 
-int				ft_adv_co(char *command, int index)
-{
-	while (command[index] != ' ' && command[index] != '\t' && command[index] != '\0')
-		index++;
-	return (index);
-}
-
-
 char			*ft_check_designat(char *command, int *fake, int index,
 	int index2)
 {
@@ -113,8 +105,5 @@ char			*ft_check_designat(char *command, int *fake, int index,
 		else
 			final[index2++] = command[index++];
 	}
-	if (display == 1)
-		ft_putendl(final);
-	ft_strdel(&command);
-	return (final);
+	return (ft_last_ope(final, command, display));
 }

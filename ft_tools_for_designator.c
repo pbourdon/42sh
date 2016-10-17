@@ -6,7 +6,7 @@
 /*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/17 11:57:16 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/10/17 12:10:40 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/10/17 13:09:05 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,22 @@ char		*ft_strdup_special(char *source, char *dest)
 	}
 	dest[index] = '\0';
 	return (dest);
+}
+
+char		*ft_last_ope(char *final, char *command, int display)
+{
+	if (display == 1)
+	{
+		ft_putendl(final);
+		add_to_history(g_shell.history, "string");
+	}
+	ft_strdel(&command);
+	return (final);
+}
+
+int			ft_adv_co(char *command, int index)
+{
+	while (command[index] != ' ' && command[index] != '\t' && command[index] != '\0')
+		index++;
+	return (index);
 }
