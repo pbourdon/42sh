@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 13:52:23 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/09/18 22:21:12 by cmichaud         ###   ########.fr       */
+/*   Updated: 2016/10/17 16:10:06 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ void			show_history(void)
 			ft_putstr("    ");
 		else
 			ft_putstr("   ");
-		ft_putendl(history->str);
+		if (history->str)
+			ft_putendl(history->str);
 		history = history->next;
 	}
 }

@@ -6,7 +6,7 @@
 #    By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/02 13:52:37 by bde-maze          #+#    #+#              #
-#    Updated: 2016/10/17 12:02:47 by pbourdon         ###   ########.fr        #
+#    Updated: 2016/10/17 16:52:49 by pbourdon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = 21sh
 
 HEADER = includes/shell.h
 
-FLAGS = -Wall -Werror -Wextra -g3 -O3
+FLAGS = 
 
 SRC = 	builtin_exit_error.c \
 		designator_string.c \

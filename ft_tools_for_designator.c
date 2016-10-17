@@ -6,7 +6,7 @@
 /*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/17 11:57:16 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/10/17 13:09:05 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/10/17 17:37:17 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,8 @@ char		*ft_last_ope(char *final, char *command, int display)
 	if (display == 1)
 	{
 		ft_putendl(final);
-		add_to_history(g_shell.history, "string");
+	//	add_to_history(g_shell.history, command);
 	}
-	ft_strdel(&command);
 	return (final);
 }
 

@@ -6,7 +6,7 @@
 /*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 19:14:12 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/10/17 13:09:03 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/10/17 17:26:02 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ char			*ft_special(char *command)
 		index++;
 	}
 	final = malloc(sizeof(char) * len);
-	ft_bzero(final, len);
+	if (final != NULL)
+		ft_bzero(final, len);
 	return (final);
 }
 
@@ -105,5 +106,6 @@ char			*ft_check_designat(char *command, int *fake, int index,
 		else
 			final[index2++] = command[index++];
 	}
+	final[index2] = '\0';
 	return (ft_last_ope(final, command, display));
 }

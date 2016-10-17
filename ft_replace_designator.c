@@ -6,7 +6,7 @@
 /*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/15 18:46:35 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/10/17 12:30:47 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/10/17 18:01:17 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,11 +110,17 @@ char				*ft_replace_designator6(char *command)
 
 	index = 0;
 	retur = malloc(sizeof(char) * ft_strlen(command) + 1);
-	while (command[index] != '\0' &&
-			(command[index] != '!' && command[index + 1] != '#'))
+	while (command[index] != '\0')
 	{
-		retur[index] = command[index];
-		index++;
+		if (command[index] == '!' && command[index + 1] == '#')
+		{
+			index = ft_strlen(command);
+		}
+		else
+		{
+			retur[index] = command[index];
+			index++;
+		}
 	}
 	return (retur);
 }
