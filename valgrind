@@ -1,75 +1,2603 @@
-==42050== Memcheck, a memory error detector
-==42050== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
-==42050== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
-==42050== Command: ./21sh
-==42050== Parent PID: 27591
-==42050== 
---42050-- run: /usr/bin/dsymutil "./21sh"
---42050-- UNKNOWN mach_msg unhandled MACH_SEND_TRAILER option
---42050-- UNKNOWN mach_msg unhandled MACH_SEND_TRAILER option (repeated 2 times)
---42050-- UNKNOWN mach_msg unhandled MACH_SEND_TRAILER option (repeated 4 times)
-==42050== 
-==42050== HEAP SUMMARY:
-==42050==     in use at exit: 297,094 bytes in 1,722 blocks
-==42050==   total heap usage: 6,356 allocs, 4,634 frees, 820,644 bytes allocated
-==42050== 
-==42050== 40 bytes in 1 blocks are definitely lost in loss record 43 of 118
-==42050==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
-==42050==    by 0x10055FC9E: _object_remove_assocations (in /usr/lib/libobjc.A.dylib)
-==42050==    by 0x100559DB7: objc_destructInstance (in /usr/lib/libobjc.A.dylib)
-==42050==    by 0x100559D0C: object_dispose (in /usr/lib/libobjc.A.dylib)
-==42050==    by 0x10050DD68: -[OS_xpc_object _xref_dispose] (in /usr/lib/system/libxpc.dylib)
-==42050==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
-==42050==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
-==42050==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
-==42050==    by 0x10050E4F8: bootstrap_look_up2 (in /usr/lib/system/libxpc.dylib)
-==42050==    by 0x100495907: ___notify_lib_init_block_invoke (in /usr/lib/system/libsystem_notify.dylib)
-==42050==    by 0x10015940A: _dispatch_client_callout (in /usr/lib/system/libdispatch.dylib)
-==42050==    by 0x100159302: dispatch_once_f (in /usr/lib/system/libdispatch.dylib)
-==42050== 
-==42050== 56 bytes in 1 blocks are definitely lost in loss record 48 of 118
-==42050==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
-==42050==    by 0x100262802: localtime (in /usr/lib/system/libsystem_c.dylib)
-==42050==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
-==42050==    by 0x10000A572: prompt_line (prompt.c:44)
-==42050==    by 0x10000ADF4: shell_loop (shell2.c:43)
-==42050==    by 0x10000DF92: main (main.c:106)
-==42050== 
-==42050== 104 (56 direct, 48 indirect) bytes in 1 blocks are definitely lost in loss record 69 of 118
-==42050==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
-==42050==    by 0x10055959B: _objc_fetch_pthread_data (in /usr/lib/libobjc.A.dylib)
-==42050==    by 0x100559500: _fetchInitializingClassList(signed char) (in /usr/lib/libobjc.A.dylib)
-==42050==    by 0x1005591A5: _class_initialize (in /usr/lib/libobjc.A.dylib)
-==42050==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
-==42050==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
-==42050==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
-==42050==    by 0x100558C8F: lookUpImpOrForward (in /usr/lib/libobjc.A.dylib)
-==42050==    by 0x100552590: objc_msgSend (in /usr/lib/libobjc.A.dylib)
-==42050==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
-==42050==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
-==42050==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
-==42050== 
-==42050== 1,000 bytes in 1 blocks are definitely lost in loss record 100 of 118
-==42050==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
-==42050==    by 0x100011D4C: ft_memalloc (in ./21sh)
-==42050==    by 0x100012468: ft_strnew (in ./21sh)
-==42050==    by 0x10000BE63: shell_init (shell.c:83)
-==42050==    by 0x10000DF5F: main (main.c:90)
-==42050== 
-==42050== 4,096 bytes in 1 blocks are definitely lost in loss record 115 of 118
-==42050==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
-==42050==    by 0x10001174E: ft_check_designator (ft_designator.c:45)
-==42050==    by 0x10000AE3B: shell_loop (shell2.c:47)
-==42050==    by 0x10000DF92: main (main.c:106)
-==42050== 
-==42050== LEAK SUMMARY:
-==42050==    definitely lost: 5,248 bytes in 5 blocks
-==42050==    indirectly lost: 48 bytes in 2 blocks
-==42050==      possibly lost: 0 bytes in 0 blocks
-==42050==    still reachable: 269,554 bytes in 1,524 blocks
-==42050==         suppressed: 22,244 bytes in 191 blocks
-==42050== Reachable blocks (those to which a pointer was found) are not shown.
-==42050== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==42050== 
-==42050== For counts of detected and suppressed errors, rerun with: -v
-==42050== ERROR SUMMARY: 5 errors from 5 contexts (suppressed: 19 from 19)
+==45468== Memcheck, a memory error detector
+==45468== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==45468== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==45468== Command: ./21sh
+==45468== Parent PID: 10633
+==45468== 
+--45468-- run: /usr/bin/dsymutil "./21sh"
+--45468-- UNKNOWN mach_msg unhandled MACH_SEND_TRAILER option
+--45468-- UNKNOWN mach_msg unhandled MACH_SEND_TRAILER option (repeated 2 times)
+--45468-- UNKNOWN mach_msg unhandled MACH_SEND_TRAILER option (repeated 4 times)
+==45468== Invalid read of size 1
+==45468==    at 0x100012169: ft_strlen (in ./21sh)
+==45468==    by 0x1000120F4: ft_strdup (in ./21sh)
+==45468==    by 0x1000107DF: search_tild (search_tild.c:65)
+==45468==    by 0x10000D2DB: readgnl (main_loop.c:108)
+==45468==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c19113 is 0 bytes after a block of size 3 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x10001209B: ft_strcpy (in ./21sh)
+==45468==    by 0x10001212D: ft_strdup (in ./21sh)
+==45468==    by 0x1000107DF: search_tild (search_tild.c:65)
+==45468==    by 0x10000D2DB: readgnl (main_loop.c:108)
+==45468==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c19113 is 0 bytes after a block of size 3 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45470== Syscall param close(fd) contains uninitialised byte(s)
+==45470==    at 0x10035C83A: close (in /usr/lib/system/libsystem_kernel.dylib)
+==45470==    by 0x10000EDC0: main_fork (launch_main_fork.c:65)
+==45470==    by 0x10000EE67: launch_main_fork (launch_main_fork.c:86)
+==45470==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45470==    by 0x10000D282: sub_read (main_loop.c:92)
+==45470==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45470==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45470==    by 0x10000DCC2: main (main.c:106)
+==45470== 
+==45470== Syscall param close(fd) contains uninitialised byte(s)
+==45470==    at 0x10035C83A: close (in /usr/lib/system/libsystem_kernel.dylib)
+==45470==    by 0x10000EDC8: main_fork (launch_main_fork.c:66)
+==45470==    by 0x10000EE67: launch_main_fork (launch_main_fork.c:86)
+==45470==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45470==    by 0x10000D282: sub_read (main_loop.c:92)
+==45470==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45470==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45470==    by 0x10000DCC2: main (main.c:106)
+==45470== 
+==45472== 
+==45472== HEAP SUMMARY:
+==45472==     in use at exit: 299,780 bytes in 1,746 blocks
+==45472==   total heap usage: 6,379 allocs, 4,633 frees, 826,779 bytes allocated
+==45472== 
+==45470== 
+==45470== HEAP SUMMARY:
+==45470==     in use at exit: 295,580 bytes in 1,741 blocks
+==45470==   total heap usage: 6,374 allocs, 4,633 frees, 822,579 bytes allocated
+==45470== 
+==45470== 40 bytes in 1 blocks are definitely lost in loss record 48 of 127
+==45470==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45472== 40 bytes in 1 blocks are definitely lost in loss record 48 of 132
+==45470==    by 0x10055FC9E: _object_remove_assocations (in /usr/lib/libobjc.A.dylib)
+==45472==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45470==    by 0x100559DB7: objc_destructInstance (in /usr/lib/libobjc.A.dylib)
+==45472==    by 0x10055FC9E: _object_remove_assocations (in /usr/lib/libobjc.A.dylib)
+==45470==    by 0x100559D0C: object_dispose (in /usr/lib/libobjc.A.dylib)
+==45472==    by 0x100559DB7: objc_destructInstance (in /usr/lib/libobjc.A.dylib)
+==45470==    by 0x10050DD68: -[OS_xpc_object _xref_dispose] (in /usr/lib/system/libxpc.dylib)
+==45472==    by 0x100559D0C: object_dispose (in /usr/lib/libobjc.A.dylib)
+==45470==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45472==    by 0x10050DD68: -[OS_xpc_object _xref_dispose] (in /usr/lib/system/libxpc.dylib)
+==45470==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45472==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45470==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45472==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45470==    by 0x10050E4F8: bootstrap_look_up2 (in /usr/lib/system/libxpc.dylib)
+==45472==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45470==    by 0x100495907: ___notify_lib_init_block_invoke (in /usr/lib/system/libsystem_notify.dylib)
+==45472==    by 0x10050E4F8: bootstrap_look_up2 (in /usr/lib/system/libxpc.dylib)
+==45470==    by 0x10015940A: _dispatch_client_callout (in /usr/lib/system/libdispatch.dylib)
+==45472==    by 0x100495907: ___notify_lib_init_block_invoke (in /usr/lib/system/libsystem_notify.dylib)
+==45470==    by 0x100159302: dispatch_once_f (in /usr/lib/system/libdispatch.dylib)
+==45470== 
+==45472==    by 0x10015940A: _dispatch_client_callout (in /usr/lib/system/libdispatch.dylib)
+==45472==    by 0x100159302: dispatch_once_f (in /usr/lib/system/libdispatch.dylib)
+==45472== 
+==45470== 56 bytes in 1 blocks are definitely lost in loss record 54 of 127
+==45470==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45470==    by 0x100262802: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45472== 56 bytes in 1 blocks are definitely lost in loss record 54 of 132
+==45470==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45472==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45470==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45472==    by 0x100262802: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45470==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45472==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45470==    by 0x10000DCC2: main (main.c:106)
+==45472==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45470== 
+==45472==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45472==    by 0x10000DCC2: main (main.c:106)
+==45472== 
+==45470== 104 (56 direct, 48 indirect) bytes in 1 blocks are definitely lost in loss record 76 of 127
+==45472== 72 bytes in 1 blocks are definitely lost in loss record 68 of 132
+==45470==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
+==45472==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
+==45470==    by 0x10055959B: _objc_fetch_pthread_data (in /usr/lib/libobjc.A.dylib)
+==45472==    by 0x10055813F: class_createInstance (in /usr/lib/libobjc.A.dylib)
+==45470==    by 0x100559500: _fetchInitializingClassList(signed char) (in /usr/lib/libobjc.A.dylib)
+==45472==    by 0x100159155: _os_object_alloc_realized (in /usr/lib/system/libdispatch.dylib)
+==45470==    by 0x1005591A5: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45472==    by 0x10050B0A4: _xpc_pipe_create (in /usr/lib/system/libxpc.dylib)
+==45470==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45472==    by 0x100521C73: xpc_atfork_child (in /usr/lib/system/libxpc.dylib)
+==45470==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45472==    by 0x10007AB45: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==45470==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45472==    by 0x10021BF8C: fork (in /usr/lib/system/libsystem_c.dylib)
+==45470==    by 0x100558C8F: lookUpImpOrForward (in /usr/lib/libobjc.A.dylib)
+==45472==    by 0x10000EE49: launch_main_fork (launch_main_fork.c:85)
+==45470==    by 0x100552590: objc_msgSend (in /usr/lib/libobjc.A.dylib)
+==45472==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45470==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45472==    by 0x10000D282: sub_read (main_loop.c:92)
+==45470==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45472==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45470==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45470== 
+==45472==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45472== 
+==45472== 104 (56 direct, 48 indirect) bytes in 1 blocks are definitely lost in loss record 77 of 132
+==45472==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
+==45472==    by 0x10055959B: _objc_fetch_pthread_data (in /usr/lib/libobjc.A.dylib)
+==45472==    by 0x100559500: _fetchInitializingClassList(signed char) (in /usr/lib/libobjc.A.dylib)
+==45472==    by 0x1005591A5: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45472==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45472==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45472==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45470== 2,200 (16 direct, 2,184 indirect) bytes in 1 blocks are definitely lost in loss record 119 of 127
+==45472==    by 0x100558C8F: lookUpImpOrForward (in /usr/lib/libobjc.A.dylib)
+==45470==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45472==    by 0x100552590: objc_msgSend (in /usr/lib/libobjc.A.dylib)
+==45472==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45472==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45470==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45472==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45472== 
+==45470==    by 0x1004918E6: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45470==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45470==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45470==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45470==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45470==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45470==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45470==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45470==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45470==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45470== 
+==45470== 2,234 (16 direct, 2,218 indirect) bytes in 1 blocks are definitely lost in loss record 120 of 127
+==45470==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45470==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45472== 2,064 (16 direct, 2,048 indirect) bytes in 1 blocks are definitely lost in loss record 121 of 132
+==45470==    by 0x1004918D5: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45472==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45470==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45472==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45470==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45472==    by 0x1004918D5: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45470==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45472==    by 0x10049191E: _notify_fork_child (in /usr/lib/system/libsystem_notify.dylib)
+==45470==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45472==    by 0x10007AB40: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==45470==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45472==    by 0x10021BF8C: fork (in /usr/lib/system/libsystem_c.dylib)
+==45470==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45472==    by 0x10000EE49: launch_main_fork (launch_main_fork.c:85)
+==45470==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45472==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45470==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45472==    by 0x10000D282: sub_read (main_loop.c:92)
+==45470==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45470== 
+==45472==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45472==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45472==    by 0x10000DCC2: main (main.c:106)
+==45472== 
+==45470== LEAK SUMMARY:
+==45470==    definitely lost: 184 bytes in 5 blocks
+==45470==    indirectly lost: 4,450 bytes in 9 blocks
+==45470==      possibly lost: 0 bytes in 0 blocks
+==45470==    still reachable: 263,459 bytes in 1,529 blocks
+==45470==         suppressed: 27,487 bytes in 198 blocks
+==45470== Reachable blocks (those to which a pointer was found) are not shown.
+==45470== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==45470== 
+==45472== 2,064 (16 direct, 2,048 indirect) bytes in 1 blocks are definitely lost in loss record 122 of 132
+==45470== For counts of detected and suppressed errors, rerun with: -v
+==45470== Use --track-origins=yes to see where uninitialised values come from
+==45472==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45470== ERROR SUMMARY: 9 errors from 9 contexts (suppressed: 20 from 20)
+==45472==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45472==    by 0x1004918E6: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45472==    by 0x10049191E: _notify_fork_child (in /usr/lib/system/libsystem_notify.dylib)
+==45472==    by 0x10007AB40: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==45472==    by 0x10021BF8C: fork (in /usr/lib/system/libsystem_c.dylib)
+==45472==    by 0x10000EE49: launch_main_fork (launch_main_fork.c:85)
+==45472==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45472==    by 0x10000D282: sub_read (main_loop.c:92)
+==45472==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45472==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45472==    by 0x10000DCC2: main (main.c:106)
+==45472== 
+==45472== 2,200 (16 direct, 2,184 indirect) bytes in 1 blocks are definitely lost in loss record 124 of 132
+==45472==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45472==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45472==    by 0x1004918E6: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45472==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45472==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45472==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45472==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45472==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45472==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45472==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45472==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45472==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45472== 
+==45472== 2,234 (16 direct, 2,218 indirect) bytes in 1 blocks are definitely lost in loss record 125 of 132
+==45472==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45472==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45472==    by 0x1004918D5: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45472==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45472==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45472==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45472==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45472==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45472==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45472==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45472==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45472==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45472== 
+==45472== LEAK SUMMARY:
+==45472==    definitely lost: 288 bytes in 8 blocks
+==45472==    indirectly lost: 8,546 bytes in 11 blocks
+==45472==      possibly lost: 0 bytes in 0 blocks
+==45472==    still reachable: 263,459 bytes in 1,529 blocks
+==45472==         suppressed: 27,487 bytes in 198 blocks
+==45472== Reachable blocks (those to which a pointer was found) are not shown.
+==45472== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==45472== 
+==45472== For counts of detected and suppressed errors, rerun with: -v
+==45472== Use --track-origins=yes to see where uninitialised values come from
+==45472== ERROR SUMMARY: 12 errors from 12 contexts (suppressed: 20 from 20)
+==45468== Conditional jump or move depends on uninitialised value(s)
+==45468==    at 0x1000101AB: free_all (free_all_norm.c:78)
+==45468==    by 0x10000EE86: launch_main_fork (launch_main_fork.c:91)
+==45468==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45468==    by 0x10000D282: sub_read (main_loop.c:92)
+==45468==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45468==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid write of size 1
+==45468==    at 0x100011CCA: ft_bzero (in ./21sh)
+==45468==    by 0x10000AB42: shell_loop (shell2.c:62)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c19113 is 0 bytes after a block of size 3 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45473== Syscall param close(fd) contains uninitialised byte(s)
+==45473==    at 0x10035C83A: close (in /usr/lib/system/libsystem_kernel.dylib)
+==45473==    by 0x10000EDC0: main_fork (launch_main_fork.c:65)
+==45473==    by 0x10000EE67: launch_main_fork (launch_main_fork.c:86)
+==45473==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45473==    by 0x10000D282: sub_read (main_loop.c:92)
+==45473==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45473==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45473==    by 0x10000DCC2: main (main.c:106)
+==45473== 
+==45473== Syscall param close(fd) contains uninitialised byte(s)
+==45473==    at 0x10035C83A: close (in /usr/lib/system/libsystem_kernel.dylib)
+==45473==    by 0x10000EDC8: main_fork (launch_main_fork.c:66)
+==45473==    by 0x10000EE67: launch_main_fork (launch_main_fork.c:86)
+==45473==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45473==    by 0x10000D282: sub_read (main_loop.c:92)
+==45473==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45473==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45473==    by 0x10000DCC2: main (main.c:106)
+==45473== 
+==45475== 
+==45475== HEAP SUMMARY:
+==45475==     in use at exit: 299,803 bytes in 1,748 blocks
+==45475==   total heap usage: 6,418 allocs, 4,670 frees, 830,622 bytes allocated
+==45475== 
+==45473== 
+==45473== HEAP SUMMARY:
+==45473==     in use at exit: 295,603 bytes in 1,743 blocks
+==45473==   total heap usage: 6,413 allocs, 4,670 frees, 826,422 bytes allocated
+==45473== 
+==45475== 40 bytes in 1 blocks are definitely lost in loss record 50 of 134
+==45475==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45475==    by 0x10055FC9E: _object_remove_assocations (in /usr/lib/libobjc.A.dylib)
+==45475==    by 0x100559DB7: objc_destructInstance (in /usr/lib/libobjc.A.dylib)
+==45475==    by 0x100559D0C: object_dispose (in /usr/lib/libobjc.A.dylib)
+==45475==    by 0x10050DD68: -[OS_xpc_object _xref_dispose] (in /usr/lib/system/libxpc.dylib)
+==45475==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45475==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45475==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45475==    by 0x10050E4F8: bootstrap_look_up2 (in /usr/lib/system/libxpc.dylib)
+==45475==    by 0x100495907: ___notify_lib_init_block_invoke (in /usr/lib/system/libsystem_notify.dylib)
+==45473== 40 bytes in 1 blocks are definitely lost in loss record 50 of 129
+==45473==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45475==    by 0x10015940A: _dispatch_client_callout (in /usr/lib/system/libdispatch.dylib)
+==45475==    by 0x100159302: dispatch_once_f (in /usr/lib/system/libdispatch.dylib)
+==45475== 
+==45473==    by 0x10055FC9E: _object_remove_assocations (in /usr/lib/libobjc.A.dylib)
+==45473==    by 0x100559DB7: objc_destructInstance (in /usr/lib/libobjc.A.dylib)
+==45473==    by 0x100559D0C: object_dispose (in /usr/lib/libobjc.A.dylib)
+==45473==    by 0x10050DD68: -[OS_xpc_object _xref_dispose] (in /usr/lib/system/libxpc.dylib)
+==45475== 56 bytes in 1 blocks are definitely lost in loss record 56 of 134
+==45473==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45475==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45473==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45473==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45473==    by 0x10050E4F8: bootstrap_look_up2 (in /usr/lib/system/libxpc.dylib)
+==45475==    by 0x100262802: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45473==    by 0x100495907: ___notify_lib_init_block_invoke (in /usr/lib/system/libsystem_notify.dylib)
+==45475==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45473==    by 0x10015940A: _dispatch_client_callout (in /usr/lib/system/libdispatch.dylib)
+==45475==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45473==    by 0x100159302: dispatch_once_f (in /usr/lib/system/libdispatch.dylib)
+==45473== 
+==45475==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45475==    by 0x10000DCC2: main (main.c:106)
+==45475== 
+==45473== 56 bytes in 1 blocks are definitely lost in loss record 56 of 129
+==45473==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45473==    by 0x100262802: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45473==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45475== 72 bytes in 1 blocks are definitely lost in loss record 70 of 134
+==45473==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45475==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
+==45475==    by 0x10055813F: class_createInstance (in /usr/lib/libobjc.A.dylib)
+==45473==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45475==    by 0x100159155: _os_object_alloc_realized (in /usr/lib/system/libdispatch.dylib)
+==45473==    by 0x10000DCC2: main (main.c:106)
+==45473== 
+==45475==    by 0x10050B0A4: _xpc_pipe_create (in /usr/lib/system/libxpc.dylib)
+==45475==    by 0x100521C73: xpc_atfork_child (in /usr/lib/system/libxpc.dylib)
+==45475==    by 0x10007AB45: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==45475==    by 0x10021BF8C: fork (in /usr/lib/system/libsystem_c.dylib)
+==45475==    by 0x10000EE49: launch_main_fork (launch_main_fork.c:85)
+==45475==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45475==    by 0x10000D282: sub_read (main_loop.c:92)
+==45475==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45473== 104 (56 direct, 48 indirect) bytes in 1 blocks are definitely lost in loss record 78 of 129
+==45475==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45475== 
+==45473==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
+==45473==    by 0x10055959B: _objc_fetch_pthread_data (in /usr/lib/libobjc.A.dylib)
+==45473==    by 0x100559500: _fetchInitializingClassList(signed char) (in /usr/lib/libobjc.A.dylib)
+==45475== 104 (56 direct, 48 indirect) bytes in 1 blocks are definitely lost in loss record 79 of 134
+==45473==    by 0x1005591A5: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45475==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
+==45473==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45475==    by 0x10055959B: _objc_fetch_pthread_data (in /usr/lib/libobjc.A.dylib)
+==45473==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45475==    by 0x100559500: _fetchInitializingClassList(signed char) (in /usr/lib/libobjc.A.dylib)
+==45473==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45475==    by 0x1005591A5: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45475==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45473==    by 0x100558C8F: lookUpImpOrForward (in /usr/lib/libobjc.A.dylib)
+==45475==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45473==    by 0x100552590: objc_msgSend (in /usr/lib/libobjc.A.dylib)
+==45475==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45473==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45475==    by 0x100558C8F: lookUpImpOrForward (in /usr/lib/libobjc.A.dylib)
+==45473==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45475==    by 0x100552590: objc_msgSend (in /usr/lib/libobjc.A.dylib)
+==45473==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45473== 
+==45475==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45475==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45475==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45475== 
+==45473== 2,200 (16 direct, 2,184 indirect) bytes in 1 blocks are definitely lost in loss record 121 of 129
+==45473==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45473==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45473==    by 0x1004918E6: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45475== 2,064 (16 direct, 2,048 indirect) bytes in 1 blocks are definitely lost in loss record 123 of 134
+==45473==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45475==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45473==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45473==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45473==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45475==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45473==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45475==    by 0x1004918D5: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45473==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45475==    by 0x10049191E: _notify_fork_child (in /usr/lib/system/libsystem_notify.dylib)
+==45473==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45475==    by 0x10007AB40: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==45473==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45475==    by 0x10021BF8C: fork (in /usr/lib/system/libsystem_c.dylib)
+==45473==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45473== 
+==45475==    by 0x10000EE49: launch_main_fork (launch_main_fork.c:85)
+==45473== 2,234 (16 direct, 2,218 indirect) bytes in 1 blocks are definitely lost in loss record 122 of 129
+==45475==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45473==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45475==    by 0x10000D282: sub_read (main_loop.c:92)
+==45473==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45475==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45473==    by 0x1004918D5: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45475==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45473==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45475==    by 0x10000DCC2: main (main.c:106)
+==45475== 
+==45473==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45475== 2,064 (16 direct, 2,048 indirect) bytes in 1 blocks are definitely lost in loss record 124 of 134
+==45473==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45475==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45473==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45475==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45473==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45475==    by 0x1004918E6: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45473==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45475==    by 0x10049191E: _notify_fork_child (in /usr/lib/system/libsystem_notify.dylib)
+==45473==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45475==    by 0x10007AB40: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==45473==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45475==    by 0x10021BF8C: fork (in /usr/lib/system/libsystem_c.dylib)
+==45475==    by 0x10000EE49: launch_main_fork (launch_main_fork.c:85)
+==45475==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45473==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45473== 
+==45475==    by 0x10000D282: sub_read (main_loop.c:92)
+==45475==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45475==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45473== LEAK SUMMARY:
+==45473==    definitely lost: 184 bytes in 5 blocks
+==45473==    indirectly lost: 4,450 bytes in 9 blocks
+==45473==      possibly lost: 0 bytes in 0 blocks
+==45473==    still reachable: 263,482 bytes in 1,531 blocks
+==45473==         suppressed: 27,487 bytes in 198 blocks
+==45473== Reachable blocks (those to which a pointer was found) are not shown.
+==45473== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==45473== 
+==45475==    by 0x10000DCC2: main (main.c:106)
+==45475== 
+==45473== For counts of detected and suppressed errors, rerun with: -v
+==45473== Use --track-origins=yes to see where uninitialised values come from
+==45475== 2,200 (16 direct, 2,184 indirect) bytes in 1 blocks are definitely lost in loss record 126 of 134
+==45475==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45473== ERROR SUMMARY: 1009 errors from 11 contexts (suppressed: 20 from 20)
+==45475==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45475==    by 0x1004918E6: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45475==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45475==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45475==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45475==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45475==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45475==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45475==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45475==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45475==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45475== 
+==45475== 2,234 (16 direct, 2,218 indirect) bytes in 1 blocks are definitely lost in loss record 127 of 134
+==45475==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45475==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45475==    by 0x1004918D5: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45475==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45475==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45475==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45475==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45475==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45475==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45475==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45475==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45475==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45475== 
+==45475== LEAK SUMMARY:
+==45475==    definitely lost: 288 bytes in 8 blocks
+==45475==    indirectly lost: 8,546 bytes in 11 blocks
+==45475==      possibly lost: 0 bytes in 0 blocks
+==45475==    still reachable: 263,482 bytes in 1,531 blocks
+==45475==         suppressed: 27,487 bytes in 198 blocks
+==45475== Reachable blocks (those to which a pointer was found) are not shown.
+==45475== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==45475== 
+==45475== For counts of detected and suppressed errors, rerun with: -v
+==45475== Use --track-origins=yes to see where uninitialised values come from
+==45475== ERROR SUMMARY: 1012 errors from 14 contexts (suppressed: 20 from 20)
+==45468== Invalid write of size 1
+==45468==    at 0x1000064C4: add_to_array (term_read2.c:39)
+==45468==    by 0x100004A9B: press_printable_char (press_key4.c:19)
+==45468==    by 0x10000BA72: sub_listen (shell.c:44)
+==45468==    by 0x10000AF50: shell_listening_char (shell3.c:44)
+==45468==    by 0x10000AB49: shell_loop (shell2.c:63)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c1aae2 is 0 bytes after a block of size 2 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x100011F1E: ft_strchr (in ./21sh)
+==45468==    by 0x100004AB0: press_printable_char (press_key4.c:22)
+==45468==    by 0x10000BA72: sub_listen (shell.c:44)
+==45468==    by 0x10000AF50: shell_listening_char (shell3.c:44)
+==45468==    by 0x10000AB49: shell_loop (shell2.c:63)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c1aae2 is 0 bytes after a block of size 2 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x100011F74: ft_strchr (in ./21sh)
+==45468==    by 0x100004AB0: press_printable_char (press_key4.c:22)
+==45468==    by 0x10000BA72: sub_listen (shell.c:44)
+==45468==    by 0x10000AF50: shell_listening_char (shell3.c:44)
+==45468==    by 0x10000AB49: shell_loop (shell2.c:63)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c1aae2 is 0 bytes after a block of size 2 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x100006477: ft_putstr_i (term_read2.c:20)
+==45468==    by 0x100004061: movements_delete (press_key2.c:20)
+==45468==    by 0x100004AC6: press_printable_char (press_key4.c:25)
+==45468==    by 0x10000BA72: sub_listen (shell.c:44)
+==45468==    by 0x10000AF50: shell_listening_char (shell3.c:44)
+==45468==    by 0x10000AB49: shell_loop (shell2.c:63)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c1aae2 is 0 bytes after a block of size 2 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x100011EAA: ft_strcat (in ./21sh)
+==45468==    by 0x10000AD18: update_shell_line_original (shell2.c:83)
+==45468==    by 0x10000AEC2: shell_listening_char (shell3.c:39)
+==45468==    by 0x10000AB49: shell_loop (shell2.c:63)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c1aae2 is 0 bytes after a block of size 2 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x100011F1E: ft_strchr (in ./21sh)
+==45468==    by 0x10000692A: update_cursor (term_read4.c:70)
+==45468==    by 0x10000AEE7: shell_listening_char (shell3.c:42)
+==45468==    by 0x10000AB49: shell_loop (shell2.c:63)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c1aae2 is 0 bytes after a block of size 2 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x100011F74: ft_strchr (in ./21sh)
+==45468==    by 0x10000692A: update_cursor (term_read4.c:70)
+==45468==    by 0x10000AEE7: shell_listening_char (shell3.c:42)
+==45468==    by 0x10000AB49: shell_loop (shell2.c:63)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c1aae2 is 0 bytes after a block of size 2 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x1000064C0: add_to_array (term_read2.c:39)
+==45468==    by 0x100004A9B: press_printable_char (press_key4.c:19)
+==45468==    by 0x10000BA72: sub_listen (shell.c:44)
+==45468==    by 0x10000AF50: shell_listening_char (shell3.c:44)
+==45468==    by 0x10000AB49: shell_loop (shell2.c:63)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c1aae2 is 0 bytes after a block of size 2 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid write of size 1
+==45468==    at 0x1000064D2: add_to_array (term_read2.c:42)
+==45468==    by 0x100004A9B: press_printable_char (press_key4.c:19)
+==45468==    by 0x10000BA72: sub_listen (shell.c:44)
+==45468==    by 0x10000AF50: shell_listening_char (shell3.c:44)
+==45468==    by 0x10000AB49: shell_loop (shell2.c:63)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c1aae2 is 0 bytes after a block of size 2 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x100011F36: ft_strchr (in ./21sh)
+==45468==    by 0x100004AB0: press_printable_char (press_key4.c:22)
+==45468==    by 0x10000BA72: sub_listen (shell.c:44)
+==45468==    by 0x10000AF50: shell_listening_char (shell3.c:44)
+==45468==    by 0x10000AB49: shell_loop (shell2.c:63)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c1aae2 is 0 bytes after a block of size 2 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x100006387: ft_putstr_i (term_read2.c:20)
+==45468==    by 0x100004061: movements_delete (press_key2.c:20)
+==45468==    by 0x100004AC6: press_printable_char (press_key4.c:25)
+==45468==    by 0x10000BA72: sub_listen (shell.c:44)
+==45468==    by 0x10000AF50: shell_listening_char (shell3.c:44)
+==45468==    by 0x10000AB49: shell_loop (shell2.c:63)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c1aae2 is 0 bytes after a block of size 2 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x100011FE8: ft_strcmp (in ./21sh)
+==45468==    by 0x10000ACF6: update_shell_line_original (shell2.c:73)
+==45468==    by 0x10000AEC2: shell_listening_char (shell3.c:39)
+==45468==    by 0x10000AB49: shell_loop (shell2.c:63)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c1aae2 is 0 bytes after a block of size 2 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x100011FFB: ft_strcmp (in ./21sh)
+==45468==    by 0x10000ACF6: update_shell_line_original (shell2.c:73)
+==45468==    by 0x10000AEC2: shell_listening_char (shell3.c:39)
+==45468==    by 0x10000AB49: shell_loop (shell2.c:63)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c1aae2 is 0 bytes after a block of size 2 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x100012056: ft_strcmp (in ./21sh)
+==45468==    by 0x10000ACF6: update_shell_line_original (shell2.c:73)
+==45468==    by 0x10000AEC2: shell_listening_char (shell3.c:39)
+==45468==    by 0x10000AB49: shell_loop (shell2.c:63)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c1aae2 is 0 bytes after a block of size 2 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x100011EBF: ft_strcat (in ./21sh)
+==45468==    by 0x10000AD18: update_shell_line_original (shell2.c:83)
+==45468==    by 0x10000AEC2: shell_listening_char (shell3.c:39)
+==45468==    by 0x10000AB49: shell_loop (shell2.c:63)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c1aae2 is 0 bytes after a block of size 2 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x100011F36: ft_strchr (in ./21sh)
+==45468==    by 0x10000692A: update_cursor (term_read4.c:70)
+==45468==    by 0x10000AEE7: shell_listening_char (shell3.c:42)
+==45468==    by 0x10000AB49: shell_loop (shell2.c:63)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c1aae2 is 0 bytes after a block of size 2 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x100004ED5: ft_init_verif (press_key4.c:59)
+==45468==    by 0x100004FDC: press_enter_key (press_key5.c:18)
+==45468==    by 0x10000B9E8: sub_listen (shell.c:30)
+==45468==    by 0x10000AF50: shell_listening_char (shell3.c:44)
+==45468==    by 0x10000AB49: shell_loop (shell2.c:63)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c1aae2 is 0 bytes after a block of size 2 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x100012169: ft_strlen (in ./21sh)
+==45468==    by 0x1000120F4: ft_strdup (in ./21sh)
+==45468==    by 0x100001E11: add_to_history (history_option.c:30)
+==45468==    by 0x100005020: press_enter_key (press_key5.c:22)
+==45468==    by 0x10000B9E8: sub_listen (shell.c:30)
+==45468==    by 0x10000AF50: shell_listening_char (shell3.c:44)
+==45468==    by 0x10000AB49: shell_loop (shell2.c:63)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c1aae2 is 0 bytes after a block of size 2 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x10001209B: ft_strcpy (in ./21sh)
+==45468==    by 0x10001212D: ft_strdup (in ./21sh)
+==45468==    by 0x100001E11: add_to_history (history_option.c:30)
+==45468==    by 0x100005020: press_enter_key (press_key5.c:22)
+==45468==    by 0x10000B9E8: sub_listen (shell.c:30)
+==45468==    by 0x10000AF50: shell_listening_char (shell3.c:44)
+==45468==    by 0x10000AB49: shell_loop (shell2.c:63)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c1aae2 is 0 bytes after a block of size 2 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x1000120B0: ft_strcpy (in ./21sh)
+==45468==    by 0x10001212D: ft_strdup (in ./21sh)
+==45468==    by 0x100001E11: add_to_history (history_option.c:30)
+==45468==    by 0x100005020: press_enter_key (press_key5.c:22)
+==45468==    by 0x10000B9E8: sub_listen (shell.c:30)
+==45468==    by 0x10000AF50: shell_listening_char (shell3.c:44)
+==45468==    by 0x10000AB49: shell_loop (shell2.c:63)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c1aae2 is 0 bytes after a block of size 2 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x100012169: ft_strlen (in ./21sh)
+==45468==    by 0x1000115B5: ft_check_designat (ft_designator.c:42)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c1aae2 is 0 bytes after a block of size 2 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x1000115E0: ft_check_designat (ft_designator.c:44)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c1aae2 is 0 bytes after a block of size 2 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x100011641: ft_check_designat (ft_designator.c:100)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c1aae2 is 0 bytes after a block of size 2 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45476== Syscall param close(fd) contains uninitialised byte(s)
+==45476==    at 0x10035C83A: close (in /usr/lib/system/libsystem_kernel.dylib)
+==45476==    by 0x10000EDC0: main_fork (launch_main_fork.c:65)
+==45476==    by 0x10000EE67: launch_main_fork (launch_main_fork.c:86)
+==45476==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45476==    by 0x10000D282: sub_read (main_loop.c:92)
+==45476==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45476==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45476==    by 0x10000DCC2: main (main.c:106)
+==45476== 
+==45476== Syscall param close(fd) contains uninitialised byte(s)
+==45476==    at 0x10035C83A: close (in /usr/lib/system/libsystem_kernel.dylib)
+==45476==    by 0x10000EDC8: main_fork (launch_main_fork.c:66)
+==45476==    by 0x10000EE67: launch_main_fork (launch_main_fork.c:86)
+==45476==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45476==    by 0x10000D282: sub_read (main_loop.c:92)
+==45476==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45476==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45476==    by 0x10000DCC2: main (main.c:106)
+==45476== 
+==45478== 
+==45478== HEAP SUMMARY:
+==45478==     in use at exit: 299,885 bytes in 1,753 blocks
+==45478==   total heap usage: 6,465 allocs, 4,712 frees, 834,584 bytes allocated
+==45478== 
+==45476== 
+==45476== HEAP SUMMARY:
+==45476==     in use at exit: 295,685 bytes in 1,748 blocks
+==45476==   total heap usage: 6,460 allocs, 4,712 frees, 830,384 bytes allocated
+==45476== 
+==45476== 40 bytes in 1 blocks are definitely lost in loss record 50 of 130
+==45476==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45476==    by 0x10055FC9E: _object_remove_assocations (in /usr/lib/libobjc.A.dylib)
+==45476==    by 0x100559DB7: objc_destructInstance (in /usr/lib/libobjc.A.dylib)
+==45476==    by 0x100559D0C: object_dispose (in /usr/lib/libobjc.A.dylib)
+==45476==    by 0x10050DD68: -[OS_xpc_object _xref_dispose] (in /usr/lib/system/libxpc.dylib)
+==45476==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45476==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45476==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45476==    by 0x10050E4F8: bootstrap_look_up2 (in /usr/lib/system/libxpc.dylib)
+==45476==    by 0x100495907: ___notify_lib_init_block_invoke (in /usr/lib/system/libsystem_notify.dylib)
+==45476==    by 0x10015940A: _dispatch_client_callout (in /usr/lib/system/libdispatch.dylib)
+==45476==    by 0x100159302: dispatch_once_f (in /usr/lib/system/libdispatch.dylib)
+==45476== 
+==45476== 56 bytes in 1 blocks are definitely lost in loss record 57 of 130
+==45476==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45476==    by 0x100262802: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45476==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45476==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45476==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45476==    by 0x10000DCC2: main (main.c:106)
+==45476== 
+==45478== 40 bytes in 1 blocks are definitely lost in loss record 50 of 135
+==45478==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45478==    by 0x10055FC9E: _object_remove_assocations (in /usr/lib/libobjc.A.dylib)
+==45476== 104 (56 direct, 48 indirect) bytes in 1 blocks are definitely lost in loss record 79 of 130
+==45478==    by 0x100559DB7: objc_destructInstance (in /usr/lib/libobjc.A.dylib)
+==45476==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
+==45476==    by 0x10055959B: _objc_fetch_pthread_data (in /usr/lib/libobjc.A.dylib)
+==45478==    by 0x100559D0C: object_dispose (in /usr/lib/libobjc.A.dylib)
+==45478==    by 0x10050DD68: -[OS_xpc_object _xref_dispose] (in /usr/lib/system/libxpc.dylib)
+==45478==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45476==    by 0x100559500: _fetchInitializingClassList(signed char) (in /usr/lib/libobjc.A.dylib)
+==45476==    by 0x1005591A5: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45476==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45476==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45476==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45476==    by 0x100558C8F: lookUpImpOrForward (in /usr/lib/libobjc.A.dylib)
+==45478==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45478==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45478==    by 0x10050E4F8: bootstrap_look_up2 (in /usr/lib/system/libxpc.dylib)
+==45478==    by 0x100495907: ___notify_lib_init_block_invoke (in /usr/lib/system/libsystem_notify.dylib)
+==45478==    by 0x10015940A: _dispatch_client_callout (in /usr/lib/system/libdispatch.dylib)
+==45478==    by 0x100159302: dispatch_once_f (in /usr/lib/system/libdispatch.dylib)
+==45478== 
+==45476==    by 0x100552590: objc_msgSend (in /usr/lib/libobjc.A.dylib)
+==45476==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45478== 56 bytes in 1 blocks are definitely lost in loss record 57 of 135
+==45476==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45476==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45476== 
+==45478==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45478==    by 0x100262802: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45478==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45478==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45476== 2,200 (16 direct, 2,184 indirect) bytes in 1 blocks are definitely lost in loss record 122 of 130
+==45476==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45476==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45476==    by 0x1004918E6: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45476==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45476==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45476==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45476==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45476==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45476==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45476==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45478==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45476==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45478==    by 0x10000DCC2: main (main.c:106)
+==45478== 
+==45476==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45476== 
+==45476== 2,234 (16 direct, 2,218 indirect) bytes in 1 blocks are definitely lost in loss record 123 of 130
+==45476==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45478== 72 bytes in 1 blocks are definitely lost in loss record 71 of 135
+==45476==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45476==    by 0x1004918D5: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45476==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45478==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
+==45476==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45478==    by 0x10055813F: class_createInstance (in /usr/lib/libobjc.A.dylib)
+==45476==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45478==    by 0x100159155: _os_object_alloc_realized (in /usr/lib/system/libdispatch.dylib)
+==45476==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45478==    by 0x10050B0A4: _xpc_pipe_create (in /usr/lib/system/libxpc.dylib)
+==45476==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45478==    by 0x100521C73: xpc_atfork_child (in /usr/lib/system/libxpc.dylib)
+==45476==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45478==    by 0x10007AB45: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==45476==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45478==    by 0x10021BF8C: fork (in /usr/lib/system/libsystem_c.dylib)
+==45476==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45478==    by 0x10000EE49: launch_main_fork (launch_main_fork.c:85)
+==45476==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45476== 
+==45478==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45478==    by 0x10000D282: sub_read (main_loop.c:92)
+==45478==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45478==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45478== 
+==45476== LEAK SUMMARY:
+==45476==    definitely lost: 184 bytes in 5 blocks
+==45476==    indirectly lost: 4,450 bytes in 9 blocks
+==45476==      possibly lost: 0 bytes in 0 blocks
+==45476==    still reachable: 263,564 bytes in 1,536 blocks
+==45476==         suppressed: 27,487 bytes in 198 blocks
+==45476== Reachable blocks (those to which a pointer was found) are not shown.
+==45476== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==45476== 
+==45478== 104 (56 direct, 48 indirect) bytes in 1 blocks are definitely lost in loss record 80 of 135
+==45476== For counts of detected and suppressed errors, rerun with: -v
+==45476== Use --track-origins=yes to see where uninitialised values come from
+==45476== ERROR SUMMARY: 2124 errors from 34 contexts (suppressed: 20 from 20)
+==45478==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
+==45478==    by 0x10055959B: _objc_fetch_pthread_data (in /usr/lib/libobjc.A.dylib)
+==45478==    by 0x100559500: _fetchInitializingClassList(signed char) (in /usr/lib/libobjc.A.dylib)
+==45478==    by 0x1005591A5: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45478==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45478==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45478==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45478==    by 0x100558C8F: lookUpImpOrForward (in /usr/lib/libobjc.A.dylib)
+==45478==    by 0x100552590: objc_msgSend (in /usr/lib/libobjc.A.dylib)
+==45478==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45478==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45478==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45478== 
+==45478== 2,064 (16 direct, 2,048 indirect) bytes in 1 blocks are definitely lost in loss record 124 of 135
+==45478==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45478==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45478==    by 0x1004918D5: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45478==    by 0x10049191E: _notify_fork_child (in /usr/lib/system/libsystem_notify.dylib)
+==45478==    by 0x10007AB40: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==45478==    by 0x10021BF8C: fork (in /usr/lib/system/libsystem_c.dylib)
+==45478==    by 0x10000EE49: launch_main_fork (launch_main_fork.c:85)
+==45478==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45478==    by 0x10000D282: sub_read (main_loop.c:92)
+==45478==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45478==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45478==    by 0x10000DCC2: main (main.c:106)
+==45478== 
+==45478== 2,064 (16 direct, 2,048 indirect) bytes in 1 blocks are definitely lost in loss record 125 of 135
+==45478==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45478==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45478==    by 0x1004918E6: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45478==    by 0x10049191E: _notify_fork_child (in /usr/lib/system/libsystem_notify.dylib)
+==45478==    by 0x10007AB40: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==45478==    by 0x10021BF8C: fork (in /usr/lib/system/libsystem_c.dylib)
+==45478==    by 0x10000EE49: launch_main_fork (launch_main_fork.c:85)
+==45478==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45478==    by 0x10000D282: sub_read (main_loop.c:92)
+==45478==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45478==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45478==    by 0x10000DCC2: main (main.c:106)
+==45478== 
+==45478== 2,200 (16 direct, 2,184 indirect) bytes in 1 blocks are definitely lost in loss record 127 of 135
+==45478==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45478==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45478==    by 0x1004918E6: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45478==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45478==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45478==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45478==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45478==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45478==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45478==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45478==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45478==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45478== 
+==45478== 2,234 (16 direct, 2,218 indirect) bytes in 1 blocks are definitely lost in loss record 128 of 135
+==45478==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45478==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45478==    by 0x1004918D5: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45478==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45478==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45478==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45478==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45478==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45478==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45478==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45478==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45478==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45478== 
+==45478== LEAK SUMMARY:
+==45478==    definitely lost: 288 bytes in 8 blocks
+==45478==    indirectly lost: 8,546 bytes in 11 blocks
+==45478==      possibly lost: 0 bytes in 0 blocks
+==45478==    still reachable: 263,564 bytes in 1,536 blocks
+==45478==         suppressed: 27,487 bytes in 198 blocks
+==45478== Reachable blocks (those to which a pointer was found) are not shown.
+==45478== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==45478== 
+==45478== For counts of detected and suppressed errors, rerun with: -v
+==45478== Use --track-origins=yes to see where uninitialised values come from
+==45478== ERROR SUMMARY: 2127 errors from 37 contexts (suppressed: 20 from 20)
+==45468== Conditional jump or move depends on uninitialised value(s)
+==45468==    at 0x10000E89A: errcd (cd3.c:71)
+==45468==    by 0x10000EB49: cdcall2 (cd.c:58)
+==45468==    by 0x10000B41B: cdcall (cdcall.c:22)
+==45468==    by 0x10000F801: builtin_no_pipe (builtin_handler.c:50)
+==45468==    by 0x10000BFDB: built_or_launch (main2.c:102)
+==45468==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45468==    by 0x10000D282: sub_read (main_loop.c:92)
+==45468==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45468==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45485== Syscall param close(fd) contains uninitialised byte(s)
+==45485==    at 0x10035C83A: close (in /usr/lib/system/libsystem_kernel.dylib)
+==45485==    by 0x10000EDC0: main_fork (launch_main_fork.c:65)
+==45485==    by 0x10000EE67: launch_main_fork (launch_main_fork.c:86)
+==45485==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45485==    by 0x10000D282: sub_read (main_loop.c:92)
+==45485==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45485==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45485==    by 0x10000DCC2: main (main.c:106)
+==45485== 
+==45485== Syscall param close(fd) contains uninitialised byte(s)
+==45485==    at 0x10035C83A: close (in /usr/lib/system/libsystem_kernel.dylib)
+==45485==    by 0x10000EDC8: main_fork (launch_main_fork.c:66)
+==45485==    by 0x10000EE67: launch_main_fork (launch_main_fork.c:86)
+==45485==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45485==    by 0x10000D282: sub_read (main_loop.c:92)
+==45485==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45485==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45485==    by 0x10000DCC2: main (main.c:106)
+==45485== 
+==45485== 
+==45487== 
+==45485== HEAP SUMMARY:
+==45485==     in use at exit: 295,919 bytes in 1,758 blocks
+==45485==   total heap usage: 6,808 allocs, 5,050 frees, 884,095 bytes allocated
+==45485== 
+==45487== HEAP SUMMARY:
+==45487==     in use at exit: 300,119 bytes in 1,763 blocks
+==45487==   total heap usage: 6,813 allocs, 5,050 frees, 888,295 bytes allocated
+==45487== 
+==45485== 40 bytes in 1 blocks are definitely lost in loss record 49 of 132
+==45485==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45485==    by 0x10055FC9E: _object_remove_assocations (in /usr/lib/libobjc.A.dylib)
+==45485==    by 0x100559DB7: objc_destructInstance (in /usr/lib/libobjc.A.dylib)
+==45485==    by 0x100559D0C: object_dispose (in /usr/lib/libobjc.A.dylib)
+==45485==    by 0x10050DD68: -[OS_xpc_object _xref_dispose] (in /usr/lib/system/libxpc.dylib)
+==45485==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45487== 40 bytes in 1 blocks are definitely lost in loss record 49 of 137
+==45485==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45487==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45487==    by 0x10055FC9E: _object_remove_assocations (in /usr/lib/libobjc.A.dylib)
+==45487==    by 0x100559DB7: objc_destructInstance (in /usr/lib/libobjc.A.dylib)
+==45487==    by 0x100559D0C: object_dispose (in /usr/lib/libobjc.A.dylib)
+==45487==    by 0x10050DD68: -[OS_xpc_object _xref_dispose] (in /usr/lib/system/libxpc.dylib)
+==45487==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45487==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45485==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45487==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45487==    by 0x10050E4F8: bootstrap_look_up2 (in /usr/lib/system/libxpc.dylib)
+==45485==    by 0x10050E4F8: bootstrap_look_up2 (in /usr/lib/system/libxpc.dylib)
+==45487==    by 0x100495907: ___notify_lib_init_block_invoke (in /usr/lib/system/libsystem_notify.dylib)
+==45485==    by 0x100495907: ___notify_lib_init_block_invoke (in /usr/lib/system/libsystem_notify.dylib)
+==45487==    by 0x10015940A: _dispatch_client_callout (in /usr/lib/system/libdispatch.dylib)
+==45485==    by 0x10015940A: _dispatch_client_callout (in /usr/lib/system/libdispatch.dylib)
+==45487==    by 0x100159302: dispatch_once_f (in /usr/lib/system/libdispatch.dylib)
+==45487== 
+==45485==    by 0x100159302: dispatch_once_f (in /usr/lib/system/libdispatch.dylib)
+==45485== 
+==45487== 56 bytes in 1 blocks are definitely lost in loss record 56 of 137
+==45487==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45487==    by 0x100262802: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45485== 56 bytes in 1 blocks are definitely lost in loss record 56 of 132
+==45487==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45485==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45487==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45485==    by 0x100262802: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45487==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45485==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45487==    by 0x10000DCC2: main (main.c:106)
+==45487== 
+==45485==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45485==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45485==    by 0x10000DCC2: main (main.c:106)
+==45485== 
+==45487== 72 bytes in 1 blocks are definitely lost in loss record 70 of 137
+==45487==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
+==45487==    by 0x10055813F: class_createInstance (in /usr/lib/libobjc.A.dylib)
+==45487==    by 0x100159155: _os_object_alloc_realized (in /usr/lib/system/libdispatch.dylib)
+==45487==    by 0x10050B0A4: _xpc_pipe_create (in /usr/lib/system/libxpc.dylib)
+==45487==    by 0x100521C73: xpc_atfork_child (in /usr/lib/system/libxpc.dylib)
+==45487==    by 0x10007AB45: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==45487==    by 0x10021BF8C: fork (in /usr/lib/system/libsystem_c.dylib)
+==45487==    by 0x10000EE49: launch_main_fork (launch_main_fork.c:85)
+==45487==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45487==    by 0x10000D282: sub_read (main_loop.c:92)
+==45487==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45487==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45487== 
+==45487== 104 (56 direct, 48 indirect) bytes in 1 blocks are definitely lost in loss record 81 of 137
+==45487==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
+==45487==    by 0x10055959B: _objc_fetch_pthread_data (in /usr/lib/libobjc.A.dylib)
+==45485== 104 (56 direct, 48 indirect) bytes in 1 blocks are definitely lost in loss record 80 of 132
+==45487==    by 0x100559500: _fetchInitializingClassList(signed char) (in /usr/lib/libobjc.A.dylib)
+==45487==    by 0x1005591A5: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45487==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45485==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
+==45485==    by 0x10055959B: _objc_fetch_pthread_data (in /usr/lib/libobjc.A.dylib)
+==45485==    by 0x100559500: _fetchInitializingClassList(signed char) (in /usr/lib/libobjc.A.dylib)
+==45485==    by 0x1005591A5: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45485==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45485==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45485==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45487==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45485==    by 0x100558C8F: lookUpImpOrForward (in /usr/lib/libobjc.A.dylib)
+==45487==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45487==    by 0x100558C8F: lookUpImpOrForward (in /usr/lib/libobjc.A.dylib)
+==45485==    by 0x100552590: objc_msgSend (in /usr/lib/libobjc.A.dylib)
+==45487==    by 0x100552590: objc_msgSend (in /usr/lib/libobjc.A.dylib)
+==45485==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45487==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45487==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45487==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45487== 
+==45485==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45485==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45485== 
+==45487== 2,064 (16 direct, 2,048 indirect) bytes in 1 blocks are definitely lost in loss record 126 of 137
+==45487==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45487==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45487==    by 0x1004918D5: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45487==    by 0x10049191E: _notify_fork_child (in /usr/lib/system/libsystem_notify.dylib)
+==45485== 2,200 (16 direct, 2,184 indirect) bytes in 1 blocks are definitely lost in loss record 124 of 132
+==45487==    by 0x10007AB40: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==45485==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45487==    by 0x10021BF8C: fork (in /usr/lib/system/libsystem_c.dylib)
+==45485==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45487==    by 0x10000EE49: launch_main_fork (launch_main_fork.c:85)
+==45485==    by 0x1004918E6: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45487==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45485==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45487==    by 0x10000D282: sub_read (main_loop.c:92)
+==45485==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45487==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45485==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45487==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45485==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45487==    by 0x10000DCC2: main (main.c:106)
+==45487== 
+==45485==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45487== 2,064 (16 direct, 2,048 indirect) bytes in 1 blocks are definitely lost in loss record 127 of 137
+==45485==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45487==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45485==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45487==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45485==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45487==    by 0x1004918E6: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45485==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45485== 
+==45487==    by 0x10049191E: _notify_fork_child (in /usr/lib/system/libsystem_notify.dylib)
+==45485== 2,234 (16 direct, 2,218 indirect) bytes in 1 blocks are definitely lost in loss record 125 of 132
+==45487==    by 0x10007AB40: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==45485==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45487==    by 0x10021BF8C: fork (in /usr/lib/system/libsystem_c.dylib)
+==45485==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45487==    by 0x10000EE49: launch_main_fork (launch_main_fork.c:85)
+==45485==    by 0x1004918D5: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45487==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45485==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45485==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45487==    by 0x10000D282: sub_read (main_loop.c:92)
+==45485==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45487==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45485==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45487==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45485==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45487==    by 0x10000DCC2: main (main.c:106)
+==45487== 
+==45485==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45487== 2,200 (16 direct, 2,184 indirect) bytes in 1 blocks are definitely lost in loss record 129 of 137
+==45485==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45487==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45485==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45487==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45485==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45485== 
+==45487==    by 0x1004918E6: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45487==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45487==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45485== LEAK SUMMARY:
+==45485==    definitely lost: 184 bytes in 5 blocks
+==45485==    indirectly lost: 4,450 bytes in 9 blocks
+==45485==      possibly lost: 0 bytes in 0 blocks
+==45485==    still reachable: 263,798 bytes in 1,546 blocks
+==45485==         suppressed: 27,487 bytes in 198 blocks
+==45485== Reachable blocks (those to which a pointer was found) are not shown.
+==45485== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==45485== 
+==45487==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45485== For counts of detected and suppressed errors, rerun with: -v
+==45485== Use --track-origins=yes to see where uninitialised values come from
+==45485== ERROR SUMMARY: 8256 errors from 35 contexts (suppressed: 20 from 20)
+==45487==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45487==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45487==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45487==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45487==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45487==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45487== 
+==45487== 2,234 (16 direct, 2,218 indirect) bytes in 1 blocks are definitely lost in loss record 130 of 137
+==45487==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45487==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45487==    by 0x1004918D5: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45487==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45487==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45487==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45487==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45487==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45487==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45487==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45487==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45487==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45487== 
+==45487== LEAK SUMMARY:
+==45487==    definitely lost: 288 bytes in 8 blocks
+==45487==    indirectly lost: 8,546 bytes in 11 blocks
+==45487==      possibly lost: 0 bytes in 0 blocks
+==45487==    still reachable: 263,798 bytes in 1,546 blocks
+==45487==         suppressed: 27,487 bytes in 198 blocks
+==45487== Reachable blocks (those to which a pointer was found) are not shown.
+==45487== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==45487== 
+==45487== For counts of detected and suppressed errors, rerun with: -v
+==45487== Use --track-origins=yes to see where uninitialised values come from
+==45487== ERROR SUMMARY: 8259 errors from 38 contexts (suppressed: 20 from 20)
+==45488== Syscall param close(fd) contains uninitialised byte(s)
+==45488==    at 0x10035C83A: close (in /usr/lib/system/libsystem_kernel.dylib)
+==45488==    by 0x10000EDC0: main_fork (launch_main_fork.c:65)
+==45488==    by 0x10000EE67: launch_main_fork (launch_main_fork.c:86)
+==45488==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45488==    by 0x10000D282: sub_read (main_loop.c:92)
+==45488==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45488==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45488==    by 0x10000DCC2: main (main.c:106)
+==45488== 
+==45488== Syscall param close(fd) contains uninitialised byte(s)
+==45488==    at 0x10035C83A: close (in /usr/lib/system/libsystem_kernel.dylib)
+==45488==    by 0x10000EDC8: main_fork (launch_main_fork.c:66)
+==45488==    by 0x10000EE67: launch_main_fork (launch_main_fork.c:86)
+==45488==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45488==    by 0x10000D282: sub_read (main_loop.c:92)
+==45488==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45488==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45488==    by 0x10000DCC2: main (main.c:106)
+==45488== 
+==45490== 
+==45488== 
+==45490== HEAP SUMMARY:
+==45490==     in use at exit: 300,151 bytes in 1,765 blocks
+==45490==   total heap usage: 6,853 allocs, 5,088 frees, 892,113 bytes allocated
+==45490== 
+==45488== HEAP SUMMARY:
+==45488==     in use at exit: 295,951 bytes in 1,760 blocks
+==45488==   total heap usage: 6,848 allocs, 5,088 frees, 887,913 bytes allocated
+==45488== 
+==45488== 40 bytes in 1 blocks are definitely lost in loss record 49 of 132
+==45488==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45488==    by 0x10055FC9E: _object_remove_assocations (in /usr/lib/libobjc.A.dylib)
+==45488==    by 0x100559DB7: objc_destructInstance (in /usr/lib/libobjc.A.dylib)
+==45488==    by 0x100559D0C: object_dispose (in /usr/lib/libobjc.A.dylib)
+==45488==    by 0x10050DD68: -[OS_xpc_object _xref_dispose] (in /usr/lib/system/libxpc.dylib)
+==45488==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45490== 40 bytes in 1 blocks are definitely lost in loss record 49 of 137
+==45488==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45488==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45490==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45488==    by 0x10050E4F8: bootstrap_look_up2 (in /usr/lib/system/libxpc.dylib)
+==45490==    by 0x10055FC9E: _object_remove_assocations (in /usr/lib/libobjc.A.dylib)
+==45488==    by 0x100495907: ___notify_lib_init_block_invoke (in /usr/lib/system/libsystem_notify.dylib)
+==45490==    by 0x100559DB7: objc_destructInstance (in /usr/lib/libobjc.A.dylib)
+==45488==    by 0x10015940A: _dispatch_client_callout (in /usr/lib/system/libdispatch.dylib)
+==45490==    by 0x100559D0C: object_dispose (in /usr/lib/libobjc.A.dylib)
+==45488==    by 0x100159302: dispatch_once_f (in /usr/lib/system/libdispatch.dylib)
+==45488== 
+==45490==    by 0x10050DD68: -[OS_xpc_object _xref_dispose] (in /usr/lib/system/libxpc.dylib)
+==45490==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45490==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45490==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45490==    by 0x10050E4F8: bootstrap_look_up2 (in /usr/lib/system/libxpc.dylib)
+==45488== 56 bytes in 1 blocks are definitely lost in loss record 56 of 132
+==45490==    by 0x100495907: ___notify_lib_init_block_invoke (in /usr/lib/system/libsystem_notify.dylib)
+==45488==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45490==    by 0x10015940A: _dispatch_client_callout (in /usr/lib/system/libdispatch.dylib)
+==45488==    by 0x100262802: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45488==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45490==    by 0x100159302: dispatch_once_f (in /usr/lib/system/libdispatch.dylib)
+==45490== 
+==45488==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45488==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45488==    by 0x10000DCC2: main (main.c:106)
+==45488== 
+==45490== 56 bytes in 1 blocks are definitely lost in loss record 56 of 137
+==45490==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45490==    by 0x100262802: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45490==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45490==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45490==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45490==    by 0x10000DCC2: main (main.c:106)
+==45490== 
+==45488== 104 (56 direct, 48 indirect) bytes in 1 blocks are definitely lost in loss record 80 of 132
+==45488==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
+==45488==    by 0x10055959B: _objc_fetch_pthread_data (in /usr/lib/libobjc.A.dylib)
+==45488==    by 0x100559500: _fetchInitializingClassList(signed char) (in /usr/lib/libobjc.A.dylib)
+==45490== 72 bytes in 1 blocks are definitely lost in loss record 70 of 137
+==45488==    by 0x1005591A5: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45490==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
+==45488==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45490==    by 0x10055813F: class_createInstance (in /usr/lib/libobjc.A.dylib)
+==45488==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45490==    by 0x100159155: _os_object_alloc_realized (in /usr/lib/system/libdispatch.dylib)
+==45488==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45490==    by 0x10050B0A4: _xpc_pipe_create (in /usr/lib/system/libxpc.dylib)
+==45488==    by 0x100558C8F: lookUpImpOrForward (in /usr/lib/libobjc.A.dylib)
+==45490==    by 0x100521C73: xpc_atfork_child (in /usr/lib/system/libxpc.dylib)
+==45488==    by 0x100552590: objc_msgSend (in /usr/lib/libobjc.A.dylib)
+==45490==    by 0x10007AB45: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==45488==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45490==    by 0x10021BF8C: fork (in /usr/lib/system/libsystem_c.dylib)
+==45488==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45490==    by 0x10000EE49: launch_main_fork (launch_main_fork.c:85)
+==45488==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45488== 
+==45490==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45490==    by 0x10000D282: sub_read (main_loop.c:92)
+==45490==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45490==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45490== 
+==45490== 104 (56 direct, 48 indirect) bytes in 1 blocks are definitely lost in loss record 81 of 137
+==45490==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
+==45490==    by 0x10055959B: _objc_fetch_pthread_data (in /usr/lib/libobjc.A.dylib)
+==45490==    by 0x100559500: _fetchInitializingClassList(signed char) (in /usr/lib/libobjc.A.dylib)
+==45488== 2,200 (16 direct, 2,184 indirect) bytes in 1 blocks are definitely lost in loss record 124 of 132
+==45490==    by 0x1005591A5: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45488==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45490==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45490==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45490==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45488==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45490==    by 0x100558C8F: lookUpImpOrForward (in /usr/lib/libobjc.A.dylib)
+==45488==    by 0x1004918E6: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45490==    by 0x100552590: objc_msgSend (in /usr/lib/libobjc.A.dylib)
+==45488==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45490==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45488==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45490==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45488==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45490==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45490== 
+==45488==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45488==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45488==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45488==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45488==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45488==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45488== 
+==45488== 2,234 (16 direct, 2,218 indirect) bytes in 1 blocks are definitely lost in loss record 125 of 132
+==45488==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45488==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45488==    by 0x1004918D5: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45488==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45488==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45488==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45488==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45488==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45490== 2,064 (16 direct, 2,048 indirect) bytes in 1 blocks are definitely lost in loss record 126 of 137
+==45488==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45490==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45488==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45490==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45488==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45490==    by 0x1004918D5: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45488==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45488== 
+==45490==    by 0x10049191E: _notify_fork_child (in /usr/lib/system/libsystem_notify.dylib)
+==45490==    by 0x10007AB40: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==45490==    by 0x10021BF8C: fork (in /usr/lib/system/libsystem_c.dylib)
+==45488== LEAK SUMMARY:
+==45488==    definitely lost: 184 bytes in 5 blocks
+==45488==    indirectly lost: 4,450 bytes in 9 blocks
+==45488==      possibly lost: 0 bytes in 0 blocks
+==45488==    still reachable: 263,830 bytes in 1,548 blocks
+==45488==         suppressed: 27,487 bytes in 198 blocks
+==45488== Reachable blocks (those to which a pointer was found) are not shown.
+==45488== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==45488== 
+==45490==    by 0x10000EE49: launch_main_fork (launch_main_fork.c:85)
+==45488== For counts of detected and suppressed errors, rerun with: -v
+==45488== Use --track-origins=yes to see where uninitialised values come from
+==45488== ERROR SUMMARY: 9295 errors from 35 contexts (suppressed: 20 from 20)
+==45490==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45490==    by 0x10000D282: sub_read (main_loop.c:92)
+==45490==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45490==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45490==    by 0x10000DCC2: main (main.c:106)
+==45490== 
+==45490== 2,064 (16 direct, 2,048 indirect) bytes in 1 blocks are definitely lost in loss record 127 of 137
+==45490==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45490==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45490==    by 0x1004918E6: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45490==    by 0x10049191E: _notify_fork_child (in /usr/lib/system/libsystem_notify.dylib)
+==45490==    by 0x10007AB40: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==45490==    by 0x10021BF8C: fork (in /usr/lib/system/libsystem_c.dylib)
+==45490==    by 0x10000EE49: launch_main_fork (launch_main_fork.c:85)
+==45490==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45490==    by 0x10000D282: sub_read (main_loop.c:92)
+==45490==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45490==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45490==    by 0x10000DCC2: main (main.c:106)
+==45490== 
+==45490== 2,200 (16 direct, 2,184 indirect) bytes in 1 blocks are definitely lost in loss record 129 of 137
+==45490==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45490==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45490==    by 0x1004918E6: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45490==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45490==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45490==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45490==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45490==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45490==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45490==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45490==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45490==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45490== 
+==45490== 2,234 (16 direct, 2,218 indirect) bytes in 1 blocks are definitely lost in loss record 130 of 137
+==45490==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45490==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45490==    by 0x1004918D5: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45490==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45490==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45490==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45490==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45490==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45490==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45490==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45490==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45490==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45490== 
+==45490== LEAK SUMMARY:
+==45490==    definitely lost: 288 bytes in 8 blocks
+==45490==    indirectly lost: 8,546 bytes in 11 blocks
+==45490==      possibly lost: 0 bytes in 0 blocks
+==45490==    still reachable: 263,830 bytes in 1,548 blocks
+==45490==         suppressed: 27,487 bytes in 198 blocks
+==45490== Reachable blocks (those to which a pointer was found) are not shown.
+==45490== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==45490== 
+==45490== For counts of detected and suppressed errors, rerun with: -v
+==45490== Use --track-origins=yes to see where uninitialised values come from
+==45490== ERROR SUMMARY: 9298 errors from 38 contexts (suppressed: 20 from 20)
+==45497== Syscall param close(fd) contains uninitialised byte(s)
+==45497==    at 0x10035C83A: close (in /usr/lib/system/libsystem_kernel.dylib)
+==45497==    by 0x10000EDC0: main_fork (launch_main_fork.c:65)
+==45497==    by 0x10000EE67: launch_main_fork (launch_main_fork.c:86)
+==45497==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45497==    by 0x10000D282: sub_read (main_loop.c:92)
+==45497==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45497==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45497==    by 0x10000DCC2: main (main.c:106)
+==45497== 
+==45497== Syscall param close(fd) contains uninitialised byte(s)
+==45497==    at 0x10035C83A: close (in /usr/lib/system/libsystem_kernel.dylib)
+==45497==    by 0x10000EDC8: main_fork (launch_main_fork.c:66)
+==45497==    by 0x10000EE67: launch_main_fork (launch_main_fork.c:86)
+==45497==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45497==    by 0x10000D282: sub_read (main_loop.c:92)
+==45497==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45497==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45497==    by 0x10000DCC2: main (main.c:106)
+==45497== 
+==45497== 
+==45497== HEAP SUMMARY:
+==45497==     in use at exit: 296,201 bytes in 1,769 blocks
+==45497==   total heap usage: 7,009 allocs, 5,240 frees, 912,862 bytes allocated
+==45497== 
+==45499== 
+==45499== HEAP SUMMARY:
+==45499==     in use at exit: 300,401 bytes in 1,774 blocks
+==45499==   total heap usage: 7,014 allocs, 5,240 frees, 917,062 bytes allocated
+==45499== 
+==45497== 40 bytes in 1 blocks are definitely lost in loss record 50 of 133
+==45497==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45497==    by 0x10055FC9E: _object_remove_assocations (in /usr/lib/libobjc.A.dylib)
+==45497==    by 0x100559DB7: objc_destructInstance (in /usr/lib/libobjc.A.dylib)
+==45497==    by 0x100559D0C: object_dispose (in /usr/lib/libobjc.A.dylib)
+==45497==    by 0x10050DD68: -[OS_xpc_object _xref_dispose] (in /usr/lib/system/libxpc.dylib)
+==45497==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45497==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45497==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45497==    by 0x10050E4F8: bootstrap_look_up2 (in /usr/lib/system/libxpc.dylib)
+==45497==    by 0x100495907: ___notify_lib_init_block_invoke (in /usr/lib/system/libsystem_notify.dylib)
+==45497==    by 0x10015940A: _dispatch_client_callout (in /usr/lib/system/libdispatch.dylib)
+==45497==    by 0x100159302: dispatch_once_f (in /usr/lib/system/libdispatch.dylib)
+==45497== 
+==45497== 56 bytes in 1 blocks are definitely lost in loss record 56 of 133
+==45497==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45497==    by 0x100262802: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45497==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45497==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45497==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45497==    by 0x10000DCC2: main (main.c:106)
+==45497== 
+==45497== 104 (56 direct, 48 indirect) bytes in 1 blocks are definitely lost in loss record 80 of 133
+==45497==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
+==45497==    by 0x10055959B: _objc_fetch_pthread_data (in /usr/lib/libobjc.A.dylib)
+==45497==    by 0x100559500: _fetchInitializingClassList(signed char) (in /usr/lib/libobjc.A.dylib)
+==45497==    by 0x1005591A5: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45497==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45497==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45497==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45497==    by 0x100558C8F: lookUpImpOrForward (in /usr/lib/libobjc.A.dylib)
+==45497==    by 0x100552590: objc_msgSend (in /usr/lib/libobjc.A.dylib)
+==45497==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45497==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45497==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45497== 
+==45497== 2,200 (16 direct, 2,184 indirect) bytes in 1 blocks are definitely lost in loss record 125 of 133
+==45497==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45497==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45497==    by 0x1004918E6: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45497==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45497==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45497==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45497==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45497==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45497==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45497==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45497==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45497==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45497== 
+==45497== 2,234 (16 direct, 2,218 indirect) bytes in 1 blocks are definitely lost in loss record 126 of 133
+==45497==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45497==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45497==    by 0x1004918D5: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45497==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45497==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45497==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45497==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45497==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45497==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45497==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45497==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45499== 40 bytes in 1 blocks are definitely lost in loss record 50 of 138
+==45497==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45497== 
+==45499==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45499==    by 0x10055FC9E: _object_remove_assocations (in /usr/lib/libobjc.A.dylib)
+==45497== LEAK SUMMARY:
+==45499==    by 0x100559DB7: objc_destructInstance (in /usr/lib/libobjc.A.dylib)
+==45497==    definitely lost: 184 bytes in 5 blocks
+==45497==    indirectly lost: 4,450 bytes in 9 blocks
+==45497==      possibly lost: 0 bytes in 0 blocks
+==45497==    still reachable: 264,080 bytes in 1,557 blocks
+==45497==         suppressed: 27,487 bytes in 198 blocks
+==45497== Reachable blocks (those to which a pointer was found) are not shown.
+==45497== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==45497== 
+==45499==    by 0x100559D0C: object_dispose (in /usr/lib/libobjc.A.dylib)
+==45499==    by 0x10050DD68: -[OS_xpc_object _xref_dispose] (in /usr/lib/system/libxpc.dylib)
+==45497== For counts of detected and suppressed errors, rerun with: -v
+==45497== Use --track-origins=yes to see where uninitialised values come from
+==45497== ERROR SUMMARY: 12554 errors from 35 contexts (suppressed: 20 from 20)
+==45499==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45499==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45499==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45499==    by 0x10050E4F8: bootstrap_look_up2 (in /usr/lib/system/libxpc.dylib)
+==45499==    by 0x100495907: ___notify_lib_init_block_invoke (in /usr/lib/system/libsystem_notify.dylib)
+==45499==    by 0x10015940A: _dispatch_client_callout (in /usr/lib/system/libdispatch.dylib)
+==45499==    by 0x100159302: dispatch_once_f (in /usr/lib/system/libdispatch.dylib)
+==45499== 
+==45499== 56 bytes in 1 blocks are definitely lost in loss record 56 of 138
+==45499==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45499==    by 0x100262802: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45499==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45499==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45499==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45499==    by 0x10000DCC2: main (main.c:106)
+==45499== 
+==45499== 72 bytes in 1 blocks are definitely lost in loss record 72 of 138
+==45499==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
+==45499==    by 0x10055813F: class_createInstance (in /usr/lib/libobjc.A.dylib)
+==45499==    by 0x100159155: _os_object_alloc_realized (in /usr/lib/system/libdispatch.dylib)
+==45499==    by 0x10050B0A4: _xpc_pipe_create (in /usr/lib/system/libxpc.dylib)
+==45499==    by 0x100521C73: xpc_atfork_child (in /usr/lib/system/libxpc.dylib)
+==45499==    by 0x10007AB45: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==45499==    by 0x10021BF8C: fork (in /usr/lib/system/libsystem_c.dylib)
+==45499==    by 0x10000EE49: launch_main_fork (launch_main_fork.c:85)
+==45499==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45499==    by 0x10000D282: sub_read (main_loop.c:92)
+==45499==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45499==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45499== 
+==45499== 104 (56 direct, 48 indirect) bytes in 1 blocks are definitely lost in loss record 81 of 138
+==45499==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
+==45499==    by 0x10055959B: _objc_fetch_pthread_data (in /usr/lib/libobjc.A.dylib)
+==45499==    by 0x100559500: _fetchInitializingClassList(signed char) (in /usr/lib/libobjc.A.dylib)
+==45499==    by 0x1005591A5: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45499==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45499==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45499==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45499==    by 0x100558C8F: lookUpImpOrForward (in /usr/lib/libobjc.A.dylib)
+==45499==    by 0x100552590: objc_msgSend (in /usr/lib/libobjc.A.dylib)
+==45499==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45499==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45499==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45499== 
+==45499== 2,064 (16 direct, 2,048 indirect) bytes in 1 blocks are definitely lost in loss record 127 of 138
+==45499==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45499==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45499==    by 0x1004918D5: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45499==    by 0x10049191E: _notify_fork_child (in /usr/lib/system/libsystem_notify.dylib)
+==45499==    by 0x10007AB40: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==45499==    by 0x10021BF8C: fork (in /usr/lib/system/libsystem_c.dylib)
+==45499==    by 0x10000EE49: launch_main_fork (launch_main_fork.c:85)
+==45499==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45499==    by 0x10000D282: sub_read (main_loop.c:92)
+==45499==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45499==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45499==    by 0x10000DCC2: main (main.c:106)
+==45499== 
+==45499== 2,064 (16 direct, 2,048 indirect) bytes in 1 blocks are definitely lost in loss record 128 of 138
+==45499==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45499==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45499==    by 0x1004918E6: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45499==    by 0x10049191E: _notify_fork_child (in /usr/lib/system/libsystem_notify.dylib)
+==45499==    by 0x10007AB40: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==45499==    by 0x10021BF8C: fork (in /usr/lib/system/libsystem_c.dylib)
+==45499==    by 0x10000EE49: launch_main_fork (launch_main_fork.c:85)
+==45499==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45499==    by 0x10000D282: sub_read (main_loop.c:92)
+==45499==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45499==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45499==    by 0x10000DCC2: main (main.c:106)
+==45499== 
+==45499== 2,200 (16 direct, 2,184 indirect) bytes in 1 blocks are definitely lost in loss record 130 of 138
+==45499==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45499==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45499==    by 0x1004918E6: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45499==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45499==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45499==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45499==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45499==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45499==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45499==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45499==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45499==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45499== 
+==45499== 2,234 (16 direct, 2,218 indirect) bytes in 1 blocks are definitely lost in loss record 131 of 138
+==45499==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45499==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45499==    by 0x1004918D5: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45499==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45499==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45499==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45499==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45499==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45499==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45499==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45499==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45499==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45499== 
+==45499== LEAK SUMMARY:
+==45499==    definitely lost: 288 bytes in 8 blocks
+==45499==    indirectly lost: 8,546 bytes in 11 blocks
+==45499==      possibly lost: 0 bytes in 0 blocks
+==45499==    still reachable: 264,080 bytes in 1,557 blocks
+==45499==         suppressed: 27,487 bytes in 198 blocks
+==45499== Reachable blocks (those to which a pointer was found) are not shown.
+==45499== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==45499== 
+==45499== For counts of detected and suppressed errors, rerun with: -v
+==45499== Use --track-origins=yes to see where uninitialised values come from
+==45499== ERROR SUMMARY: 12557 errors from 38 contexts (suppressed: 20 from 20)
+==45468== Invalid read of size 1
+==45468==    at 0x100012169: ft_strlen (in ./21sh)
+==45468==    by 0x100011A6D: ft_strdup_special (ft_tools_for_designator.c:43)
+==45468==    by 0x1000118DE: ft_replace_designator5 (ft_replace_designator.c:101)
+==45468==    by 0x1000115CA: ft_check_designat (ft_designator.c:48)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c3bdb7 is 0 bytes after a block of size 7 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x100011A97: ft_strdup_special (ft_tools_for_designator.c:44)
+==45468==    by 0x1000118DE: ft_replace_designator5 (ft_replace_designator.c:101)
+==45468==    by 0x1000115CA: ft_check_designat (ft_designator.c:48)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c3bdb7 is 0 bytes after a block of size 7 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x1000113C4: ft_replace_designator (ft_designator.c:24)
+==45468==    by 0x1000115CA: ft_check_designat (ft_designator.c:48)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c3bdbd is 6 bytes after a block of size 7 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x100011833: ft_replace_designator4 (ft_replace_designator.c:66)
+==45468==    by 0x1000115CA: ft_check_designat (ft_designator.c:48)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c3bdbd is 6 bytes after a block of size 7 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x10001221B: ft_strncmp (in ./21sh)
+==45468==    by 0x100011886: ft_replace_designator4 (ft_replace_designator.c:76)
+==45468==    by 0x1000115CA: ft_check_designat (ft_designator.c:48)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c3bdbd is 6 bytes after a block of size 7 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x10001223B: ft_strncmp (in ./21sh)
+==45468==    by 0x100011886: ft_replace_designator4 (ft_replace_designator.c:76)
+==45468==    by 0x1000115CA: ft_check_designat (ft_designator.c:48)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c3bdc3 is 12 bytes after a block of size 7 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x1000121D9: ft_strncmp (in ./21sh)
+==45468==    by 0x100011886: ft_replace_designator4 (ft_replace_designator.c:76)
+==45468==    by 0x1000115CA: ft_check_designat (ft_designator.c:48)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c3bdc5 is 14 bytes after a block of size 7 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x100012169: ft_strlen (in ./21sh)
+==45468==    by 0x100011A6D: ft_strdup_special (ft_tools_for_designator.c:43)
+==45468==    by 0x1000118DE: ft_replace_designator5 (ft_replace_designator.c:101)
+==45468==    by 0x100011661: ft_check_designat (ft_designator.c:61)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c3bdb7 is 0 bytes after a block of size 7 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x100011A97: ft_strdup_special (ft_tools_for_designator.c:44)
+==45468==    by 0x1000118DE: ft_replace_designator5 (ft_replace_designator.c:101)
+==45468==    by 0x100011661: ft_check_designat (ft_designator.c:61)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c3bdb7 is 0 bytes after a block of size 7 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x1000116A3: ft_check_designat (ft_designator.c:85)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c3bdb7 is 0 bytes after a block of size 7 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x1000113C4: ft_replace_designator (ft_designator.c:24)
+==45468==    by 0x100011661: ft_check_designat (ft_designator.c:61)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c3bdbd is 6 bytes after a block of size 7 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x100011833: ft_replace_designator4 (ft_replace_designator.c:66)
+==45468==    by 0x100011661: ft_check_designat (ft_designator.c:61)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c3bdbd is 6 bytes after a block of size 7 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x10001221B: ft_strncmp (in ./21sh)
+==45468==    by 0x100011886: ft_replace_designator4 (ft_replace_designator.c:76)
+==45468==    by 0x100011661: ft_check_designat (ft_designator.c:61)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c3bdbd is 6 bytes after a block of size 7 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x10001223B: ft_strncmp (in ./21sh)
+==45468==    by 0x100011886: ft_replace_designator4 (ft_replace_designator.c:76)
+==45468==    by 0x100011661: ft_check_designat (ft_designator.c:61)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c3bdc3 is 12 bytes after a block of size 7 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== Invalid read of size 1
+==45468==    at 0x1000121D9: ft_strncmp (in ./21sh)
+==45468==    by 0x100011886: ft_replace_designator4 (ft_replace_designator.c:76)
+==45468==    by 0x100011661: ft_check_designat (ft_designator.c:61)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468==  Address 0x100c3bdc5 is 14 bytes after a block of size 7 alloc'd
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x1000115FF: ft_check_designat (ft_designator.c:52)
+==45468==    by 0x10000AB6F: shell_loop (shell2.c:47)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45506== Syscall param close(fd) contains uninitialised byte(s)
+==45506==    at 0x10035C83A: close (in /usr/lib/system/libsystem_kernel.dylib)
+==45506==    by 0x10000EDC0: main_fork (launch_main_fork.c:65)
+==45506==    by 0x10000EE67: launch_main_fork (launch_main_fork.c:86)
+==45506==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45506==    by 0x10000D282: sub_read (main_loop.c:92)
+==45506==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45506==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45506==    by 0x10000DCC2: main (main.c:106)
+==45506== 
+==45506== Syscall param close(fd) contains uninitialised byte(s)
+==45506==    at 0x10035C83A: close (in /usr/lib/system/libsystem_kernel.dylib)
+==45506==    by 0x10000EDC8: main_fork (launch_main_fork.c:66)
+==45506==    by 0x10000EE67: launch_main_fork (launch_main_fork.c:86)
+==45506==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45506==    by 0x10000D282: sub_read (main_loop.c:92)
+==45506==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45506==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45506==    by 0x10000DCC2: main (main.c:106)
+==45506== 
+==45506== 
+==45508== 
+==45506== HEAP SUMMARY:
+==45506==     in use at exit: 296,372 bytes in 1,784 blocks
+==45506==   total heap usage: 7,159 allocs, 5,375 frees, 921,711 bytes allocated
+==45506== 
+==45508== HEAP SUMMARY:
+==45508==     in use at exit: 300,572 bytes in 1,789 blocks
+==45508==   total heap usage: 7,164 allocs, 5,375 frees, 925,911 bytes allocated
+==45508== 
+==45506== 40 bytes in 1 blocks are definitely lost in loss record 52 of 138
+==45506==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45506==    by 0x10055FC9E: _object_remove_assocations (in /usr/lib/libobjc.A.dylib)
+==45506==    by 0x100559DB7: objc_destructInstance (in /usr/lib/libobjc.A.dylib)
+==45506==    by 0x100559D0C: object_dispose (in /usr/lib/libobjc.A.dylib)
+==45506==    by 0x10050DD68: -[OS_xpc_object _xref_dispose] (in /usr/lib/system/libxpc.dylib)
+==45506==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45506==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45506==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45506==    by 0x10050E4F8: bootstrap_look_up2 (in /usr/lib/system/libxpc.dylib)
+==45506==    by 0x100495907: ___notify_lib_init_block_invoke (in /usr/lib/system/libsystem_notify.dylib)
+==45506==    by 0x10015940A: _dispatch_client_callout (in /usr/lib/system/libdispatch.dylib)
+==45506==    by 0x100159302: dispatch_once_f (in /usr/lib/system/libdispatch.dylib)
+==45506== 
+==45508== 40 bytes in 1 blocks are definitely lost in loss record 52 of 143
+==45508==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45506== 56 bytes in 1 blocks are definitely lost in loss record 60 of 138
+==45508==    by 0x10055FC9E: _object_remove_assocations (in /usr/lib/libobjc.A.dylib)
+==45506==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45508==    by 0x100559DB7: objc_destructInstance (in /usr/lib/libobjc.A.dylib)
+==45506==    by 0x100262802: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45508==    by 0x100559D0C: object_dispose (in /usr/lib/libobjc.A.dylib)
+==45506==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45508==    by 0x10050DD68: -[OS_xpc_object _xref_dispose] (in /usr/lib/system/libxpc.dylib)
+==45506==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45508==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45506==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45508==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45506==    by 0x10000DCC2: main (main.c:106)
+==45506== 
+==45508==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45508==    by 0x10050E4F8: bootstrap_look_up2 (in /usr/lib/system/libxpc.dylib)
+==45508==    by 0x100495907: ___notify_lib_init_block_invoke (in /usr/lib/system/libsystem_notify.dylib)
+==45508==    by 0x10015940A: _dispatch_client_callout (in /usr/lib/system/libdispatch.dylib)
+==45508==    by 0x100159302: dispatch_once_f (in /usr/lib/system/libdispatch.dylib)
+==45508== 
+==45506== 104 (56 direct, 48 indirect) bytes in 1 blocks are definitely lost in loss record 85 of 138
+==45508== 56 bytes in 1 blocks are definitely lost in loss record 60 of 143
+==45506==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
+==45508==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45506==    by 0x10055959B: _objc_fetch_pthread_data (in /usr/lib/libobjc.A.dylib)
+==45508==    by 0x100262802: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45506==    by 0x100559500: _fetchInitializingClassList(signed char) (in /usr/lib/libobjc.A.dylib)
+==45508==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45506==    by 0x1005591A5: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45508==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45506==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45508==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45506==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45508==    by 0x10000DCC2: main (main.c:106)
+==45508== 
+==45506==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45506==    by 0x100558C8F: lookUpImpOrForward (in /usr/lib/libobjc.A.dylib)
+==45506==    by 0x100552590: objc_msgSend (in /usr/lib/libobjc.A.dylib)
+==45506==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45506==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45506==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45506== 
+==45508== 72 bytes in 1 blocks are definitely lost in loss record 76 of 143
+==45508==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
+==45508==    by 0x10055813F: class_createInstance (in /usr/lib/libobjc.A.dylib)
+==45508==    by 0x100159155: _os_object_alloc_realized (in /usr/lib/system/libdispatch.dylib)
+==45508==    by 0x10050B0A4: _xpc_pipe_create (in /usr/lib/system/libxpc.dylib)
+==45508==    by 0x100521C73: xpc_atfork_child (in /usr/lib/system/libxpc.dylib)
+==45508==    by 0x10007AB45: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==45508==    by 0x10021BF8C: fork (in /usr/lib/system/libsystem_c.dylib)
+==45508==    by 0x10000EE49: launch_main_fork (launch_main_fork.c:85)
+==45508==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45508==    by 0x10000D282: sub_read (main_loop.c:92)
+==45508==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45508==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45508== 
+==45506== 2,200 (16 direct, 2,184 indirect) bytes in 1 blocks are definitely lost in loss record 130 of 138
+==45506==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45506==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45506==    by 0x1004918E6: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45506==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45506==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45508== 104 (56 direct, 48 indirect) bytes in 1 blocks are definitely lost in loss record 86 of 143
+==45506==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45508==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
+==45506==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45508==    by 0x10055959B: _objc_fetch_pthread_data (in /usr/lib/libobjc.A.dylib)
+==45506==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45508==    by 0x100559500: _fetchInitializingClassList(signed char) (in /usr/lib/libobjc.A.dylib)
+==45506==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45508==    by 0x1005591A5: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45506==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45508==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45506==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45508==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45506==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45506== 
+==45508==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45506== 2,234 (16 direct, 2,218 indirect) bytes in 1 blocks are definitely lost in loss record 131 of 138
+==45508==    by 0x100558C8F: lookUpImpOrForward (in /usr/lib/libobjc.A.dylib)
+==45506==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45508==    by 0x100552590: objc_msgSend (in /usr/lib/libobjc.A.dylib)
+==45506==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45508==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45506==    by 0x1004918D5: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45508==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45506==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45508==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45508== 
+==45506==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45506==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45506==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45506==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45506==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45506==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45506==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45506==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45506== 
+==45506== LEAK SUMMARY:
+==45506==    definitely lost: 184 bytes in 5 blocks
+==45506==    indirectly lost: 4,450 bytes in 9 blocks
+==45506==      possibly lost: 0 bytes in 0 blocks
+==45506==    still reachable: 264,251 bytes in 1,572 blocks
+==45506==         suppressed: 27,487 bytes in 198 blocks
+==45506== Reachable blocks (those to which a pointer was found) are not shown.
+==45506== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==45506== 
+==45506== For counts of detected and suppressed errors, rerun with: -v
+==45506== Use --track-origins=yes to see where uninitialised values come from
+==45506== ERROR SUMMARY: 16629 errors from 50 contexts (suppressed: 20 from 20)
+==45508== 2,064 (16 direct, 2,048 indirect) bytes in 1 blocks are definitely lost in loss record 132 of 143
+==45508==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45508==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45508==    by 0x1004918D5: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45508==    by 0x10049191E: _notify_fork_child (in /usr/lib/system/libsystem_notify.dylib)
+==45508==    by 0x10007AB40: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==45508==    by 0x10021BF8C: fork (in /usr/lib/system/libsystem_c.dylib)
+==45508==    by 0x10000EE49: launch_main_fork (launch_main_fork.c:85)
+==45508==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45508==    by 0x10000D282: sub_read (main_loop.c:92)
+==45508==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45508==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45508==    by 0x10000DCC2: main (main.c:106)
+==45508== 
+==45508== 2,064 (16 direct, 2,048 indirect) bytes in 1 blocks are definitely lost in loss record 133 of 143
+==45508==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45508==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45508==    by 0x1004918E6: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45508==    by 0x10049191E: _notify_fork_child (in /usr/lib/system/libsystem_notify.dylib)
+==45508==    by 0x10007AB40: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==45508==    by 0x10021BF8C: fork (in /usr/lib/system/libsystem_c.dylib)
+==45508==    by 0x10000EE49: launch_main_fork (launch_main_fork.c:85)
+==45508==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45508==    by 0x10000D282: sub_read (main_loop.c:92)
+==45508==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45508==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45508==    by 0x10000DCC2: main (main.c:106)
+==45508== 
+==45508== 2,200 (16 direct, 2,184 indirect) bytes in 1 blocks are definitely lost in loss record 135 of 143
+==45508==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45508==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45508==    by 0x1004918E6: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45508==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45508==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45508==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45508==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45508==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45508==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45508==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45508==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45508==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45508== 
+==45508== 2,234 (16 direct, 2,218 indirect) bytes in 1 blocks are definitely lost in loss record 136 of 143
+==45508==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45508==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45508==    by 0x1004918D5: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45508==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45508==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45508==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45508==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45508==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45508==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45508==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45508==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45508==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45508== 
+==45508== LEAK SUMMARY:
+==45508==    definitely lost: 288 bytes in 8 blocks
+==45508==    indirectly lost: 8,546 bytes in 11 blocks
+==45508==      possibly lost: 0 bytes in 0 blocks
+==45508==    still reachable: 264,251 bytes in 1,572 blocks
+==45508==         suppressed: 27,487 bytes in 198 blocks
+==45508== Reachable blocks (those to which a pointer was found) are not shown.
+==45508== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==45508== 
+==45508== For counts of detected and suppressed errors, rerun with: -v
+==45508== Use --track-origins=yes to see where uninitialised values come from
+==45508== ERROR SUMMARY: 16632 errors from 53 contexts (suppressed: 20 from 20)
+==45509== Syscall param close(fd) contains uninitialised byte(s)
+==45509==    at 0x10035C83A: close (in /usr/lib/system/libsystem_kernel.dylib)
+==45509==    by 0x10000EDC0: main_fork (launch_main_fork.c:65)
+==45509==    by 0x10000EE67: launch_main_fork (launch_main_fork.c:86)
+==45509==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45509==    by 0x10000D282: sub_read (main_loop.c:92)
+==45509==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45509==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45509==    by 0x10000DCC2: main (main.c:106)
+==45509== 
+==45509== Syscall param close(fd) contains uninitialised byte(s)
+==45509==    at 0x10035C83A: close (in /usr/lib/system/libsystem_kernel.dylib)
+==45509==    by 0x10000EDC8: main_fork (launch_main_fork.c:66)
+==45509==    by 0x10000EE67: launch_main_fork (launch_main_fork.c:86)
+==45509==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45509==    by 0x10000D282: sub_read (main_loop.c:92)
+==45509==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45509==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45509==    by 0x10000DCC2: main (main.c:106)
+==45509== 
+==45511== 
+==45509== 
+==45511== HEAP SUMMARY:
+==45511==     in use at exit: 300,566 bytes in 1,787 blocks
+==45511==   total heap usage: 7,182 allocs, 5,395 frees, 927,210 bytes allocated
+==45511== 
+==45509== HEAP SUMMARY:
+==45509==     in use at exit: 296,366 bytes in 1,782 blocks
+==45509==   total heap usage: 7,177 allocs, 5,395 frees, 923,010 bytes allocated
+==45509== 
+==45509== 40 bytes in 1 blocks are definitely lost in loss record 52 of 138
+==45509==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45509==    by 0x10055FC9E: _object_remove_assocations (in /usr/lib/libobjc.A.dylib)
+==45509==    by 0x100559DB7: objc_destructInstance (in /usr/lib/libobjc.A.dylib)
+==45509==    by 0x100559D0C: object_dispose (in /usr/lib/libobjc.A.dylib)
+==45509==    by 0x10050DD68: -[OS_xpc_object _xref_dispose] (in /usr/lib/system/libxpc.dylib)
+==45511== 40 bytes in 1 blocks are definitely lost in loss record 52 of 143
+==45511==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45509==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45509==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45511==    by 0x10055FC9E: _object_remove_assocations (in /usr/lib/libobjc.A.dylib)
+==45509==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45511==    by 0x100559DB7: objc_destructInstance (in /usr/lib/libobjc.A.dylib)
+==45509==    by 0x10050E4F8: bootstrap_look_up2 (in /usr/lib/system/libxpc.dylib)
+==45511==    by 0x100559D0C: object_dispose (in /usr/lib/libobjc.A.dylib)
+==45509==    by 0x100495907: ___notify_lib_init_block_invoke (in /usr/lib/system/libsystem_notify.dylib)
+==45511==    by 0x10050DD68: -[OS_xpc_object _xref_dispose] (in /usr/lib/system/libxpc.dylib)
+==45509==    by 0x10015940A: _dispatch_client_callout (in /usr/lib/system/libdispatch.dylib)
+==45511==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45509==    by 0x100159302: dispatch_once_f (in /usr/lib/system/libdispatch.dylib)
+==45509== 
+==45511==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45511==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45511==    by 0x10050E4F8: bootstrap_look_up2 (in /usr/lib/system/libxpc.dylib)
+==45509== 56 bytes in 1 blocks are definitely lost in loss record 60 of 138
+==45511==    by 0x100495907: ___notify_lib_init_block_invoke (in /usr/lib/system/libsystem_notify.dylib)
+==45509==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45511==    by 0x10015940A: _dispatch_client_callout (in /usr/lib/system/libdispatch.dylib)
+==45509==    by 0x100262802: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45511==    by 0x100159302: dispatch_once_f (in /usr/lib/system/libdispatch.dylib)
+==45511== 
+==45509==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45509==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45509==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45509==    by 0x10000DCC2: main (main.c:106)
+==45509== 
+==45511== 56 bytes in 1 blocks are definitely lost in loss record 60 of 143
+==45511==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45511==    by 0x100262802: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45511==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45511==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45511==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45511==    by 0x10000DCC2: main (main.c:106)
+==45511== 
+==45509== 104 (56 direct, 48 indirect) bytes in 1 blocks are definitely lost in loss record 85 of 138
+==45509==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
+==45509==    by 0x10055959B: _objc_fetch_pthread_data (in /usr/lib/libobjc.A.dylib)
+==45509==    by 0x100559500: _fetchInitializingClassList(signed char) (in /usr/lib/libobjc.A.dylib)
+==45509==    by 0x1005591A5: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45511== 72 bytes in 1 blocks are definitely lost in loss record 76 of 143
+==45509==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45511==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
+==45509==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45511==    by 0x10055813F: class_createInstance (in /usr/lib/libobjc.A.dylib)
+==45509==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45511==    by 0x100159155: _os_object_alloc_realized (in /usr/lib/system/libdispatch.dylib)
+==45509==    by 0x100558C8F: lookUpImpOrForward (in /usr/lib/libobjc.A.dylib)
+==45511==    by 0x10050B0A4: _xpc_pipe_create (in /usr/lib/system/libxpc.dylib)
+==45509==    by 0x100552590: objc_msgSend (in /usr/lib/libobjc.A.dylib)
+==45511==    by 0x100521C73: xpc_atfork_child (in /usr/lib/system/libxpc.dylib)
+==45509==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45511==    by 0x10007AB45: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==45509==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45511==    by 0x10021BF8C: fork (in /usr/lib/system/libsystem_c.dylib)
+==45509==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45509== 
+==45511==    by 0x10000EE49: launch_main_fork (launch_main_fork.c:85)
+==45511==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45511==    by 0x10000D282: sub_read (main_loop.c:92)
+==45511==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45511==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45511== 
+==45511== 104 (56 direct, 48 indirect) bytes in 1 blocks are definitely lost in loss record 86 of 143
+==45511==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
+==45511==    by 0x10055959B: _objc_fetch_pthread_data (in /usr/lib/libobjc.A.dylib)
+==45509== 2,200 (16 direct, 2,184 indirect) bytes in 1 blocks are definitely lost in loss record 130 of 138
+==45511==    by 0x100559500: _fetchInitializingClassList(signed char) (in /usr/lib/libobjc.A.dylib)
+==45509==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45511==    by 0x1005591A5: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45509==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45511==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45509==    by 0x1004918E6: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45511==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45509==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45511==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45509==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45511==    by 0x100558C8F: lookUpImpOrForward (in /usr/lib/libobjc.A.dylib)
+==45509==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45511==    by 0x100552590: objc_msgSend (in /usr/lib/libobjc.A.dylib)
+==45509==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45511==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45509==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45511==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45509==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45511==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45511== 
+==45509==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45509==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45509==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45509== 
+==45509== 2,234 (16 direct, 2,218 indirect) bytes in 1 blocks are definitely lost in loss record 131 of 138
+==45509==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45509==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45509==    by 0x1004918D5: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45509==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45509==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45509==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45509==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45509==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45509==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45511== 2,064 (16 direct, 2,048 indirect) bytes in 1 blocks are definitely lost in loss record 132 of 143
+==45509==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45511==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45509==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45511==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45509==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45509== 
+==45511==    by 0x1004918D5: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45511==    by 0x10049191E: _notify_fork_child (in /usr/lib/system/libsystem_notify.dylib)
+==45511==    by 0x10007AB40: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==45509== LEAK SUMMARY:
+==45509==    definitely lost: 184 bytes in 5 blocks
+==45509==    indirectly lost: 4,450 bytes in 9 blocks
+==45509==      possibly lost: 0 bytes in 0 blocks
+==45509==    still reachable: 264,245 bytes in 1,570 blocks
+==45509==         suppressed: 27,487 bytes in 198 blocks
+==45509== Reachable blocks (those to which a pointer was found) are not shown.
+==45509== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==45509== 
+==45511==    by 0x10021BF8C: fork (in /usr/lib/system/libsystem_c.dylib)
+==45509== For counts of detected and suppressed errors, rerun with: -v
+==45509== Use --track-origins=yes to see where uninitialised values come from
+==45509== ERROR SUMMARY: 16629 errors from 50 contexts (suppressed: 20 from 20)
+==45511==    by 0x10000EE49: launch_main_fork (launch_main_fork.c:85)
+==45511==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45511==    by 0x10000D282: sub_read (main_loop.c:92)
+==45511==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45511==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45511==    by 0x10000DCC2: main (main.c:106)
+==45511== 
+==45511== 2,064 (16 direct, 2,048 indirect) bytes in 1 blocks are definitely lost in loss record 133 of 143
+==45511==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45511==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45511==    by 0x1004918E6: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45511==    by 0x10049191E: _notify_fork_child (in /usr/lib/system/libsystem_notify.dylib)
+==45511==    by 0x10007AB40: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==45511==    by 0x10021BF8C: fork (in /usr/lib/system/libsystem_c.dylib)
+==45511==    by 0x10000EE49: launch_main_fork (launch_main_fork.c:85)
+==45511==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45511==    by 0x10000D282: sub_read (main_loop.c:92)
+==45511==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45511==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45511==    by 0x10000DCC2: main (main.c:106)
+==45511== 
+==45511== 2,200 (16 direct, 2,184 indirect) bytes in 1 blocks are definitely lost in loss record 135 of 143
+==45511==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45511==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45511==    by 0x1004918E6: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45511==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45511==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45511==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45511==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45511==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45511==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45511==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45511==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45511==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45511== 
+==45511== 2,234 (16 direct, 2,218 indirect) bytes in 1 blocks are definitely lost in loss record 136 of 143
+==45511==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45511==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45511==    by 0x1004918D5: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45511==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45511==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45511==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45511==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45511==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45511==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45511==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45511==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45511==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45511== 
+==45511== LEAK SUMMARY:
+==45511==    definitely lost: 288 bytes in 8 blocks
+==45511==    indirectly lost: 8,546 bytes in 11 blocks
+==45511==      possibly lost: 0 bytes in 0 blocks
+==45511==    still reachable: 264,245 bytes in 1,570 blocks
+==45511==         suppressed: 27,487 bytes in 198 blocks
+==45511== Reachable blocks (those to which a pointer was found) are not shown.
+==45511== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==45511== 
+==45511== For counts of detected and suppressed errors, rerun with: -v
+==45511== Use --track-origins=yes to see where uninitialised values come from
+==45511== ERROR SUMMARY: 16632 errors from 53 contexts (suppressed: 20 from 20)
+==45512== Syscall param close(fd) contains uninitialised byte(s)
+==45512==    at 0x10035C83A: close (in /usr/lib/system/libsystem_kernel.dylib)
+==45512==    by 0x10000EDC0: main_fork (launch_main_fork.c:65)
+==45512==    by 0x10000EE67: launch_main_fork (launch_main_fork.c:86)
+==45512==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45512==    by 0x10000D282: sub_read (main_loop.c:92)
+==45512==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45512==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45512==    by 0x10000DCC2: main (main.c:106)
+==45512== 
+==45512== Syscall param close(fd) contains uninitialised byte(s)
+==45512==    at 0x10035C83A: close (in /usr/lib/system/libsystem_kernel.dylib)
+==45512==    by 0x10000EDC8: main_fork (launch_main_fork.c:66)
+==45512==    by 0x10000EE67: launch_main_fork (launch_main_fork.c:86)
+==45512==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45512==    by 0x10000D282: sub_read (main_loop.c:92)
+==45512==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45512==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45512==    by 0x10000DCC2: main (main.c:106)
+==45512== 
+==45512== 
+==45512== HEAP SUMMARY:
+==45512==     in use at exit: 296,493 bytes in 1,776 blocks
+==45512==   total heap usage: 7,246 allocs, 5,470 frees, 933,816 bytes allocated
+==45512== 
+==45514== 
+==45514== HEAP SUMMARY:
+==45514==     in use at exit: 300,693 bytes in 1,781 blocks
+==45514==   total heap usage: 7,251 allocs, 5,470 frees, 938,016 bytes allocated
+==45514== 
+==45512== 40 bytes in 1 blocks are definitely lost in loss record 49 of 135
+==45512==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45512==    by 0x10055FC9E: _object_remove_assocations (in /usr/lib/libobjc.A.dylib)
+==45512==    by 0x100559DB7: objc_destructInstance (in /usr/lib/libobjc.A.dylib)
+==45512==    by 0x100559D0C: object_dispose (in /usr/lib/libobjc.A.dylib)
+==45512==    by 0x10050DD68: -[OS_xpc_object _xref_dispose] (in /usr/lib/system/libxpc.dylib)
+==45512==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45512==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45512==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45512==    by 0x10050E4F8: bootstrap_look_up2 (in /usr/lib/system/libxpc.dylib)
+==45512==    by 0x100495907: ___notify_lib_init_block_invoke (in /usr/lib/system/libsystem_notify.dylib)
+==45512==    by 0x10015940A: _dispatch_client_callout (in /usr/lib/system/libdispatch.dylib)
+==45512==    by 0x100159302: dispatch_once_f (in /usr/lib/system/libdispatch.dylib)
+==45512== 
+==45514== 40 bytes in 1 blocks are definitely lost in loss record 49 of 140
+==45514==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45512== 56 bytes in 1 blocks are definitely lost in loss record 57 of 135
+==45514==    by 0x10055FC9E: _object_remove_assocations (in /usr/lib/libobjc.A.dylib)
+==45514==    by 0x100559DB7: objc_destructInstance (in /usr/lib/libobjc.A.dylib)
+==45512==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45514==    by 0x100559D0C: object_dispose (in /usr/lib/libobjc.A.dylib)
+==45514==    by 0x10050DD68: -[OS_xpc_object _xref_dispose] (in /usr/lib/system/libxpc.dylib)
+==45514==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45514==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45514==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45514==    by 0x10050E4F8: bootstrap_look_up2 (in /usr/lib/system/libxpc.dylib)
+==45512==    by 0x100262802: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45514==    by 0x100495907: ___notify_lib_init_block_invoke (in /usr/lib/system/libsystem_notify.dylib)
+==45512==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45514==    by 0x10015940A: _dispatch_client_callout (in /usr/lib/system/libdispatch.dylib)
+==45512==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45514==    by 0x100159302: dispatch_once_f (in /usr/lib/system/libdispatch.dylib)
+==45514== 
+==45512==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45512==    by 0x10000DCC2: main (main.c:106)
+==45512== 
+==45514== 56 bytes in 1 blocks are definitely lost in loss record 57 of 140
+==45514==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45514==    by 0x100262802: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45514==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45514==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45514==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45514==    by 0x10000DCC2: main (main.c:106)
+==45514== 
+==45512== 104 (56 direct, 48 indirect) bytes in 1 blocks are definitely lost in loss record 81 of 135
+==45512==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
+==45512==    by 0x10055959B: _objc_fetch_pthread_data (in /usr/lib/libobjc.A.dylib)
+==45512==    by 0x100559500: _fetchInitializingClassList(signed char) (in /usr/lib/libobjc.A.dylib)
+==45514== 72 bytes in 1 blocks are definitely lost in loss record 72 of 140
+==45512==    by 0x1005591A5: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45512==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45514==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
+==45512==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45514==    by 0x10055813F: class_createInstance (in /usr/lib/libobjc.A.dylib)
+==45514==    by 0x100159155: _os_object_alloc_realized (in /usr/lib/system/libdispatch.dylib)
+==45512==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45514==    by 0x10050B0A4: _xpc_pipe_create (in /usr/lib/system/libxpc.dylib)
+==45512==    by 0x100558C8F: lookUpImpOrForward (in /usr/lib/libobjc.A.dylib)
+==45514==    by 0x100521C73: xpc_atfork_child (in /usr/lib/system/libxpc.dylib)
+==45512==    by 0x100552590: objc_msgSend (in /usr/lib/libobjc.A.dylib)
+==45514==    by 0x10007AB45: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==45512==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45514==    by 0x10021BF8C: fork (in /usr/lib/system/libsystem_c.dylib)
+==45512==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45514==    by 0x10000EE49: launch_main_fork (launch_main_fork.c:85)
+==45512==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45512== 
+==45514==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45514==    by 0x10000D282: sub_read (main_loop.c:92)
+==45514==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45514==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45514== 
+==45514== 104 (56 direct, 48 indirect) bytes in 1 blocks are definitely lost in loss record 82 of 140
+==45514==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
+==45514==    by 0x10055959B: _objc_fetch_pthread_data (in /usr/lib/libobjc.A.dylib)
+==45514==    by 0x100559500: _fetchInitializingClassList(signed char) (in /usr/lib/libobjc.A.dylib)
+==45514==    by 0x1005591A5: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45514==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45512== 2,200 (16 direct, 2,184 indirect) bytes in 1 blocks are definitely lost in loss record 127 of 135
+==45514==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45512==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45514==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45512==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45514==    by 0x100558C8F: lookUpImpOrForward (in /usr/lib/libobjc.A.dylib)
+==45512==    by 0x1004918E6: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45514==    by 0x100552590: objc_msgSend (in /usr/lib/libobjc.A.dylib)
+==45512==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45514==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45512==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45514==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45512==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45514==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45514== 
+==45512==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45512==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45512==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45512==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45512==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45512==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45512== 
+==45512== 2,234 (16 direct, 2,218 indirect) bytes in 1 blocks are definitely lost in loss record 128 of 135
+==45512==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45512==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45512==    by 0x1004918D5: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45512==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45512==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45512==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45512==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45512==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45514== 2,064 (16 direct, 2,048 indirect) bytes in 1 blocks are definitely lost in loss record 129 of 140
+==45512==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45514==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45512==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45514==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45512==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45514==    by 0x1004918D5: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45512==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45512== 
+==45514==    by 0x10049191E: _notify_fork_child (in /usr/lib/system/libsystem_notify.dylib)
+==45514==    by 0x10007AB40: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==45514==    by 0x10021BF8C: fork (in /usr/lib/system/libsystem_c.dylib)
+==45512== LEAK SUMMARY:
+==45512==    definitely lost: 184 bytes in 5 blocks
+==45512==    indirectly lost: 4,450 bytes in 9 blocks
+==45512==      possibly lost: 0 bytes in 0 blocks
+==45512==    still reachable: 264,372 bytes in 1,564 blocks
+==45512==         suppressed: 27,487 bytes in 198 blocks
+==45512== Reachable blocks (those to which a pointer was found) are not shown.
+==45512== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==45512== 
+==45514==    by 0x10000EE49: launch_main_fork (launch_main_fork.c:85)
+==45512== For counts of detected and suppressed errors, rerun with: -v
+==45512== Use --track-origins=yes to see where uninitialised values come from
+==45512== ERROR SUMMARY: 16629 errors from 50 contexts (suppressed: 20 from 20)
+==45514==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45514==    by 0x10000D282: sub_read (main_loop.c:92)
+==45514==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45514==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45514==    by 0x10000DCC2: main (main.c:106)
+==45514== 
+==45514== 2,064 (16 direct, 2,048 indirect) bytes in 1 blocks are definitely lost in loss record 130 of 140
+==45514==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45514==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45514==    by 0x1004918E6: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45514==    by 0x10049191E: _notify_fork_child (in /usr/lib/system/libsystem_notify.dylib)
+==45514==    by 0x10007AB40: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==45514==    by 0x10021BF8C: fork (in /usr/lib/system/libsystem_c.dylib)
+==45514==    by 0x10000EE49: launch_main_fork (launch_main_fork.c:85)
+==45514==    by 0x10000D084: readgnl2 (main_loop.c:24)
+==45514==    by 0x10000D282: sub_read (main_loop.c:92)
+==45514==    by 0x10000D34D: readgnl (main_loop.c:117)
+==45514==    by 0x10000AB84: shell_loop (shell2.c:49)
+==45514==    by 0x10000DCC2: main (main.c:106)
+==45514== 
+==45514== 2,200 (16 direct, 2,184 indirect) bytes in 1 blocks are definitely lost in loss record 132 of 140
+==45514==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45514==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45514==    by 0x1004918E6: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45514==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45514==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45514==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45514==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45514==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45514==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45514==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45514==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45514==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45514== 
+==45514== 2,234 (16 direct, 2,218 indirect) bytes in 1 blocks are definitely lost in loss record 133 of 140
+==45514==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45514==    by 0x100495F74: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==45514==    by 0x1004918D5: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==45514==    by 0x10049FFC3: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==45514==    by 0x10049FF8F: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==45514==    by 0x1004932C0: notify_register_check (in /usr/lib/system/libsystem_notify.dylib)
+==45514==    by 0x100261400: notify_register_tz (in /usr/lib/system/libsystem_c.dylib)
+==45514==    by 0x100260E6B: tzsetwall_basic (in /usr/lib/system/libsystem_c.dylib)
+==45514==    by 0x100262843: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45514==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45514==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45514==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45514== 
+==45514== LEAK SUMMARY:
+==45514==    definitely lost: 288 bytes in 8 blocks
+==45514==    indirectly lost: 8,546 bytes in 11 blocks
+==45514==      possibly lost: 0 bytes in 0 blocks
+==45514==    still reachable: 264,372 bytes in 1,564 blocks
+==45514==         suppressed: 27,487 bytes in 198 blocks
+==45514== Reachable blocks (those to which a pointer was found) are not shown.
+==45514== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==45514== 
+==45514== For counts of detected and suppressed errors, rerun with: -v
+==45514== Use --track-origins=yes to see where uninitialised values come from
+==45514== ERROR SUMMARY: 16632 errors from 53 contexts (suppressed: 20 from 20)
+==45468== 
+==45468== HEAP SUMMARY:
+==45468==     in use at exit: 290,999 bytes in 1,759 blocks
+==45468==   total heap usage: 7,284 allocs, 5,525 frees, 932,474 bytes allocated
+==45468== 
+==45468== 40 bytes in 1 blocks are definitely lost in loss record 45 of 121
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x10055FC9E: _object_remove_assocations (in /usr/lib/libobjc.A.dylib)
+==45468==    by 0x100559DB7: objc_destructInstance (in /usr/lib/libobjc.A.dylib)
+==45468==    by 0x100559D0C: object_dispose (in /usr/lib/libobjc.A.dylib)
+==45468==    by 0x10050DD68: -[OS_xpc_object _xref_dispose] (in /usr/lib/system/libxpc.dylib)
+==45468==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45468==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45468==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45468==    by 0x10050E4F8: bootstrap_look_up2 (in /usr/lib/system/libxpc.dylib)
+==45468==    by 0x100495907: ___notify_lib_init_block_invoke (in /usr/lib/system/libsystem_notify.dylib)
+==45468==    by 0x10015940A: _dispatch_client_callout (in /usr/lib/system/libdispatch.dylib)
+==45468==    by 0x100159302: dispatch_once_f (in /usr/lib/system/libdispatch.dylib)
+==45468== 
+==45468== 56 bytes in 1 blocks are definitely lost in loss record 50 of 121
+==45468==    at 0x10002AD81: malloc (vg_replace_malloc.c:303)
+==45468==    by 0x100262802: localtime (in /usr/lib/system/libsystem_c.dylib)
+==45468==    by 0x1002629C6: ctime (in /usr/lib/system/libsystem_c.dylib)
+==45468==    by 0x10000A2A2: prompt_line (prompt.c:44)
+==45468==    by 0x10000AB24: shell_loop (shell2.c:43)
+==45468==    by 0x10000DCC2: main (main.c:106)
+==45468== 
+==45468== 104 (56 direct, 48 indirect) bytes in 1 blocks are definitely lost in loss record 72 of 121
+==45468==    at 0x10002B757: calloc (vg_replace_malloc.c:715)
+==45468==    by 0x10055959B: _objc_fetch_pthread_data (in /usr/lib/libobjc.A.dylib)
+==45468==    by 0x100559500: _fetchInitializingClassList(signed char) (in /usr/lib/libobjc.A.dylib)
+==45468==    by 0x1005591A5: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45468==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45468==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45468==    by 0x100559122: _class_initialize (in /usr/lib/libobjc.A.dylib)
+==45468==    by 0x100558C8F: lookUpImpOrForward (in /usr/lib/libobjc.A.dylib)
+==45468==    by 0x100552590: objc_msgSend (in /usr/lib/libobjc.A.dylib)
+==45468==    by 0x10050ECC9: xpc_pipe_routine (in /usr/lib/system/libxpc.dylib)
+==45468==    by 0x10050E9DD: _xpc_interface_routine (in /usr/lib/system/libxpc.dylib)
+==45468==    by 0x10050E5C3: bootstrap_look_up3 (in /usr/lib/system/libxpc.dylib)
+==45468== 
+==45468== LEAK SUMMARY:
+==45468==    definitely lost: 152 bytes in 3 blocks
+==45468==    indirectly lost: 48 bytes in 2 blocks
+==45468==      possibly lost: 0 bytes in 0 blocks
+==45468==    still reachable: 268,555 bytes in 1,563 blocks
+==45468==         suppressed: 22,244 bytes in 191 blocks
+==45468== Reachable blocks (those to which a pointer was found) are not shown.
+==45468== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==45468== 
+==45468== For counts of detected and suppressed errors, rerun with: -v
+==45468== Use --track-origins=yes to see where uninitialised values come from
+==45468== ERROR SUMMARY: 17585 errors from 46 contexts (suppressed: 19 from 19)

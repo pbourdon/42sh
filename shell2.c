@@ -6,7 +6,7 @@
 /*   By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/28 15:01:47 by bde-maze          #+#    #+#             */
-/*   Updated: 2016/10/15 18:55:23 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/10/17 12:14:48 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int					shell_loop(t_term *term, t_data *data, char **env)
 		shterm_listen(term);
 		if (is_there_a_path(data->env))
 			hash_refresh(data);
-		g_shell.shell_line = ft_check_designator(g_shell.shell_line, &fake);
+		g_shell.shell_line = ft_check_designat(g_shell.shell_line, &fake, 0, 0);
 		if (fake != 1)
 			readgnl(data, g_shell.shell_line);
 		if ((g_shell.shell_line)[0] == '\0')

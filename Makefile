@@ -6,7 +6,7 @@
 #    By: bde-maze <bde-maze@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/02 13:52:37 by bde-maze          #+#    #+#              #
-#    Updated: 2016/10/15 18:54:54 by pbourdon         ###   ########.fr        #
+#    Updated: 2016/10/17 12:02:47 by pbourdon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -113,8 +113,8 @@ SRC = 	builtin_exit_error.c \
 		wait_all_pid.c \
 		init_hash.c \
 		ft_designator.c \
-		ft_error_event.c \
 		ft_replace_designator.c \
+		ft_tools_for_designator.c \
 
 OBJDIR = obj/
 

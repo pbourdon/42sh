@@ -6,7 +6,7 @@
 /*   By: pguzman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 18:03:28 by pguzman           #+#    #+#             */
-/*   Updated: 2016/10/15 19:01:32 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/10/17 12:04:27 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -530,12 +530,19 @@ void					sig_handler22(int sign);
 void					sig_handler2(int sign);
 char					*get_user_name(char **env);
 int						is_there_a_path(char **env);
-char					*ft_check_designator(char *command, int *fake);
-char					*ft_error_event_char(char *command);
-char					*ft_replace_designator_norm(int number, char *command);
-char					*ft_replace_designator_rev(int number, char *command);
-char					*ft_replace_designator4(char *command, char *command2);
-char					*ft_replace_designator5(char *command, char *command2);
+char					*ft_check_designat(char *command, int *fake,
+						int index, int index2);
+char					*ft_error_event_char(char *command, int display);
+char					*ft_error_event_char2(char *command, int di, char *str);
+char					*ft_replace_designator_norm(int number, char *command,
+						int display);
+char					*ft_replace_designator_rev(int number, char *command,
+						int display);
+char					*ft_replace_designator4(char *command, char *command2,
+						int display);
+char					*ft_replace_designator5(char *command, char *command2,
+						int display);
 char					*ft_replace_designator6(char *command);
+char					*ft_strdup_special(char *src, char *dest);
 
 #endif
