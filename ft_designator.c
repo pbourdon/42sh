@@ -6,7 +6,7 @@
 /*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 19:14:12 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/10/18 12:30:22 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/10/18 12:42:24 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ display));
 		return (ft_replace_designator4(command + index, command, display));
 	return (command);
 }
-
 
 char			*ft_special(char *command, int index, int len, char *tmp)
 {
@@ -103,7 +102,8 @@ char			*ft_check_designat(char *command, int *fake, int index,
 		if (command[index] == '!')
 		{
 			display = 1;
-			if ((replace = ft_special_replace(command, index, fake, final)) == NULL)
+			if ((replace = ft_special_replace(command, index, fake, final))
+				== NULL)
 			{
 				ft_strdel(&final);
 				return (command);

@@ -6,7 +6,7 @@
 /*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/17 11:57:16 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/10/18 12:35:48 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/10/18 12:41:39 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ char		*ft_last_ope(char *final, char *command, int display)
 
 int			ft_adv_co(char *command, int index)
 {
-	while (command[index] != ' ' && command[index] != '\t' && command[index] != '\0')
+	while (command[index] != ' ' && command[index] != '\t' && command[index]
+		!= '\0')
 		index++;
 	return (index);
 }
