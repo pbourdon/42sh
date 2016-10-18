@@ -6,13 +6,14 @@
 /*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 19:14:12 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/10/17 17:26:02 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/10/18 12:30:22 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/shell.h"
 
-char			*ft_replace_designator(char *command, int index, int display)
+char			*ft_replace_designator(char *command, int index, int display,
+				char *final)
 {
 	if (command[index] <= '9' && command[index] >= '0')
 		return (ft_replace_designator_norm(ft_atoi(command + index), command,
@@ -26,27 +27,32 @@ display));
 	else if (command[index] == '?')
 		return (ft_replace_designator5(command + 1 + index, command, display));
 	else if (command[index] == '#')
-		return (ft_replace_designator6(command));
+		return (ft_replace_designator6(final));
 	else
 		return (ft_replace_designator4(command + index, command, display));
 	return (command);
 }
 
 
-char			*ft_special(char *command)
+char			*ft_special(char *command, int index, int len, char *tmp)
 {
-	int			len;
-	int			index;
 	char		*final;
 
-	len = ft_strlen(command);
-	index = 0;
 	while (command[index] != '\0')
 	{
 		if (command[index] == '!')
 		{
-			len += ft_strlen(ft_replace_designator(command, index + 1, 0));
+			tmp = ft_replace_designator(command, index + 1, 0, NULL);
+			len += ft_strlen(tmp);
+			ft_strdel(&tmp);
 		}
+		index++;
+	}
+	index = 0;
+	while (command[index] != '\0')
+	{
+		if (command[index] == '!' && command[index + 1] == '#')
+			len += len;
 		index++;
 	}
 	final = malloc(sizeof(char) * len);
@@ -55,11 +61,12 @@ char			*ft_special(char *command)
 	return (final);
 }
 
-char			*ft_special_replace(char *command, int index, int *fake)
+char			*ft_special_replace(char *command, int index, int *fake,
+				char *final)
 {
 	char		*replace;
 
-	if ((replace = ft_replace_designator(command, index + 1, 1)) == NULL)
+	if ((replace = ft_replace_designator(command, index + 1, 1, final)) == NULL)
 	{
 		*fake = 1;
 		return (NULL);
@@ -78,6 +85,7 @@ char			*ft_replace_final(char *replace, char *final, int *index2)
 		*index2 = *index2 + 1;
 		index3++;
 	}
+	ft_strdel(&replace);
 	return (final);
 }
 
@@ -89,13 +97,13 @@ char			*ft_check_designat(char *command, int *fake, int index,
 	int			display;
 
 	display = 0;
-	final = ft_special(command);
+	final = ft_special(command, 0, ft_strlen(command), NULL);
 	while (command[index] != '\0')
 	{
 		if (command[index] == '!')
 		{
 			display = 1;
-			if ((replace = ft_special_replace(command, index, fake)) == NULL)
+			if ((replace = ft_special_replace(command, index, fake, final)) == NULL)
 			{
 				ft_strdel(&final);
 				return (command);

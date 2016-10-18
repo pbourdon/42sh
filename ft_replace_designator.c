@@ -6,7 +6,7 @@
 /*   By: pbourdon <pbourdon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/15 18:46:35 by pbourdon          #+#    #+#             */
-/*   Updated: 2016/10/17 18:01:17 by pbourdon         ###   ########.fr       */
+/*   Updated: 2016/10/18 12:19:10 by pbourdon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char				*ft_replace_designator_norm(int number, char *command2,
 		return (ft_error_event_char(command2, display));
 	if (!history || !history->str)
 		return (ft_error_event_char(command2, display));
-	return (history->str);
+	return (ft_strdup(history->str));
 }
 
 char				*ft_replace_designator_rev(int number, char *command2,
@@ -53,7 +53,7 @@ char				*ft_replace_designator_rev(int number, char *command2,
 		history = history->prev;
 	if (!history || !history->str)
 		return (ft_error_event_char(command2, display));
-	return (history->str);
+	return (ft_strdup(history->str));
 }
 
 char				*ft_replace_designator4(char *command, char *command2,
@@ -77,7 +77,7 @@ char				*ft_replace_designator4(char *command, char *command2,
 		history = history->prev;
 	if (!history || !history->str)
 		return (ft_error_event_char(command2, display));
-	return (history->str);
+	return (ft_strdup(history->str));
 }
 
 char				*ft_replace_designator5(char *command, char *command2,
@@ -100,7 +100,7 @@ char				*ft_replace_designator5(char *command, char *command2,
 	if (!history || !history->str)
 		return (ft_error_event_char2(command2, display, str));
 	ft_strdel(&str);
-	return (history->str);
+	return (ft_strdup(history->str));
 }
 
 char				*ft_replace_designator6(char *command)
@@ -108,6 +108,8 @@ char				*ft_replace_designator6(char *command)
 	int				index;
 	char			*retur;
 
+	if (command == NULL)
+		return (NULL);
 	index = 0;
 	retur = malloc(sizeof(char) * ft_strlen(command) + 1);
 	while (command[index] != '\0')
